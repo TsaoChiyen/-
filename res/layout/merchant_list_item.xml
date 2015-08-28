@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/type_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/devider_line"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+        <ImageView
+            android:id="@+id/goods_type_icon"
+            android:layout_width="25dip"
+            android:layout_height="25dip"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/desc"
+            android:duplicateParentState="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/red_right_arrow" />
+
+        <TextView
+            android:id="@+id/goods_tye_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dip"
+            android:layout_toLeftOf="@+id/right_icon"
+            android:layout_toRightOf="@+id/goods_type_icon"
+            android:duplicateParentState="true"
+            android:maxWidth="250dip"
+            android:singleLine="true"
+            android:text="@string/about_us"
+            android:textColor="#eb3266"
+            android:textSize="@dimen/sixteen" />
+
+        <ImageView
+            android:id="@+id/right_icon"
+            android:layout_width="15dip"
+            android:layout_height="15dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/desc"
+            android:duplicateParentState="true"
+            android:src="@drawable/selector_member_more" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/goods_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+    </LinearLayout>
+    <View 
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:background="#efefef"/>
+
+</LinearLayout>

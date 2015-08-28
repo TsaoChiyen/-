@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:crysecontrol="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/hsv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFB"
+    android:fadingEdge="none"
+    android:orientation="vertical"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/chat_tab_list_selector"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <ImageView
+                android:id="@+id/header"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/desc"
+                android:scaleType="fitXY"
+                android:src="@drawable/contact_default_header" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/header"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@id/time"
+                        android:textColor="@color/chat_username_text_color"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" >
+
+                    <TextView
+                        android:id="@+id/processed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/product_status"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/content"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@id/processed"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_action"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/devider_line"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/del"
+                android:layout_width="70dip"
+                android:layout_height="43dip"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:background="@drawable/delete"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="visible" />
+        </LinearLayout>
+    </LinearLayout>
+
+</HorizontalScrollView>

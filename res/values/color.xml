@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="backgroud_color">#f6f6f6</color>
+    <color name="white">#ffffff</color>
+    <color name="title_color">#f6f6f6</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="select_system_text_color">#b7b7b7</color>
+    <color name="text_color">#777777</color>
+    <color name="login_text_color">#d1d8d1</color>
+    <color name="tab_text_n_color">#E5D16D</color>
+    <color name="listview_foucs">#80dedede</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="title_bar_text_color">#b3b3b3</color>
+    <color name="chat_username_text_color">#111111</color>
+    <color name="order_selected_color">#dadada</color>
+    <color name="order_price_color">#CC3333</color>
+    <color name="high_lighted_color">#C4E0F5</color>
+    <color name="login_icon_bg">#005ead</color>
+    <color name="login_username_text_color">#7cd1f8</color>
+    <color name="website_color">#a2e5ff</color>
+    <color name="order_detail_price_color">#ff0000</color>
+    <color name="order_detail_price_hint_color">#333333</color>
+    <color name="product_status">#FF6600</color>
+    <color name="about_website_color">#0096ff</color>
+    <color name="search_dialog_bg">#b0000000</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="order_title_color">#333333</color>
+    <color name="order_item_hint_color">#999999</color>
+    <color name="blue_color">#4494CB</color>
+    <color name="profile_menu_text_color">#E9EFF5</color>
+    <color name="gray_black">#1e1e1e</color>
+    
+    <color name="home_bg_color">#f7f7f7</color>
+    <color name="blog_text_bg">#B4CAD9</color>
+    <color name="focus_bg">#BCD9E9</color>
+    <color name="home_forward_content_color">#808080</color>
+    <color name="blog_content_count_color">#5a7083</color>
+    <color name="home_item_release_time">#666666</color>
+    <color name="menu_unchecked_color">#666666</color>
+    <color name="menu_checked_color">#E0BF3C</color>
+    <color name="gridground">#d5dbe9</color>
+    <color name="user_name">#4891C6</color>
+    <color name="font_color">#2d2d2d</color>
+    <color name="top_menu_unchecked_color">#C0B070</color>
+    <color name="top_menu_checked_color">#1A1A1A</color>
+    <color name="main_menu_selected_color">#161316</color>
+    <color name="order_menu_color">#AEAEAE</color>
+    <color name="order_keyboard_color">#EEEEEE</color>
+    <color name="background_tab_pressed">#6633B5E5</color>
+     <color name="green">#008000</color><!--绿色 -->
+     
+     <color name="back_layout_press_color">#78cb25</color><!-- 返回按钮背景 -->
+     <color name="editor_text_color">#808080</color>
+     <color name="editor_hint_color">#777777</color>
+     <color name="text_title_color">#656565</color>
+     <!-- application  color -->
+     <color name="application_black">#101010</color>
+     <color name="application_deep_gray_black">#828282</color>
+     <!-- 一般指时间 -->
+     <color name="application_gray_black">#a7a7a7</color>
+     <color name="application_red">#b7242f</color>
+     <color name="application_blue">#007bfd</color>
+     <color name="application_transparent_bg">#80000000</color>
+     <color name="application_friends_loop_user_name">#1f2f58</color>
+     <color name="application_search_title_bg_color">#C30312</color>
+     <color name="application_gray">#EAEAEA</color>
+     <color name="application_my_album_select">#BEBEBE</color>
+
+     <!--  -->
+     <color name="type_select_color">#B7232F</color>
+     
+     <!-- 收藏 -->
+     <color name="collection_n_color">#f7af49</color>
+     <color name="collection_d_color">#dc9634</color>
+     
+     <!-- 加入购物车 -->
+     <color name="buy_n_color">#f78649</color>
+     <color name="buy_d_color">#dd6b2e</color>
+     
+     <!-- 人民币颜色 -->
+     <color name="money_color">#e61f18</color>
+     
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/title_layout" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        android:fadingEdge="none">
+
+        <LinearLayout
+            android:paddingTop="10dip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/order_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="3dip"
+                android:layout_marginBottom="12dip"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+             <TextView
+                android:id="@+id/order_time"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="3dip"
+                android:text=""
+                android:textColor="@color/gray_black"
+                android:textSize="@dimen/forteen" />
+
+            <ImageView
+                android:id="@+id/order_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/normal"
+                android:layout_margin="10dip"
+                android:contentDescription="@string/desc"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/order_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginBottom="30dip"
+                android:padding="3dip"
+                android:gravity="center_horizontal"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/eight" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

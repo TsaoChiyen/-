@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0.7dip"
+            android:layout_marginTop="28.5dip"
+            android:background="#a6a6a6" >
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/promotion_title"
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:layout_marginLeft="1dip"
+            android:background="@drawable/promotion_title_bg"
+            android:gravity="center"
+            android:textColor="@color/chat_username_text_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:singleLine="false"
+        android:textColor="@color/order_detail_price_hint_color"
+        android:textSize="16sp" />
+
+</LinearLayout>

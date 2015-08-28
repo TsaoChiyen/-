@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroud_color"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/titlelayout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_bar"
+        android:background="@drawable/title_bar" >
+
+        <Button
+            android:id="@+id/backbtn"
+            style="@style/back_btn_style" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_text_size" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/order_track_icon"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:contentDescription="@string/desc"
+                    android:src="@drawable/order_track_icon" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/order_track_icon"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/orderno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/order_title_color"
+                        android:textSize="@dimen/text_size" />
+
+                    <TextView
+                        android:id="@+id/orderstatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/order_title_color"
+                        android:textSize="@dimen/text_size" />
+
+                    <TextView
+                        android:id="@+id/ordersystem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/order_title_color"
+                        android:textSize="@dimen/text_size" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <com.chengxin.widget.MyListView
+                android:id="@+id/delivery_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/order_item_box_d"
+                android:cacheColorHint="@null"
+                android:fadingEdge="none"
+                android:fastScrollEnabled="false"
+                android:orientation="vertical"
+                android:scrollbars="none" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/setting_corners_bg"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp" >
+
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/chat_username_text_color"
+                        android:textSize="@dimen/text_size" />
+
+                    <TextView
+                        android:id="@+id/contactNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_size" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginRight="1dp"
+                        android:background="@drawable/order_devider_line" >
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp" >
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/chat_username_text_color"
+                        android:textSize="@dimen/text_size" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

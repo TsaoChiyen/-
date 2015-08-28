@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+焚烧  #80ff0000
+关闭 #5fdffa
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/corners_bg"
+    android:orientation="vertical"
+    android:paddingTop="15dip"
+    android:paddingLeft="2dip"
+    android:paddingRight="2dip"
+    android:paddingBottom="2dip" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginBottom="20dip" />
+
+            <LinearLayout
+                android:id="@+id/bottomlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:layout_below="@+id/content"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="#80c9c9c9" >
+
+                <Button
+                    android:id="@+id/cancel_btn"
+                    android:layout_width="120.0dip"
+                    android:layout_height="wrap_content"
+                    android:background="#5fdffa"
+                    android:gravity="center_horizontal"
+                    android:text="@string/burn"
+                    android:textColor="@color/white"
+                    android:padding="5dip"
+                    android:textSize="16.0sp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

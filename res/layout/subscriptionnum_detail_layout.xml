@@ -1,0 +1,242 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#E1E0DE"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/addpubsh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dip"
+        android:background="@drawable/yello_bg"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/addpubsh"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/header_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="#F9F9F9"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/layout"
+                    android:layout_width="80dip"
+                    android:layout_height="80dip" >
+
+                    <ImageView
+                        android:id="@+id/header_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="5dip"
+                        android:contentDescription="@string/desc"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/contact_default_header" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/sel_title"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/layout"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:maxWidth="200dip"
+                    android:textColor="@color/font_color"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/func_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/header_layout"
+                android:background="@color/white"
+                android:minHeight="50dp"
+                android:orientation="horizontal"
+                android:padding="10dip">
+
+                <TextView
+                    android:id="@+id/func_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left|top"
+                    android:text="@string/func_introduce1"
+                    android:textColor="@color/editor_hint_color"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/func_info"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left|top"
+                    android:textColor="@color/font_color"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/renzhen_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/func_layout"
+                android:layout_marginTop="1dip"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="10dip" >
+
+                <RelativeLayout
+                    android:id="@+id/ren_f"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/cus_item_minheight" >
+
+                    <TextView
+                        android:id="@+id/renzhen_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="left|top"
+                        android:text="@string/rezhen_info"
+                        android:textColor="@color/editor_hint_color"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/renzhen_info"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/renzhen_title"
+                        android:gravity="left|top"
+                        android:text=""
+                        android:textColor="@color/font_color"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/recvinfo_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/renzhen_layout"
+                android:layout_marginTop="8dip"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:visibility="visible" >
+
+                <RelativeLayout
+                    android:id="@+id/rec_f"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/cus_item_minheight" >
+
+                    <TextView
+                        android:id="@+id/recvinfo_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="left|center"
+                        android:text="@string/recv_msg"
+                        android:textColor="@color/editor_hint_color"
+                        android:textSize="18sp" />
+
+                    <ToggleButton
+                        android:id="@+id/recvinfo_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/selector_butn_toggle"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn=""
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:layout_below="@+id/rec_f"
+                    android:background="#E1E0DE" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/historymsg_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recvinfo_layout"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:visibility="gone" >
+
+                <RelativeLayout
+                    android:id="@+id/his_f"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/cus_item_minheight" >
+
+                    <TextView
+                        android:id="@+id/historymsg_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="left|center"
+                        android:text="@string/histroy_info"
+                        android:textColor="@color/editor_hint_color"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="13dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/deep_gray_arrow"
+                        android:contentDescription="@string/desc" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/add_focus"
+                android:layout_width="250dp"
+                android:layout_height="35dip"
+                android:layout_below="@id/historymsg_layout"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/blue_bg"
+                android:text="@string/focus"
+                android:textColor="@color/font_color"
+                android:visibility="visible" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/in_title"
+        layout="@layout/title_layout" />
+
+</RelativeLayout>

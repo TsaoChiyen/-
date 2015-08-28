@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/title_layout" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/goods_type"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:background="@drawable/cirle_edit_bg"
+                android:gravity="center_vertical"
+                android:hint="商品类别"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <EditText
+                android:id="@+id/goods_name"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/cirle_edit_bg"
+                android:gravity="center_vertical"
+                android:hint="商品名称"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <EditText
+                android:id="@+id/goods_price"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/cirle_edit_bg"
+                android:gravity="center_vertical"
+                android:hint="商品价格"
+                android:inputType="numberSigned"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <LinearLayout
+                android:id="@+id/goods_small_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dip"
+                android:orientation="vertical"
+                android:visibility="visible" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:gravity="center_vertical"
+                    android:padding="5dip"
+                    android:text="商品缩略图"
+                    android:textColor="@color/application_deep_gray_black"
+                    android:textSize="@dimen/sixteen" />
+
+                <ImageView
+                    android:id="@+id/goods_logo"
+                    android:layout_width="60dip"
+                    android:layout_height="60dip"
+                    android:background="@drawable/goods_img_bg"
+                    android:contentDescription="@string/desc"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/smiley_add_btn" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginBottom="15dip"
+                android:layout_marginTop="20dip"
+                android:background="#c5c5c5" />
+
+            <LinearLayout
+                android:id="@+id/goods_img_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dip"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dip"
+                    android:gravity="center_vertical"
+                    android:padding="5dip"
+                    android:text="商品图"
+                    android:textColor="@color/application_deep_gray_black"
+                    android:textSize="@dimen/sixteen" />
+
+                <com.chengxin.widget.MyGridView
+                    android:id="@+id/gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:listSelector="@drawable/transparent_selector"
+                    android:numColumns="4" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/cirle_edit_bg" >
+
+                <TextView
+                    android:id="@+id/word_limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:padding="10dp"
+                    android:text="@string/word_limit"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/goods_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/word_limit"
+                    android:background="@color/transparent"
+                    android:gravity="left|top"
+                    android:hint="@string/goods_detail_hint"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/application_black"
+                    android:textColorHint="@color/application_deep_gray_black"
+                    android:textSize="@dimen/sixteen" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="15dip"
+                android:layout_marginBottom="20dip"
+                android:background="@drawable/cirle_edit_bg" >
+
+                <TextView
+                    android:id="@+id/limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:padding="10dp"
+                    android:text="@string/word_limit"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/goods_paramter"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/limit"
+                    android:background="@color/transparent"
+                    android:gravity="left|top"
+                    android:hint="@string/goods_paramter_hint"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/application_black"
+                    android:textColorHint="@color/application_deep_gray_black"
+                    android:textSize="@dimen/sixteen" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

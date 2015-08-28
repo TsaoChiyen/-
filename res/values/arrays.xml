@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 商户 -->
+    <string-array name="merchnt_title_array">
+        <item>全部</item>
+        <item>女装</item>
+        <item>男装</item>
+        <item>鞋包</item>
+        <item>母婴</item>
+        <item>化妆</item>
+        <item>数码</item>
+        <item>休闲</item>
+        <item>更多</item>
+    </string-array>
+    <string-array name="merchant_title_id_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="user_more_array">
+        <item>user_more_1</item>
+        <item>user_more_2</item>
+        <item>user_more_3</item>
+        <item>user_more_4</item>
+        <item>user_more_5</item>
+        <item>user_more_6</item>
+        <!-- <item >user_more_7</item> -->
+
+    </string-array>
+    <string-array name="clear_session_item">
+        <item>清空聊天记录</item>
+    </string-array>
+    <string-array name="del_array_item">
+        <item>删除</item>
+    </string-array>
+    <string-array name="chat_message_item">
+        <item>复制</item>
+        <item>转发</item>
+        <item>收藏</item>
+    </string-array>
+    <string-array name="normal_message_item">
+        <item>转发</item>
+        <item>收藏</item>
+    </string-array>
+    <string-array name="resend_item">
+        <item>发送</item>
+    </string-array>
+    <string-array name="area_item">
+        <item>公开</item>
+        <item>私密</item>
+    </string-array>
+    <string-array name="album_menu_item">
+        <item>发送给朋友</item>
+        <item>保存到手机</item>
+        <item>收藏</item>
+    </string-array>
+    <string-array name="album_menu_text_item">
+        <item>发送给朋友</item>
+        <item>保存到手机</item>
+        <item>收藏</item>
+        <item>删除</item>
+    </string-array>
+    <string-array name="my_album_item">
+        <item>消息列表</item>
+    </string-array>
+    <string-array name="favorite_more_text_item">
+        <item>发送给朋友</item>
+        <item>复制</item>
+        <item>删除</item>
+    </string-array>
+    <string-array name="favorite_more_item">
+        <item>发送给朋友</item>
+        <item>删除</item>
+    </string-array>
+    <string-array name="meting_more_item">
+        <item>进行中的秘室</item>
+        <item>往期秘室</item>
+        <item>我的秘室</item>
+    </string-array>
+    <string-array name="appley_meeting_menu_item">
+        <item>同意加入</item>
+        <item>拒接加入</item>
+    </string-array>
+    <string-array name="main_fragment_array">
+        <item>消息</item>
+        <item>服务</item>      
+        <item>财经</item>          
+        <item>商城</item>
+        <item>展会</item>
+    </string-array>
+    <string-array name="date">
+        <item>年</item>
+        <item>月</item>
+        <item>日</item>
+    </string-array>
+    <string-array name="order_more_item">
+        <item>推荐给朋友</item>
+        <item>举报</item>
+        <item>清空内容</item>
+    </string-array>
+    <string-array name="reported_item">
+        <item>其他</item>
+        <item>色情</item>
+        <item>欺诈</item>
+        <item>垃圾信息或骚扰</item>
+        <item>侵权</item>
+    </string-array>
+    <string-array name="confirm_item">
+        <item>确定</item>
+    </string-array>
+    <string-array name="sub_item">
+        <item>发布消息</item>
+        <item>我的关注者</item>
+        <item>我的资料</item>
+        <item>退出登录</item>
+    </string-array>
+    <string-array name="server_item">
+        <item>发布信息</item>
+        <item>我的资料</item>
+        <item>退出登录</item>
+    </string-array>
+    <string-array name="app_news_item">
+        <item>发送给朋友</item>
+        <item>分享.正能量</item>
+        <item>收藏</item>
+    </string-array>
+    <string-array name="group_card_item">
+        <item>保存二维码到手机</item>
+    </string-array>
+    <string-array name="sex_array">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+    <string-array name="camer_item">
+        <item>从相册选择</item>
+        <item>拍一张</item>
+    </string-array>
+    <string-array name="map_more_menu">
+        <item>收藏</item>
+        <item>发送给好友</item>
+    </string-array>
+    <string-array name="image_more_menu">
+        <item>发送给朋友</item>
+        <item>收藏</item>
+        <item>保存到手机</item>
+    </string-array>
+    <string-array name="chat_more_item">
+        <item>备注名信息</item>
+        <item>标为星标朋友</item>
+        <item>设置朋友圈权限</item>
+        <item>发送该名片</item>
+        <item>加入黑名单</item>
+        <!-- <item>举报</item> -->
+        <item>删除</item>
+    </string-array>
+    <string-array name="black_user_more_item">
+        <item>备注名信息</item>
+        <item>标为星标朋友</item>
+        <item>设置朋友圈权限</item>
+        <item>发送该名片</item>
+        <item>移除黑名单</item>
+        <!-- <item>举报</item> -->
+        <item>删除</item>
+    </string-array>
+    <string-array name="order_status_array">
+        <item>不限</item>
+        <item>未批准订单</item>
+        <item>已批准订单</item>
+        <item>取消订单</item>
+    </string-array>
+    <string-array name="delivery_status_array">
+        <item>不限</item>
+        <item>未处理</item>
+        <item>备货中</item>
+        <item>物流处理中</item>
+        <item>发货已完成</item>
+        <item>部分发货完成</item>
+    </string-array>
+    <string-array name="delivery_way_array">
+        <item>Not Limited</item>
+        <item>Regular Post Service</item>
+        <item>DHL</item>
+        <item>EMS</item>
+        <item>UPS</item>
+        <item>Regular Post Service(Tracking)</item>
+        <item>Freight Forwarding</item>
+        <item>Fedex</item>
+        <item>Singapore--EMS</item>
+        <item>HKEMS</item>
+        <item>Sinotrans - DHL</item>
+        <item>CN-UPS</item>
+        <item>Yanwen EMS</item>
+        <item>DHL-A</item>
+        <item>USA Express</item>
+        <item>Aramex Express</item>
+        <item>HK Airmail Parcel big Post</item>
+        <item>DHL-B</item>
+        <item>DHL-C</item>
+        <item>DHL-E</item>
+        <item>DHL-AA</item>
+        <item>DHL-BB</item>
+        <item>DHL-CC</item>
+        <item>Aramex</item>
+        <item>China Registered Mail</item>
+        <item>Singapore Registered Mail</item>
+        <item>China Postal Package</item>
+        <item>Dino-Russia Line Express</item>
+        <item>Dino-Russian mail-order Treasure</item>
+        <item>Russia Express</item>
+        <item>Air Transportation</item>
+        <item>Land Transportation</item>
+        <item>Sea Transportation</item>
+        <item>Fedex-IP</item>
+        <item>Fedex—21KG+</item>
+        <item>Fedex-IP-21KG+</item>
+        <item>Citylink-Common</item>
+        <item>Sweden Registered Mail(Tracking)</item>
+        <item>City-Link-Heavy</item>
+        <item>City-Link-Quality Goods</item>
+        <item>City-Link-Quality Goods-Heavy</item>
+        <item>Swiss Post</item>
+        <item>DHL for Replica</item>
+        <item>DHL for Replica 21KG+</item>
+        <item>bulk production Railway Express</item>
+        <item>China Postal Transportation registration</item>
+        <item>China-SF</item>
+    </string-array>
+    <string-array name="delivery_way_num_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>18</item>
+        <item>19</item>
+        <item>24</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+    </string-array>
+    <string-array name="ch_function_array">
+        <item>ch_function_1</item>
+        <item>ch_function_2</item>
+        <item>ch_function_3</item>
+        <item>ch_function_4</item>
+        <item>ch_function_5</item>
+        <item>ch_function_6</item>
+        <item>ch_function_7</item>
+    </string-array>
+    <string-array name="en_function_array">
+        <item>en_function_1</item>
+        <item>en_function_2</item>
+        <item>en_function_3</item>
+        <item>en_function_4</item>
+        <item>en_function_5</item>
+        <item>en_function_6</item>
+        <item>en_function_7</item>
+    </string-array>
+    <string-array name="ru_function_array">
+        <item>ru_function_1</item>
+        <item>ru_function_2</item>
+        <item>ru_function_3</item>
+        <item>ru_function_4</item>
+        <item>ru_function_5</item>
+        <item>ru_function_6</item>
+        <item>ru_function_7</item>
+    </string-array>
+    <string-array name="type_array">
+        <item>名字</item>
+        <item>地区</item>
+        <item>频率</item>
+        <item>添加时间</item>
+        <item>课程</item>
+        <item>行业</item>
+    </string-array>
+
+    <!-- 商户默认菜单 -->
+    <string-array name="merber_noraml_menu_array">
+        <item>全部</item>
+        <item>女装</item>
+        <item>男装</item>
+        <item>v</item>
+    </string-array>
+    <string-array name="merber_noraml_icon_menu_array">
+        <item>all_type_icon</item>
+        <item>girl_type_icon</item>
+        <item>boy_type_icon</item>
+        <item>merber_down_arrow_icon</item>
+    </string-array>
+
+    <!-- 商户菜单 -->
+    <string-array name="merchant_menu_array">
+        <item>全部</item>
+        <item>女装</item>
+        <item>男装</item>
+        <item>鞋包</item>
+        <item>母婴</item>
+        <item>化妆</item>
+        <item>数码</item>
+        <item>休闲</item>
+    </string-array>
+    <string-array name="merchant_icon_menu_array">
+        <item>all_type_icon</item>
+        <item>girl_type_icon</item>
+        <item>boy_type_icon</item>
+        <item>shoe_icon</item>
+        <item >mom_bady_icon</item>
+        <item >hua_zhuang_icn</item>
+        <item >shu_ma_icon</item>
+        <item >xiu_xian_icon</item>
+    </string-array>
+
+</resources>

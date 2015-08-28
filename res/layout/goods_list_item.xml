@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/goods_info_splite"
+    android:orientation="vertical"
+    android:paddingLeft="5dip"
+    android:paddingRight="5dip"
+    android:paddingTop="10dip" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_marginBottom="10dip"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/header_icon"
+            android:layout_width="80dip"
+            android:layout_height="85dip"
+            android:layout_alignParentLeft="true"
+            android:contentDescription="@string/desc"
+            android:scaleType="centerInside"
+            android:src="@drawable/goods_noraml" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_toRightOf="@+id/header_icon"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:maxWidth="300dip"
+                android:text=""
+                android:textColor="@color/application_black"
+                android:textSize="@dimen/sixteen" />
+
+            <LinearLayout
+                android:id="@+id/star_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/user_name"
+                android:orientation="horizontal" >
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/money"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/star_layout"
+                android:layout_marginBottom="5dip"
+                android:gravity="left"
+                android:text=""
+                android:textColor="#e61f18"
+                android:textSize="@dimen/sixteen" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

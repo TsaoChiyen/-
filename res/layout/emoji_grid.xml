@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/emotion_grid_height"
+    android:numColumns="8"
+    android:background="#C3C9D0"
+    android:id="@+id/emoji_grid"
+    android:visibility="gone"
+    >
+
+</GridView>

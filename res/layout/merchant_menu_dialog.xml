@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/viewfinder_mask"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/merchant_menu_bg"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/up_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="#f4f4f4"
+            android:padding="10dip" >
+
+            <ImageView
+                android:id="@+id/up_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dip"
+                android:background="@drawable/merber_up_arrow_icon"
+                android:contentDescription="@string/desc" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/jump_menu_type"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/merchant_more_menu_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

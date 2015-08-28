@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/goods_info_splite"
+        android:padding="10dip" >
+
+        <Button
+            android:id="@+id/deletebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/delete_session_item_btn"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/deletebtn" >
+
+            <ImageView
+                android:id="@+id/goods_icon"
+                android:layout_width="80dip"
+                android:layout_height="90dip"
+                android:layout_alignParentLeft="true"
+                android:contentDescription="@string/desc"
+                android:scaleType="centerInside"
+                android:src="@drawable/welcome" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="90dip"
+                android:layout_marginLeft="10dip"
+                android:layout_toRightOf="@+id/goods_icon"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/goods_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:maxWidth="300dip"
+                    android:minHeight="50dip"
+                    android:text="明基(BenQ)MS3081经典商务秘室投影机"
+                    android:textColor="@color/application_black"
+                    android:textSize="@dimen/forteen" />
+
+                <LinearLayout
+                    android:id="@+id/input_num_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/goods_name"
+                    android:gravity="right|bottom"
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
+
+                    <ImageView
+                        android:id="@+id/jian_btn"
+                        android:layout_width="39dip"
+                        android:layout_height="39dip"
+                        android:background="@drawable/buy_juan_btn"
+                        android:contentDescription="@string/desc" />
+
+                    <EditText
+                        android:id="@+id/goods_count"
+                        android:layout_width="39dip"
+                        android:layout_height="39dip"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:background="@drawable/goods_count_bt"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:hint="1"
+                        android:inputType="number"
+                        android:padding="3dip"
+                        android:singleLine="true"
+                        android:textColor="@color/application_black"
+                        android:textSize="@dimen/forteen" />
+
+                    <ImageView
+                        android:id="@+id/add_btn"
+                        android:layout_width="39dip"
+                        android:layout_height="39dip"
+                        android:background="@drawable/buy_add_btn"
+                        android:contentDescription="@string/desc" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/money_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/goods_name"
+                    android:gravity="bottom"
+                    android:visibility="visible" >
+
+                    <TextView
+                        android:id="@+id/money"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="bottom|left"
+                        android:text=""
+                        android:textColor="@color/money_color"
+                        android:textSize="@dimen/sixteen" />
+
+                    <TextView
+                        android:id="@+id/goods_count_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text=""
+                        android:textColor="@color/application_deep_gray_black"
+                        android:textSize="@dimen/forteen" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

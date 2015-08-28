@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chengxin.widget.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/title_layout" />
+
+    <com.chengxin.widget.ResizeLayout
+        android:id="@+id/listlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/chat_main_list_msg"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/background"
+            android:cacheColorHint="@null"
+            android:divider="@null"
+            android:fadingEdge="none"
+            android:fastScrollEnabled="true"
+            android:focusable="true"
+            android:listSelector="@drawable/transparent_selector"
+            android:scrollbars="none" />
+    </com.chengxin.widget.ResizeLayout>
+
+    <include layout="@layout/chat_box" />
+
+    <include layout="@layout/chat_box_expra" />
+
+    <include layout="@layout/emoji_layout" />
+
+</com.chengxin.widget.ResizeLayout>

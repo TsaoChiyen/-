@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#e5e5e5"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+        <LinearLayout
+            android:id="@+id/check_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/check_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radiobutton_cart_selector"
+                android:button="@null"
+                android:checked="false"
+                android:clickable="false"
+                android:focusable="false" />
+
+            <TextView
+                android:id="@+id/member_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:ellipsize="end"
+                android:maxWidth="300dip"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/application_black"
+                android:textSize="@dimen/sixteen" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/goods_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="#efefef"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:padding="5dip" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="你需支付:"
+            android:textColor="@color/application_black"
+            android:textSize="@dimen/order_title_text_size" />
+
+        <TextView
+            android:id="@+id/goods_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="5dip"
+            android:text=""
+            android:textColor="@color/money_color"
+            android:textSize="@dimen/order_title_text_size" />
+    </LinearLayout>
+
+</LinearLayout>

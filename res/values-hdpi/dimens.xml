@@ -1,0 +1,4 @@
+<resources>
+<dimen name="emotion_grid_height">180dip</dimen>
+<dimen name="cover_album_height">150dip</dimen>
+</resources>

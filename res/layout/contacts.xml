@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:id="@+id/category_linear"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/top_search_layout"
+                android:layout_marginTop="@dimen/refresh_listview_margin_top"
+                android:orientation="vertical" >
+
+                <include layout="@layout/pull_to_refresh_view" />
+            </LinearLayout>
+
+            <com.chengxin.widget.MyLetterListView
+                android:id="@+id/MyLetterListView01"
+                 android:layout_below="@+id/top_search_layout"
+                android:layout_width="20dip"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"/>
+
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/title_layout" />
+
+            <RelativeLayout
+                android:id="@+id/top_search_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:layout_below="@+id/title_layout"
+                android:background="#f0e4ab" >
+
+                <Button
+                    android:id="@+id/type_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:background="@drawable/type_icon" />
+
+                <HorizontalScrollView
+                    android:id="@+id/type_scrollview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="43dip"
+                    android:layout_margin="5dip"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/type_btn"
+                    android:background="@drawable/type_scrollview_bg"
+                    android:scrollbars="none"
+                    android:fadingEdge="none"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:id="@+id/type_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <RelativeLayout
+                    android:id="@+id/searchlayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/type_btn"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="8dp"
+                    android:visibility="visible" >
+
+                    <TextView
+                        android:id="@+id/searchcontent"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/seach_edit_bg"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="35dp"
+                        android:singleLine="true"
+                        android:text="@string/search"
+                        android:textColor="#A39B9E"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/search_btn"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:contentDescription="@string/desc"
+                        android:src="@drawable/find_icon" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <com.chengxin.widget.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@id/top_search_layout"
+                android:background="@drawable/background"
+                android:visibility="gone" >
+            </com.chengxin.widget.ViewPager>
+        </RelativeLayout>
+    </FrameLayout>
+
+</RelativeLayout>

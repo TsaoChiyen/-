@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_box_layout_expra"
+    android:layout_width="fill_parent"
+    android:layout_height="45dip"
+    android:background="#E1E0DE"
+    android:gravity="center|left"
+    android:orientation="vertical"
+    android:visibility="visible" >
+
+    <LinearLayout
+        android:id="@+id/menu_btns_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/music_btn"
+            android:layout_width="35dip"
+            android:layout_height="35dip"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:contentDescription="@string/desc"
+            android:src="@drawable/w_music_icon" />
+
+        <ImageView
+            android:id="@+id/at_user_btn"
+            android:layout_width="35dip"
+            android:layout_height="35dip"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:contentDescription="@string/desc"
+            android:src="@drawable/w_at_icon" />
+
+        <ImageView
+            android:id="@+id/image_text_btn"
+            android:layout_width="35dip"
+            android:layout_height="35dip"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:contentDescription="@string/desc"
+            android:src="@drawable/w_image_text_icon" />
+
+        <ImageView
+            android:id="@+id/tou_piao_btn"
+            android:layout_width="35dip"
+            android:layout_height="35dip"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:contentDescription="@string/desc"
+            android:src="@drawable/w_tou_icon" />
+
+        <ImageView
+            android:id="@+id/other_btn"
+            android:layout_width="35dip"
+            android:layout_height="35dip"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:contentDescription="@string/desc"
+            android:src="@drawable/selector_add" 
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+</LinearLayout>

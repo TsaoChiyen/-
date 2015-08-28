@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- #CCCBC9  #EEEEEE  #D2D2D2 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="48dp"
+    android:background="#F3F3F3"
+    android:visibility="visible" >
+
+    <ToggleButton
+        android:id="@+id/chat_box_btn_keyboard"
+        android:layout_width="34dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:background="@drawable/toggle_keyboard"
+        android:checked="false"
+        android:textOff=""
+        android:textOn=""
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/key_board_menu_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_toRightOf="@+id/chat_box_btn_keyboard"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/noraml_keyborad_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_toRightOf="@+id/chat_box_btn_keyboard"
+        android:visibility="visible" >
+
+        <ImageView
+            android:id="@+id/noraml_splite"
+            android:layout_width="0.25dip"
+            android:layout_height="fill_parent"
+            android:background="@color/editor_hint_color"
+            android:contentDescription="@string/desc"
+            android:visibility="gone" />
+
+        <ToggleButton
+            android:id="@+id/chat_box_btn_info"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/toggle_chat_style"
+            android:checked="false"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/chat_box_btn_add"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dip"
+            android:layout_toRightOf="@+id/chat_box_btn_info"
+            android:background="@drawable/toggle_add_style"
+            android:checked="false"
+            android:textOff=""
+            android:textOn=""
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/chat_box_btn_voice"
+            android:layout_width="fill_parent"
+            android:layout_height="38dp"
+            android:layout_alignBaseline="@+id/chat_box_btn_add"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="8dp"
+            android:layout_toRightOf="@+id/chat_box_btn_add"
+            android:background="@drawable/voice_message_send_btn"
+            android:textColor="@color/chat_username_text_color"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/chat_box_edit_keyword"
+            android:layout_width="fill_parent"
+            android:layout_height="38dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@+id/right_btn_layout"
+            android:layout_toRightOf="@+id/chat_box_btn_add"
+            android:background="@drawable/message_edit_bg"
+            android:lines="4"
+            android:paddingLeft="10.0dp"
+            android:paddingRight="8.0dp"
+            android:textSize="16sp" >
+        </EditText>
+
+        <LinearLayout
+            android:id="@+id/right_btn_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <Button
+                android:id="@+id/chat_box_btn_send"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/send_msg_btn"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:text="@string/send"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

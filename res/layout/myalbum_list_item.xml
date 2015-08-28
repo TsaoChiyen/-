@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:crysecontrol="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dip" >
+
+    <TextView
+        android:id="@+id/title_day"
+        android:layout_width="80dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="今天"
+        android:textColor="@color/black"
+        android:textSize="20dip"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/title_day"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/send_photo"
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:layout_marginBottom="5dip"
+            android:background="@drawable/signup_change_avatar_btn"
+            android:focusable="false"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/moving_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/title_day1"
+                android:layout_width="80dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="今天"
+                android:textColor="@color/black"
+                android:textSize="20dip"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sort_icon_bg_click"
+    android:gravity="center"
+    android:maxWidth="80dip"
+    android:minWidth="80dip"
+    android:padding="5dip"
+    android:textColor="#33cc00"
+    android:textSize="70sp" />
+-->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fast_position"
+    android:layout_width="70dip"
+    android:layout_height="70dip"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center_horizontal|top|right"
+    android:layout_margin="34dip"
+    android:background="@drawable/sort_icon_bg_click"
+    android:gravity="center"
+    android:padding="2dip"
+    android:textColor="@color/white"
+    android:textSize="48dip"
+    android:visibility="visible" />

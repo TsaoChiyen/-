@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/toupiao_title"
+                android:layout_width="fill_parent"
+                android:layout_height="35dip"
+                android:layout_margin="10dip"
+                android:background="@drawable/edit_bg"
+                android:hint="标题"
+                android:padding="5dip"
+                android:singleLine="true"
+                android:textColor="@color/gray_black"
+                android:textColorHighlight="@color/editor_hint_color"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/select_item_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add_select_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="5dip"
+                    android:duplicateParentState="true"
+                    android:background="@drawable/add_item_btn"/>
+                <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_gravity="center_vertical"
+                    android:text="添加选项" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip" >
+
+                <TextView
+                    android:id="@+id/type_text"
+                    android:layout_width="60dip"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dip"
+                    android:textSize="18sp"
+                    android:text="类型:" />
+
+                <TextView
+                    android:id="@+id/type_edit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dip"
+                    android:layout_toRightOf="@+id/type_text"
+                    android:background="@drawable/select_text_bg"
+                    android:drawableRight="@drawable/edit_arrow_down"
+                    android:hint=""
+                    android:padding="5dip"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_black"
+                    android:textColorHighlight="@color/editor_hint_color"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip" >
+
+                <TextView
+                    android:id="@+id/end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dip"
+                    android:textSize="18sp"
+                    android:text="截止日期:" />
+
+                <TextView
+                    android:id="@+id/end_time_edit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dip"
+                    android:layout_toLeftOf="@+id/select_time"
+                    android:layout_toRightOf="@+id/end_time"
+                    android:background="@drawable/select_text_bg"
+                    android:drawableRight="@drawable/edit_arrow_down"
+                    android:hint=""
+                    android:padding="5dip"
+                    android:singleLine="true"
+                    android:layout_marginRight="20dip"
+                    android:textColor="@color/gray_black"
+                    android:textColorHighlight="@color/editor_hint_color"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/select_time"
+                    android:layout_width="40dip"
+                    android:layout_height="35dip"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/calendar_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip" >
+
+                <TextView
+                    android:id="@+id/result_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dip"
+                    android:textSize="18sp"
+                    android:text="投票结果:" />
+
+                <RadioGroup
+                    android:id="@+id/result_group"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/result_text"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/watch_result"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/radiobutton_toupiao_selector"
+                        android:text="投票后可见"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/anyone_watch_result"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@drawable/radiobutton_toupiao_selector"
+                        android:text="任何人可见"
+                        android:textSize="14sp" />
+                </RadioGroup>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/share_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_margin="20dip"
+                android:background="@drawable/release_btn"
+                android:text="发起" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

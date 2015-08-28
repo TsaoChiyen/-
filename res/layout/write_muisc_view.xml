@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/music_name"
+                android:layout_width="fill_parent"
+                android:layout_height="35dip"
+                android:layout_margin="10dip"
+                android:background="@drawable/edit_bg"
+                android:hint="音乐名"
+                android:padding="5dip"
+                android:singleLine="true"
+                android:textColor="@color/gray_black"
+                android:textColorHighlight="@color/editor_hint_color"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/music_addr"
+                android:layout_width="fill_parent"
+                android:layout_height="35dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@drawable/edit_bg"
+                android:hint="url地址"
+                android:padding="5dip"
+                android:singleLine="true"
+                android:textColor="@color/gray_black"
+                android:textColorHighlight="@color/editor_hint_color"
+                android:textSize="16sp" />
+            	<Button 
+            	    android:id="@+id/share_music"
+            	    android:layout_width="fill_parent"
+            	    android:layout_height="35dip"
+            	    android:layout_marginTop="10dip"
+            	    android:layout_marginLeft="30dip"
+            	    android:layout_marginRight="30dip"
+            	    android:background="@drawable/release_btn"
+            	    android:layout_marginBottom="10dip"
+            	    android:text="分享"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

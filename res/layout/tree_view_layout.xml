@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#669977"
+    android:orientation="vertical" >
+ 
+    <!-- 这里要写自定义组件的全路径，若果出现类解析错误请查看是否是这里路径问题-->
+    <ms.TreeView.TreeView
+        android:id="@+id/tree_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#669977"
+        android:divider="#006600"
+        android:dividerHeight="1dip"
+        android:padding="10dip" >
+    </ms.TreeView.TreeView>
+ 
+</LinearLayout>

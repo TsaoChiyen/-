@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/titlelayout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_bar"
+        android:background="@drawable/title_bar" >
+
+        <Button
+            android:id="@+id/backbtn"
+            style="@style/back_btn_style"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_text_size" />
+
+        <Button
+            android:id="@+id/okBtn"
+            style="@style/operate_btn_style"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/group_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_profile_bg"
+        android:cacheColorHint="@null"
+        android:fadingEdge="none"
+        android:scrollbars="none"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="0.5dp"
+        android:fastScrollEnabled="true" />
+
+</LinearLayout>

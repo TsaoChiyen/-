@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/searchlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0e4ab"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/searchcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/seach_edit_bg"
+            android:gravity="center_vertical"
+            android:text="搜索微博、找人"
+            android:paddingLeft="35dp"
+            android:singleLine="true"
+            android:textColor="#A39B9E"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/search_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:contentDescription="@string/desc"
+            android:src="@drawable/find_icon" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/new_user"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="5dip"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="@dimen/listview_header_size"
+            android:layout_height="@dimen/listview_header_size"
+            android:orientation="horizontal" >
+
+            <com.chengxin.widget.RoundImageView
+                android:id="@+id/header_icon"
+                style="@style/listview_header_style"
+                android:src="@drawable/contact_default_header" >
+            </com.chengxin.widget.RoundImageView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dip"
+            android:text="新的朋友"
+            android:textColor="#777777"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/topic_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        android:layout_weight="1"
+        android:background="#CAC9C7"
+        android:orientation="horizontal"
+        android:padding="5dip"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/topic_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dip"
+            android:text="#新的朋友#"
+            android:textColor="#777777"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dip"
+            android:text=">"
+            android:textColor="#777777"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/no_auth_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dip"
+        android:text="请在“设置-隐私-通讯录” 选项中，允许契约访问你的通讯录"
+        android:textColor="@color/editor_hint_color"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+</LinearLayout>

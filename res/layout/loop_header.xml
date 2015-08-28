@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp" >
+
+    <LinearLayout
+        android:id="@+id/top_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/head_img"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/headerlayout"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/top_bg"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="-45dp"
+        android:padding="3dp" >
+
+        <ImageView
+            android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/desc"
+            android:src="@drawable/contact_default_header" />
+    </RelativeLayout>
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/headerlayout"
+        android:layout_marginRight="10dp"
+        android:textSize="18sp"
+        android:layout_alignTop="@id/headerlayout"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:id="@+id/name"
+        android:text=""
+        android:textStyle="bold"/>
+
+</RelativeLayout>

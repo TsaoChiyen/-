@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/desc"
+        android:scaleType="fitXY" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="43.399994dip"
+        android:layout_height="43.399994dip"
+        android:indeterminate="false"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/progressbar"/>
+
+</RelativeLayout>

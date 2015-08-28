@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#111"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true" >
+
+        <ImageView
+            android:id="@+id/shakeBg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/shakehideimg_man2" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/shakeImgUp"
+                android:layout_width="fill_parent"
+                android:layout_height="190dp"
+                android:background="#111" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/shake_logo_up" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/shakeImgDown"
+                android:layout_width="fill_parent"
+                android:layout_height="190dp"
+                android:background="#111" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/shake_logo_down" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/shake_title_bar"
+        layout="@layout/title_layout" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:id="@+id/user_layout"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/gray"
+        android:visibility="gone"
+        >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/header"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/contact_default_header"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/header"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/name"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/distance"
+                android:layout_marginTop="10dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_box_layout_expra"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/emotion_grid_height"
+    android:background="#323232"
+    android:gravity="center|left"
+    android:orientation="vertical"
+    android:paddingBottom="15dp"
+    android:paddingTop="15dp"
+    android:visibility="visible" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_camera"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/compose_more_topic" />
+            <TextView 
+                android:layout_below="@+id/chat_box_expra_btn_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#686868"
+                android:layout_marginTop="0dip"
+                android:layout_centerHorizontal="true"
+                android:text="话题"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_picture"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/compose_more_shooting" />
+            <TextView 
+                android:layout_below="@+id/chat_box_expra_btn_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#686868"
+                android:layout_marginTop="0dip"
+                android:layout_centerHorizontal="true"
+                android:text="投票"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_location"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/compose_more_music" />
+              <TextView 
+                android:layout_below="@+id/chat_box_expra_btn_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#686868"
+                android:layout_marginTop="0dip"
+                android:layout_centerHorizontal="true"
+                android:text="音乐"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_card"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/compose_more_at" />
+                <TextView 
+                android:layout_below="@+id/chat_box_expra_btn_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#686868"
+                android:layout_marginTop="0dip"
+                android:layout_centerHorizontal="true"
+                android:text="\@Ta"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_experssion"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/compose_more_book" />
+            <TextView 
+                android:layout_below="@+id/chat_box_expra_btn_experssion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#686868"
+                android:layout_marginTop="0dip"
+                android:layout_centerHorizontal="true"
+                android:text="图文"/>
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" 
+            android:visibility="invisible">
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_file"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/file_btn" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" 
+            android:visibility="invisible">
+
+            <Button
+                android:id="@+id/t"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/emotion_btn" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" 
+            android:visibility="invisible">
+
+            <Button
+                android:id="@+id/d"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/emotion_btn" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

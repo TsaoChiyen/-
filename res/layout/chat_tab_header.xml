@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EBEBEB"
+    android:orientation="vertical"
+    tools:context=".fragment.FoundFragment" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EBEBEB"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/searchlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#f0e4ab"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/searchcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/seach_edit_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="35dp"
+                android:singleLine="true"
+                android:text="@string/search"
+                android:textColor="#A39B9E"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/search_btn"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/desc"
+                android:src="@drawable/find_icon" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/outlander_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="visible" >
+
+            <RelativeLayout
+                android:id="@+id/outlander_userlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/outlander_deletebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/delete_session_item_btn"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/outlander_headerlayout"
+                    style="@style/main_page_icon_style"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/outlander_deletebtn" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/desc"
+                        android:src="@drawable/ico_fx_penyouquang" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/friends_message_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="-17dp"
+                    android:layout_toRightOf="@id/outlander_headerlayout"
+                    android:background="@drawable/message_count_bg"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/outlander_userlayout"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/outlander_releasetime"
+                        android:singleLine="true"
+                        android:text="朋友圈"
+                        android:textColor="@color/application_black" />
+
+                    <TextView
+                        android:id="@+id/outlander_releasetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/order_item_hint_color"
+                        android:textSize="@dimen/chat_time_text_size"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/content3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/chat_content_text_size"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:background="#E0E0E0" />
+
+        <RelativeLayout
+            android:id="@+id/activity_elevent_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chat_tab_list_selector"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="gone" >
+
+            <RelativeLayout
+                android:id="@+id/secretary_userlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/secretary_deletebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/delete_session_item_btn"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/secretary_headerlayout"
+                    style="@style/main_page_icon_style"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/secretary_deletebtn" >
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/desc"
+                        android:src="@drawable/secretary_icon" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/secretary_message_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="-17dp"
+                    android:layout_toRightOf="@id/secretary_headerlayout"
+                    android:background="@drawable/message_count_bg"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/secretary_userlayout"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/secretary_releasetime"
+                        android:singleLine="true"
+                        android:text="活动"
+                        android:textColor="@color/application_black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/secretary_releasetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/order_item_hint_color"
+                        android:textSize="@dimen/chat_time_text_size" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/content2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/chat_content_text_size"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/app_news_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <RelativeLayout
+                android:id="@+id/app_news__userlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/app_news__deletebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/delete_session_item_btn"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/app_news__headerlayout"
+                    style="@style/main_page_icon_style"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/app_news__deletebtn" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/desc"
+                        android:src="@drawable/ico_fx_liaoba" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/app_news_message_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="-17dp"
+                    android:layout_toRightOf="@id/app_news__headerlayout"
+                    android:background="@drawable/message_count_bg"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/app_news__userlayout"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/app_news__releasetime"
+                        android:singleLine="true"
+                        android:text="秘室"
+                        android:textColor="@color/application_black" />
+
+                    <TextView
+                        android:id="@+id/app_news__releasetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/order_item_hint_color"
+                        android:textSize="@dimen/chat_time_text_size" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/content4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/chat_content_text_size"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="30dip"
+            android:background="@drawable/devider_line"
+            android:contentDescription="@string/desc"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/order_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chat_tab_list_selector"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="gone" >
+
+            <RelativeLayout
+                android:id="@+id/userlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/deletebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/delete_session_item_btn"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/headerlayout"
+                    style="@style/main_page_icon_style"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/deletebtn" >
+
+                    <ImageView
+                        android:id="@+id/header"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/desc"
+                        android:src="@drawable/order_icon" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/message_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="-17dp"
+                    android:layout_toRightOf="@id/headerlayout"
+                    android:background="@drawable/message_count_bg"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/userlayout"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/releasetime"
+                        android:singleLine="true"
+                        android:text="微商城"
+                        android:textColor="@color/application_black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/releasetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/order_item_hint_color"
+                        android:textSize="@dimen/chat_time_text_size" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/content1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/chat_content_text_size"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/server_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="visible" >
+
+            <RelativeLayout
+                android:id="@+id/server_userlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/server_deletebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/delete_session_item_btn"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/server_headerlayout"
+                    style="@style/main_page_icon_style"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/server_deletebtn" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/desc"
+                        android:src="@drawable/ico_fx_fujing" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/service_message_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="-17dp"
+                    android:layout_toRightOf="@id/server_headerlayout"
+                    android:background="@drawable/message_count_bg"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/server_userlayout"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/server_releasetime"
+                        android:singleLine="true"
+                        android:text="附近"
+                        android:textColor="@color/application_black" />
+
+                    <TextView
+                        android:id="@+id/server_releasetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/order_item_hint_color"
+                        android:textSize="@dimen/chat_time_text_size" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/chat_content_text_size"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="30dip"
+            android:background="@drawable/devider_line"
+            android:contentDescription="@string/desc"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/shao_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="visible" >
+
+            <RelativeLayout
+                android:id="@+id/shao_userlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/shao_deletebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/delete_session_item_btn"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/shao_headerlayout"
+                    style="@style/main_page_icon_style"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/shao_deletebtn" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/desc"
+                        android:src="@drawable/sao_icon" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/shao_message_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="-17dp"
+                    android:layout_toRightOf="@id/shao_headerlayout"
+                    android:background="@drawable/message_count_bg"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/shao_userlayout"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/shao_releasetime"
+                        android:singleLine="true"
+                        android:text="扫一扫"
+                        android:textColor="@color/application_black" />
+
+                    <TextView
+                        android:id="@+id/shao_releasetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/order_item_hint_color"
+                        android:textSize="@dimen/chat_time_text_size" />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:background="#E0E0E0" />
+
+        <RelativeLayout
+            android:id="@+id/yao_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="visible" >
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayout13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/Button07"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/delete_session_item_btn"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout03"
+                    style="@style/main_page_icon_style"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@+id/Button07" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/desc"
+                        android:src="@drawable/yao_icon" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/TextView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="-17dp"
+                    android:layout_toRightOf="@+id/RelativeLayout03"
+                    android:background="@drawable/message_count_bg"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/RelativeLayout13"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/TextView13"
+                        android:singleLine="true"
+                        android:text="摇一摇"
+                        android:textColor="@color/application_black" />
+
+                    <TextView
+                        android:id="@+id/TextView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/order_item_hint_color"
+                        android:textSize="@dimen/chat_time_text_size" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="10dp"/>
+
+        <RelativeLayout
+            android:id="@+id/youxi_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="visible" >
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayout14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/Button06"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/delete_session_item_btn"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout12"
+                    style="@style/main_page_icon_style"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@+id/Button06" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/desc"
+                        android:src="@drawable/ico_fx_youxi" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/TextView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="-17dp"
+                    android:layout_toRightOf="@+id/RelativeLayout12"
+                    android:background="@drawable/message_count_bg"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/RelativeLayout14"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/TextView12"
+                        android:singleLine="true"
+                        android:text="游乐场"
+                        android:textColor="@color/application_black" />
+
+                    <TextView
+                        android:id="@+id/TextView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/order_item_hint_color"
+                        android:textSize="@dimen/chat_time_text_size" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:background="#E0E0E0" />
+    </LinearLayout>
+
+</ScrollView>

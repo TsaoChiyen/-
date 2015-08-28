@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <!-- xmlns:shadow="http://shadow.com" -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/imagelayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <com.chengxin.widget.FlowView
+        android:id="@+id/imageview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/desc"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#80000000"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="222"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- xmlns:shadow="http://shadow.com" -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/imagelayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <com.chengxin.widget.FlowView
+        android:id="@+id/imageview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/desc"
+        android:scaleType="centerInside"
+        android:src="@drawable/goods_noraml" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/viewfinder_mask"
+        android:gravity="left"
+        android:padding="5dip"
+        android:singleLine="true"
+        android:text="￥222.00"
+        android:textColor="@color/money_color"
+        android:visibility="visible" />
+
+</RelativeLayout>

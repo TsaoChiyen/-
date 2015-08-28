@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <!--
+     com.example.wechatsample.PlusActionProvider 
+     android:showAsAction="ifRoom|collapseActionView"
+       android:actionProviderClass="com.weiyuan.wechatsample.PlusActionProvider"
+       "
+    -->
+  
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@drawable/write_weibo_btn"
+        android:showAsAction="always"
+        android:title="@string/edit_profile"/>
+
+</menu>

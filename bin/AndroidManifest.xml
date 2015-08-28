@@ -1,0 +1,1323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.chengxin"
+    android:versionCode="1"
+    android:versionName="V1.0.2" >
+
+    <!--
+         <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="9"
+        .wechatsample.MainActivity />
+
+
+
+
+
+
+    -->
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:name="com.chengxin.map.BMapApiApp"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/ochat_app_name"
+        android:theme="@style/AppTheme" >
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" >
+                </action>
+            </intent-filter>
+        </service>
+
+        <!-- meta-data需要写在application中 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="WPxKwIBvbEYuw77gwphrRVhV" />
+
+        <activity
+            android:name="com.chengxin.WelcomeActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.LoginTypeActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SubTab"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:label="@string/ochat_app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ForgetPwdActity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.LoginActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.RegisterActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.UserProtocolActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.CompleteUserInfoActvity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.WriteUserInfoActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- .MainActivity  android:theme="@style/ActivityTheme_Light" -->
+        <activity
+            android:name="com.chengxin.KeyNumberActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.GameWebViewActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.MainActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ChatsTab"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.MyGroupListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+          <activity
+            android:name="com.chengxin.PublicNumberActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ServiceListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ContactsTab"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.FindTab"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ProfileTab"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SettingTab"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ScanResultActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.CaptureActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.LanguageActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.LocationActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ContactAddrActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ContactNameActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ContactPinLiActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ContactAddTimeActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ContactProjectActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ContactSubjectActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.UserInfoActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ChatMainActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.weiyuan.chat"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.RotateImageActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ShowImageActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.CommodityActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ChooseUserActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.AboutActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.HelpWebViewActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.FeedBackActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.OrderTrackActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ProductDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.RemarkActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ReportedActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.BlockListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ProfileActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.EditProfileActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.AddActivity"
+            android:configChanges="locale|orientation"
+            android:icon="@drawable/logo"
+            android:label="@string/add_friend"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.AddPersonActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ChatDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.NotifyActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.NotifyDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.MoveGroupActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ManageGroupActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.GuideActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.MyAlbumActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/my_album"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.WriteBlogActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.WatchTouPiaoActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.WeiboContentActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.WriteMusicActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.WriteTouPiaoActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.MusicActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.TouPiaoActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SearchActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.WeiboListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.TopicActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ContactActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SearchOrderActvity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SubscriptionNumDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.OrderChatMainActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.OderListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SendMovingActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.AppNewsActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.AppNewsDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.TopListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.WriteWeiboCommentActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.OutLanderActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.GroupCodeActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SecretaryActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.TopicWeiboListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.DataActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.RecommendActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.MyFavoriteActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.MyZanActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.PrivateSetActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ModifyPwdActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.TreeViewActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.InviteActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ShakeActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SearchResultActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ServerGridViewActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.NewFriendsActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.CardUserDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.RoomDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.FriensLoopActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ShowMultiImageActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.FriendsLoopDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnchanged|adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.AreaActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.AlbumCommentActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.FavoriteDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.MyMovingMessageListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.JoinRoomDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SetFriendsLoopAuthActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.MettingActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ApplyMettingActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified|adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.MettingDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified|adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ManagerMeetingActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ApplyMetListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.VideoActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.PlayVideoActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SelectPicAndVideoActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.NearyUserListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.AlbumActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.GoodsDetailActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.PicInfoActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.GoodsListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ShoppingCartActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.CommitOrderActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.CommitOrderStateActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SendCommentActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.ApplyMerchantActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.GoodsCommentListActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.SendGoodsActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.GoodsTypeActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.chengxin.BrowserActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.learnncode.mediachooser.activity.BucketHomeFragmentActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+ 
+ <activity
+            android:name="com.learnncode.mediachooser.activity.HomeFragmentActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <service
+            android:name="com.chengxin.service.SnsService"
+            android:label="SnsService"
+            android:process=":push" >
+        </service>
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
+        <!-- debug.keysotre -->
+        <!--
+             <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyC3CJOGhd18ziwNylWBMuXy3Z7sh88Qg7U" />
+
+
+
+
+
+
+        -->
+
+
+        <!-- ochat.keysotre -->
+        <!--
+             <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDkmwrGh5hdxRJJAT7nQ9CitFy0YsJQ9XA" />
+
+
+
+
+
+
+        -->
+        <!-- <uses-library android:required="false" android:name="com.google.android.maps.v2" /> -->
+    </application>
+
+    <permission
+        android:name="com.weiyuan.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.weiyuan.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- sd卡写入权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 摄像头 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <!-- 硬件支持 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- 获取系统联系人 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 摇一摇需要的权限 -->
+    <uses-permission android:name="android.hardware.sensor.accelerometer" />
+    <!-- 添加控件 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+
+</manifest>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/titlelayout"
+        layout="@layout/title_layout" />
+
+    <com.chengxin.widget.ScrollViewContainer
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titlelayout" >
+
+        <ScrollView
+            android:id="@+id/my_scrollview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/titlelayout"
+            android:fadeScrollbars="false"
+            android:fadingEdge="none"
+            android:scrollbars="none"
+            android:visibility="visible" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <View
+                    android:id="@+id/view_pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="150dip"
+                    android:background="@color/blue_color"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/goods_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dip"
+                    android:gravity="center_horizontal"
+                    android:text="@string/account_repeat"
+                    android:textColor="@color/application_black"
+                    android:textSize="@dimen/sixteen" />
+
+                <TextView
+                    android:id="@+id/goods_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:text="￥99.00"
+                    android:textColor="#ff0000"
+                    android:textSize="@dimen/sixteen" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dip"
+                        android:orientation="horizontal" >
+
+                        <Button
+                            android:id="@+id/tel_merchant_btn"
+                            android:layout_width="80dip"
+                            android:layout_height="40dip"
+                            android:layout_gravity="right|center_vertical|center_horizontal"
+                            android:layout_margin="5dip"
+                            android:background="@drawable/balck_btn_n"
+                            android:text="@string/tel_merchant"
+                            android:textColor="@color/application_deep_gray_black" />
+
+                        <Button
+                            android:id="@+id/join_shop_btn"
+                            android:layout_width="80dip"
+                            android:layout_height="40dip"
+                            android:layout_gravity="left|center_vertical|center_horizontal"
+                            android:layout_margin="5dip"
+                            android:background="@drawable/balck_btn_n"
+                            android:text="@string/join_shop"
+                            android:textColor="@color/application_deep_gray_black" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/ef_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="20dip"
+                    android:background="#efefef" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/goods_info_splite"
+                    android:orientation="horizontal"
+                    android:padding="10dip" >
+
+                    <TextView
+                        android:id="@+id/bady_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:text="宝贝评价"
+                        android:textColor="@color/application_black"
+                        android:textSize="@dimen/title_text_size" />
+
+                    <TextView
+                        android:id="@+id/comment_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toLeftOf="@+id/comment_btn"
+                        android:layout_toRightOf="@+id/bady_tv"
+                        android:singleLine="true"
+                        android:text="(12456)"
+                        android:textColor="@color/application_deep_gray_black"
+                        android:textSize="@dimen/title_text_size" />
+
+                    <ImageView
+                        android:id="@+id/comment_btn"
+                        android:layout_width="15dip"
+                        android:layout_height="15dip"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/add_btn"
+                        android:contentDescription="@string/desc" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/comment_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <include layout="@layout/goods_comment_item" />
+
+                    <include layout="@layout/goods_comment_item" />
+
+                    <include layout="@layout/goods_comment_item" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/more_comment_btn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dip"
+                    android:background="@drawable/goods_info_splite"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/look_more_comment"
+                    android:textColor="@color/application_deep_gray_black"
+                    android:textSize="@dimen/forteen" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="85dip"
+                    android:background="#efefef"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/drag_text_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dip"
+                        android:layout_marginRight="5dip"
+                        android:text="@string/drag_more_info"
+                        android:textColor="@color/application_deep_gray_black"
+                        android:textSize="@dimen/forteen" />
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dip"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dip"
+                        android:layout_toLeftOf="@+id/drag_text_title"
+                        android:background="#d2d2d2"
+                        android:contentDescription="@string/desc" />
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dip"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dip"
+                        android:layout_toRightOf="@+id/drag_text_title"
+                        android:background="#d2d2d2"
+                        android:contentDescription="@string/desc" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fadeScrollbars="false"
+            android:fadingEdge="none"
+            android:scrollbars="none"
+            android:visibility="visible" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/flow_menu_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible" >
+
+                    <include layout="@layout/goods_flow_view" />
+                </LinearLayout>
+
+                <WebView
+                    android:id="@+id/web_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+            </LinearLayout>
+        </ScrollView>
+    </com.chengxin.widget.ScrollViewContainer>
+
+</RelativeLayout>
