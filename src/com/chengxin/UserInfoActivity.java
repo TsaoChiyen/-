@@ -69,6 +69,7 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 	private RelativeLayout mSingLayout,mPhotoLayout,mAddrLayout;
 	
 	private RelativeLayout mShopLayout;
+	private RelativeLayout mTitleLayout;
 	private TextView mShopNameTextViwe;
 
 	private ImageLoader mImageLoader = new ImageLoader();
@@ -155,7 +156,9 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 				mPopList.add(new PopItem(i+1, menuString[i],itemMenuBg[i]));
 			}
 
-			mPopWindows = new PopWindows(mContext, mPopList, mRightBtn, new PopWindowsInterface() {
+			mTitleLayout = (RelativeLayout)findViewById(R.id.title_layout);
+
+			mPopWindows = new PopWindows(mContext, mPopList, mTitleLayout, new PopWindowsInterface() {
 
 				@Override
 				public void onItemClick(int position, View view) {
@@ -250,8 +253,8 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 		
 		if(mLogin.isshop == 1){
 			mShopLayout.setVisibility(View.VISIBLE);
-			if(mLogin.shopInfo != null && mLogin.shopInfo.goodsName != null){
-				mShopNameTextViwe.setText(mLogin.shopInfo.goodsName);
+			if(mLogin.shopInfo != null && mLogin.shopInfo.name != null){
+				mShopNameTextViwe.setText(mLogin.shopInfo.name);
 			}
 			
 		}
@@ -589,7 +592,7 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 			break;
 
 		case R.id.right_btn:
-			mPopWindows.showGroupPopView(mPopList,Gravity.RIGHT,R.drawable.pop_bg,R.color.white,0);
+			mPopWindows.showGroupPopView(mPopList,Gravity.RIGHT,R.drawable.no_top_arrow_bg,R.color.white,0);
 			break;
 
 		case R.id.new_photo_layout:
@@ -607,10 +610,10 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 			}
 			Intent shopList = new Intent();
 			shopList.setClass(mContext, GoodsListActivity.class);
-			shopList.putExtra("shopid", mLogin.shopInfo.goodsType);
+			shopList.putExtra("shopid", mLogin.shopInfo.id);
 			shopList.putExtra("addr", mLogin.shopInfo.address);
 			shopList.putExtra("tel_phone",mLogin.shopInfo.phone);
-			shopList.putExtra("shop_name",mLogin.shopInfo.goodsName);
+			shopList.putExtra("shop_name",mLogin.shopInfo.name);
 			startActivity(shopList);
 			break;
 		default:

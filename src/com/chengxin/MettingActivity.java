@@ -336,7 +336,7 @@ public class MettingActivity extends BaseActivity implements OnChangeStateListen
 			startActivity(createIntent);
 			break;
 		case R.id.more_btn:
-			mPopWindows.showGroupPopView(mPopList,Gravity.RIGHT,R.drawable.pop_bg,R.color.white,0);
+			mPopWindows.showGroupPopView(mPopList,Gravity.RIGHT,R.drawable.no_top_arrow_bg,R.color.white,0);
 			break;
 
 		default:

@@ -44,8 +44,7 @@ import com.chengxin.org.json.JSONObject;
 public class WeiYuanInfo  implements Serializable{
 	private static final long serialVersionUID = 1651654562644564L;
 
-
-	//www.kobego.com 115.29.32.248
+	/**www.kobego.com 115.29.32.248*/
 	private static final String SERVER_STR = "http://121.40.214.35:8000/"; // "http://119.84.73.193/"; // 
 	public static final String SERVER_PREFIX = SERVER_STR + "index.php";
 	public static final String CODE_URL =SERVER_STR;
@@ -65,7 +64,6 @@ public class WeiYuanInfo  implements Serializable{
 		}
 
 		return rlt;
-
 	}
 
 	public String requestProtocol(String url, WeiYuanParameters params, String httpMethod) throws WeiYuanException{
@@ -76,11 +74,10 @@ public class WeiYuanInfo  implements Serializable{
 	}
 
 	/**
-	 * 用户注册协议
-	 *  /user/apiother/regist
-	 * @throws WeiYuanException 
+	 *  用户注册协议(/user/apiother/regist)
+	 *  @throws WeiYuanException
 	 */
-	public String getProtocol() throws WeiYuanException{
+	public String getProtocol() throws WeiYuanException {
 		WeiYuanParameters bundle = new WeiYuanParameters();
 		bundle.add("appkey",APPKEY);
 		String url = SERVER_PREFIX+ "/user/apiother/regist";
@@ -90,15 +87,28 @@ public class WeiYuanInfo  implements Serializable{
 			return reString;
 		}
 		return null;
-
 	}
 
+    /**
+     *  帮助中心(/user/apiother/help)
+     *  返回的是一个html的页面
+     *  @throws WeiYuanException
+     */
+    public String getHelpHtml() throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        bundle.add("appkey",APPKEY);
+        String url = SERVER_PREFIX + "/user/apiother/help";
+        String reString = requestProtocol(url, bundle, Utility.HTTPMETHOD_POST);
+        if(reString != null && !reString.equals("") && !reString.equals("null") ){
+            return reString;
+        }
+        return null;
+    }
 
 	/**
-	 * 获取验证码 /user/apiother/getCode
-	 * /user/apiother/getCode?act=getcode&tel=13808172548
-	 * @param isGetCode true=getcode false=-clean
-	 * @throws WeiboException 
+	 *  获取验证码(/user/apiother/getCode)
+	 *  @param isGetCode true=getcode false=-clean
+	 *  @throws WeiboException
 	 */
 	public WeiYuanState getVerCode(String tel,int type) throws WeiYuanException{
 		if (tel == null || tel.equals("")) {
@@ -117,18 +127,16 @@ public class WeiYuanInfo  implements Serializable{
 				return new WeiYuanState(new JSONObject(reString));
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	/**
-	 * 3.	验证验证码(/user/apiother/checkCode)
-	 * @param phone	true	string	手机号
-	 * @param code	true	string	验证码
+	 *  验证验证码(/user/apiother/checkCode)
+	 *  @param phone	true	string	手机号
+	 *  @param code     true	string	验证码
 	 */
-
 	public WeiYuanState checkVerCode(String phone, String code) throws WeiYuanException{
 		if (phone == null || phone.equals("")) {
 			return null;
@@ -144,19 +152,17 @@ public class WeiYuanInfo  implements Serializable{
 				return new WeiYuanState(new JSONObject(reString));
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-
 	/**
-	 * 更新用户的Gps user/api/upateGps 
-	 * @param uid false string 登录用户id
-	 * @param lat true string 纬度
-	 * @param lng true string 经度
-	 * @throws WeiYuanException 
+	 *  更新用户的Gps user/api/upateGps
+	 *  @param uid false string 登录用户id
+	 *  @param lat true string 纬度
+	 *  @param lng true string 经度
+	 *  @throws WeiYuanException
 	 */
 	public WeiYuanState updataGps(String lat,String lng) throws WeiYuanException{
 		if ((lat == null || lat.equals(""))
@@ -175,12 +181,10 @@ public class WeiYuanInfo  implements Serializable{
 				return new WeiYuanState(new JSONObject(reString));
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-
 
 	/**
 	 * 附近的人 /user/api/nearbyUser
@@ -202,12 +206,8 @@ public class WeiYuanInfo  implements Serializable{
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
 			return new UserList(reString,0);
 		}
-
 		return null;
-
 	}
-
-
 
 	//二、登陆注册
 	/**
@@ -245,7 +245,6 @@ public class WeiYuanInfo  implements Serializable{
 
 		}
 		return register;
-
 	}
 
 	/**
@@ -266,9 +265,7 @@ public class WeiYuanInfo  implements Serializable{
 		if(reString != null && !reString.equals("") && !reString.equals("null") /* && reString.startsWith("{")*/){
 			return new LoginResult(reString.trim());
 		}
-
 		return null;
-
 	}
 
 	/**
@@ -342,11 +339,6 @@ public class WeiYuanInfo  implements Serializable{
 		return null;
 	}
 
-
-
-
-
-
 	/**
 	 * 根据id获取用户资料
 	 * @param uid
@@ -366,7 +358,6 @@ public class WeiYuanInfo  implements Serializable{
 
 		return null;
 	}
-
 
 	/**
 	 * 16.	设置星标朋友(/user/api/setStar)
@@ -424,7 +415,6 @@ public class WeiYuanInfo  implements Serializable{
 		return chatImg;
 	}
 
-
 	//四、通讯录
 	//1.朋友列表
 	/**
@@ -444,7 +434,6 @@ public class WeiYuanInfo  implements Serializable{
 		if(reString != null && !reString.equals("") && !reString.equals("null")  && reString.startsWith("{")){
 			return new GroupList(reString);
 		}
-
 		return null;
 	}
 
@@ -458,7 +447,6 @@ public class WeiYuanInfo  implements Serializable{
 	 * @param fuid
 	 * http://www.deedkey.com/friend/Index/action?action=to_friend&uid=200269&fuid=53
 	 */
-
 	public WeiYuanState applyFriends(String userID,String fuid,String reason) throws WeiYuanException{
 		WeiYuanParameters bundle = new WeiYuanParameters();
 		if((userID == null || userID.equals(""))
@@ -513,7 +501,6 @@ public class WeiYuanInfo  implements Serializable{
 	 * @param uid
 	 * @param toUid 被拒绝的uid
 	 */
-
 	public WeiYuanState denyFriends(String toUid) throws WeiYuanException{
 		WeiYuanParameters bundle = new WeiYuanParameters();
 		bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
@@ -575,7 +562,6 @@ public class WeiYuanInfo  implements Serializable{
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
 			return new UserList(reString,0);
 		}
-
 		return null;
 	}
 
@@ -596,11 +582,8 @@ public class WeiYuanInfo  implements Serializable{
 		if(reString != null && !reString.equals("") && !reString.equals("null")  && reString.startsWith("{")){
 			return new CheckFriends(reString);
 		}
-
 		return null;
 	}
-
-
 
 	//3、新的朋友
 	/**
@@ -627,7 +610,6 @@ public class WeiYuanInfo  implements Serializable{
 			return new UserList(reString,1);
 
 		}
-
 		return null;
 	}
 
@@ -656,10 +638,6 @@ public class WeiYuanInfo  implements Serializable{
 		return null;
 	}
 
-
-
-
-
 	/**
 	 * ① 朋友分组(/api/user/group)
 	 * @param uid 登录用户id
@@ -686,8 +664,6 @@ public class WeiYuanInfo  implements Serializable{
 		}
 		return  null;
 	}
-
-
 
 	/**
 	 * 添加关注与取消关注(/api/user/follow)
@@ -720,9 +696,8 @@ public class WeiYuanInfo  implements Serializable{
 		}
 		return null;
 	}
+	
 	// dalong
-
-
 	/**
 	 *  
 	 * 加入黑名单 /user/api/black
@@ -1807,21 +1782,6 @@ public class WeiYuanInfo  implements Serializable{
 	}
 
 	/**
-	 *7.2 帮助中心(/user/apiother/help)
-	 *返回的是一个html的页面
-	 * @throws WeiYuanException 
-	 */ 
-	public String getHelpHtml() throws WeiYuanException{
-		WeiYuanParameters bundle = new WeiYuanParameters();
-		bundle.add("appkey",APPKEY);
-		String url = SERVER_PREFIX + "/user/apiother/help";
-		String reString = requestProtocol(url, bundle, Utility.HTTPMETHOD_POST);
-		if(reString != null && !reString.equals("") && !reString.equals("null") ){
-			return reString;
-		}
-		return null;
-	}
-	/**
 	 * 根据姓名获取用户详细(/api/user/getUserByName)
 	 * @param uid 登陆用户id
 	 * @param name	true	string	用户姓名
@@ -2619,6 +2579,4 @@ public class WeiYuanInfo  implements Serializable{
 		
 		return null;
 	}
-	
-
 }

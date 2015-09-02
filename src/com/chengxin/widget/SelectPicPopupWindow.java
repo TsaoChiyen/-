@@ -23,14 +23,11 @@ import com.chengxin.global.WeiYuanCommon;
 
 
 public class SelectPicPopupWindow extends PopupWindow {
-
-
 	//private Button  btn_cancel;
 	private View mMenuView;
-	private LinearLayout my_profile,my_photo,my_collection,my_setting,my_feedback,
-		mApplyMerchant;
-	private TextView mApplyNameTexViwe;
-	private ImageView mApplyIcon;
+	private LinearLayout my_profile,my_photo,my_collection,my_setting,my_feedback; // ,mApplyMerchant;
+//	private TextView mApplyNameTexViwe;
+//	private ImageView mApplyIcon;
 	private ImageLoader mImageLoader;
 
 	public SelectPicPopupWindow(final Activity context,final OnClickListener itemsOnClick) {
@@ -56,17 +53,17 @@ public class SelectPicPopupWindow extends PopupWindow {
 		ImageView iv=(ImageView)mMenuView.findViewById(R.id.user_icon);
 		TextView userName = (TextView)mMenuView.findViewById(R.id.user_name);
 		TextView userSign = (TextView)mMenuView.findViewById(R.id.user_sign);
-		mApplyIcon = (ImageView)mMenuView.findViewById(R.id.apply_icon);
-		mApplyNameTexViwe = (TextView)mMenuView.findViewById(R.id.apply_text);
+//		mApplyIcon = (ImageView)mMenuView.findViewById(R.id.apply_icon);
+//		mApplyNameTexViwe = (TextView)mMenuView.findViewById(R.id.apply_text);
 		Login login = WeiYuanCommon.getLoginResult(context);
 		if(login!=null ){
 			if(login.headsmall!=null && !login.headsmall.equals("")){
 				mImageLoader.getBitmap(context, iv,null,login.headsmall,0,false,true,false);
 			}
-			if(WeiYuanCommon.getLoginResult(context).isshop == 1){//商家-发布商品
-				mApplyIcon.setImageResource(R.drawable.send_goods_icon);
-				mApplyNameTexViwe.setText("发布商品");
-			}
+//			if(WeiYuanCommon.getLoginResult(context).isshop == 1){//商家-发布商品
+//				mApplyIcon.setImageResource(R.drawable.send_goods_icon);
+//				mApplyNameTexViwe.setText("发布商品");
+//			}
 		}
 		
 		
@@ -99,16 +96,16 @@ public class SelectPicPopupWindow extends PopupWindow {
 			}
 		});
 		
-		mApplyMerchant = (LinearLayout)mMenuView.findViewById(R.id.apply_merchant);
-		mApplyMerchant.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				itemsOnClick.onClick(v);
-				dismiss();
-			}
-		});
-		
+//		mApplyMerchant = (LinearLayout)mMenuView.findViewById(R.id.apply_merchant);
+//		mApplyMerchant.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				itemsOnClick.onClick(v);
+//				dismiss();
+//			}
+//		});
+//		
 		my_setting = (LinearLayout) mMenuView.findViewById(R.id.my_setting);
 		my_setting.setOnClickListener(new OnClickListener() {
 
@@ -137,7 +134,7 @@ public class SelectPicPopupWindow extends PopupWindow {
 		//����SelectPicPopupWindow��������ɵ��
 		this.setFocusable(true);
 		//����SelectPicPopupWindow�������嶯��Ч��
-		this.setAnimationStyle(R.style.mystyle);
+		this.setAnimationStyle(R.style.leftstyle);
 		//ʵ��һ��ColorDrawable��ɫΪ��͸��
 		ColorDrawable dw = new ColorDrawable(000000);
 		//����SelectPicPopupWindow��������ı���
@@ -147,7 +144,6 @@ public class SelectPicPopupWindow extends PopupWindow {
 		mMenuView.setOnTouchListener(new OnTouchListener() {
 
 			public boolean onTouch(View v, MotionEvent event) {
-
 				int height = mMenuView.findViewById(R.id.pop_layout).getTop();
 				int y=(int) event.getY();
 				if(event.getAction()==MotionEvent.ACTION_UP){

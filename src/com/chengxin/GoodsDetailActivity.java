@@ -295,8 +295,8 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 		if(mGoods == null){
 			return;
 		}
-		mGoodsName.setText(mGoods.goodsName);
-		mGoodsPriceTextView.setText("￥"+mGoods.goodsPrice);
+		mGoodsName.setText(mGoods.name);
+		mGoodsPriceTextView.setText("￥"+mGoods.price);
 		mCommentCount.setText("("+mGoods.commentCount+")");
 		if(mGoods.isfavorite == 0){
 			mColleciontTextView.setText("收藏");
@@ -327,7 +327,7 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 
 	/*显示最新一条商品评论信息*/
 	public void showNewCommentLayout(){
-		if(mGoods == null || mGoods.goodsComment == null){
+		if(mGoods == null || mGoods.comment == null){
 			return;
 		}
 
@@ -344,9 +344,9 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 		TextView comment = (TextView)view.findViewById(R.id.comment);
 
 
-		if( mGoods.goodsComment.user != null){
-			username.setText(mGoods.goodsComment.user.nickname );
-			String headUrl = mGoods.goodsComment.user.headsmall;
+		if( mGoods.comment.user != null){
+			username.setText(mGoods.comment.user.nickname );
+			String headUrl = mGoods.comment.user.headsmall;
 			if(headUrl != null && !headUrl.equals("")){
 				mImageLoader.getBitmap(mContext, headIcon, null,headUrl,0,false,false,false);
 			}else{
@@ -357,9 +357,9 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 			headIcon.setImageResource(R.drawable.contact_default_header);
 		}
 		createTime.setText(FeatureFunction.calculaterReleasedTime(mContext,
-				new Date(mGoods.goodsComment.createtime*1000),mGoods.goodsComment.createtime*1000,0));
-		comment.setText(mGoods.goodsComment.content);
-		int star = mGoods.goodsComment.star;
+				new Date(mGoods.comment.createtime*1000),mGoods.comment.createtime*1000,0));
+		comment.setText(mGoods.comment.content);
+		int star = mGoods.comment.star;
 
 		if( star !=0){
 			for (int i = 0; i <star; i++) {
@@ -402,7 +402,7 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 				Intent userInfoIntent = new Intent();
 				userInfoIntent.setClass(mContext, UserInfoActivity.class);
 				userInfoIntent.putExtra("type",2);
-				userInfoIntent.putExtra("uid", mGoods.goodsComment.uid);
+				userInfoIntent.putExtra("uid", mGoods.comment.uid);
 				startActivity(userInfoIntent);
 			}
 		});
@@ -896,7 +896,7 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 				if(commentState != null ){
 					mGoods.commentCount = commentState.commentcount;
 					mGoods.star = commentState.star;
-					mGoods.goodsComment = commentState.goodsComment;
+					mGoods.comment = commentState.goodsComment;
 					updataGoodsComment();
 					/*Goods goods = (Goods)msg.obj;
 					if(goods != null){
@@ -920,7 +920,6 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				//mShowZoomInOutLayout.showLinearLayout();
 			}
 		});
@@ -953,10 +952,8 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 										fin.close();
 										imageData = buffer;
 									} catch (FileNotFoundException e) {
-										// TODO Auto-generated catch block
 										e.printStackTrace();
 									} catch (IOException e) {
-										// TODO Auto-generated catch block
 										e.printStackTrace();
 									}
 
@@ -1006,10 +1003,8 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 						}
 
 					} catch (MalformedURLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (SPException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -1224,7 +1219,6 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 	}
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		freeBitmap(mBitmapCache);
 		if(mDestroyReceiver != null){
 			unregisterReceiver(mDestroyReceiver);

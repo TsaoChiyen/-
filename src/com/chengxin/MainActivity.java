@@ -2,6 +2,7 @@ package com.chengxin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,6 +48,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +70,7 @@ import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.SessionTable;
 import com.chengxin.Entity.CookieEntity;
 import com.chengxin.Entity.Login;
+import com.chengxin.Entity.PopItem;
 import com.chengxin.Entity.Version;
 import com.chengxin.Entity.VersionInfo;
 import com.chengxin.dialog.MMAlert;
@@ -81,15 +84,18 @@ import com.chengxin.fragment.MyFragment;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.GlobleType;
+import com.chengxin.global.ImageLoader;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
 import com.chengxin.receiver.NotifySystemMessage;
 import com.chengxin.service.SnsService;
 import com.chengxin.widget.MainSearchDialog;
 import com.chengxin.widget.PagerSlidingTabStrip;
+import com.chengxin.widget.PopWindows;
 import com.chengxin.widget.SelectAddPopupWindow;
 import com.chengxin.widget.SelectPicPopupWindow;
 import com.chengxin.widget.PagerSlidingTabStrip.IconTabProvider;
+import com.chengxin.widget.PopWindows.PopWindowsInterface;
 
 /**
  * 高仿微信的主界面
@@ -118,6 +124,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private Version mVersion;
 	protected ClientUpgrade mClientUpgrade;
 
+	private List<PopItem> mPopList = new ArrayList<PopItem>();
+	private PopWindows mPopWindows;
+	
 	/**
 	 * 聊天界面的Fragment
 	 */
@@ -196,6 +205,46 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			}
 		}
 
+		Login login = WeiYuanCommon.getLoginResult(mContext);
+		boolean shopAdded = false;
+		boolean exhiAdded = false;
+		boolean publAdded = false;
+		
+		if (login!=null ) {
+			if (login.isshop == 1) {
+				mPopList.add(new PopItem(1, mContext.getString(R.string.menu_shopmanager)));
+				shopAdded = true;
+			}
+			
+			if (login.isexhi == 1) {
+				mPopList.add(new PopItem(2, mContext.getString(R.string.menu_exhimanager)));
+				exhiAdded = true;
+			}
+
+			if (login.haspublic == 1) {
+				mPopList.add(new PopItem(3, mContext.getString(R.string.menu_publicman)));
+				publAdded = true;
+			}
+		}
+		
+		if (!shopAdded)		mPopList.add(new PopItem(1, mContext.getString(R.string.menu_applyshop)));
+		if (!exhiAdded)		mPopList.add(new PopItem(2, mContext.getString(R.string.menu_applyexhi)));
+		if (!publAdded)		mPopList.add(new PopItem(3, mContext.getString(R.string.menu_applypublic)));
+
+		mPopWindows = new PopWindows(mContext, mPopList, mTitleLayout, new PopWindowsInterface() {
+			@Override
+			public void onItemClick(int position, View view) {
+				switch (position) {
+				case 0:
+					
+					break;
+
+				default:
+					break;
+				}
+			}
+		});
+
 	}
 
 	/**
@@ -222,10 +271,22 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		/*
 		 * ActionBar.LayoutParams layout = new ActionBar.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT); actionBar.setCustomView(v,layout);
 		 */
-		mTitleLayout = (RelativeLayout) findViewById(R.id.title_layout);
+		
+		ImageLoader mImageLoader = new ImageLoader();
 
-		mLogIcon = (ImageView) findViewById(R.id.logo_icon);
+		mTitleLayout = (RelativeLayout) findViewById(R.id.title_layout);
+		
+		mLogIcon = (ImageView) findViewById(R.id.left_icon);
 		mLogIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.actionbar_icon));
+
+		Login login = WeiYuanCommon.getLoginResult(mContext);
+		
+		if(login!=null ){
+			if(login.headsmall!=null && !login.headsmall.equals("")){
+				mImageLoader.getBitmap(mContext, mLogIcon, null, login.headsmall, 0, false, true, false);
+			}
+		}
+
 		mLogIcon.setVisibility(View.VISIBLE);
 
 		mTitleView = (TextView) findViewById(R.id.title);
@@ -239,6 +300,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mAddBtn.setVisibility(View.VISIBLE);
 		mMoreBtn.setVisibility(View.VISIBLE);
 
+		mLogIcon.setOnClickListener(this);
 		mSearchBtn.setOnClickListener(this);
 		mAddBtn.setOnClickListener(this);
 		mMoreBtn.setOnClickListener(this);
@@ -314,7 +376,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 					} catch (ClientProtocolException e) {
 						e.printStackTrace();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 
@@ -373,7 +434,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 		@Override
 		public void run() {
-			// TODO Auto-generated method stub
 			Intent intent = new Intent(getBaseContext(), SnsService.class);
 			this.context.startService(intent);
 		}
@@ -649,7 +709,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 					R.drawable.ico_main_menu_setting0 //
 
 			};
-			// TODO 自动生成的方法存根
 			return rs[position];
 		}
 
@@ -662,7 +721,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 					R.drawable.ico_main_menu_setting1 //
 
 			};
-			// TODO 自动生成的方法存根
 			return rs[position];
 		}
 	}
@@ -676,8 +734,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		// 显示窗口
 		/* View view = MainActivity.this.findViewById(R.id.set); */
 		// 计算坐标的偏移量
-		int xoffInPixels = menuWindow.getWidth() - view.getWidth() + 10;
-		menuWindow.showAsDropDown(view, -xoffInPixels, 0);
+//		int xoffInPixels = menuWindow.getWidth() - view.getWidth() + 10;
+		menuWindow.showAsDropDown(view, 0, 0);
 	}
 
 	// 为弹出窗口实现监听类
@@ -1194,6 +1252,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.left_icon:
+			uploadImage(MainActivity.this, mTitleLayout);
+			break;
 		case R.id.search_btn:
 			MainSearchDialog dialog = new MainSearchDialog(mContext, 0);
 			dialog.show();
@@ -1202,7 +1263,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			uploadImage2(MainActivity.this, mTitleLayout);
 			break;
 		case R.id.more_btn:
-			uploadImage(MainActivity.this, mTitleLayout);
+			mPopWindows.showGroupPopView(mPopList,Gravity.RIGHT,R.drawable.no_top_arrow_bg,R.color.white,0);
+//
+//			uploadImage(MainActivity.this, mTitleLayout);
 			break;
 		default:
 			break;

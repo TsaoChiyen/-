@@ -19,10 +19,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View.OnClickListener;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -38,6 +41,11 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.chengxin.ChatMainActivity;
+import com.chengxin.ContactActivity;
+import com.chengxin.ContactListActivity;
+import com.chengxin.FriensLoopActivity;
+import com.chengxin.MettingActivity;
+import com.chengxin.MyGroupListActivity;
 import com.chengxin.R;
 import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.MessageTable;
@@ -53,6 +61,8 @@ import com.chengxin.global.SystemContactGlobal;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;
 import com.chengxin.net.WeiYuanException;
+import com.learnncode.mediachooser.MediaChooserConstants;
+import com.learnncode.mediachooser.activity.HomeFragmentActivity;
 
 
 /**
@@ -66,7 +76,10 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 
 	private View mView;
 	private boolean mIsRegisterReceiver = false;
-	//private Button mEditBtn;
+	private Button mBtnContact;
+	private Button mBtnFriends;
+	private Button mBtnBackRoom;
+	private Button mBtnGroups;
 	private ListView mListView;
 	private ChatTabAdapter mAdapter;
 	public final static int SHOW_PROGRESSDIALOG = 11101;
@@ -118,7 +131,7 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		mView =inflater.inflate(R.layout.chat_tab, container, false);  
+		mView =inflater.inflate(R.layout.chat_frame, container, false);  
 		return mView;
 	}
 
@@ -357,10 +370,40 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 		mListView.setDivider(null/*getResources().getDrawable(R.drawable.order_devider_line)*/);
 		mListView.setOnItemClickListener(this);
 		mListView.setOnCreateContextMenuListener(this);
+		
+		mBtnContact = (Button)mView.findViewById(R.id.chat_contact);
+		mBtnFriends = (Button)mView.findViewById(R.id.chat_friend);
+		mBtnBackRoom = (Button)mView.findViewById(R.id.chat_backroom);
+		mBtnGroups = (Button)mView.findViewById(R.id.chat_group);
+		
+		mBtnContact.setOnClickListener(clickListener);
+		mBtnFriends.setOnClickListener(clickListener);
+		mBtnBackRoom.setOnClickListener(clickListener);
+		mBtnGroups.setOnClickListener(clickListener);
+		
 		initSession(true);
 
 	}
 
+	OnClickListener clickListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View view) {
+			Intent intent = new Intent();
+			
+			if(view == mBtnContact){
+				intent.setClass(getActivity(), ContactListActivity.class);
+			} else if(view == mBtnFriends) {
+				intent.setClass(getActivity(), FriensLoopActivity.class);
+			} else if(view == mBtnBackRoom) {
+				intent = new Intent(getActivity(), MettingActivity.class);
+			} else if(view == mBtnGroups) {
+				intent = new Intent(getActivity(), MyGroupListActivity.class);
+			}
+			
+			startActivity(intent);
+		}
+	};
 
 	/**
 	 * 获取消息数据

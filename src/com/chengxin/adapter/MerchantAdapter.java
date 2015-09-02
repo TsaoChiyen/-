@@ -90,10 +90,10 @@ public class MerchantAdapter extends BaseAdapter {
 		}
 
 		final Merchant goods = mMerchantsList.get(position);
-		holder.mGoodsTypeName.setText(goods.goodsName);
+		holder.mGoodsTypeName.setText(goods.name);
 
-		if(goods.goodsTypeIcon != null && !goods.goodsTypeIcon.equals("")){
-			mImageLoader.getBitmap(mContext, holder.mGoodsTypeIcon,null, goods.goodsTypeIcon,0, false,false,false);
+		if(goods.logo != null && !goods.logo.equals("")){
+			mImageLoader.getBitmap(mContext, holder.mGoodsTypeIcon,null, goods.logo, 0, false, false, false);
 		}else{
 
 			switch (position%3) {
@@ -129,14 +129,14 @@ public class MerchantAdapter extends BaseAdapter {
 				view.setLayoutParams(params);
 				
 				FlowView imageView =(FlowView)view.findViewById(R.id.imageview);
-				if(goodsList.get(i).goodsUrl!=null && !goodsList.get(i).goodsUrl.equals("")){
-					imageView.setTag(goodsList.get(i).goodsUrl);
-					mImageLoader.getBitmap(mContext,imageView,null,goodsList.get(i).goodsUrl,0,false,false,false);
+				if(goodsList.get(i).logo!=null && !goodsList.get(i).logo.equals("")){
+					imageView.setTag(goodsList.get(i).logo);
+					mImageLoader.getBitmap(mContext,imageView,null,goodsList.get(i).logo,0,false,false,false);
 				}else{
 					imageView.setImageResource(R.drawable.goods_noraml);
 				}
 				
-				((TextView)view.findViewById(R.id.content)).setText("￥"+goodsList.get(i).goodsPrice);
+				((TextView)view.findViewById(R.id.content)).setText("￥"+goodsList.get(i).price);
 				final int index = i;
 				view.setOnClickListener(new OnClickListener() {
 
@@ -146,10 +146,10 @@ public class MerchantAdapter extends BaseAdapter {
 						Intent detailIntent = new Intent();
 						detailIntent.setClass(mContext, GoodsDetailActivity.class);
 						detailIntent.putExtra("entity", goodsList.get(index));
-						detailIntent.putExtra("shopid", goods.goodsType);
+						detailIntent.putExtra("shopid", goods.id);
 						detailIntent.putExtra("addr", goods.address);
 						detailIntent.putExtra("tel_phone",goods.phone);
-						detailIntent.putExtra("shop_name",goods.goodsName);
+						detailIntent.putExtra("shop_name",goods.name);
 						detailIntent.putExtra("user", goods.user);
 						mContext.startActivity(detailIntent);
 					}
@@ -166,10 +166,10 @@ public class MerchantAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				Intent intent = new Intent();
 				intent.setClass(mContext, GoodsListActivity.class);
-				intent.putExtra("shopid", goods.goodsType);
+				intent.putExtra("shopid", goods.id);
 				intent.putExtra("addr", goods.address);
 				intent.putExtra("tel_phone",goods.phone);
-				intent.putExtra("shop_name",goods.goodsName);
+				intent.putExtra("shop_name",goods.name);
 				intent.putExtra("user", goods.user);
 				mContext.startActivity(intent);
 			}

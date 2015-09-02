@@ -21,61 +21,31 @@ public class Goods implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	/**商品id*/
-	public String id;
 
-	/**商铺id*/
-	public int shopid;
+    public String id;               //< 商品id
+    public int shopid;              //< 商铺id
+    public int categoryid;          //< 商铺类型
+    public String name;             //< 商品名称
+    public String logo;             //< 商品图片地址
+    public double price;            //< 商品价格
+    public int star;                //< 星级数
+    public int commentCount;        //< 商品评论数
+    public long createtime;         //< 创建时间
+    public int isfavorite;          //< 是否收藏
+    public String introduce;        //< 商品介绍
+    public String content;          //< 图文详细
+    public String parameter;        //< 产品参数
+    public String barcode;          //< 商品条码
+    public int number;              //< 商品库存量
+    public int status;              //< 商品状态 1，未上架； 2，已上架
+    public int count;               //< 商品数量
 
-	/**商铺类型*/
-	public int categoryid;
+    public List<Picture> pictureList;   //< 图片集
+    public GoodsComment comment;        //< 评论内容
 
-	/**商品图片地址-logo*/
-	public String goodsUrl;
-
-	/**商品名称-name*/
-	public String goodsName;	
-
-	/**商品价格-price*/
-	public double goodsPrice;
-	
-	/**商品数量*/
-	public int goodsCount;
-	
-
-	/**星级数*/
-	public int star;
-
-	/**图片*/
-	public List<Picture> pictureList;
-
-	/**商品评论数*/
-	public int commentCount;
-
-	/**创建时间*/
-	public long createtime;
-
-	/**是否收藏*/
-	public int isfavorite;
-	
-	/**评论内容*/
-	public GoodsComment goodsComment;
-	
-	/**图文详细*/
-	public String content;
-	
-	/**产品参数*/
-	public String parameter;
-
-	
-	/**状态值*/
-	public WeiYuanState state;
-	
-	
-	
-	
-
-
+    public WeiYuanState state;          //< 返回的状态对象
+    
+    public int selected;                //< ui操作，是否选择
 
 	public Goods() {
 		super();
@@ -129,47 +99,48 @@ public class Goods implements Serializable {
 			return;
 		}
 		
-		id = json.getString("id");
-		shopid = json.getInt("shopid");
-		categoryid = json.getInt("categoryid");
-		goodsUrl = json.getString("logo");
-		goodsName = json.getString("name");
-		goodsPrice = json.getDouble("price");
-		star = json.getInt("star");
-		if(!json.isNull("picture")){
+		id          = json.getString("id");
+		shopid      = json.getInt("shopid");
+		categoryid  = json.getInt("categoryid");
+        name        = json.getString("name");
+		logo        = json.getString("logo");
+		price       = json.getDouble("price");
+		star        = json.getInt("star");
+        commentCount = json.getInt("commentcount");
+        createtime  = json.getLong("createtime");
+        isfavorite  = json.getInt("isfavorite");
+        content     = json.getString("content");
+        parameter   = json.getString("parameter");
+        barcode     = json.getString("barcode");
+        number      = json.getInt("number");
+        status      = json.getInt("status");
+        count       = json.getInt("count");
+        selected    = 0;
+
+        if(!json.isNull("picture")){
 			String picString = json.getString("picture");
+            
 			if((picString != null && !picString.equals(""))
 					&& picString.startsWith("[")){
 				JSONArray array = json.getJSONArray("picture");
-				if(array != null && array.length()>0){
+			
+                if(array != null && array.length()>0){
 					pictureList = new ArrayList<Picture>();
-					for (int i = 0; i < array.length(); i++) {
+				
+                    for (int i = 0; i < array.length(); i++) {
 						pictureList.add(Picture.getInfo(array.getString(i)));
 					}
 				}
-				
 			}
 		}
-		
-		commentCount = json.getInt("commentcount");
-		createtime = json.getLong("createtime");
-		isfavorite = json.getInt("isfavorite");
 		
 		if(!json.isNull("comment")){
 			String commentString = json.getString("comment");
+            
 			if((commentString != null && !commentString.equals(""))
 					&& commentString.startsWith("{")){
-				goodsComment = new GoodsComment(json.getJSONObject("comment"));
+				comment = new GoodsComment(json.getJSONObject("comment"));
 			}
-		}
-		
-		if(!json.isNull("content")){
-			content = json.getString("content");
-		}
-		
-		
-		if(!json.isNull("parameter")){
-			parameter = json.getString("parameter");
 		}
 		
 

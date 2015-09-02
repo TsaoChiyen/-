@@ -112,14 +112,14 @@ public class CommitOrderActivity extends BaseActivity {
 					//商品id1*count1,id2*count2
 					for (int i = 0; i < goodsList.size(); i++) {
 						if(i != goodsList.size() - 1){
-							goods = goods + goodsList.get(i).goodsPrice+"*"+goodsList.get(i).goodsCount+",";
+							goods = goods + goodsList.get(i).price+"*"+goodsList.get(i).count+",";
 						}else{
-							goods = goods + goodsList.get(i).goodsPrice+"*"+goodsList.get(i).goodsCount;
+							goods = goods + goodsList.get(i).price+"*"+goodsList.get(i).count;
 						}
 					}
 					
 					WeiYuanState state = WeiYuanCommon.getWeiYuanInfo().submitOrder(goods, mInputContactName, mInputTelPhone, mInputAddr, 
-							mInputDesc, mMerchant.goodsType);
+							mInputDesc, mMerchant.id);
 					mBaseHandler.sendEmptyMessage(BASE_HIDE_PROGRESS_DIALOG);
 					WeiYuanCommon.sendMsg(mHandler,GlobalParam.MSG_CHECK_STATE, state);
 				} catch (NotFoundException e) {

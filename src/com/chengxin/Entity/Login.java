@@ -119,7 +119,15 @@ public class Login implements Serializable {
 	public Shop shop;
 	public Merchant shopInfo;
 
-    /**
+	/** 展会 1-已参加 0-未参加 */
+	public int isexhi;
+//	public Shop shop;
+//	public Merchant shopInfo;
+
+	/** 公众号 1-已有 0-没有 */
+	public int haspublic;
+
+	/**
      * 订阅号菜单数据
      */
     public String menuString;
@@ -375,6 +383,14 @@ public class Login implements Serializable {
 
 			if (!json.isNull("isshop")) {
 				isshop = json.getInt("isshop");
+			}
+
+			if (!json.isNull("isexhi")) {
+				isexhi = json.getInt("isexhi");
+			}
+
+			if (!json.isNull("haspublic")) {
+				haspublic = json.getInt("haspublic");
 			}
 
 			if (!json.isNull("shop")) {

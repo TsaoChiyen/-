@@ -411,6 +411,14 @@
         <!-- //退出时的动画 -->
     </style>
 
+    <!-- 左上角弹出款动画 -->
+    <style name="leftstyle" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/head_left_in</item>
+        <!-- //进入时的动画 -->
+        <item name="@android:windowExitAnimation">@anim/head_left_out</item>
+        <!-- //退出时的动画 -->
+    </style>
+    
     <!-- 商品详细样式 -->
     <style name="UseMsgStyle">
         <item name="android:textSize">16.0dip</item>

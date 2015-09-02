@@ -381,7 +381,6 @@ public class FriensLoopActivity extends BaseActivity implements OnTouchListener,
 
 		@Override
 		public void onFocusChange(View v, boolean hasFocus) {
-			// TODO Auto-generated method stub
 			if(hasFocus){
 				// 文本框得到焦点，隐藏附加信息和表情列表
 				hideEmojiGridView();

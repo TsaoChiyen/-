@@ -173,7 +173,7 @@ public class ShoppingCartActivity extends BaseActivity{
 			Merchant merchant = mShoppingCartList.get(i);
 			View view = LayoutInflater.from(mContext).inflate(R.layout.cart_item,null);
 			TextView merchantTextView = (TextView)view.findViewById(R.id.member_name);
-			merchantTextView.setText(merchant.goodsName);
+			merchantTextView.setText(merchant.name);
 
 			final TextView orderPriceTextView = (TextView)view.findViewById(R.id.goods_price);
 			LinearLayout checkLayout = (LinearLayout)view.findViewById(R.id.check_layout);
@@ -231,8 +231,8 @@ public class ShoppingCartActivity extends BaseActivity{
 
 						@Override
 						public void afterTextChanged(Editable s) {
-							int coun = mShoppingCartList.get(index) .goodsList.get(childIndex).goodsCount;
-							double price = mShoppingCartList.get(index) .goodsList.get(childIndex).goodsPrice;
+							int coun = mShoppingCartList.get(index) .goodsList.get(childIndex).count;
+							double price = mShoppingCartList.get(index) .goodsList.get(childIndex).price;
 							orderPriceTextView.setText("￥"+(coun*price));
 
 						}
@@ -249,7 +249,7 @@ public class ShoppingCartActivity extends BaseActivity{
 							if(childCountView == 1){		//商铺下只有一个商品	
 								mShoppingCartLayout.removeViewAt(index);
 								for (int k = 0; k < mCartList.size(); k++) {
-									if(mCartList.get(k).shopId == mShoppingCartList.get(index).goodsType){
+									if(mCartList.get(k).shopId == mShoppingCartList.get(index).id){
 										mCartList.remove(mCartList.get(k));
 										break;
 									}
@@ -277,12 +277,12 @@ public class ShoppingCartActivity extends BaseActivity{
 
 						@Override
 						public void onClick(View v) {
-							int count = mShoppingCartList.get(index) .goodsList.get(childIndex).goodsCount;
+							int count = mShoppingCartList.get(index) .goodsList.get(childIndex).count;
 							if(count <=1){
 								Toast.makeText(mContext, "受不了了,宝贝不能在减少了哦", Toast.LENGTH_LONG).show();
 								return;
 							}
-							mShoppingCartList.get(index) .goodsList.get(childIndex).goodsCount = count-1;
+							mShoppingCartList.get(index) .goodsList.get(childIndex).count = count-1;
 							int  goodsCount = count-1;
 							goodsCountEdit.setText(goodsCount+"");
 							goodsCountTextView.setText(goodsCount+"");
@@ -297,8 +297,8 @@ public class ShoppingCartActivity extends BaseActivity{
 
 						@Override
 						public void onClick(View v) {
-							int count = mShoppingCartList.get(index) .goodsList.get(childIndex).goodsCount;
-							mShoppingCartList.get(index) .goodsList.get(childIndex).goodsCount = count+1;
+							int count = mShoppingCartList.get(index) .goodsList.get(childIndex).count;
+							mShoppingCartList.get(index) .goodsList.get(childIndex).count = count+1;
 							int  goodsCount = count+1;
 							goodsCountEdit.setText(goodsCount+"");
 							modifyGoodsCount(index,goodsCount+"");
@@ -313,7 +313,7 @@ public class ShoppingCartActivity extends BaseActivity{
 
 
 					Goods goods = goodsList.get(j);
-					String goodsUrl = goods.goodsUrl;
+					String goodsUrl = goods.logo;
 					if(goodsUrl != null && !goodsUrl.equals("")){
 						goodsIcon.setTag(goodsUrl);
 						mImageLoader.getBitmap(mContext, goodsIcon, null, goodsUrl,0,false,true,false);
@@ -321,8 +321,8 @@ public class ShoppingCartActivity extends BaseActivity{
 						goodsIcon.setImageResource(R.drawable.contact_default_header);
 					}
 
-					goodsName.setText(goods.goodsName);
-					goodsPrice.setText("￥"+goods.goodsPrice);
+					goodsName.setText(goods.name);
+					goodsPrice.setText("￥"+goods.price);
 					String goodsCount = "";
 					for (int k = 0; k < mCartList.size(); k++) {
 						ShoppingCart cart = mCartList.get(i);
@@ -347,9 +347,9 @@ public class ShoppingCartActivity extends BaseActivity{
 						try {
 							gCount = Integer.parseInt(goodsCount);
 							for (int k = 0; k < merchant .goodsList.size(); k++) {
-								merchant .goodsList.get(k).goodsCount = gCount;
+								merchant .goodsList.get(k).count = gCount;
 							}
-							merchantGoodsPrice = merchantGoodsPrice+(gCount*goods.goodsPrice);
+							merchantGoodsPrice = merchantGoodsPrice+(gCount*goods.price);
 						} catch (NumberFormatException e) {
 							e.printStackTrace();
 						}
@@ -370,7 +370,7 @@ public class ShoppingCartActivity extends BaseActivity{
 
 		boolean isReturn = false;
 		for (int k = 0; k < mCartList.size(); k++) {
-			if(mCartList.get(k).shopId == mShoppingCartList.get(index).goodsType){
+			if(mCartList.get(k).shopId == mShoppingCartList.get(index).id){
 				String[] goodsIds = mCartList.get(k).goodsIds.split(",");
 				String[] goodsCounts =  mCartList.get(k).goodsCounts.split(",");
 				List<Goods> goodsList = mShoppingCartList.get(index).goodsList;
@@ -420,7 +420,7 @@ public class ShoppingCartActivity extends BaseActivity{
 	private void modifyGoodsCount(int index,String goodsCount){
 		boolean isReturn = false;
 		for (int k = 0; k < mCartList.size(); k++) {
-			if(mCartList.get(k).shopId == mShoppingCartList.get(index).goodsType){
+			if(mCartList.get(k).shopId == mShoppingCartList.get(index).id){
 				String[] goodsIds = mCartList.get(k).goodsIds.split(",");
 				String[] goodsCounts =  mCartList.get(k).goodsCounts.split(",");
 				List<Goods> goodsList = mShoppingCartList.get(index).goodsList;
@@ -578,20 +578,9 @@ public class ShoppingCartActivity extends BaseActivity{
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
-
 		if(mDestroyReceiver != null){
 			unregisterReceiver(mDestroyReceiver);
 		}
 		super.onDestroy();
 	}
-
-
-
-
-
-
-
-
-
 }

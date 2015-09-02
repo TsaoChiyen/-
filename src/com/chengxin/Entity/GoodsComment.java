@@ -12,34 +12,21 @@ public class GoodsComment implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**商品评论id*/
-	public int id;
+    public int id;          //< 商品评论id
+    public String uid;      //< 评论发表者id
+    public String goodsid;  //< 商品id
+    public int star;        //< 级数
+    public String content;  //< 评论内容
+    public long createtime; //< 发起评论时间
 
-	/**评论发表这id*/
-	public String uid;
-
-	/**商品id*/
-	public String goods_id;
-
-	/**星级数*/
-	public int star;
-
-	/**评论内容*/
-	public String content;
-
-	/**发起评论时间*/
-	public long createtime;
-
-	/**评论发表者信息*/
-	public Login user;
+    public Login user;      //< 评论发表者信息
 	
-	/**状态信息*/
-	public WeiYuanState state;
-
+    public WeiYuanState state;  //< 状态信息
 
 	public GoodsComment(String reqString) {
 		super();
-		try {
+
+        try {
 			if(reqString == null || reqString.equals("")){
 				return;
 			}
@@ -61,7 +48,8 @@ public class GoodsComment implements Serializable{
 	private void initCompent(JSONObject json) throws JSONException{
 		if(json == null || json.equals("")){
 			return;
-		}// data - id
+		}
+        
 		if(!json.isNull("data")){
 			String dataString = json.getString("data");
 			if(dataString != null && !dataString.equals("")
@@ -71,6 +59,7 @@ public class GoodsComment implements Serializable{
 		}else{
 			init(json);
 		}
+        
 		if(!json.isNull("state")){
 			String stateString = json.getString("state");
 			if(stateString != null && !stateString.equals("")
@@ -87,7 +76,7 @@ public class GoodsComment implements Serializable{
 		
 		id = json.getInt("id");
 		uid = json.getString("uid");
-		goods_id = json.getString("goods_id");
+		goodsid = json.getString("goods_id");
 		star = json.getInt("star");
 		content = json.getString("content");
 		createtime = json.getLong("createtime");

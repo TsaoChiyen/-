@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroud_color"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/title_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/title_layout"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/chat_sel"
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:layout_below="@id/title_layout"
+        android:background="@color/application_gray"
+        android:baselineAligned="false"
+        android:measureWithLargestChild="false"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/chat_contact"
+            style="@style/actionbar_def_style"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/listview_foucs"
+            android:text="@string/chat_contact"
+            android:textColor="@color/text_color" />
+
+        <Button
+            android:id="@+id/chat_friend"
+            style="@style/actionbar_def_style"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/listview_foucs"
+            android:text="@string/chat_friend"
+            android:textColor="@color/text_color" />
+
+                <Button
+                    android:id="@+id/chat_backroom"
+                    style="@style/actionbar_def_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/listview_foucs"
+                    android:text="@string/chat_backroom"
+                    android:textColor="@color/text_color" />
+
+                <Button
+                    android:id="@+id/chat_group"
+                    style="@style/actionbar_def_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/listview_foucs"
+                    android:text="@string/chat_grouptalk"
+                    android:textColor="@color/text_color" />
+
+        </LinearLayout>
+        
+    <ListView
+        android:id="@+id/chats_list"
+        android:layout_below="@+id/chat_sel"
+         android:layout_above="@+id/group_count"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="@null"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="true"
+        android:focusable="true"
+        android:listSelector="@drawable/transparent_selector"
+       
+        android:scrollbars="none" />
+
+    <TextView
+        android:id="@+id/group_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:text=""
+        android:textColor="@color/application_deep_gray_black"
+        android:textSize="@dimen/eight" 
+        android:visibility="gone"/>
+
+</RelativeLayout>

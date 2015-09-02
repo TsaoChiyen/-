@@ -1,0 +1,1 @@
+package com.chengxin.profile.shopping;import com.chengxin.BaseActivity;public class ShoppingManagerActivity extends BaseActivity {}

@@ -32,19 +32,13 @@ import android.os.Bundle;
  * @author  ZhangJie (zhangjie2@staff.sina.com.cn)
  */
 public class WeiYuanParameters {
-
-
-
 	private Bundle mParameters = new Bundle();
 	private List<String> mKeys = new ArrayList<String>();
 	private HashMap<String,List<MorePicture>> picMap = new HashMap<String, List<MorePicture>>();
-	
-	
-	
+
 	public WeiYuanParameters(){
 		
 	}
-	
 	
 	public void add(String key, String value){
 		if(this.mKeys.contains(key)){	
@@ -56,7 +50,6 @@ public class WeiYuanParameters {
 	}
 	
 	public void addPicture(String key, List<MorePicture> list){
-		
 		if(this.mKeys.contains(key)){	
 			this.picMap.put(key, list);
 		}else{
@@ -64,9 +57,7 @@ public class WeiYuanParameters {
 			this.picMap.put(key, list);
 		}
 	}
-	
-	
-	
+
 	public void remove(String key){
 		mKeys.remove(key);
 		this.mParameters.remove(key);
@@ -77,7 +68,6 @@ public class WeiYuanParameters {
 		this.mParameters.remove(key);
 		mKeys.remove(key);
 	}
-	
 	
 	public int getLocation(String key){
 		if(this.mKeys.contains(key)){
@@ -100,7 +90,6 @@ public class WeiYuanParameters {
 		return null;
 	}
 	
-	
 	public String getValue(String key){
 		String rlt = this.mParameters.getString(key);
 		return rlt;
@@ -112,7 +101,6 @@ public class WeiYuanParameters {
 		return rlt;
 	}
 	
-	
 	public int size(){
 		return mKeys.size();
 	}
@@ -121,12 +109,10 @@ public class WeiYuanParameters {
 		for(int i = 0; i < parameters.size(); i++){
 			this.add(parameters.getKey(i), parameters.getValue(i));
 		}
-		
 	}
 	
 	public void clear(){
 		this.mKeys.clear();
 		this.mParameters.clear();
 	}
-	
 }

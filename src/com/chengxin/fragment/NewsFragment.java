@@ -534,7 +534,6 @@ public class NewsFragment extends BaseFragment implements OnItemClickListener{
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(activity, CityListActivity.class);
 				startActivity(intent);
 			}
@@ -585,7 +584,6 @@ public class NewsFragment extends BaseFragment implements OnItemClickListener{
 	/* 摧毁该Fragment，一般是FragmentActivity 被摧毁的时候伴随着摧毁 */
 	@Override
 	public void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		Log.d(TAG, "channel_id = " + channel_id);
 		//stopTimer();
@@ -612,7 +610,7 @@ public class NewsFragment extends BaseFragment implements OnItemClickListener{
 
 		if(mNewsList != null){
 			for (int i = 0; i < mNewsList.size(); i++) {
-				ImageView imageView = (ImageView)mListView.findViewWithTag(mNewsList.get(i).picture);
+				ImageView imageView = (ImageView)mListView.findViewWithTag(mNewsList.get(i).logo);
 				if(imageView != null){
 					imageView.setImageBitmap(null);
 				}
@@ -632,8 +630,8 @@ public class NewsFragment extends BaseFragment implements OnItemClickListener{
 			if(buffer != null){
 				for(int i = start; i < end; i++){
 
-					if(!TextUtils.isEmpty(mNewsList.get(i).picture)){
-						String url = mNewsList.get(i).picture;
+					if(!TextUtils.isEmpty(mNewsList.get(i).logo)){
+						String url = mNewsList.get(i).logo;
 						ImageView imageView = (ImageView)mListView.findViewWithTag(url);
 						if (imageView != null) {
 							imageView.setImageBitmap(null);

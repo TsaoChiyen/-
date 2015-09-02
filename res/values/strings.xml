@@ -620,5 +620,17 @@
     <string name="tel_phone">联系电话：</string>
     <string name="found_game">游戏</string>
     <string name="found_hot_q">热门广场</string>
-
+    <string name="chat_contact">联系人</string>
+    <string name="chat_friend">朋友圈</string>
+    <string name="chat_backroom">秘室</string>
+    <string name="chat_grouptalk">群聊</string>
+    
+    <!-- 商城、展会相关菜单 -->
+    <string name="menu_applyshop">申请入驻商城</string>
+    <string name="menu_shopmanager">商城管理</string>
+    <string name="menu_applyexhi">申请参加展会</string>
+    <string name="menu_exhimanager">展会管理</string>
+    <string name="menu_applypublic">申请公众号</string>
+    <string name="menu_publicman">公众号管理</string>
+    
 </resources>

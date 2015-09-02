@@ -32,8 +32,5 @@ import android.os.Bundle;
  * @author  ZhangJie (zhangjie2@staff.sina.com.cn)
  */
 public class ResearchParameters extends WeiYuanParameters {
-
-
- 
-	
+ 	
 }
