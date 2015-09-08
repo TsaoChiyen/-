@@ -130,6 +130,7 @@ public class BaseActivity extends FragmentActivity implements OnClickListener{
 		mProgressDialog.setMessage(msg);
 		mProgressDialog.show();
 	}
+	
 	public void showProgressDialog(String msg){
 		mProgressDialog = new CustomProgressDialog(mContext);
 		mProgressDialog.setMessage(msg);

@@ -31,6 +31,7 @@ import com.chengxin.Entity.MorePicture;
 import com.chengxin.Entity.Room;
 import com.chengxin.Entity.RoomList;
 import com.chengxin.Entity.RoomUsrList;
+import com.chengxin.Entity.ShopServiceList;
 import com.chengxin.Entity.UploadImg;
 import com.chengxin.Entity.UserList;
 import com.chengxin.Entity.VersionInfo;
@@ -2234,44 +2235,94 @@ public class WeiYuanInfo  implements Serializable{
 
 
 
-	/***
-	 * 申请成为商户 /shop/api/apply
-	 * @param uid 			true 	登录用户id
-	 * @param name 					商家名称
-	 * @param usrename				 联系人
-	 * @param phone					 电话
-	 * @param address				 地址
-	 * @param lat					 纬度
-	 * @param lng 					经度
-	 * @param content				 备注
-	 * @return
-	 * @throws WeiYuanException 
+	/**
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *  申请成为商户 /shop/api/apply
+     *
+     *	@param name         true    商户名称
+     *	@param address      true    商户地址
+     *	@param username     true    联系人
+     *	@param phone        true    联系电话
+     *	@param useraddress  true    联系地址
+     *	@param lat                  经度
+     *	@param lng                  纬度
+     *	@param city         true    城市
+     *	@param logo                 商户图标
+     *	@param shoppaper            营业执照
+     *	@param authpaper            授权证书
+     *	@param bank                 银行名称
+     *	@param bankname             银行用户名
+     *	@param bankcard             银行账号
+     *	@param content              备注信息
+     *
+	 *  @return
+     *
+	 *  @throws WeiYuanException
 	 */
-	public WeiYuanState applyMerchant(String name,String username,String phone,
-			String address,String lat,String lng,String content) throws WeiYuanException{
-		WeiYuanParameters bundle = new WeiYuanParameters();
-		if((name == null || name.equals(""))
-				|| (username == null || username.equals(""))
-				|| (phone == null || phone.equals(""))
-				|| (address == null || address.equals(""))
-				|| (lat == null || lat.equals(""))
-				|| (lng == null || lng.equals(""))){
+	public WeiYuanState applyMerchant(String name,
+                                      String address,
+                                      String username,
+                                      String phone,
+                                      String useraddress,
+                                      String lat,
+                                      String lng,
+                                      String city,
+                                      String logo,
+                                      String shoppaper,
+                                      String authpaper,
+                                      String bank,
+                                      String bankuser,
+                                      String account,
+                                      String content) throws WeiYuanException{
+		if ((name == null || name.equals("")) ||
+            (username == null || username.equals("")) ||
+            (phone == null || phone.equals(""))	||
+            (address == null || address.equals(""))	||
+            (useraddress == null || useraddress.equals(""))	||
+            (city == null || city.equals("")) ){
 			return null;	
 		}
+		
+		WeiYuanParameters bundle = new WeiYuanParameters();
+		
 		bundle.add("name",name);
 		bundle.add("username", username);
 		bundle.add("phone", phone);
-		bundle.add("address", address);
-		if(content != null && !content.equals("")){
-			bundle.add("content", content);
-		}
+        bundle.add("address", address);
+        bundle.add("useraddress", useraddress);
+        bundle.add("city", city);
 
-		bundle.add("lat", lat);
-		bundle.add("lng", lng);
-		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
-		String url = SERVER_PREFIX  + "/shop/api/apply";
-		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
-		if(reString != null && !reString.equals("") && !reString.equals("null") /* && reString.startsWith("{")*/){
+        if (lat != null && !lat.equals(""))             bundle.add("lat", lat);
+        if (lng != null && !lng.equals(""))             bundle.add("lng", lng);
+        if (bank != null && !bank.equals(""))           bundle.add("bank", bank);
+        if (bankuser != null && !bankuser.equals(""))   bundle.add("bankName", bankuser);
+        if (account != null && !account.equals(""))     bundle.add("bankCard", account);
+        if (content != null && !content.equals(""))     bundle.add("content", content);
+
+        if(logo!=null && !logo.equals("") ||
+           shoppaper!=null && !shoppaper.equals("") ||
+           authpaper!=null && !authpaper.equals("") ){
+            List<MorePicture> listPic = new ArrayList<MorePicture>();
+            
+            if (logo != null && !logo.equals(""))
+                listPic.add(new MorePicture("logo",logo));;
+            
+            if (shoppaper != null && !shoppaper.equals(""))
+                listPic.add(new MorePicture("shopPaper",shoppaper));;
+            
+            if (authpaper != null && !authpaper.equals(""))
+                listPic.add(new MorePicture("authPaper",authpaper));;
+            
+            bundle.addPicture("pic", listPic);
+        }
+
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+		
+		String url = SERVER_PREFIX + "/shop/api/apply";
+		String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+		
+		if (reString != null && !reString.equals("") && !reString.equals("null") ) {
 			try {
 				return new WeiYuanState(new JSONObject(reString));
 			} catch (JSONException e) {
@@ -2279,13 +2330,9 @@ public class WeiYuanInfo  implements Serializable{
 				return null;
 			}
 		}
+		
 		return null;
 	}
-
-	//
-
-
-
 
 	//+++++++++2015-02-02 商户 2015-02-02 ++++++++++
 	/**
@@ -2579,4 +2626,215 @@ public class WeiYuanInfo  implements Serializable{
 		
 		return null;
 	}
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	客服列表(/shop/Api/serviceList)
+     *
+     *  @param  shopid: 商家 ID
+     */
+    public ShopServiceList serviceListWithShopId(int shopid) throws WeiYuanException {
+        if (shopid > 0) {
+            WeiYuanParameters bundle = new WeiYuanParameters();
+            bundle.add("shopid", String.valueOf(shopid));
+            bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+
+            String url = SERVER_PREFIX + "/shop/Api/serviceList";
+			
+            try {
+            	String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+	    		if(reString != null && !reString.equals("") && !reString.equals("null")){
+	    			return new ShopServiceList(reString);
+	    		}
+			} catch (WeiYuanException e) {
+				e.printStackTrace();
+			}
+        }
+        
+		return null;
+    }
+    
+    /**
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	设置银行信息(/shop/api/editBank)
+     *
+     *	@param  bank    开户行
+     *	@param  user    开户名
+     *	@param  account 账号
+     */
+    public WeiYuanState updateBank(String bank, String user, String account) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+
+        if((bank == null || bank.equals("")) ||
+           (user == null || user.equals("")) ||
+           (account == null || account.equals("")) ) {
+            return null;
+        }
+    
+        bundle.add("bank", bank);
+        bundle.add("bankName", user);
+        bundle.add("bankCard",account);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+    
+        String url = SERVER_PREFIX + "/shop/api/editBank";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.e("editBank", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	添加客服
+     *
+     *  @param  name:           客服名称
+     *  @param  serviceName:    客服账户
+     *
+     */
+    public WeiYuanState addServiceOfShop(String name, String serviceName) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        if((name == null || name.equals("")) ||
+           (serviceName == null || serviceName.equals("")) ) {
+            return null;
+        }
+        
+        bundle.add("name", name);
+        bundle.add("username", serviceName);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/api/addService";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.e("addService", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+		return null;
+    }
+
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	删除客服
+     *
+     *  @param  serviceId:  客服id
+     *
+     */
+    public WeiYuanState delServiceOfShop(String serviceId) throws WeiYuanException
+    {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        if((serviceId == null || serviceId.equals(""))) {
+            return null;
+        }
+        
+        bundle.add("id", serviceId);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/api/delService";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.e("delService", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	商户独立密码设置、修改
+     *
+     *  @param  password:   商户独立密码
+     *  @throws WeiYuanException 
+     *
+     */
+    public WeiYuanState setShopPassword(String password) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        if((password == null || password.equals(""))) {
+            return null;
+        }
+        
+        bundle.add("password", password);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/api/setPassword";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.e("setPassword", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+     }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	商户独立密码验证
+     *
+     *  @param  password:   商户独立密码
+     *  @throws WeiYuanException 
+     *
+     */
+    public WeiYuanState verifyShopPassword(String password) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        if((password == null || password.equals(""))) {
+            return null;
+        }
+        
+        bundle.add("password", password);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/api/verify";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.e("verifyPassword", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+     }
+    
+
 }

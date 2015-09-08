@@ -133,6 +133,11 @@ public class Login implements Serializable {
     public String menuString;
     public List<OrderMenuItem> menuList;
 
+	/**
+     * 有独立的商城密码 0-无 1-有
+     */
+ 	public int hasShopPass;
+
 	/*
 	 * new Login(String.valueOf(contactId),number, String.valueOf(photoId),name,index,"",0,
 	 */
@@ -396,6 +401,11 @@ public class Login implements Serializable {
 			if (!json.isNull("shop")) {
 				shopInfo = new Merchant(json.getString("shop"));
 			}
+
+			if (!json.isNull("hasShopPass")) {
+				hasShopPass = json.getInt("hasShopPass");
+			}
+
 			if (!json.isNull("usertype")) {
 				String usertype = json.getString("usertype");
 				if (usertype.equals("1")) {

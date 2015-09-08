@@ -683,8 +683,6 @@ public class FriensLoopActivity extends BaseActivity implements OnTouchListener,
 				Log.d("may", "path=" + imageFilePath);
 				startPhotoZoom(uri);
 				//ShowBitmap(false);
-
-
 			} else {
 				Log.d("may", "path=" + uri.getPath());
 				Intent intent = new Intent(mContext,FriensLoopActivity.class);

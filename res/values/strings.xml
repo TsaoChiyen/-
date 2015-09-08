@@ -388,6 +388,8 @@
     <string name="complete_user_info">完善资料</string>
     <string name="modify_group_info">修改用户资料</string>
     <string name="modify_pwd">修改密码</string>
+    <string name="setting_pwd">设置密码</string>
+    <string name="verify_pwd">验证密码</string>
     <string name="vlaue_is_null">内容不能为空</string>
     <string name="contact_friend">通讯录朋友</string>
     <string name="search_sub">查找订阅号</string>
@@ -632,5 +634,22 @@
     <string name="menu_exhimanager">展会管理</string>
     <string name="menu_applypublic">申请公众号</string>
     <string name="menu_publicman">公众号管理</string>
+    <string name="shop_info_maintain">商铺信息维护</string>
+    <string name="goods_manager">商品库管理</string>
+    <string name="goods_shelf_manager">商品上架管理</string>
+    <string name="shop_order_manager">商城订单管理</string>
+    <string name="shop_account_manager">商城结款管理</string>
+    <string name="shop_manager">商城管理</string>
+    <string name="business_paper">营业执照</string>
+    <string name="auth_paper">经销授权证书</string>
+    <string name="btn_apply_protocol">入驻协议</string>
+    <string name="chk_agree">同意</string>
+    <string name="bank_name_hint">结账账户开户行</string>
+    <string name="bank_user_hint">结账账户用户名</string>
+    <string name="bank_account_hint">结账账户账号</string>
+    <string name="bank_edit_title">设置银行信息</string>
+    <string name="shop_service_name">客服名称</string>
+    <string name="shop_service_uid">客服账号</string>
+    <string name="add_shop_view_title">添加客服</string>
     
 </resources>

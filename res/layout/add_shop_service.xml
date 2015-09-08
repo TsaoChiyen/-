@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        layout="@layout/title_layout" />
+
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/cirle_edit_bg" >
+
+        <EditText
+            android:id="@+id/service_name"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/shop_service_name"
+            android:paddingLeft="5dp"
+            android:textColor="#808080"
+            android:textColorHint="#808080"
+            android:textSize="@dimen/login_username_text_size" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/cirle_edit_bg" >
+
+        <EditText
+            android:id="@+id/service_uid"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/shop_service_uid"
+            android:paddingLeft="5dp"
+            android:textColor="#808080"
+            android:textColorHint="#808080"
+            android:textSize="@dimen/login_username_text_size" >
+
+            <requestFocus />
+        </EditText>
+    </RelativeLayout>
+    
+</LinearLayout>

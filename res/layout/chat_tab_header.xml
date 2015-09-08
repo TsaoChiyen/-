@@ -699,7 +699,7 @@
                     android:visibility="gone" />
 
                 <RelativeLayout
-                    android:id="@+id/RelativeLayout03"
+                    android:id="@+id/layout_shop_goods"
                     style="@style/main_page_icon_style"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -720,7 +720,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="-17dp"
-                    android:layout_toRightOf="@+id/RelativeLayout03"
+                    android:layout_toRightOf="@+id/layout_shop_goods"
                     android:background="@drawable/message_count_bg"
                     android:gravity="center"
                     android:paddingLeft="5dp"

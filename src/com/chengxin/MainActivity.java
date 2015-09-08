@@ -87,6 +87,7 @@ import com.chengxin.global.GlobleType;
 import com.chengxin.global.ImageLoader;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
+import com.chengxin.profile.shopping.ShoppingManagerActivity;
 import com.chengxin.receiver.NotifySystemMessage;
 import com.chengxin.service.SnsService;
 import com.chengxin.widget.MainSearchDialog;
@@ -105,14 +106,13 @@ import com.chengxin.widget.PopWindows.PopWindowsInterface;
  * @author guolin
  */
 public class MainActivity extends FragmentActivity implements OnClickListener {
-
 	/**
 	 * 定义全局变量
 	 */
-
-	private static final int REQUEST_GET_URI = 101;
-	public static final int REQUEST_GET_BITMAP = 102;
-	public static final int REQUEST_GET_IMAGE_BY_CAMERA = 103;
+	private static final int REQUEST_GET_URI 				= 101;
+	public  static final int REQUEST_GET_BITMAP 			= 102;
+	public  static final int REQUEST_GET_IMAGE_BY_CAMERA 	= 103;
+	protected static final int REQUEST_VERIFY_PASSWORD = 0x104;
 
 	private boolean mIsRegisterReceiver = false;
 
@@ -127,39 +127,18 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private List<PopItem> mPopList = new ArrayList<PopItem>();
 	private PopWindows mPopWindows;
 	
-	/**
-	 * 聊天界面的Fragment
-	 */
-	private ChatFragment chatFragment;
+	private ChatFragment chatFragment;			//< 聊天界面的Fragment	
+	private FoundFragment foundFragment;		//< 发现界面的Fragment	
+	private ContactsFragment contactsFragment;	//< 通讯录界面的Fragment
+	private MerchantFragment mMerChatFragment; 	//< 商户
+	private MyFragment mMyFragment;				//< 商户
 
-	/**
-	 * 发现界面的Fragment
-	 */
-	private FoundFragment foundFragment;
+	private PagerSlidingTabStrip tabs;			//< PagerSlidingTabStrip的实例
+	private DisplayMetrics dm;					//< 获取当前屏幕的密度
 
-	/**
-	 * 通讯录界面的Fragment
-	 */
-	private ContactsFragment contactsFragment;
-
-	/** 商户 */
-	private MerchantFragment mMerChatFragment;
-
-	/** 商户 */
-	private MyFragment mMyFragment;
-	/**
-	 * PagerSlidingTabStrip的实例
-	 */
-	private PagerSlidingTabStrip tabs;
-
-	/**
-	 * 获取当前屏幕的密度
-	 */
-	private DisplayMetrics dm;
-
-	// 自定义的弹出框类
-	SelectPicPopupWindow menuWindow; // 弹出框
-	SelectAddPopupWindow menuWindow2; // 弹出框
+	/** 自定义的弹出框类 */
+	SelectPicPopupWindow menuWindow; 			//< 弹出框
+	SelectAddPopupWindow menuWindow2; 			//< 弹出框
 
 	private Timer mTimer;
 	private StartServiceTask mServiceTask;
@@ -234,10 +213,30 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mPopWindows = new PopWindows(mContext, mPopList, mTitleLayout, new PopWindowsInterface() {
 			@Override
 			public void onItemClick(int position, View view) {
+				Login login = WeiYuanCommon.getLoginResult(mContext);
+
 				switch (position) {
-				case 0:
-					
-					break;
+				case 1:
+				{
+					if (login.isshop == 1) {
+						if (login.hasShopPass == 1) {
+							Intent intent = new Intent();
+							intent.setClass(mContext, ModifyPwdActivity.class);
+							intent.putExtra("type", ModifyPwdActivity.PWD_VERIFY);
+							intent.putExtra("passtype", ModifyPwdActivity.SHOPPING_PWD);
+							startActivityForResult(intent, REQUEST_VERIFY_PASSWORD);
+						} else {
+							Intent shoppingIntent = new Intent();
+							shoppingIntent.setClass(mContext, ShoppingManagerActivity.class);
+							startActivity(shoppingIntent);
+						}
+					} else {
+						Intent shoppingIntent = new Intent();
+						shoppingIntent.setClass(mContext, ApplyMerchantActivity.class);
+						startActivity(shoppingIntent);
+					}
+				}
+				break;
 
 				default:
 					break;
@@ -277,7 +276,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mTitleLayout = (RelativeLayout) findViewById(R.id.title_layout);
 		
 		mLogIcon = (ImageView) findViewById(R.id.left_icon);
-		mLogIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.actionbar_icon));
+		mLogIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.contact_default_header));
 
 		Login login = WeiYuanCommon.getLoginResult(mContext);
 		
@@ -871,6 +870,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		Log.e("MainActivity-onActivityResult", "insert+++++++");
 		switch (requestCode) {
+		case REQUEST_VERIFY_PASSWORD:
+			if (resultCode == RESULT_OK) {
+				Intent shoppingIntent = new Intent();
+				shoppingIntent.setClass(mContext, ShoppingManagerActivity.class);
+				startActivity(shoppingIntent);
+			}
 		case GlobalParam.LOGIN_REQUEST:
 			if (resultCode == GlobalParam.RESULT_EXIT) {// dl repair
 				// moveTaskToBack(true);

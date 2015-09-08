@@ -108,11 +108,11 @@
                     android:id="@+id/disagree_protrol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:paddingLeft="5dip"
                     android:button="@drawable/protocl_checkbox"
-                    android:textSize="@dimen/forteen"
-                    android:text="同意" />
+                    android:checked="true"
+                    android:paddingLeft="5dp"
+                    android:text="同意"
+                    android:textSize="@dimen/forteen" />
 
                 <TextView
                     android:id="@+id/watch_protrol"

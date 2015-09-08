@@ -176,7 +176,7 @@
                 android:visibility="visible" >
 
                 <RelativeLayout
-                    android:id="@+id/shop_layout"
+                    android:id="@+id/shop_info"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/devider_line"

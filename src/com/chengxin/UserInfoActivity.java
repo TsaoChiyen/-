@@ -70,7 +70,7 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 	
 	private RelativeLayout mShopLayout;
 	private RelativeLayout mTitleLayout;
-	private TextView mShopNameTextViwe;
+	private TextView mShopNameTextView;
 
 	private ImageLoader mImageLoader = new ImageLoader();
 	private Login mLogin;
@@ -125,9 +125,9 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 		mLeftBtn.setOnClickListener(this);
 		mRightBtn.setOnClickListener(this);
 		
-		mShopLayout = (RelativeLayout)findViewById(R.id.shop_layout);
+		mShopLayout = (RelativeLayout)findViewById(R.id.shop_info);
 		mShopLayout.setOnClickListener(this);
-		mShopNameTextViwe = (TextView)findViewById(R.id.shop_name) ;
+		mShopNameTextView = (TextView)findViewById(R.id.shop_name) ;
 
 
 
@@ -254,7 +254,7 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 		if(mLogin.isshop == 1){
 			mShopLayout.setVisibility(View.VISIBLE);
 			if(mLogin.shopInfo != null && mLogin.shopInfo.name != null){
-				mShopNameTextViwe.setText(mLogin.shopInfo.name);
+				mShopNameTextView.setText(mLogin.shopInfo.name);
 			}
 			
 		}
@@ -604,7 +604,7 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 			intent.putExtra("toUserID", mLogin.uid);
 			startActivity(intent);
 			break;
-		case R.id.shop_layout: //商品列表
+		case R.id.shop_info: //商品列表
 			if(mLogin == null || mLogin.shopInfo == null){
 				return;
 			}

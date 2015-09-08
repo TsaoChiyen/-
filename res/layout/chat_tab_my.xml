@@ -258,7 +258,7 @@
             android:visibility="visible" >
 
             <RelativeLayout
-                android:id="@+id/RelativeLayout02"
+                android:id="@+id/layout_shop_shelf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
 
@@ -272,7 +272,7 @@
                     android:visibility="gone" />
 
                 <RelativeLayout
-                    android:id="@+id/RelativeLayout01"
+                    android:id="@+id/layout_shop_order"
                     style="@style/main_page_icon_style"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -293,7 +293,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="-17dp"
-                    android:layout_toRightOf="@+id/RelativeLayout01"
+                    android:layout_toRightOf="@+id/layout_shop_order"
                     android:background="@drawable/message_count_bg"
                     android:gravity="center"
                     android:paddingLeft="5dp"
@@ -308,7 +308,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@+id/RelativeLayout02"
+                android:layout_toRightOf="@+id/layout_shop_shelf"
                 android:orientation="vertical" >
 
                 <RelativeLayout
@@ -368,7 +368,7 @@
                     android:visibility="gone" />
 
                 <RelativeLayout
-                    android:id="@+id/RelativeLayout04"
+                    android:id="@+id/layout_shop_account"
                     style="@style/main_page_icon_style"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -389,7 +389,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="-17dp"
-                    android:layout_toRightOf="@+id/RelativeLayout04"
+                    android:layout_toRightOf="@+id/layout_shop_account"
                     android:background="@drawable/message_count_bg"
                     android:gravity="center"
                     android:paddingLeft="5dp"

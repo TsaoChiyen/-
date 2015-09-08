@@ -352,5 +352,58 @@
         <item >shu_ma_icon</item>
         <item >xiu_xian_icon</item>
     </string-array>
-
+    <string-array name="bank_array">
+        <item>中国工商银行</item>
+        <item>中国农业银行</item>
+        <item>中国银行</item>
+        <item>中国建设银行</item>
+        <item>交通银行</item>
+        <item>中信银行</item>
+        <item>中国光大银行</item>
+        <item>华夏银行</item>
+        <item>中国民生银行</item>
+        <item>招商银行</item>
+        <item>兴业银行</item>
+        <item>广发银行</item>
+        <item>平安银行</item>
+		<item>上海浦东发展银行</item>
+        <item>恒丰银行</item>
+        <item>浙商银行</item>
+        <item>渤海银行</item>
+        <item>中国邮政储蓄银行</item>
+    </string-array>
+    <string-array name="date_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+    
 </resources>
