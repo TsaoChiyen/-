@@ -104,19 +104,18 @@ public class ModifyPwdActivity extends BaseActivity{
 						}
 					}
 					
-					String hintMsg =state.errorMsg;
-					
-					if(hintMsg == null || hintMsg.equals("") ){
-						hintMsg =mContext.getResources().getString(R.string.modity_success) ;
-					}
-					
-					Toast.makeText(mContext, hintMsg, Toast.LENGTH_LONG).show();
+//					String hintMsg =state.errorMsg;
+//					
+//					if(hintMsg != null && !hintMsg.equals("") ){
+//						Toast.makeText(mContext, hintMsg, Toast.LENGTH_LONG).show();
+//					}
+//					
 					Intent intent = new Intent();
 					intent.putExtra("pos", mpos);
 					setResult(RESULT_OK, intent);
 					ModifyPwdActivity.this.finish();
 				}else{
-					String hintMsg =state.errorMsg;
+					String hintMsg = state.errorMsg;
 					
 					if (hintMsg == null || hintMsg.equals("") ) {
 						hintMsg = mContext.getResources().getString(R.string.commit_data_error);

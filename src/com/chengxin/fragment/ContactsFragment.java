@@ -1,9 +1,10 @@
 package com.chengxin.fragment;
 
-import java.io.UnsupportedEncodingException;
+//import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -18,24 +19,25 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
-import android.util.Log;
+//import android.text.TextUtils;
+//import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
+//import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+//import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+//import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chengxin.MyGroupListActivity;
 import com.chengxin.NewFriendsActivity;
-import com.chengxin.PublicNumberActivity;
+//import com.chengxin.PublicNoActivity;
+//import com.chengxin.PublicNumberActivity;
 import com.chengxin.R;
 import com.chengxin.UserInfoActivity;
 import com.chengxin.DB.DBHelper;
@@ -48,7 +50,7 @@ import com.chengxin.global.GlobalParam;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;
 import com.chengxin.net.WeiYuanException;
-import com.chengxin.sortlist.CharacterParser;
+//import com.chengxin.sortlist.CharacterParser;
 import com.chengxin.sortlist.PinYin;
 import com.chengxin.sortlist.PinyinComparator;
 import com.chengxin.sortlist.SideBar;
@@ -77,7 +79,7 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 
 	private MyPullToRefreshListView mContainer;
 	private TextView mRefreshViewLastUpdated;
-	private LinearLayout mCategoryLinear;
+//	private LinearLayout mCategoryLinear;
 	private boolean mIsRefreshing = false;
 
 	private ListView sortListView;
@@ -85,11 +87,11 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 	private TextView dialog;
 	private SortAdapter mAdapter;
 
-	private static boolean mInit;
+//	private static boolean mInit;
 	/**
 	 * 汉字转换成拼音的类
 	 */
-	private CharacterParser characterParser;
+//	private CharacterParser characterParser;
 	public List<Login> mSourceDateList = new ArrayList<Login>();
 
 	/**
@@ -104,7 +106,7 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 	private List<Group> mGroupList = new ArrayList<Group>();
 	private GroupList mGroup;
 
-	private String mNewFriendsString, mChatString, mGongZongString;
+	private String mNewFriendsString, mChatString;//, mGongZongString;
 
 	/**
 	 * 加载控件
@@ -127,7 +129,7 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 		registerBoardCast();
 		mNewFriendsString = mParentContext.getResources().getString(R.string.new_friends_menu);
 		mChatString = mParentContext.getResources().getString(R.string.chat_menu);
-        mGongZongString= mParentContext.getResources().getString(R.string.gongzong_menu);
+//        mGongZongString= mParentContext.getResources().getString(R.string.gongzong_menu);
 		sideBar = (SideBar) mView.findViewById(R.id.sidrbar);
 		dialog = (TextView) mView.findViewById(R.id.dialog);
 		sideBar.setTextView(dialog);
@@ -155,7 +157,7 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 			}
 		});
 
-		mCategoryLinear = (LinearLayout) mView.findViewById(R.id.category_linear);
+//		mCategoryLinear = (LinearLayout) mView.findViewById(R.id.category_linear);
 		mRefreshViewLastUpdated = (TextView) mView.findViewById(R.id.pull_to_refresh_time);
 		mContainer = (MyPullToRefreshListView) mView.findViewById(R.id.container);
 		sortListView = mContainer.getList();
@@ -182,11 +184,12 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 						Intent groupListIntent = new Intent();
 						groupListIntent.setClass(mParentContext, MyGroupListActivity.class);
 						startActivity(groupListIntent);
-					} else if (login.remark.equals(mParentContext.getResources().getString(R.string.public_number))) {
-						// 进入公众号页面
-						Intent groupListIntent = new Intent();
-						groupListIntent.setClass(mParentContext, PublicNumberActivity.class);
-						startActivity(groupListIntent);
+//					} else if (login.remark.equals(mParentContext.getResources().getString(R.string.public_number))) {
+//						// 进入公众号页面
+//						Intent groupListIntent = new Intent();
+//						groupListIntent.setClass(mParentContext, PublicNoActivity.class);
+////						groupListIntent.setClass(mParentContext, PublicNumberActivity.class);
+//						startActivity(groupListIntent);
 					} else {// 进入好友资料页面
 						Intent userInfoIntent = new Intent();
 						userInfoIntent.setClass(mParentContext, UserInfoActivity.class);
@@ -299,7 +302,7 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		mInit = true;
+//		mInit = true;
 
 		// Log.e("ContactsFragment-onAttach", "onAttach_insert+++");
 	}
@@ -312,7 +315,7 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 		super.onCreate(savedInstanceState);
 		// setHasOptionsMenu(true);
 		mParentContext = (Context) ContactsFragment.this.getActivity();
-		characterParser = CharacterParser.getInstance();
+//		characterParser = CharacterParser.getInstance();
 
 		pinyinComparator = new PinyinComparator();
 		// Log.e("ContactsFragment-onCreate", "onCreate_insert+++");
@@ -337,7 +340,7 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 			List<Login> tempList = new ArrayList<Login>();
 			tempList.add(new Login("↑", "", mNewFriendsString, mNewFriendsString, 1, WeiYuanCommon.getContactTip(mParentContext)));
 			tempList.add(new Login("↑", "", mChatString, mChatString, 1));
-			tempList.add(new Login("↑", "", mGongZongString, mGongZongString, 1));
+//			tempList.add(new Login("↑", "", mGongZongString, mGongZongString, 1));
 			for (int i = 0; i < mGroupList.size(); i++) {
 				if (mGroupList.get(i).mStarList != null && mGroupList.get(i).mStarList.size() > 0) {
 					tempList.addAll(mGroupList.get(i).mStarList);
@@ -366,7 +369,7 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 	 * @param loadType
 	 */
 	private void getUserList(final int loadType) {
-		int i = loadType;
+//		int i = loadType;
 		new Thread() {
 
 			@Override
@@ -390,7 +393,7 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 										List<Login> tempList = new ArrayList<Login>();
 										tempList.add(new Login("↑", "", mNewFriendsString, mNewFriendsString, 1, WeiYuanCommon.getContactTip(mParentContext)));
 										tempList.add(new Login("↑", "", mChatString, mChatString, 1));
-                                        tempList.add(new Login("↑", "", mGongZongString, mGongZongString, 1));
+//                                        tempList.add(new Login("↑", "", mGongZongString, mGongZongString, 1));
 
 										if (mGroup.mGroupList != null) {
 											mGroupList.addAll(mGroup.mGroupList);
@@ -614,6 +617,7 @@ public class ContactsFragment extends Fragment implements OnChangeStateListener 
 				}
 
 				List<Login> tempList = (List<Login>) msg.obj;
+				
 				if (tempList != null && tempList.size() > 0) {
 					mSourceDateList.addAll(tempList);
 				}

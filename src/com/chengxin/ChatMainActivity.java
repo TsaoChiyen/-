@@ -3564,7 +3564,7 @@ public class ChatMainActivity extends BaseActivity implements OnItemLongClickLis
                                                     1, new PopWindows.PopWindowsInterface() {
 
                                                         @Override
-                                                        public void onItemClick(int position, View view) {
+                                                        public void onItemClick(int dataId, int position, View view) {
                                                             String jumpUrl = mChildMenuList.get(position).url;
                                                             if (!TextUtils.isEmpty(jumpUrl)) {
                                                                 Intent intent = new Intent(mContext, BrowserActivity.class);

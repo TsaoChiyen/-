@@ -16,7 +16,6 @@ import com.chengxin.org.json.JSONObject;
  *
  */
 public class Goods implements Serializable {
-
 	/**
 	 * 
 	 */
@@ -45,7 +44,7 @@ public class Goods implements Serializable {
 
     public WeiYuanState state;          //< 返回的状态对象
     
-    public int selected;                //< ui操作，是否选择
+    public boolean selected;            //< ui操作，是否选择
 
 	public Goods() {
 		super();
@@ -70,7 +69,6 @@ public class Goods implements Serializable {
 			e.printStackTrace();
 		}
 	}	
-
 
 	private void initCompent(JSONObject json) throws JSONException{
 		if(json == null || json.equals("")){
@@ -115,7 +113,7 @@ public class Goods implements Serializable {
         number      = json.getInt("number");
         status      = json.getInt("status");
         count       = json.getInt("count");
-        selected    = 0;
+        selected    = false;
 
         if(!json.isNull("picture")){
 			String picString = json.getString("picture");
@@ -134,7 +132,7 @@ public class Goods implements Serializable {
 			}
 		}
 		
-		if(!json.isNull("comment")){
+		if(!json.isNull("comment")) {
 			String commentString = json.getString("comment");
             
 			if((commentString != null && !commentString.equals(""))
@@ -142,9 +140,23 @@ public class Goods implements Serializable {
 				comment = new GoodsComment(json.getJSONObject("comment"));
 			}
 		}
-		
-
 	}
-
+    
+    public static List<Goods> constructGoodsList(JSONArray array){
+        try {
+            List<Goods> goodsList = new ArrayList<Goods>();
+            int size = array.length();
+            
+            for (int i = 0; i < size; i++) {
+                goodsList.add(new Goods(array.getJSONObject(i)));
+            }
+            
+            return goodsList;
+        } catch (JSONException jsone) {
+            jsone.printStackTrace();
+        }
+        
+        return null;
+    }
 
 }

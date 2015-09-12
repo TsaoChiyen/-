@@ -313,8 +313,8 @@ public class MyAlbumActivity extends BaseActivity implements OnClickListener, Re
 		mPopWindows = new PopWindows(mContext, mPopList, mTitleLayout, new PopWindowsInterface() {
 
 			@Override
-			public void onItemClick(int position, View view) {
-				switch (position) {
+			public void onItemClick(int dataId, int position, View view) {
+				switch (dataId) {
 				case 1://消息列表
 					Intent intent = new Intent();
 					intent.setClass(mContext, MyMovingMessageListActivity.class);

@@ -19,6 +19,7 @@
     <color name="title_bar_text_color">#b3b3b3</color>
     <color name="chat_username_text_color">#111111</color>
     <color name="order_selected_color">#dadada</color>
+    <color name="settle_unselected_color">#dadada</color>
     <color name="order_price_color">#CC3333</color>
     <color name="high_lighted_color">#C4E0F5</color>
     <color name="login_icon_bg">#005ead</color>

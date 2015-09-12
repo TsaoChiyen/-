@@ -147,8 +147,8 @@ public class MettingActivity extends BaseActivity implements OnChangeStateListen
 		mPopWindows = new PopWindows(mContext, mPopList, mTitleLayout, new PopWindowsInterface() {
 
 			@Override
-			public void onItemClick(int position, View view) {
-				switch (position) {
+			public void onItemClick(int dataId, int position, View view) {
+				switch (dataId) {
 				case 1://进行中的秘室
 					mMyAlbum = null;
 					mSelectType = 1;

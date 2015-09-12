@@ -31,8 +31,17 @@ public class PopItem implements Serializable{
 		super();
 		this.id = id;
 		this.option = menu_name;
-
+		
+		if(menu_name!=null && !menu_name.equals("")){
+			try {
+				this.resource_id = FeatureFunction.getSourceIdByName(menu_name);
+			} catch (Exception e) {
+				e.printStackTrace();
+				this.resource_id = 0;
+			}
+		}
 	}
+
 	public PopItem() {
 		super();
 	}

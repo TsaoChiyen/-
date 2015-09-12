@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/goods_icon"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="false"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/actionbar_bg_selector" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/goods_icon"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/bar_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/application_deep_gray_black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/application_black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/goods_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/application_deep_gray_black"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btn_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:visibility="invisible" >
+
+        <Button
+            android:id="@+id/btn_edit"
+            style="@style/back_btn_style"
+            android:layout_width="40dp"
+            android:layout_height="24dp"
+            android:layout_margin="5dp"
+            android:text="编辑"
+            android:textColor="@color/application_deep_gray_black" />
+
+        <Button
+            android:id="@+id/btn_del"
+            style="@style/back_btn_style"
+            android:layout_width="40dp"
+            android:layout_height="24dp"
+            android:layout_margin="5dp"
+            android:text="删除"
+            android:textColor="@color/application_deep_gray_black" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -21,16 +21,6 @@ public class OrderList implements Serializable{
 	public OrderList(String reString){
 		try {
 			JSONObject json = new JSONObject(reString);
-			if(!json.isNull("data")){
-				JSONArray array = json.getJSONArray("data");
-				if(array != null){
-					mOrderList = new ArrayList<Order>();
-					List<Order> tempList = Order.constructOrderList(array);
-					if(tempList != null){
-						mOrderList.addAll(tempList);
-					}
-				}
-			}
 			
 			if(!json.isNull("state")){
 				mState = new WeiYuanState(json.getJSONObject("state"));
@@ -39,9 +29,39 @@ public class OrderList implements Serializable{
 			if(!json.isNull("pageInfo")){
 				mPageInfo = new PageInfo(json.getJSONObject("pageInfo"));
 			}
+
+			if(!json.isNull("data")){
+				JSONArray array = json.getJSONArray("data");
+
+				if(array != null){
+					mOrderList = new ArrayList<Order>();
+					List<Order> tempList = Order.constructOrderList(array);
+					if(tempList != null){
+						mOrderList.addAll(tempList);
+					}
+				}
+			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public int size() {
+		if (mOrderList != null)		return mOrderList.size();
+		else return 0;
+	}
+
+	public float totalPrice() {
+		float price = 0;
 		
+		if (mOrderList != null && mOrderList.size() > 0) {
+			for (int i = 0; i < mOrderList.size(); i++) {
+				Order order = mOrderList.get(i);
+				
+				price += order.totalPrice;
+			}
+		}
+
+		return price;
 	}
 }

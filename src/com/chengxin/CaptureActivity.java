@@ -57,6 +57,7 @@ public class CaptureActivity extends BaseActivity implements Callback {
 	private boolean playBeep;
 	private static final float BEEP_VOLUME = 0.10f;
 	private boolean vibrate;
+	private int mScanMode = 0;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -64,6 +65,9 @@ public class CaptureActivity extends BaseActivity implements Callback {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.capture);
 		mContext = this;
+		
+		mScanMode = getIntent().getIntExtra("scanmode", 0);
+		
 		setTitleContent(R.drawable.back_btn,0,R.string.scan_qr_code);
 		mLeftBtn.setOnClickListener(this);
 		CameraManager.init(getApplication());
@@ -118,6 +122,15 @@ public class CaptureActivity extends BaseActivity implements Callback {
 		inactivityTimer.onActivity();
 		playBeepSoundAndVibrate();
 		String codeUrl = result.getText();
+		
+		if (mScanMode == 1) {
+			Intent intent = new Intent();
+			intent.putExtra("data", codeUrl);
+			setResult(RESULT_OK, intent);
+			this.finish();
+			return;
+		}
+		
 		if (codeUrl.equals("")) {
 			Toast.makeText(CaptureActivity.this, "Scan failed!", Toast.LENGTH_SHORT).show();
 		}else{
@@ -130,7 +143,6 @@ public class CaptureActivity extends BaseActivity implements Callback {
 		}
 
 	}
-
 	
 	private void getGroupDetail(final String groupId){
 		new Thread(){

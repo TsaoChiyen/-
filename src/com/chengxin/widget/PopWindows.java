@@ -23,7 +23,7 @@ import com.chengxin.global.FeatureFunction;
 public class PopWindows {
 
 	public interface PopWindowsInterface {
-		public void onItemClick(int position,View view);
+		public void onItemClick(int dataId, int position, View view);
 	}
 	
 	
@@ -187,11 +187,10 @@ public class PopWindows {
 		@Override
 		public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 				long arg3) {
-			// TODO Auto-generated method stub
 			hideGroupPopView();
 			/*Toast.makeText(mContext,moreList.get(position).get("share_key"),
 					Toast.LENGTH_LONG).show();*/
-			myInterface.onItemClick(morList.get(position).id,arg1);
+			myInterface.onItemClick(morList.get(position).id, position, arg1);
 		}
 	};
 	
@@ -251,7 +250,15 @@ public class PopWindows {
 			xLoaction = loc[0]+FeatureFunction.dip2px(mContext, 10);
 			yLoaction = loc[1]-mBelowView.getContext().getResources().getDimensionPixelSize(R.dimen.test_size);
 		}
-		mMyPopWindow.setAnimationStyle(R.style.mystyle);
+		
+		if (gravity == Gravity.LEFT) {
+			mMyPopWindow.setAnimationStyle(R.style.leftstyle);
+		} else if (gravity == Gravity.CENTER) {
+			mMyPopWindow.setAnimationStyle(R.style.centerstyle);
+		} else {
+			mMyPopWindow.setAnimationStyle(R.style.mystyle);
+		}
+
 		mMyPopWindow.showAtLocation(mBelowView, gravity|Gravity.TOP, xLoaction ,yLoaction);
 		//mMyPopWindow.showAtLocation(mListView, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, FeatureFunction.dip2px(mContext, 70));
 	}

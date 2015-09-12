@@ -181,8 +181,8 @@ public class FavoriteDetailActivity extends BaseActivity {
 		mPopWindows = new PopWindows(mContext, mPopList, mRightBtn, new PopWindowsInterface() {
 
 			@Override
-			public void onItemClick(int position, View view) {
-				switch (position) {
+			public void onItemClick(int dataId, int position, View view) {
+				switch (dataId) {
 				case 1://发送给朋友
 					MessageInfo  messageInfo = new MessageInfo();
 					messageInfo.time = System.currentTimeMillis();

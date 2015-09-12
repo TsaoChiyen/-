@@ -30,7 +30,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -47,7 +47,6 @@ import android.provider.MediaStore.MediaColumns;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
-
 import com.alibaba.fastjson.JSON;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -412,6 +411,24 @@ public class FeatureFunction {
 				format = new SimpleDateFormat("MM月dd日 ");
 			}
 		}
+		return format.format(date);
+	}
+
+	public static String getDateString(Context context, Date date,
+			int timetype) {
+		SimpleDateFormat format = null;
+	    if (timetype == 0) {
+	    	format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	    } else if (timetype == 1){
+	    	format = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+	    } else if (timetype == 2){
+	    	format = new SimpleDateFormat("yyyy-MM-dd");
+	    } else if (timetype == 3){
+	    	format = new SimpleDateFormat("M月dd日 HH:mm");
+	    } else if (timetype == 4){
+	    	format = new SimpleDateFormat("yyyy年M月d日");
+	    }
+
 		return format.format(date);
 	}
 
@@ -1208,9 +1225,10 @@ public class FeatureFunction {
 	public static int getSourceIdByName(String imageName){
 		int sourceID = 0;
 		try { 
-			Field field = Class.forName("com.weiyuan.R$drawable").getField(imageName); 
+			Field field = Class.forName("com.chengxin.R$drawable").getField(imageName); 
 			sourceID = field.getInt(field); 
 		} catch (Exception e) { 
+			e.printStackTrace();
 		} 
 
 		return sourceID;

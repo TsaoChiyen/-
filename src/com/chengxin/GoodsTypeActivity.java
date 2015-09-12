@@ -51,6 +51,12 @@ public class GoodsTypeActivity extends BaseActivity{
 	}
 
 	private void getGoodsType(){
+		if (MerchantMenu.hasData()) {
+			mMenuList.addAll(MerchantMenu.getMenuList());
+			initMenu();
+			return;
+		}
+		
 		if(!WeiYuanCommon.getNetWorkState()){
 			mBaseHandler.sendEmptyMessage(BASE_HIDE_PROGRESS_DIALOG);
 			mBaseHandler.sendEmptyMessage(BASE_MSG_NETWORK_ERROR);
@@ -90,13 +96,16 @@ public class GoodsTypeActivity extends BaseActivity{
 			TextView menuTextView = (TextView)view.findViewById(R.id.menu_name);
 			
 			String menuIconString = mMenuList.get(i).logo;
+			
 			if(menuIconString == null || menuIconString.equals("")){
 				icon.setImageResource(R.drawable.all_type_icon);
 			}else{
 				mImageLoader.getBitmap(mContext, icon, null,menuIconString,0,false, false,false);
 			}
+			
 			final int index = i;
 			menuTextView.setText(mMenuList.get(i).name);
+			
 			view.setOnClickListener(new OnClickListener() {
 				
 				@Override
@@ -107,6 +116,7 @@ public class GoodsTypeActivity extends BaseActivity{
 					GoodsTypeActivity.this.finish();
 				}
 			});
+			
 			mMenuLayout.addView(view);
 		}
 	}
@@ -127,7 +137,6 @@ public class GoodsTypeActivity extends BaseActivity{
 		}
 	}
 
-
 	private Handler mHandler = new Handler(){
 
 		@Override
@@ -135,12 +144,8 @@ public class GoodsTypeActivity extends BaseActivity{
 			super.handleMessage(msg);
 			switch (msg.what) {
 			case GlobalParam.MSG_SHOW_MERCHANT_MENU_TYPE:
-				MerchantMenu menu = (MerchantMenu)msg.obj;
-				if(menu != null && menu.menuList!=null && menu.menuList.size()>0){
-					if(mMenuList != null && mMenuList.size() >0){
-						mMenuList.clear();
-					}
-					mMenuList.addAll(menu.menuList);
+				if (MerchantMenu.hasData()) {
+					mMenuList.addAll(MerchantMenu.getMenuList());
 					initMenu();
 				}
 				break;

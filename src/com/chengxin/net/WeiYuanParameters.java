@@ -101,7 +101,7 @@ public class WeiYuanParameters {
 		return rlt;
 	}
 	
-	public int size(){
+	public int size() {
 		return mKeys.size();
 	}
 	

@@ -444,12 +444,12 @@ OnChangeStateListener, OnItemClickListener{
 			switch (msg.what) {
 			case GlobalParam.MSG_SHOW_MERCHANT_MENU_TYPE:
 				MerchantMenu menu = (MerchantMenu)msg.obj;
-				if(menu != null && menu.menuList!=null && menu.menuList.size()>0){
+				if(menu != null && menu.getMenuList()!=null && menu.getMenuList().size()>0){
 					if(mMenuList != null && mMenuList.size() >0){
 						mMenuList.clear();
 					}
 					mMenuList.add(new MerchantMenu(0,"all_type_icon","全部"));
-					mMenuList.addAll(menu.menuList);
+					mMenuList.addAll(menu.getMenuList());
 					initMenu();
 					mContainer.clickrefresh();
 				}

@@ -28,11 +28,12 @@ import com.chengxin.Entity.MessageInfo;
 import com.chengxin.Entity.MessageResult;
 import com.chengxin.Entity.MessageType;
 import com.chengxin.Entity.MorePicture;
+import com.chengxin.Entity.OrderList;
 import com.chengxin.Entity.Room;
 import com.chengxin.Entity.RoomList;
 import com.chengxin.Entity.RoomUsrList;
+import com.chengxin.Entity.ShopGoodsList;
 import com.chengxin.Entity.ShopServiceList;
-import com.chengxin.Entity.UploadImg;
 import com.chengxin.Entity.UserList;
 import com.chengxin.Entity.VersionInfo;
 import com.chengxin.Entity.WeiYuanState;
@@ -84,7 +85,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX+ "/user/apiother/regist";
 		String reString = requestProtocol(url, bundle, Utility.HTTPMETHOD_POST);
 		if(reString != null && !reString.equals("") ){
-			Log.e("reString", reString);
+			Log.d("reString", reString);
 			return reString;
 		}
 		return null;
@@ -607,7 +608,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX + "/user/api/newFriend";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			//Log.e("addFriend", reString);
+			//Log.d("addFriend", reString);
 			return new UserList(reString,1);
 
 		}
@@ -655,7 +656,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX +"/api/user/group";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 		if(reString != null && !reString.equals("") && !reString.equals("null") ){
-			//Log.e("getContactGroupList", reString);
+			//Log.d("getContactGroupList", reString);
 			try {
 				return new UserList(reString,0);
 			} catch (Exception e) {
@@ -684,7 +685,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX + "/api/user/follow";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 		if(reString != null && !reString.equals("") && !reString.equals("null")  && reString.startsWith("{")){
-			//Log.e("reString", reString);
+			//Log.d("reString", reString);
 
 			try {
 				JSONObject json = new JSONObject(reString);
@@ -715,7 +716,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX + "/user/api/black";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 		if(reString != null && !reString.equals("") && !reString.equals("null")  && reString.startsWith("{")){
-			//Log.e("reString", reString);
+			//Log.d("reString", reString);
 
 			try {
 				JSONObject json = new JSONObject(reString);
@@ -751,7 +752,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX +  "/api/user/jubao";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 		if(reString != null && !reString.equals("") && !reString.equals("null")  && reString.startsWith("{")){
-			//Log.e("reString", reString);
+			//Log.d("reString", reString);
 
 			try {
 				JSONObject json = new JSONObject(reString);
@@ -784,7 +785,7 @@ public class WeiYuanInfo  implements Serializable{
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			//Log.e("reString", reString);
+			//Log.d("reString", reString);
 
 			return new UserList(reString,0);
 		}
@@ -807,7 +808,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX +"/user/api/black";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 		if(reString != null && !reString.equals("") && !reString.equals("null")  && reString.startsWith("{")){
-			//Log.e("reString", reString);
+			//Log.d("reString", reString);
 
 			try {
 				JSONObject json = new JSONObject(reString);
@@ -852,7 +853,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX +"/user/api/favorite";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 		if(reString != null && !reString.equals("") && !reString.equals("null")  && reString.startsWith("{")){
-			Log.e("favoreiteMoving", reString);
+			Log.d("favoreiteMoving", reString);
 			try {
 				JSONObject json = new JSONObject(reString);
 				if(!json.isNull("state")){
@@ -883,7 +884,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX +"/user/api/favoriteList";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 		if(reString != null && !reString.equals("") && !reString.equals("null")  && reString.startsWith("{")){
-			Log.e("favoriteList", reString);
+			Log.d("favoriteList", reString);
 			return new Favorite(reString);
 		}
 		return null;
@@ -909,7 +910,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX +"/user/api/deleteFavorite";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 		if(reString != null && !reString.equals("") && !reString.equals("null")  && reString.startsWith("{")){
-			Log.e("favoreiteMoving", reString);
+			Log.d("favoreiteMoving", reString);
 			try {
 				JSONObject json = new JSONObject(reString);
 				if(!json.isNull("state")){
@@ -980,7 +981,7 @@ public class WeiYuanInfo  implements Serializable{
 	public Room createRoom(String groupname, String uids) throws WeiYuanException{
 		WeiYuanParameters bundle = new WeiYuanParameters();
 		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
-		Log.e("createRoom", "groupName:"+groupname);
+		Log.d("createRoom", "groupName:"+groupname);
 		bundle.add("name", groupname);
 		bundle.add("uids", uids);
 		String url = SERVER_PREFIX + "/session/api/add";
@@ -1928,7 +1929,7 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX + "/user/api/sendMessage";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
 		if(reString != null && !reString.equals("") && !reString.equals("null")  && reString.startsWith("{")){
-			Log.e("sendMessage", reString);
+			Log.d("sendMessage", reString);
 			return new MessageResult(reString);
 		}
 
@@ -2216,7 +2217,6 @@ public class WeiYuanInfo  implements Serializable{
 		return null;
 	}
 
-
 	/***
 	 * 商户类别(/shop/api/categroyList)
 	 * @throws WeiYuanException
@@ -2226,10 +2226,11 @@ public class WeiYuanInfo  implements Serializable{
 		String url = SERVER_PREFIX  + "/shop/api/categroyList";
 		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,0);
+
 		if(reString != null && !reString.equals("") && !reString.equals("null") /* && reString.startsWith("{")*/){
 			return new MerchantMenu(reString);
-
 		}
+		
 		return null;
 	}
 
@@ -2357,7 +2358,7 @@ public class WeiYuanInfo  implements Serializable{
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			//Log.e("reString", reString);
+			//Log.d("reString", reString);
 
 			return new MerchantEntity(reString);
 		}
@@ -2388,7 +2389,7 @@ public class WeiYuanInfo  implements Serializable{
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			//Log.e("reString", reString);
+			//Log.d("reString", reString);
 
 			return new GoodsEntity(reString);
 		}
@@ -2413,7 +2414,7 @@ public class WeiYuanInfo  implements Serializable{
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			Log.e("getGoodsDetail", reString);
+			Log.d("getGoodsDetail", reString);
 			return new Goods(reString);
 		}
 		return null;
@@ -2438,7 +2439,7 @@ public class WeiYuanInfo  implements Serializable{
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			Log.e("getGoodsDetail", reString);
+			Log.d("getGoodsDetail", reString);
 			try {
 				return new WeiYuanState(new JSONObject(reString));
 			} catch (JSONException e) {
@@ -2472,7 +2473,7 @@ public class WeiYuanInfo  implements Serializable{
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			Log.e("getGoodsDetail", reString);
+			Log.d("getGoodsDetail", reString);
 			try {
 				return new CommentGoodsState(new JSONObject(reString));
 			} catch (JSONException e) {
@@ -2501,7 +2502,7 @@ public class WeiYuanInfo  implements Serializable{
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			Log.e("getGoodsDetail", reString);
+			Log.d("getGoodsDetail", reString);
 			return new GoodsCommentEntity(reString);
 		}
 		return null;
@@ -2522,7 +2523,7 @@ public class WeiYuanInfo  implements Serializable{
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			Log.e("getShoppingCartList", reString);
+			Log.d("getShoppingCartList", reString);
 
 			return new MerchantEntity(reString);
 		}
@@ -2542,8 +2543,14 @@ public class WeiYuanInfo  implements Serializable{
 	 * @throws WeiYuanException 
 	 */
 
-	public WeiYuanState submitOrder(String goods,String username,String phone,
-			String address,String content,int shopid			) throws WeiYuanException{
+	public WeiYuanState submitOrder(
+				String goods,
+				String username,
+				String phone,
+				String address,
+				String content,
+				int shopid
+			) throws WeiYuanException{
 		WeiYuanParameters bundle = new WeiYuanParameters();
 
 		if(((goods == null || goods.equals(""))	|| goods.endsWith(","))
@@ -2565,7 +2572,7 @@ public class WeiYuanInfo  implements Serializable{
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			Log.e("submitOrder", reString);
+			Log.d("submitOrder", reString);
 			try {
 				return new WeiYuanState(new JSONObject(reString));
 			} catch (JSONException e) {
@@ -2577,38 +2584,51 @@ public class WeiYuanInfo  implements Serializable{
 
 	
 	/**
-	 * 11.	添加商品(/shop/api/addGoods)
-	 * @param uid 			true	 登录用户id
-	 * @param categoryid	true	int	类别id
-	 * @param logo			true	file	商品Logo
-	 * @param name			true	string	商品名称
-	 * @param price			true	string	商品价格
-	 * @param picture		true	file	商品图册 多张就1 2 3就可以了	
-	 * @param content		false 	string 商品详细
-	 * @param parameter		false 	string 商品规格
-	 * @throws WeiYuanException 
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+	 *  添加商品(/shop/api/addGoods)
+     *
+     *  @param categoryid	true	int	类别id
+	 *  @param logo			true	file	商品Logo
+	 *  @param name			true	string	商品名称
+	 *  @param price		true	string	商品价格
+	 *  @param picture		true	file	商品图册 多张就1 2 3就可以了
+	 *  @param content              string 商品详细
+	 *  @param parameter            string 商品规格
+     *  @param barcode              商品条码
+	 *  @throws WeiYuanException
 	 */
-	public WeiYuanState addGoods(int categoryid,String goodsName,
-				String price,List<MorePicture> picList,String content,
-				String parameter) throws WeiYuanException{		
+	public WeiYuanState addGoods(int categoryid,
+                                 String goodsName,
+                                 String price,
+                                 List<MorePicture> picList,
+                                 String content,
+                                 String parameter,
+                                 String barcode) throws WeiYuanException{
 		WeiYuanParameters bundle = new WeiYuanParameters();
+        
 		if((goodsName == null || goodsName.equals(""))
 				|| (price == null || price.equals(""))
 				|| categoryid == 0 
 				|| (picList == null || picList.size() <= 0)){
 			return null;
 		}
-		bundle.add("categoryid", String.valueOf(categoryid));
+		
+        bundle.add("categoryid", String.valueOf(categoryid));
 		bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
-		bundle.add("name", goodsName);
+        bundle.add("name", goodsName);
+        bundle.add("barcode", barcode);
 		bundle.add("price",price);
-		if(picList!=null && picList.size()>0){
+		
+        if(picList!=null && picList.size()>0){
 			bundle.addPicture("pic", picList);
 		}
-		if(content != null && !content.equals("")){
+		
+        if(content != null && !content.equals("")){
 			bundle.add("content", content);
 		}
-		if(parameter != null && !parameter.equals("")){
+		
+        if(parameter != null && !parameter.equals("")){
 			bundle.add("parameter", parameter);
 		}
 	
@@ -2616,8 +2636,9 @@ public class WeiYuanInfo  implements Serializable{
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			Log.e("submitOrder", reString);
-			try {
+			Log.d("addGoods", reString);
+		
+            try {
 				return new WeiYuanState(new JSONObject(reString));
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -2627,6 +2648,117 @@ public class WeiYuanInfo  implements Serializable{
 		return null;
 	}
     
+    /**
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	修改商品库(/shop/api/editGoods)
+     *
+     *  @param categoryid    商品分类   (必填)
+     *  @param name          商品名称   (必填)
+     *  @param price         商品价格   (必填)
+     *  @param picture       图片(数组)
+     *  @param content       备注
+     *  @param parameter     规格参数
+     *  @param logo          商品图标   (必填)
+     *  @param barcode       商品条码
+     *
+     */
+    public WeiYuanState editGoods(int goodsId,
+                                  int categoryid,
+                                  String goodsName,
+                                  String price,
+                                  List<MorePicture> picList,
+                                  String content,
+                                  String parameter,
+                                  String barcode) throws WeiYuanException{
+        
+        if (goodsId == 0) {
+            return null;
+        }
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+
+        if (categoryid > 0)
+            bundle.add("categoryid", String.valueOf(categoryid));
+
+        if (goodsName != null && !goodsName.equals(""))
+            bundle.add("name", goodsName);
+        
+        if (barcode != null && !barcode.equals(""))
+            bundle.add("barcode", barcode);
+
+        if (price != null && !price.equals(""))
+            bundle.add("price",price);
+        
+        if(picList!=null && picList.size() > 0){
+            bundle.addPicture("pic", picList);
+        }
+        
+        if(content != null && !content.equals("")){
+            bundle.add("content", content);
+        }
+        
+        if(parameter != null && !parameter.equals("")){
+            bundle.add("parameter", parameter);
+        }
+        
+        if (bundle.size() > 0) {
+            bundle.add("id",String.valueOf(goodsId));
+            bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+
+            String url = SERVER_PREFIX + "/shop/api/editGoods";
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if(reString != null && !reString.equals("") && !reString.equals("null")){
+                Log.d("editGoods", reString);
+                
+                try {
+                    return new WeiYuanState(new JSONObject(reString));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+        return null;
+    }
+
+    /**
+     *	Copyright © 2014 sam Inc. All rights reserved.
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	删除产品库(/shop/Api/delGoods)
+     *
+     *  @param goodsIds   产品 ID,多个用“,”逗号隔开
+     *
+     */
+    public WeiYuanState deleteGoods(List<String> goodsIds) throws WeiYuanException {
+        if (goodsIds == null) return null;
+        if (goodsIds.size() == 0) return null;
+        
+        String idsString = goodsIds.toString();
+        idsString = idsString.substring(1, idsString.length() - 1);
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        bundle.add("id", idsString);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/delGoods";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("delGoods", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    
+        return null;
+    }
+
     /**
      *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
      *
@@ -2682,7 +2814,7 @@ public class WeiYuanInfo  implements Serializable{
         String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
         
         if(reString != null && !reString.equals("") && !reString.equals("null")){
-            Log.e("editBank", reString);
+            Log.d("editBank", reString);
             
             try {
                 return new WeiYuanState(new JSONObject(reString));
@@ -2719,7 +2851,7 @@ public class WeiYuanInfo  implements Serializable{
         String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
         
         if(reString != null && !reString.equals("") && !reString.equals("null")){
-            Log.e("addService", reString);
+            Log.d("addService", reString);
             
             try {
                 return new WeiYuanState(new JSONObject(reString));
@@ -2754,7 +2886,7 @@ public class WeiYuanInfo  implements Serializable{
         String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
         
         if(reString != null && !reString.equals("") && !reString.equals("null")){
-            Log.e("delService", reString);
+            Log.d("delService", reString);
             
             try {
                 return new WeiYuanState(new JSONObject(reString));
@@ -2789,7 +2921,7 @@ public class WeiYuanInfo  implements Serializable{
         String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
         
         if(reString != null && !reString.equals("") && !reString.equals("null")){
-            Log.e("setPassword", reString);
+            Log.d("setPassword", reString);
             
             try {
                 return new WeiYuanState(new JSONObject(reString));
@@ -2824,7 +2956,7 @@ public class WeiYuanInfo  implements Serializable{
         String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
         
         if(reString != null && !reString.equals("") && !reString.equals("null")){
-            Log.e("verifyPassword", reString);
+            Log.d("verifyPassword", reString);
             
             try {
                 return new WeiYuanState(new JSONObject(reString));
@@ -2836,5 +2968,387 @@ public class WeiYuanInfo  implements Serializable{
         return null;
      }
     
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	商品库列表
+     *
+     *  @param  categoryid:  分类 ID
+     *  @param  status:      状态 1: 未上架； 2: 已上架
+     *
+     */
+    public ShopGoodsList getShopGoosList(int categoryid, int status) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        if (categoryid > 0) bundle.add("categoryid",    String.valueOf(categoryid));
+        if (status > 0)     bundle.add("status",        String.valueOf(status));
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/productList";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            if(reString != null && !reString.equals("") && !reString.equals("null")){
+                return new ShopGoodsList(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+
+    /**
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	商品上下架
+     *
+     *  @param status:   枚举值:1 下架 2 上架
+     *  @param data:     数据格式:1,200,50 <=>商品 ID,价格,库存
+     *                  这里的 data 应该是ShlefGoods数组
+     *
+     */
+    public WeiYuanState shelfGoods(int status, List <Goods> list) throws WeiYuanException {
+        if (list == null || list.size() == 0) {
+            return null;
+        }
+        
+        if (status < 1 || status > 2) {
+            return null;
+        }
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+
+        String data = "";
+        
+        for (int i = 0; i < list.size(); i++) {
+        	Goods item = list.get(i);
+        	
+        	if (item.name != null) {
+            	String strItem = item.id + "," + String.valueOf(item.price) + "," + String.valueOf(item.number);
+            	
+            	if (i == list.size() - 1) {
+                	data = data + strItem;
+            	} else {
+                	data = data + strItem + ";";
+            	}
+        	}
+        }
+
+        if (data.length() > 0) {
+            bundle.add("data", data);
+            bundle.add("status", String.valueOf(status));
+            bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+            
+            String url = SERVER_PREFIX + "/shop/api/goodStatus";
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if(reString != null && !reString.equals("") && !reString.equals("null")){
+                Log.d("goodStatus", reString);
+                
+                try {
+                    return new WeiYuanState(new JSONObject(reString));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	修改商品库
+     *
+     *  @param goodsId       商品id    (必填)
+     *  @param price         商品价格   (必填)
+     *  @param number        商品库存量
+     *      data:     数据格式:1,200,50 <=>商品 ID,价格,库存
+     *                  这里的 data 应该是ShlefGoods数组
+     */
+    public WeiYuanState editShelfGoods(String goodsId, String price, String number) throws WeiYuanException {
+        if (goodsId == null || goodsId.equals("")  || goodsId.equals("0")) {
+            return null;
+        }
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        String data = goodsId + "," + price + "," + number;
+        
+        if (data.length() > 0) {
+            bundle.add("data", data);
+            bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+            
+            String url = SERVER_PREFIX + "/shop/api/goodStatus";
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if(reString != null && !reString.equals("") && !reString.equals("null")){
+                Log.d("goodStatus", reString);
+                
+                try {
+                    return new WeiYuanState(new JSONObject(reString));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+        return null;
+    }
+
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	订单列表
+     *
+     *  @param status           订单状态
+     *  @param type             用户角色 1： 商家，2： 买家
+     */
+    public OrderList getOrderList(int page, int status, int type) throws WeiYuanException {
+        
+        if (type == 1 || type == 2) {
+            WeiYuanParameters bundle = new WeiYuanParameters();
+
+            bundle.add("type", String.valueOf(type));
+            
+            if (page > 1)   bundle.add("page", String.valueOf(page));
+            if (status > 0) bundle.add("status", String.valueOf(status));
+            bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+            
+            String url = SERVER_PREFIX + "/shop/Api/orderList";
+            
+            try {
+                String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+                if(reString != null && !reString.equals("") && !reString.equals("null")){
+                    return new OrderList(reString);
+                }
+            } catch (WeiYuanException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	订单状态更新
+     *
+     *  @param id        订单 ID
+     *  @param status    1:等待发货
+     *                   2:已发货
+     *                   3:未付款
+     *                   4:退货中
+     *                   5:已退单
+     *                   6:已完成
+     *                   7:已退货
+     *                   8:结款中
+     *                   9:已结款
+     */
+    public WeiYuanState updateOrder(String orderId, String status) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("id", orderId);
+        bundle.add("status", status);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/api/orderStatus";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("orderStatus", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	订单退单处理
+     *
+     *  @param id        订单 ID
+     *  @param reason    退单理由
+     *  @note status     5:已退单
+     */
+    public WeiYuanState retreatOrder(String orderId, String reason) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("id", orderId);
+        bundle.add("status", "5");
+        bundle.add("content", reason);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/api/orderStatus";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("orderStatus", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	订单发货处理
+     *
+     *  @param id           订单 ID
+     *  @param logistics    物流公司
+     *  @param logistics    运单号
+     *  @note status        2:已发货
+     *
+     */
+    public WeiYuanState deliveryOrder(String orderId, String logistics, String waybill) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("id", orderId);
+        bundle.add("status", "2");
+        bundle.add("logcompany", logistics);
+        bundle.add("lognumber", waybill);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/api/orderStatus";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("orderStatus", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	申请结款
+     */
+    public WeiYuanState applySettle(String orderIds) throws WeiYuanException {
+        if (orderIds == null || orderIds.equals("")) {
+            return null;
+        }
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("id", orderIds);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/api/applyPayment";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("applyPayment", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	可结款列表
+     */
+    public OrderList accountSettleable() throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+       
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/paymentList";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            if(reString != null && !reString.equals("") && !reString.equals("null")){
+                return new OrderList(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	历史结款列表
+     */
+    public OrderList accountHistory() throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/paymentHis";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            if(reString != null && !reString.equals("") && !reString.equals("null")){
+                return new OrderList(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	异常款项申诉
+     *
+     *  @param  content: 申诉内容
+     */
+    public WeiYuanState abnormalAppeal(String content) throws WeiYuanException {
+        if (content == null || content.equals("")) {
+            return null;
+        }
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("content", content);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/api/addAppeal";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("addAppeal", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
 
 }

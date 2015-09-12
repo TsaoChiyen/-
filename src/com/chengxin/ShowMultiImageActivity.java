@@ -169,8 +169,8 @@ public class ShowMultiImageActivity extends BaseActivity implements OnClickListe
 				mPopWindows = new PopWindows(mContext, mPopList, mRightBtn, new PopWindowsInterface() {
 
 					@Override
-					public void onItemClick(int position, View view) {
-						switch (position) {
+					public void onItemClick(int dataId, int position, View view) {
+						switch (dataId) {
 						case 1://发送给朋友
 							if(mCurrentImagURL == null || !mCurrentImagURL.equals("")){
 								MovingPic pic = new MovingPic(mCurrentImagURL, mCurrentImageSmallUrl,MessageType.PICTURE+"");

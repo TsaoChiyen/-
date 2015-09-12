@@ -4,6 +4,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="title_bar">45dp</dimen>
+    <dimen name="tool_bar">40dp</dimen>
     <dimen name="refresh_listview_margin_top">-45dp</dimen>
     <dimen name="menu_bar_height">53dp</dimen>
     <dimen name="title_text_size">20sp</dimen>

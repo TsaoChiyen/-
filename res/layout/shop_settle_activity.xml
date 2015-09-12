@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout" />
+
+    <LinearLayout
+        android:id="@+id/tool_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_below="@id/title_layout"
+        android:background="@color/application_gray"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tool_bar"
+            android:background="@color/application_gray"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_settleable"
+                style="@style/actionbar_def_style"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/application_gray"
+                android:text="可结款"
+                android:textColor="@color/text_color" />
+
+            <Button
+                android:id="@+id/btn_history"
+                style="@style/actionbar_def_style"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#dddddd"
+                android:text="历史结款"
+                android:textColor="@color/text_color" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_sumary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/application_deep_gray_black" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/selected_sumary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/application_gray"
+            android:gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/application_deep_gray_black"
+            android:visibility="gone" />
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="48dp"
+	        android:layout_alignParentBottom="true"
+	        android:background="@color/white"
+	        android:orientation="horizontal" >
+            
+	        <Button
+	            android:id="@+id/btn_settle"
+	            style="@style/actionbar_def_style"
+	            android:layout_width="110dp"
+	            android:layout_height="match_parent"
+	            android:layout_weight="1"
+	            android:background="@color/transparent"
+	            android:text="确定结款"
+	            android:textColor="@color/text_color" />
+	
+	        <Button
+	            android:id="@+id/btn_appeal"
+	            style="@style/actionbar_def_style"
+	            android:layout_width="110dp"
+	            android:layout_height="match_parent"
+	            android:layout_weight="1"
+	            android:background="@color/transparent"
+	            android:text="异常申诉"
+	            android:textColor="@color/text_color" />
+	    </LinearLayout>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar_layout"
+        android:layout_below="@id/tool_bar_layout"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <ListView
+            android:id="@+id/order_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/backgroud_color"
+            android:cacheColorHint="@null"
+            android:divider="@drawable/order_devider_line"
+            android:fadingEdge="none"
+            android:fastScrollEnabled="true"
+            android:focusable="true"
+            android:listSelector="@drawable/list_selector"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+</RelativeLayout>

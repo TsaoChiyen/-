@@ -78,6 +78,7 @@ import com.chengxin.dialog.MMAlert.OnAlertSelectId;
 import com.chengxin.exception.ExceptionHandler;
 import com.chengxin.fragment.ChatFragment;
 import com.chengxin.fragment.ContactsFragment;
+import com.chengxin.fragment.ExpectFragment;
 import com.chengxin.fragment.FoundFragment;
 import com.chengxin.fragment.MerchantFragment;
 import com.chengxin.fragment.MyFragment;
@@ -87,6 +88,7 @@ import com.chengxin.global.GlobleType;
 import com.chengxin.global.ImageLoader;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
+import com.chengxin.profile.exhibition.ApplyExhibitionActivity;
 import com.chengxin.profile.shopping.ShoppingManagerActivity;
 import com.chengxin.receiver.NotifySystemMessage;
 import com.chengxin.service.SnsService;
@@ -131,7 +133,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private FoundFragment foundFragment;		//< 发现界面的Fragment	
 	private ContactsFragment contactsFragment;	//< 通讯录界面的Fragment
 	private MerchantFragment mMerChatFragment; 	//< 商户
-	private MyFragment mMyFragment;				//< 商户
+//	private MyFragment mMyFragment;				//< 商户
+	private ExpectFragment mExpectFragment;
+
 
 	private PagerSlidingTabStrip tabs;			//< PagerSlidingTabStrip的实例
 	private DisplayMetrics dm;					//< 获取当前屏幕的密度
@@ -212,10 +216,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 		mPopWindows = new PopWindows(mContext, mPopList, mTitleLayout, new PopWindowsInterface() {
 			@Override
-			public void onItemClick(int position, View view) {
+			public void onItemClick(int dataId, int position, View view) {
 				Login login = WeiYuanCommon.getLoginResult(mContext);
 
-				switch (position) {
+				switch (dataId) {
 				case 1:
 				{
 					if (login.isshop == 1) {
@@ -235,8 +239,21 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 						shoppingIntent.setClass(mContext, ApplyMerchantActivity.class);
 						startActivity(shoppingIntent);
 					}
-				}
-				break;
+				}	break;
+				
+				case 2:
+					Intent intent = new Intent();
+					intent.setClass(mContext, ApplyExhibitionActivity.class);
+					startActivity(intent);
+					
+					break;
+
+				case 3:
+					intent = new Intent();
+					intent.setClass(mContext, PublicNoActivity.class);
+					startActivity(intent);
+					
+					break;
 
 				default:
 					break;
@@ -656,26 +673,26 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 					chatFragment = new ChatFragment();
 				}
 				return chatFragment;
-			case 2:
-				if (foundFragment == null) {
-					foundFragment = new FoundFragment();
-				}
-				return foundFragment;
-			case 4:
-				if (mMerChatFragment == null) {
-					mMerChatFragment = new MerchantFragment();
-				}
-				return mMerChatFragment;
 			case 1:
 				if (contactsFragment == null) {
 					contactsFragment = new ContactsFragment();
 				}
 				return contactsFragment;
-			case 3:
-				if (mMyFragment == null) {
-					mMyFragment = new MyFragment();
+			case 2:
+				if (foundFragment == null) {
+					foundFragment = new FoundFragment();
 				}
-				return mMyFragment;
+				return foundFragment;
+			case 3:
+				if (mMerChatFragment == null) {
+					mMerChatFragment = new MerchantFragment();
+				}
+				return mMerChatFragment;
+			case 4:
+				if (mExpectFragment == null) {
+					mExpectFragment = new ExpectFragment();
+				}
+				return mExpectFragment;
 			default:
 				return null;
 			}
@@ -729,7 +746,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			menuWindow.dismiss();
 			menuWindow = null;
 		}
-		menuWindow = new SelectPicPopupWindow(MainActivity.this, itemsOnClick);
+		menuWindow = new SelectPicPopupWindow(context, itemsOnClick);
 		// 显示窗口
 		/* View view = MainActivity.this.findViewById(R.id.set); */
 		// 计算坐标的偏移量
@@ -797,7 +814,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			menuWindow2.dismiss();
 			menuWindow2 = null;
 		}
-		menuWindow2 = new SelectAddPopupWindow(MainActivity.this, itemsOnClick2);
+		menuWindow2 = new SelectAddPopupWindow(context, itemsOnClick2);
 		// 显示窗口
 
 		// 计算坐标的偏移量

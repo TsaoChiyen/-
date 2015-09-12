@@ -19,7 +19,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -41,8 +40,7 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.chengxin.ChatMainActivity;
-import com.chengxin.ContactActivity;
-import com.chengxin.ContactListActivity;
+import com.chengxin.ContactMainActivity;
 import com.chengxin.FriensLoopActivity;
 import com.chengxin.MettingActivity;
 import com.chengxin.MyGroupListActivity;
@@ -61,8 +59,6 @@ import com.chengxin.global.SystemContactGlobal;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;
 import com.chengxin.net.WeiYuanException;
-import com.learnncode.mediachooser.MediaChooserConstants;
-import com.learnncode.mediachooser.activity.HomeFragmentActivity;
 
 
 /**
@@ -93,8 +89,7 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 	public final static int SHOW_SCROLLREFRESH  = 11117;
 	public final static int HIDE_SCROLLREFRESH  = 11118;
 	private List<Session> mSessionList;
-	private List<Login> mUserList = new ArrayList<Login>();
-
+	
 	public static final String ACTION_REFRESH_SESSION = "weiyuan_action_refresh_session";
 	public static final String ACTION_RESET_SESSION_COUNT = "weiyuan_action_reset_session_count";
 	public final static String DELETE_SESSION_ACTION = "weiyuan_delete_session_action";
@@ -109,11 +104,6 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 	public final static String ACTION_UPDATE_USER_LOCATION = "weiyuan_action_upate_user_location";
 	private SystemContactGlobal mContact ;
 	private int mContactCount;
-
-
-	private int mDeletePos = -1;
-
-
 
 	private Context mParentContext;
 	private ProgressDialog mProgressDialog;
@@ -392,7 +382,7 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 			Intent intent = new Intent();
 			
 			if(view == mBtnContact){
-				intent.setClass(getActivity(), ContactListActivity.class);
+				intent.setClass(getActivity(), ContactMainActivity.class);
 			} else if(view == mBtnFriends) {
 				intent.setClass(getActivity(), FriensLoopActivity.class);
 			} else if(view == mBtnBackRoom) {

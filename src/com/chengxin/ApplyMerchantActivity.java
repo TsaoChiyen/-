@@ -397,10 +397,10 @@ public class ApplyMerchantActivity extends BaseActivity {
 
 						if (mCurrentImage == IMAGE_BUSI_SELECTED) {
 							currBitmap = mBusiBitmap;
-							mBusiImageFilePath= FeatureFunction.saveTempBitmap(currBitmap, "temp_busi.jpg");
+							mBusiImageFilePath = FeatureFunction.saveTempBitmap(currBitmap, "temp_busi.jpg");
 						} else if (mCurrentImage == IMAGE_AUTH_SELECTED) {
 							currBitmap = mAuthBitmap;
-							mAuthImageFilePath= FeatureFunction.saveTempBitmap(currBitmap, "temp_auth.jpg");
+							mAuthImageFilePath = FeatureFunction.saveTempBitmap(currBitmap, "temp_auth.jpg");
 						}
 					}
 				}

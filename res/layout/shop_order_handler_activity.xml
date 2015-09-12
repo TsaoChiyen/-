@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout" />
+
+    <LinearLayout
+        android:id="@+id/tool_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tool_bar"
+        android:background="@color/application_gray"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/order_sn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:lines="1"
+            android:text="订单:"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        
+		    <RelativeLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="36dp" >
+		
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerVertical="true"
+		            android:layout_marginLeft="10dp"
+		            android:lines="1"
+		            android:text="商品名称"
+		            android:textAppearance="?android:attr/textAppearanceSmall"
+		            android:textColor="@color/application_deep_gray_black" />
+		
+		        <TextView
+		            android:id="@+id/text_sum"
+		            android:layout_width="64dp"
+		            android:layout_height="wrap_content"
+		            android:layout_alignParentRight="true"
+		            android:layout_centerVertical="true"
+		            android:layout_marginRight="10dp"
+		            android:gravity="right"
+		            android:lines="1"
+		            android:text="金额"
+		            android:textAppearance="?android:attr/textAppearanceSmall"
+		            android:textColor="@color/application_deep_gray_black" />
+		
+		        <TextView
+		            android:id="@+id/text_count"
+		            android:layout_width="36dp"
+		            android:layout_height="wrap_content"
+		            android:layout_centerVertical="true"
+		            android:layout_toLeftOf="@id/text_sum"
+		            android:gravity="right"
+		            android:lines="1"
+		            android:text="数量"
+		            android:textAppearance="?android:attr/textAppearanceSmall"
+		            android:textColor="@color/application_deep_gray_black" />
+		
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerVertical="true"
+		            android:layout_toLeftOf="@id/text_count"
+		            android:gravity="right"
+		            android:lines="1"
+		            android:text="单价"
+		            android:textAppearance="?android:attr/textAppearanceSmall"
+		            android:textColor="@color/application_deep_gray_black" />
+		
+		        <TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="1dp"
+		            android:layout_alignParentBottom="true"
+		            android:background="#dadada" />
+		
+		    </RelativeLayout>
+		
+		    <ListView
+		        android:id="@+id/goods_list"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:background="@color/backgroud_color"
+		        android:cacheColorHint="@null"
+		        android:divider="@drawable/order_devider_line"
+		        android:fadingEdge="none"
+		        android:fastScrollAlwaysVisible="false"
+		        android:fastScrollEnabled="true"
+		        android:focusable="false"
+		        android:listSelector="@drawable/transparent_selector"
+		        android:scrollbars="none" >
+
+		    </ListView>
+		 
+		    <TextView
+		        android:layout_width="match_parent"
+		        android:layout_height="1dp"
+		        android:background="#dadada" />
+		
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="36dp"
+		        android:orientation="horizontal" >
+		
+		        <TextView
+		            android:id="@+id/total_count"
+		            android:layout_width="wrap_content"
+		            android:layout_height="fill_parent"
+		            android:layout_weight="1"
+		            android:gravity="center"
+		            android:text=""
+		            android:textAppearance="?android:attr/textAppearanceSmall"
+		            android:textColor="@color/application_deep_gray_black" />
+		
+		        <TextView
+		            android:id="@+id/total_price"
+		            android:layout_width="wrap_content"
+		            android:layout_height="fill_parent"
+		            android:layout_weight="1"
+		            android:gravity="center"
+		            android:lines="1"
+		            android:text=""
+		            android:textAppearance="?android:attr/textAppearanceSmall"
+		            android:textColor="@color/application_deep_gray_black" />
+		
+		    </LinearLayout>
+		    
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="vertical" >
+		
+		        <RelativeLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="36dp"
+		            android:background="@color/application_gray" >
+		
+		            <TextView
+		                android:layout_width="match_parent"
+		                android:layout_height="match_parent"
+		                android:layout_alignParentLeft="true"
+		                android:layout_alignParentTop="true"
+		                android:gravity="center_horizontal|center_vertical"
+		                android:lines="1"
+		                android:text="顾客信息"
+		                android:textSize="17sp" />
+		        </RelativeLayout>
+		
+		        <RelativeLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="36dp" >
+		
+		            <TextView
+		                android:id="@+id/cosumer_name"
+		                android:layout_width="72dp"
+		                android:layout_height="wrap_content"
+		                android:layout_alignParentLeft="true"
+		                android:layout_centerVertical="true"
+		                android:layout_marginLeft="10dp"
+		                android:layout_marginRight="10dp"
+		                android:text="顾客"
+		                android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="@color/application_deep_gray_black" />
+		
+		            <TextView
+		                android:id="@+id/order_cusumer_name"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_centerVertical="true"
+		                android:layout_toRightOf="@+id/cosumer_name"
+		                android:text=""
+		                android:textAppearance="?android:attr/textAppearanceSmall" />
+		
+		            <TextView
+		                android:layout_width="match_parent"
+		                android:layout_height="1dp"
+		                android:layout_alignParentBottom="true"
+		                android:background="#dadada" />
+		        </RelativeLayout>
+		
+		        <RelativeLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="36dp" >
+		
+		            <TextView
+		                android:id="@+id/cusumer_phone"
+		                android:layout_width="72dp"
+		                android:layout_height="wrap_content"
+		                android:layout_alignParentLeft="true"
+		                android:layout_centerVertical="true"
+		                android:layout_marginLeft="10dp"
+		                android:layout_marginRight="10dp"
+		                android:text="联系电话"
+		                android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="@color/application_deep_gray_black" />
+		
+		            <TextView
+		                android:id="@+id/order_cosumer_phone"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_centerVertical="true"
+		                android:layout_toRightOf="@+id/cusumer_phone"
+		                android:text=""
+		                android:textAppearance="?android:attr/textAppearanceSmall" />
+		
+		            <TextView
+		                android:layout_width="match_parent"
+		                android:layout_height="1dp"
+		                android:layout_alignParentBottom="true"
+		                android:background="#dadada" />
+		
+		            <ImageButton
+		                android:id="@+id/btn_chat"
+		                android:layout_width="32dp"
+		                android:layout_height="32dp"
+		                android:layout_alignParentBottom="true"
+		                android:layout_alignParentRight="true"
+		                android:layout_marginLeft="10dp"
+		                android:layout_marginRight="10dp"
+		                android:src="@drawable/icon_comment_s" />
+		
+		            <ImageButton
+		                android:id="@+id/btn_call"
+		                android:layout_width="32dp"
+		                android:layout_height="32dp"
+		                android:layout_alignParentBottom="true"
+		                android:layout_toLeftOf="@+id/btn_chat"
+		                android:src="@drawable/icon_comment_s" />
+		        </RelativeLayout>
+		
+		        <RelativeLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="36dp" >
+		
+		            <TextView
+		                android:id="@+id/cosumer_address"
+		                android:layout_width="72dp"
+		                android:layout_height="wrap_content"
+		                android:layout_alignParentLeft="true"
+		                android:layout_centerVertical="true"
+		                android:layout_marginLeft="10dp"
+		                android:layout_marginRight="10dp"
+		                android:text="发货地址"
+		                android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="@color/application_deep_gray_black" />
+		
+		            <TextView
+		                android:id="@+id/order_cosumer_address"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_centerVertical="true"
+		                android:layout_toRightOf="@+id/cosumer_address"
+		                android:text=""
+		                android:textAppearance="?android:attr/textAppearanceSmall" />
+		
+		            <TextView
+		                android:layout_width="match_parent"
+		                android:layout_height="1dp"
+		                android:layout_alignParentBottom="true"
+		                android:background="#dadada" />
+		        </RelativeLayout>
+		
+		        <RelativeLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="10dp" >
+		
+		            <TextView
+		                android:id="@+id/cosumer_content"
+		                android:layout_width="72dp"
+		                android:layout_height="wrap_content"
+		                android:layout_alignParentLeft="true"
+		                android:layout_alignParentTop="true"
+		                android:layout_marginLeft="10dp"
+		                android:layout_marginRight="10dp"
+		                android:layout_marginTop="10dp"
+		                android:text="顾客留言"
+		                android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="@color/application_deep_gray_black" />
+		
+		            <TextView
+		                android:id="@+id/order_cosumer_content"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_alignParentTop="true"
+		                android:layout_marginBottom="10dp"
+		                android:layout_marginRight="10dp"
+		                android:layout_marginTop="10dp"
+		                android:layout_toRightOf="@+id/cosumer_content"
+		                android:text=""
+		                android:textAppearance="?android:attr/textAppearanceSmall" />
+		
+		        </RelativeLayout>
+		
+		        <LinearLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="40dp"
+		            android:background="#ffffff" >
+		
+		            <Button
+		                android:id="@+id/order_btn_deliver"
+		                style="@style/back_btn_style"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="center_vertical"
+		                android:layout_weight="1"
+		                android:text="发货"
+		                android:textColor="#6e6e6e" />
+		
+		            <Button
+		                android:id="@+id/order_btn_retreate"
+		                style="@style/back_btn_style"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="center_vertical"
+		                android:layout_weight="1"
+		                android:text="退单"
+		                android:textColor="#6e6e6e" />
+		
+		            <Button
+		                android:id="@+id/order_btn_log"
+		                style="@style/back_btn_style"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="center_vertical"
+		                android:layout_weight="1"
+		                android:text="物流"
+		                android:textColor="#6e6e6e" />
+		
+		        </LinearLayout>
+		    </LinearLayout>
+	    </LinearLayout>
+    </ScrollView>
+    
+</LinearLayout>

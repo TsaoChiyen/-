@@ -161,8 +161,8 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 			mPopWindows = new PopWindows(mContext, mPopList, mTitleLayout, new PopWindowsInterface() {
 
 				@Override
-				public void onItemClick(int position, View view) {
-					switch (position) {
+				public void onItemClick(int dataId, int position, View view) {
+					switch (dataId) {
 					case 1://备注名
 						Intent intent = new Intent(mContext, RemarkActivity.class);
 						intent.putExtra("fuid", mLogin.uid);

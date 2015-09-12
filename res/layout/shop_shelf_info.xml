@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/goods_icon"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/add_search" />
+
+        <TextView
+            android:id="@+id/goods_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/goods_icon"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="商品名称"
+            android:textSize="19sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" >
+
+        <TextView
+            android:id="@+id/lbl_price"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:gravity="right"
+            android:text="价格"
+            android:textColor="@color/application_deep_gray_black"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/text_price"
+            android:layout_width="fill_parent"
+            android:layout_height="40dip"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/lbl_price"
+            android:background="@drawable/cirle_edit_bg"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:hint="商品名称"
+            android:padding="5dip"
+            android:textColor="@color/application_black"
+            android:textColorHint="@color/application_deep_gray_black"
+            android:textSize="@dimen/sixteen" >
+
+            <requestFocus />
+        </EditText>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" >
+
+        <TextView
+            android:id="@+id/lbl_number"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:gravity="right"
+            android:text="库存量"
+            android:textColor="@color/application_deep_gray_black"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/text_number"
+            android:layout_width="fill_parent"
+            android:layout_height="40dip"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/lbl_number"
+            android:background="@drawable/cirle_edit_bg"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:hint="商品名称"
+            android:padding="5dip"
+            android:textColor="@color/application_black"
+            android:textColorHint="@color/application_deep_gray_black"
+            android:textSize="@dimen/sixteen" />
+
+    </RelativeLayout>
+
+</LinearLayout>

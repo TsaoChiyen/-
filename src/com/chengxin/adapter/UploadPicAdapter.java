@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import com.chengxin.R;
 import com.chengxin.Entity.UploadImg;
 import com.chengxin.global.FeatureFunction;
+import com.chengxin.global.ImageLoader;
 
 /**
  * 选择图片adapter
@@ -33,8 +34,9 @@ public class UploadPicAdapter extends BaseAdapter{
 	private List<UploadImg> mData;
 	private Context mContext;
 	private boolean mIsDelete = false;
-	private HashMap<String, Bitmap> mImageMap = new HashMap<String, Bitmap>();
+	public HashMap<String, Bitmap> mImageMap = new HashMap<String, Bitmap>();
 	private int mWidth = 0;
+	private ImageLoader mImageLoader = new ImageLoader();
 	
 	public UploadPicAdapter(Context context, List<UploadImg> data, int width){
 		mInflater = (LayoutInflater)context.getSystemService(
@@ -104,7 +106,16 @@ public class UploadPicAdapter extends BaseAdapter{
         holder.mDeleteBtn.setVisibility(View.GONE);
         
         if(position < mData.size()){
-        	if(mData.get(position).mType == 0){
+        	if (mData.get(position).mType == 2){
+        		holder.mHeaderView.setDrawingCacheEnabled(true);
+        		mImageLoader.getBitmap(mContext, holder.mHeaderView, null, mData.get(position).mPicPath, 0, false, true,false);
+//        		
+//        		mData.get(position).mPicPath = FeatureFunction.saveTempBitmap(bitmap, "goods_icon"+String.valueOf(position)+".jpg");
+//        		mData.get(position).mType = 0;
+//				mImageMap.put(mData.get(position).mPicPath, bitmap);
+//				holder.mHeaderView.setDrawingCacheEnabled(false);
+				
+        	} else if(mData.get(position).mType == 0){
         		holder.mHeaderView.setVisibility(View.VISIBLE);
             	if(mIsDelete){
             		holder.mDeleteBtn.setVisibility(View.VISIBLE);
@@ -113,12 +124,14 @@ public class UploadPicAdapter extends BaseAdapter{
             	if(!TextUtils.isEmpty(mData.get(position).mPicPath)){
             		holder.mHeaderView.setTag(mData.get(position).mPicPath);
             		Bitmap bitmap = null;
+            		
             		if(mImageMap.get(mData.get(position).mPicPath) != null){
             			bitmap = mImageMap.get(mData.get(position).mPicPath);
             		}else {
             			bitmap = BitmapFactory.decodeFile(mData.get(position).mPicPath);
         				mImageMap.put(mData.get(position).mPicPath, bitmap);
 					}
+            		
     				holder.mHeaderView.setImageBitmap(bitmap);
     			}
             }else {
@@ -140,10 +153,10 @@ public class UploadPicAdapter extends BaseAdapter{
 	}
 
 	
-	final static class ViewHolder {  
-        ImageView mHeaderView;
-        private ImageView mDeleteBtn;
-        RelativeLayout  mPicLayout;
+	public final static class ViewHolder {  
+		public ImageView mHeaderView;
+		public ImageView mDeleteBtn;
+        public RelativeLayout  mPicLayout;
         
         @Override
         public int hashCode() {

@@ -12,140 +12,150 @@ public class Order implements Serializable{
 
 	private static final long serialVersionUID = 143456464564165L;
 	
-	/**
-	 *       
-      "orderID": "201192",
-      "orderNo": "N5K4P1JB-GE",
-      "orderTotalAmount": "61.63",
-      "shopsTotalAmount": "33.63",
-      "carriageAmount": "28.00",
-      "receiver": "testaa  testaa",
-      "recerverPhone": "12313213",
-      "recerverAddr": "United States Florida testaa testaa",
-      "payMethod": "在线支付",
-      "deliverMothed": "Regular Post Service",
-      "dispatchTime": "",
-      "deliverTime": "",
-      "orderStatus": "未完结",
-      "belongTo": "OED",
-      "orderCreatedTime": "2013_04_01T09:50:38Z",
-      "existOrderTrack": "false",
-      "shopDetails": [
-        {
-          "pic": "http://p.lefux.com/61/20130621/X00010GPVT/woman-handbag-solid-small-nylon-zipper-opening-p1324906-5441456-small.jpg",
-          "name": "Fashion Longchamp Solid Small Nylon Zipper OPening Woman Handbag",
-          "nums": "1",
-          "orderPrice": "5.63",
-          "salePrice": "5.63",
-          "status": ""
+    /**{
+        "id": "29",
+        "type": "1",
+        "ordersn": "2015083049494856",
+        "uid": "200423",
+        "shopid": "48",
+        "username": "发生",
+        "phone": "123",
+        "content": "",
+        "address": "fdasd",
+        "goods": [
+                  {
+                  "id": "51",
+                  "count": "2",
+                  "logo": "http://121.40.214.35:8000/Uploads/Picture/goods/20150817/s_fabcc31beb718860ead1293318d946dd.jpg",
+                  "price": "1200.00",
+                  "name": "gods"
+                  }
+                  ],
+        "totalPrice": "222.00",
+        "createtime": "1440939712",
+        "deliverytime": null,
+        "overTime": null,
+        "logCompany": null,
+        "logNumber": null,
+        "status": "1",
+        "shop": {
+            "id": "48",
+            "uid": "200423",
+            "logo": "",
+            "name": "xiak",
+            "password": "96e79218965eb72c92a549dd5a330112",
+            "username": "liu",
+            "phone": "18983765245",
+            "content": "",
+            "useraddress": "",
+            "address": "AAA",
+            "lat": "29.573602",
+            "lng": "106.545402",
+            "city": "重庆",
+            "shopPaper": "",
+            "authPaper": "",
+            "bank": "asdsad",
+            "bankName": "asdadsad",
+            "bankCard": "sdfdsfsfdsfdsf",
+            "status": "1",
+            "createtime": "1438071060",
+            "service": [
+                        {
+                        "id": "11",
+                        "uid": "200424",
+                        "shopid": "48",
+                        "name": "566",
+                        "username": "15923562971"
+                        },
+                        {
+                        "id": "12",
+                        "uid": "200423",
+                        "shopid": "48",
+                        "name": "123",
+                        "username": "13452372605"
+                        },
+                        {
+                        "id": "14",
+                        "uid": "200424",
+                        "shopid": "48",
+                        "name": "abcd",
+                        "username": "15923562971"
+                        }
+                        ]
         }
-      ]
-	 */
-	
-	public String orderID;
-	public String orderNo;
-	public String orderTotalAmount;
-	public String orderStatus = "";
-	public String belongTo;
-	public String orderCreatedTime;
-	public boolean existOrderTrack;
-	public String shopsTotalAmount;
-	public String deliveryFee;
-	public String congisee;
-	public String contctNum;
-	public String congiseeAddr;
-	public String payWay;
-	public String deliveryWay;
-	public String deliveryTime;
-	public String deliveryDate;
-	public List<Commodity> mCommodityList;
-	public String productQuantity;
-	public boolean canCancel = false;
+    }
+    */
+    public String id;
+    public String type;
+    public String ordersn;
+    public String uid;
+    public String shopid;
+    public String username;
+    public String phone;
+    public String content;
+    public String address;
+    public String createtime;
+    public String deliverytime;
+    public String overtime;
+    public String status;
+    public String logcompany;
+    public String lognumber;
+    
+    public boolean selected = false;
+    public boolean canCancel = false;
+
+    public List <Goods> goods;
+    public Merchant shop;
+
+    public int 		totalCount;
+    public float	totalPrice;
 
 	public Order(){}
 	
 	public Order(JSONObject json) {
 		try {
-			orderID = json.getString("orderID");
-			if(!json.isNull("orderNo")){
-				orderNo = json.getString("orderNo");
-			}
-			
-			if(!json.isNull("orderTotalAmount")){
-				orderTotalAmount = json.getString("orderTotalAmount");
-			}
-			
-			if(!json.isNull("orderStatus")){
-				orderStatus=  json.getString("orderStatus");
-			}
-			
-			if(!json.isNull("belongTo")){
-				belongTo = json.getString("belongTo");
-			}
-			
-			if(!json.isNull("orderCreatedTime")){
-				orderCreatedTime = json.getString("orderCreatedTime");
-			}
-			
-			if(!json.isNull("existOrderTrack")){
-				existOrderTrack = json.getBoolean("existOrderTrack");
-			}
-			
-			if(!json.isNull("shopsTotalAmount")){
-				shopsTotalAmount = json.getString("shopsTotalAmount");
-			}
-			
-			if(!json.isNull("carriageAmount")){
-				deliveryFee = json.getString("carriageAmount");
-			}
-			
-			if(!json.isNull("receiver")){
-				congisee = json.getString("receiver");
-			}
-			
-			if(!json.isNull("recerverPhone")){
-				contctNum = json.getString("recerverPhone");
-			}
-			
-			if(!json.isNull("recerverAddr")){
-				congiseeAddr = json.getString("recerverAddr");
-			}
-			
-			if(!json.isNull("payMethod")){
-				payWay = json.getString("payMethod");
-			}
-			
-			if(!json.isNull("deliverMothed")){
-				deliveryWay = json.getString("deliverMothed");
-			}
-			
-			if(!json.isNull("dispatchTime")){
-				deliveryTime = json.getString("dispatchTime");
-			}
-			
-			if(!json.isNull("deliverTime")){
-				deliveryDate = json.getString("deliverTime");
-			}
-			
-			if(!json.isNull("productList")){
-				JSONArray array = json.getJSONArray("productList");
+			id = json.getString("id");
+
+            if(!json.isNull("type"))			type            = json.getString("type");
+			if(!json.isNull("ordersn"))			ordersn         = json.getString("ordersn");
+			if(!json.isNull("uid"))             uid             = json.getString("uid");
+			if(!json.isNull("shopid"))			shopid          = json.getString("shopid");
+			if(!json.isNull("username"))		username        = json.getString("username");
+			if(!json.isNull("phone"))			phone           = json.getString("phone");
+			if(!json.isNull("content"))			content         = json.getString("content");
+			if(!json.isNull("address"))			address         = json.getString("address");
+//			if(!json.isNull("totalPrice"))		totalPrice      = json.getString("totalPrice");
+			if(!json.isNull("createtime"))		createtime      = json.getString("createtime");
+			if(!json.isNull("deliverytime"))    deliverytime    = json.getString("deliverytime");
+			if(!json.isNull("overTime"))		overtime        = json.getString("overTime");
+			if(!json.isNull("logCompany"))		logcompany      = json.getString("logCompany");
+			if(!json.isNull("logNumber"))		lognumber       = json.getString("logNumber");
+			if(!json.isNull("status"))			status          = json.getString("status");
+
+            if(!json.isNull("goods")){
+				JSONArray array = json.getJSONArray("goods");
+                
 				if(array != null){
-					mCommodityList = new ArrayList<Commodity>();
-					List<Commodity> tempList = Commodity.constructCommodityList(array);
+					goods = new ArrayList<Goods>();
+                    
+					List<Goods> tempList = Goods.constructGoodsList(array);
+                    
 					if(tempList != null){
-						mCommodityList.addAll(tempList);
+						goods.addAll(tempList);
 					}
 				}
 			}
-			
-			if(!json.isNull("productNums")){
-				productQuantity = json.getString("productNums");
-			}
-			
-			if(!json.isNull("canCancel")){
-				int cancel = json.getInt("canCancel");
-				canCancel = cancel == 1 ? true : false;
-			}
+            
+            if(!json.isNull("shop")){
+                JSONObject object = json.getJSONObject("shop");
+                
+                if(object != null){
+                    shop = new Merchant(object);
+                }
+            }
+            
+            caculateSum();
+            
 		} catch ( NumberFormatException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
@@ -153,6 +163,19 @@ public class Order implements Serializable{
 		}
 	}
 	
+	private void caculateSum() {
+		totalCount = 0;
+		totalPrice = 0;
+		
+		if (goods != null && goods.size() > 0) {
+			for (int i = 0; i < goods.size(); i++) {
+				Goods item = goods.get(i);
+				totalCount += item.count;
+				totalPrice += item.count * item.price;
+			}
+		}
+	}
+
 	public static List<Order> constructOrderList(JSONArray array){
 		try {
 			List<Order> orderList = new ArrayList<Order>();
@@ -161,6 +184,7 @@ public class Order implements Serializable{
 			for (int i = 0; i < size; i++) {
 				orderList.add(new Order(array.getJSONObject(i)));
 			}
+            
 			return orderList;
 		} catch (JSONException jsone) {
 			jsone.printStackTrace();

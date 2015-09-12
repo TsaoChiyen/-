@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.R.integer;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,15 +30,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chengxin.R;
+import com.chengxin.Entity.Goods;
 import com.chengxin.Entity.MerchantMenu;
 import com.chengxin.Entity.MorePicture;
 import com.chengxin.Entity.UploadImg;
 import com.chengxin.Entity.WeiYuanState;
 import com.chengxin.adapter.UploadPicAdapter;
+import com.chengxin.adapter.UploadPicAdapter.ViewHolder;
 import com.chengxin.dialog.MMAlert;
 import com.chengxin.dialog.MMAlert.OnAlertSelectId;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
+import com.chengxin.global.ImageLoader;
 import com.chengxin.global.ScreenUtils;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
@@ -48,6 +54,7 @@ import com.chengxin.widget.MyGridView;
  */
 public class SendGoodsActivity extends BaseActivity implements OnItemClickListener{
 
+	private static final int SCAN_FOR_BARCODE = 21;
 	private TextView mGoodsTypeTextView;
 	private final int REQUEST_GOODS_MENT = 11;
 
@@ -75,7 +82,14 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 	private List<MorePicture> mPicList = new ArrayList<MorePicture>();
 
 	private int mClickType =0;  //0-商品缩略图 1-商品图
-
+	private EditText mGoodsBarcodeEdit;
+	private TextView mBtnBarcode;
+	private String mInputGoodsBarcode;
+	private Goods mGoods = null;
+	private ImageLoader mImageLoader = new ImageLoader();
+	private boolean isFirstShow = true;
+	private int mPosition = -1;
+	private int mOpenMode= 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -83,36 +97,91 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 		mContext = this;
 		setContentView(R.layout.send_goods_view);
 		mWidth = ScreenUtils.getScreenWidth(mContext); 
-		intCompent();
+		intComponent();
 	}
 
-	private void intCompent(){
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		
+		if (isFirstShow) {
+			isFirstShow = false;
+
+			if (hasFocus && mGoods != null) {
+				isFirstShow  = false;
+				mGoodsBitmapLogo = mGoodsLogoImageView.getDrawingCache();
+				mGoodsLogoUrl = FeatureFunction.saveTempBitmap(mGoodsBitmapLogo, "goods_logo.jpg");
+				mGoodsLogoImageView.setDrawingCacheEnabled(false);
+			}
+		}
+	}
+
+
+	private void intComponent(){
 		setTitleContent(R.drawable.back_btn,R.drawable.ok,R.string.send_goods);
 		mLeftBtn.setOnClickListener(this);
 		mRightBtn.setOnClickListener(this);
+		
 		mGoodsTypeTextView = (TextView)findViewById(R.id.goods_type);
 		mGoodsTypeTextView.setOnClickListener(this);
 
 		mGoodsLogoImageView = (ImageView)findViewById(R.id.goods_logo);
 		mGoodsLogoImageView.setOnClickListener(this);
 
+		mGoodsBarcodeEdit = (EditText)findViewById(R.id.goods_barcode);
 		mGoodsNameEdit = (EditText)findViewById(R.id.goods_name);
 		mGoodsPriceEdit = (EditText)findViewById(R.id.goods_price);
 		mGoodsContentEdit = (EditText)findViewById(R.id.goods_content);
 		mGoodsParamterEdit = (EditText)findViewById(R.id.goods_paramter);
 
+		mBtnBarcode = (TextView)findViewById(R.id.btn_barcode);
+		mBtnBarcode.setOnClickListener(this);
+		
+		
 		mMyGridView  = (MyGridView)findViewById(R.id.gridview);
 		mMyGridView.setOnItemClickListener(this);
 		mImageList.add(new UploadImg("", 1));
 
+		getDefaultData();
+
 		mAdapter = new UploadPicAdapter(mContext, mImageList, mWidth);
 		mMyGridView.setAdapter(mAdapter);
+	}
 
+	private void getDefaultData() {
+		mOpenMode = getIntent().getIntExtra("openMode", 0);
+		
+		if (mOpenMode == 1) {
+			mGoods = (Goods)getIntent().getExtras().get("goods");
+			mPosition  = getIntent().getIntExtra("position", -1);
+			
+			if (mGoods != null) {
+				mGoodsTypeId = mGoods.categoryid;
+				
+				mGoodsTypeTextView.setText(MerchantMenu.getNameById(mGoodsTypeId));
+				mGoodsNameEdit.setText(mGoods.name);
+				mGoodsBarcodeEdit.setText(mGoods.barcode);
+				mGoodsPriceEdit.setText(String.valueOf(mGoods.price));
+				mGoodsParamterEdit.setText(mGoods.parameter);
+				mGoodsContentEdit.setText(mGoods.content);
+				mGoodsLogoUrl = mGoods.logo;
+				
+				mGoodsLogoImageView.setDrawingCacheEnabled(true);
+    			mImageLoader.getBitmap(mContext, mGoodsLogoImageView, null, mGoods.logo, 0, false, true,false);
+    			
+				if (mGoods.pictureList.size() > 0) {
+					for (int i = 0; i < mGoods.pictureList.size(); i++) {
+						mImageList.add(mImageList.size() - 1, new UploadImg(mGoods.pictureList.get(i).smallUrl, 2));
+					}
+				}
+			}
+		}
 	}
 
 	private boolean  checkText(){
 		boolean isCheck = true;
 		String hinMsg = "";
+		mInputGoodsBarcode = mGoodsBarcodeEdit.getText().toString();
 		mInputGoodsName = mGoodsNameEdit.getText().toString();
 		mInputGoodsPrice = mGoodsPriceEdit.getText().toString();
 		mInputGoodsContent = mGoodsContentEdit.getText().toString();
@@ -136,7 +205,7 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 				mPicList = new ArrayList<MorePicture>();
 
 				for (int i = 0; i <mImageList.size(); i++) {
-					if(mImageList.get(i).mType != 1){
+					if(mImageList.get(i).mType == 0){
 						String key = "picture";
 						if (i > 0) {
 							int index = i+1;
@@ -148,8 +217,10 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 				}
 			}
 			if(mPicList == null || mPicList.size() <= 0){
-				isCheck = false;
-				hinMsg = mContext.getResources().getString(R.string.please_select_goods_image);
+				mPicList = new ArrayList<MorePicture>();
+//
+//				isCheck = false;
+//				hinMsg = mContext.getResources().getString(R.string.please_select_goods_image);
 			}
 		}
 
@@ -177,10 +248,30 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 						try {
 							WeiYuanCommon.sendMsg(mBaseHandler,BASE_SHOW_PROGRESS_DIALOG,"正在提交数据,请稍后...");
 							mPicList.add(new MorePicture("logo",mGoodsLogoUrl));
-							WeiYuanState status =WeiYuanCommon.getWeiYuanInfo().addGoods(mGoodsTypeId, 
-									mInputGoodsName,mInputGoodsPrice, mPicList,
-									mInputGoodsContent,mInputGoodsParamter);
-
+							
+							WeiYuanState status = null;
+							
+							if (mGoods != null) {
+								status =WeiYuanCommon.getWeiYuanInfo().editGoods(
+										Integer.valueOf(mGoods.id),
+										mGoodsTypeId, 
+										mInputGoodsName,
+										mInputGoodsPrice,
+										mPicList,
+										mInputGoodsContent,
+										mInputGoodsParamter,
+										mInputGoodsBarcode);
+							} else {
+								status =WeiYuanCommon.getWeiYuanInfo().addGoods(
+										mGoodsTypeId, 
+										mInputGoodsName,
+										mInputGoodsPrice,
+										mPicList,
+										mInputGoodsContent,
+										mInputGoodsParamter,
+										mInputGoodsBarcode);
+							}
+							
 							WeiYuanCommon.sendMsg(mHandler, GlobalParam.MSG_CHECK_STATE,status);
 							mBaseHandler.sendEmptyMessage(BASE_HIDE_PROGRESS_DIALOG);
 						} catch (WeiYuanException e) {
@@ -224,6 +315,15 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 					hintMsg = mContext.getResources().getString(R.string.send_goods_success);
 				}
 				Toast.makeText(mContext, hintMsg,Toast.LENGTH_LONG).show();
+				
+				if (mOpenMode == 1) {
+					goodsChanged();
+				}
+				
+				Intent intent = new Intent();
+				intent.putExtra("data", mGoods);
+				intent.putExtra("position", mPosition);
+				SendGoodsActivity.this.setResult(RESULT_OK, intent);
 				SendGoodsActivity.this.finish();
 				break;
 
@@ -232,11 +332,18 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 			}
 		}
 
+		private void goodsChanged() {
+			if (mGoods != null) {
+				mGoods.name = mInputGoodsName;
+				mGoods.barcode = mInputGoodsBarcode;
+				mGoods.price = Float.valueOf(mInputGoodsPrice);
+				mGoods.categoryid = mGoodsTypeId;
+				mGoods.content = mInputGoodsContent;
+				mGoods.parameter = mInputGoodsParamter;
+			}
+		}
+
 	};
-
-
-
-
 
 	@Override
 	public void onClick(View v) {
@@ -254,6 +361,11 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 			mClickType = 0;
 			selectImg();
 			break;
+		case R.id.btn_barcode:
+			Intent scanIntent = new Intent(mContext, CaptureActivity.class);
+			scanIntent.putExtra("scanmode", 1);
+			startActivityForResult(scanIntent, SCAN_FOR_BARCODE);
+			break;
 		case R.id.right_btn:
 			sendGoods();
 			break;
@@ -266,20 +378,31 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 	@Override
 	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
 		super.onActivityResult(arg0, arg1, arg2);
-		if(arg0 == REQUEST_GOODS_MENT && arg1 == RESULT_OK){
-			if(arg2 != null){
-				MerchantMenu menu = (MerchantMenu)arg2.getSerializableExtra("menu_entity");
-				if(menu != null){
-					mGoodsTypeTextView.setText(menu.name);
-					mGoodsTypeId = menu.id;
-				}
-			}
-		}
 
 		switch (arg0) {
+		case SCAN_FOR_BARCODE:
+			if(arg1 == RESULT_OK){
+				mInputGoodsBarcode = arg2.getStringExtra("data");
+				mGoodsBarcodeEdit.setText(mInputGoodsBarcode);
+			}
+			
+			break;
+		case REQUEST_GOODS_MENT:
+			if(arg1 == RESULT_OK){
+				if(arg2 != null){
+					MerchantMenu menu = (MerchantMenu)arg2.getSerializableExtra("menu_entity");
+					if(menu != null){
+						mGoodsTypeTextView.setText(menu.name);
+						mGoodsTypeId = menu.id;
+					}
+				}
+			}
+
+			break;
 		case 1:
 			if(arg2!=null && arg1 == 2){
 				List<UploadImg> imgList = (List<UploadImg>) arg2.getSerializableExtra("img_list");
+				
 				if(imgList!=null && imgList.size()>0){
 					if(mImageList!=null && mImageList.size()>0){
 						mImageList.clear();
@@ -349,15 +472,30 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	public void onItemClick(AdapterView<?> parent, View convertView, int position, long id) {
 		mClickType = 1;
-		if(arg2 < mImageList.size()){
-			if(mImageList.get(arg2).mType == 0){
+		
+		if(position < mImageList.size()){
+			if (mImageList.get(position).mType == 2) {
+				ViewHolder holder = (ViewHolder) convertView.getTag();
+        		Bitmap bitmap = holder.mHeaderView.getDrawingCache();
+        		mImageList.get(position).mPicPath = FeatureFunction.saveTempBitmap(bitmap, "goods_icon"+String.valueOf(position)+".jpg");
+        		mImageList.get(position).mType = 0;
+        		mAdapter.mImageMap.put(mImageList.get(position).mPicPath, bitmap);
+				holder.mHeaderView.setDrawingCacheEnabled(false);
+				
+				Intent showImageIntent = new Intent();
+				showImageIntent.setClass(mContext, ShowImageActivity.class);
+				showImageIntent.putExtra("type",1);
+				showImageIntent.putExtra("pos",position);
+				showImageIntent.putExtra("img_list",(Serializable)mImageList);
+				startActivityForResult(showImageIntent, 1);
+			} else if (mImageList.get(position).mType == 0) {
 				if(mAdapter.getIsDelete()){
 					HashMap<String, Bitmap> hashMap = mAdapter.getImageBuffer();
-					String path = mImageList.get(arg2).mPicPath;
+					String path = mImageList.get(position).mPicPath;
 					ImageView view = (ImageView) mMyGridView.findViewWithTag(path);
-					mImageList.remove(arg2);
+					mImageList.remove(position);
 					if(view != null){
 						view.setImageBitmap(null);
 					}
@@ -379,12 +517,12 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 					Intent showImageIntent = new Intent();
 					showImageIntent.setClass(mContext, ShowImageActivity.class);
 					showImageIntent.putExtra("type",1);
-					showImageIntent.putExtra("pos",arg2);
+					showImageIntent.putExtra("pos",position);
 					showImageIntent.putExtra("img_list",(Serializable)mImageList);
 					startActivityForResult(showImageIntent, 1);
 				}
 
-			}else if(mImageList.get(arg2).mType == 1){
+			}else if(mImageList.get(position).mType == 1){
 				if(mAdapter.getIsDelete()){
 					mAdapter.setIsDelete(false);
 					mAdapter.notifyDataSetChanged();
