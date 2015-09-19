@@ -195,7 +195,7 @@ OnItemClickListener {
 			if(mShopPhone == null || mShopPhone.equals("")){
 				return;
 			}
-			Intent intent=new Intent("android.intent.action.CALL",Uri.parse("tel:"+mShopPhone));
+			Intent intent=new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+mShopPhone));
 			startActivity(intent);
 		
 			break;

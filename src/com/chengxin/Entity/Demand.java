@@ -1,7 +1,10 @@
 package com.chengxin.Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.chengxin.org.json.JSONArray;
 import com.chengxin.org.json.JSONException;
 import com.chengxin.org.json.JSONObject;
 
@@ -82,6 +85,25 @@ public class Demand implements Serializable{
         distance = json.getDouble("distance");
         createtime = json.getLong("createtime");
         
-        user = new Login(json.getJSONObject("user"));
+        if (!json.isNull("user")) {
+            user = new Login(json.getJSONObject("user"));
+        }
     }
+
+	public static List<Demand> constructList(JSONArray array) {
+		try {
+			List<Demand> list = new ArrayList<Demand>();
+			int size = array.length();
+
+			for (int i = 0; i < size; i++) {
+				list.add(new Demand(array.getJSONObject(i)));
+			}
+            
+			return list;
+		} catch (JSONException jsone) {
+			jsone.printStackTrace();
+		}
+		
+		return null;
+	}
 }

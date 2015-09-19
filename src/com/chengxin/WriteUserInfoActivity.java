@@ -48,14 +48,17 @@ public class WriteUserInfoActivity extends BaseActivity implements OnClickListen
 		mContent = getIntent().getStringExtra("content");
 		mType = getIntent().getIntExtra("type",0); 
 		mSexType = getIntent().getIntExtra("sextype",0);
-		if(mType == GlobleType.MODIFY_GROUP_INFO ){
+		
+		if (mType == GlobleType.MODIFY_GROUP_INFO ){
 			setTitleContent(R.drawable.back_btn, R.drawable.ok_btn, R.string.chat_name);
-		}else if(mType == GlobleType.MODIFY_GROUP_NICKNAME){
+		} else if (mType == GlobleType.MODIFY_GROUP_NICKNAME){
 			setTitleContent(R.drawable.back_btn, R.drawable.ok_btn, R.string.my_chat_name);
-		}
-		else{
+		} else if (mType == GlobleType.MODIFY_SHOPPING_ADDRESS){
+			setTitleContent(R.drawable.back_btn, R.drawable.ok_btn, R.string.shopping_address);
+		} else {
 			setTitleContent(R.drawable.back_btn, R.drawable.ok_btn, 0);
 		}
+		
 		titileTextView.setBackgroundColor(Color.parseColor("#00000000"));
 
 		mLeftBtn.setOnClickListener(this);
@@ -236,6 +239,16 @@ public class WriteUserInfoActivity extends BaseActivity implements OnClickListen
 				if(content!=null && !content.equals("")){
 					if( content.length()>=2 && content.length()<=8){
 						intent.putExtra("group_nick_name", content);
+					}else{
+						Toast.makeText(mContext, mContext.getResources().
+								getString(R.string.group_nickname_length_hint),Toast.LENGTH_LONG).show();
+						return;
+					}
+				}
+			}else if(mType == GlobleType.MODIFY_SHOPPING_ADDRESS){
+				if(content!=null && !content.equals("")){
+					if( content.length()>=2 && content.length()<=256){
+						intent.putExtra("shopping_address", content);
 					}else{
 						Toast.makeText(mContext, mContext.getResources().
 								getString(R.string.group_nickname_length_hint),Toast.LENGTH_LONG).show();

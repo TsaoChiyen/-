@@ -19,6 +19,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.Collator;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,6 +31,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -47,6 +49,7 @@ import android.provider.MediaStore.MediaColumns;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -391,10 +394,21 @@ public class FeatureFunction {
 			return Math.round((size * 100 >> 30)) / 100.00 + "GB";
 		}
 	}
+	
+	public static Date strToDate(String strDate) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		ParsePosition pos = new ParsePosition(0);
+		Date strtodate = formatter.parse(strDate, pos);
+		return strtodate;
+	}
+		 
+	public static Date convertToDate(int y, int m, int d) {
+		String strDate = String.format("%d-%02d-%02d", y, m, d);
+		return strToDate(strDate);
+	}
 
 	public static String getDateString(Context context, Date date,
 			boolean withYearString,boolean isShowMM) {
-		String timeString = "";
 		SimpleDateFormat format = null;
 		if (withYearString) {
 			if(isShowMM){

@@ -77,11 +77,14 @@ import com.chengxin.dialog.MMAlert;
 import com.chengxin.dialog.MMAlert.OnAlertSelectId;
 import com.chengxin.exception.ExceptionHandler;
 import com.chengxin.fragment.ChatFragment;
-import com.chengxin.fragment.ContactsFragment;
+//import com.chengxin.fragment.ContactsFragment;
 import com.chengxin.fragment.ExpectFragment;
-import com.chengxin.fragment.FoundFragment;
+import com.chengxin.fragment.FinancialManagerFragment;
+//import com.chengxin.fragment.FoundFragment;
 import com.chengxin.fragment.MerchantFragment;
-import com.chengxin.fragment.MyFragment;
+//import com.chengxin.fragment.MyFragment;
+import com.chengxin.fragment.ServicesMainFragment;
+import com.chengxin.fragment.ShopCityFragment;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.GlobleType;
@@ -130,8 +133,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private PopWindows mPopWindows;
 	
 	private ChatFragment chatFragment;			//< 聊天界面的Fragment	
-	private FoundFragment foundFragment;		//< 发现界面的Fragment	
-	private ContactsFragment contactsFragment;	//< 通讯录界面的Fragment
+//	private FoundFragment foundFragment;		//< 发现界面的Fragment
+	private ServicesMainFragment servicesFragment;
+	private FinancialManagerFragment mFinanceMainFragment;
+
+//	private ContactsFragment contactsFragment;	//< 通讯录界面的Fragment
 	private MerchantFragment mMerChatFragment; 	//< 商户
 //	private MyFragment mMyFragment;				//< 商户
 	private ExpectFragment mExpectFragment;
@@ -654,6 +660,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		}
 
 		private final String[] titles = mContext.getResources().getStringArray(R.array.main_fragment_array);
+		private ShopCityFragment mShopCityFragment;
 
 		@Override
 		public CharSequence getPageTitle(int position) {
@@ -674,20 +681,21 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				}
 				return chatFragment;
 			case 1:
-				if (contactsFragment == null) {
-					contactsFragment = new ContactsFragment();
+				if (servicesFragment == null) {
+					servicesFragment = new ServicesMainFragment();
 				}
-				return contactsFragment;
+				return servicesFragment;
 			case 2:
-				if (foundFragment == null) {
-					foundFragment = new FoundFragment();
+				if (mFinanceMainFragment == null) {
+					mFinanceMainFragment = new FinancialManagerFragment();
 				}
-				return foundFragment;
+				return mFinanceMainFragment;
 			case 3:
-				if (mMerChatFragment == null) {
-					mMerChatFragment = new MerchantFragment();
+				if (mShopCityFragment == null) {
+					mShopCityFragment = new ShopCityFragment();
+//					mMerChatFragment = new MerchantFragment();
 				}
-				return mMerChatFragment;
+				return mShopCityFragment;
 			case 4:
 				if (mExpectFragment == null) {
 					mExpectFragment = new ExpectFragment();
@@ -712,17 +720,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
-			Log.e("instantiateItem", "instantiateItem");
+			Log.d("instantiateItem", "instantiateItem");
 			return super.instantiateItem(container, position);
 		}
 
 		@Override
 		public int getPageIconResId(int position) {
 			int[] rs = new int[] { R.drawable.ico_main_menu_msg0,//
-					R.drawable.ico_main_menu_contact0,//
 					R.drawable.ico_main_menu_app0,//
+					R.drawable.ico_main_menu_financ0,//
 					R.drawable.ico_main_menu_found0,//
-					R.drawable.ico_main_menu_setting0 //
+					R.drawable.ico_main_menu_exhi0 //
 
 			};
 			return rs[position];
@@ -731,10 +739,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		@Override
 		public int getActivePageIconResId(int position) {
 			int[] rs = new int[] { R.drawable.ico_main_menu_msg1,//
-					R.drawable.ico_main_menu_contact1,//
 					R.drawable.ico_main_menu_app1,//
+					R.drawable.ico_main_menu_financ1,//
 					R.drawable.ico_main_menu_found1,//
-					R.drawable.ico_main_menu_setting1 //
+					R.drawable.ico_main_menu_exhi1 //
 
 			};
 			return rs[position];

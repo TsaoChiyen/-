@@ -121,7 +121,7 @@ import com.chengxin.adapter.PagerAdapter;
  
    public void setCurrentItem(int item) {
      this.mPopulatePending = false;
-     setCurrentItemInternal(item, true, false);
+     setCurrentItemInternal(item, true, true);
    }
  
    void setCurrentItemInternal(int item, boolean smoothScroll, boolean always) {

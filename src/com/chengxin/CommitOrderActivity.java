@@ -16,6 +16,8 @@ import com.chengxin.R;
 import com.chengxin.Entity.Goods;
 import com.chengxin.Entity.Merchant;
 import com.chengxin.Entity.WeiYuanState;
+import com.chengxin.dialog.MMAlert;
+import com.chengxin.dialog.MMAlert.OnAlertSelectId;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
@@ -34,6 +36,8 @@ public class CommitOrderActivity extends BaseActivity {
 			mInputDesc;
 	
 	private Merchant mMerchant;
+	private EditText mPayModeEdit;
+	protected String mInputMode;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,10 @@ public class CommitOrderActivity extends BaseActivity {
 		mContactNameEdit = (EditText)findViewById(R.id.contact_name);
 		mTelPhoneEdit = (EditText)findViewById(R.id.contact_tel);
 		mAddrEdit = (EditText)findViewById(R.id.contact_addr);
+		mPayModeEdit = (EditText)findViewById(R.id.pay_mode);
 		mDescEdit = (EditText)findViewById(R.id.desc);
+		
+		mPayModeEdit.setOnClickListener(this);
 	}
 
 	/*判断输入的值*/
@@ -76,6 +83,9 @@ public class CommitOrderActivity extends BaseActivity {
 		}else if(mInputAddr == null || mInputAddr.equals("")){
 			isCheck = false;
 			hintMsg = "请输入联系人地址";
+		}else if(mInputMode == null || mInputMode.equals("")){
+			isCheck = false;
+			hintMsg = "请选择支付方式";
 		}else if(mInputDesc != null && !mInputDesc.equals("")){
 			if(mInputDesc.length() >150){
 				isCheck = false;
@@ -118,8 +128,14 @@ public class CommitOrderActivity extends BaseActivity {
 						}
 					}
 					
-					WeiYuanState state = WeiYuanCommon.getWeiYuanInfo().submitOrder(goods, mInputContactName, mInputTelPhone, mInputAddr, 
-							mInputDesc, mMerchant.id);
+					WeiYuanState state = WeiYuanCommon.getWeiYuanInfo().submitOrder(
+							mInputMode,
+							goods,
+							mInputContactName,
+							mInputTelPhone,
+							mInputAddr, 
+							mInputDesc,
+							mMerchant.id);
 					mBaseHandler.sendEmptyMessage(BASE_HIDE_PROGRESS_DIALOG);
 					WeiYuanCommon.sendMsg(mHandler,GlobalParam.MSG_CHECK_STATE, state);
 				} catch (NotFoundException e) {
@@ -150,7 +166,19 @@ public class CommitOrderActivity extends BaseActivity {
 		case R.id.commit_btn://提交订单
 			commitOrder();
 			break;
+		case R.id.pay_mode:
+			final String item[] = mContext.getResources().getStringArray(R.array.pay_mode_item);
+			MMAlert.showAlert(mContext, "", mContext.getResources().
+					getStringArray(R.array.pay_mode_item), 
+					null, new OnAlertSelectId() {
 
+				@Override
+				public void onClick(int whichButton) {
+					mInputMode = item[whichButton];
+					mPayModeEdit.setText(item[whichButton]);
+				}
+			});
+			break;
 		default:
 			break;
 		}

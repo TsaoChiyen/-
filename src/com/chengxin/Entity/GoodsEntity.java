@@ -66,9 +66,4 @@ public class GoodsEntity implements Serializable{
 
 
 	}
-
-
-
-
-
 }

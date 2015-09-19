@@ -19,6 +19,7 @@ public class GridViewMenuItem implements Serializable{
 	public int id;
 	public int resource_id;
 	public String menu_name;
+	
 	public GridViewMenuItem(int id, String resource_name, String menu_name) {
 		super();
 		this.id = id;
@@ -27,8 +28,10 @@ public class GridViewMenuItem implements Serializable{
 		}
 		this.menu_name = menu_name;
 	}
+	
 	public GridViewMenuItem() {
 		super();
 	}
+	
 	
 }

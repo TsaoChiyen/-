@@ -22,6 +22,8 @@ import com.chengxin.global.GlobleType;
 import com.chengxin.global.WeiYuanCommon;
  
 
+
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -109,7 +111,7 @@ public class GameWebViewActivity extends BaseActivity{
 				}*/
 			
 			/*	if(isNumeric2(phoneString)){
-					Intent intent=new Intent("android.intent.action.CALL",Uri.parse("tel:"+phoneString));
+					Intent intent=new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+phoneString));
 					mParentContext.startActivity(intent);
 				}*/
 				

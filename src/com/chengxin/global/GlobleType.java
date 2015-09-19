@@ -16,6 +16,7 @@ public class GlobleType {
 	public final static int COMPLETE_NICKNAME = 00014;//昵称
 	public final static int MODIFY_GROUP_INFO = 00012;//修改分组信息
 	public final static int MODIFY_GROUP_NICKNAME = 00013;//修改用户所在分组的昵称
+	public final static int MODIFY_SHOPPING_ADDRESS = 00016;//修改用户的发货地址
 	public final static int COMPLETE_MET_TITLE = 00015;//填写秘室主题
 	
 	//sessicon表数据类型

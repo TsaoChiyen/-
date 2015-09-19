@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp" >
+
+        <LinearLayout
+            android:id="@+id/layout_label"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/lbl_name"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="信用卡号"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_mechanism"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="还款银行"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_date"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="最晚还款日期"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_money"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="邮箱地址"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_number"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="邮箱密码"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_number"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="邮箱登录方式"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_number"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="邮箱服务器"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/edt_card"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="信用卡4位尾号"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="选择银行"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <EditText
+                android:id="@+id/edt_date"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="选择还款日期(格式：1970-05-23)"
+                android:imeOptions="actionNext"
+                android:inputType="date"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="信用卡账单邮箱（选填）"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <EditText
+                android:id="@+id/edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="邮箱密码（选填）"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <EditText
+                android:id="@+id/edt_login"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="邮箱登录方式（选填）"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <EditText
+                android:id="@+id/edt_server"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="邮箱服务器（选填）"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_protocol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" >
+
+        <CheckBox
+            android:id="@+id/chk_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:button="@drawable/protocl_checkbox"
+            android:checked="true"
+            android:paddingLeft="5dp"
+            android:text="@string/chk_agree"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/btn_protocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="false"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/chk_agree"
+            android:clickable="true"
+            android:text="邮件抓取授权协议"
+            android:textColor="#0000ff"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

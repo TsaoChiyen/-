@@ -152,12 +152,12 @@ public class Merchant implements Serializable{
 			}
 		}
 	
-        if(!json.isNull("services")){
-            String goodsString = json.getString("services");
+        if(!json.isNull("service")){
+            String goodsString = json.getString("service");
             
             if((goodsString != null && !goodsString.equals(""))
                && goodsString.startsWith("[")){
-                JSONArray array = json.getJSONArray("services");
+                JSONArray array = json.getJSONArray("service");
                 
                 if (array != null && array.length()>0) {
                     serviceList = new ArrayList<ShopService>();

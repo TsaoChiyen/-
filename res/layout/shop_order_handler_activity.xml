@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/tool_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tool_bar"
+        android:layout_height="44dp"
         android:background="@color/application_gray"
         android:orientation="horizontal" >
 
@@ -37,13 +37,15 @@
         
 		    <RelativeLayout
 		        android:layout_width="match_parent"
-		        android:layout_height="36dp" >
+		        android:layout_height="44dp" >
 		
 		        <TextView
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
+		            android:layout_alignParentLeft="true"
 		            android:layout_centerVertical="true"
-		            android:layout_marginLeft="10dp"
+		            android:layout_marginLeft="8dp"
+		            android:layout_toLeftOf="@+id/text_price"
 		            android:lines="1"
 		            android:text="商品名称"
 		            android:textAppearance="?android:attr/textAppearanceSmall"
@@ -64,7 +66,7 @@
 		
 		        <TextView
 		            android:id="@+id/text_count"
-		            android:layout_width="36dp"
+		            android:layout_width="40dp"
 		            android:layout_height="wrap_content"
 		            android:layout_centerVertical="true"
 		            android:layout_toLeftOf="@id/text_sum"
@@ -75,7 +77,8 @@
 		            android:textColor="@color/application_deep_gray_black" />
 		
 		        <TextView
-		            android:layout_width="wrap_content"
+		            android:id="@+id/text_price"
+		            android:layout_width="48dp"
 		            android:layout_height="wrap_content"
 		            android:layout_centerVertical="true"
 		            android:layout_toLeftOf="@id/text_count"
@@ -117,7 +120,7 @@
 		
 		    <LinearLayout
 		        android:layout_width="match_parent"
-		        android:layout_height="36dp"
+		        android:layout_height="44dp"
 		        android:orientation="horizontal" >
 		
 		        <TextView
@@ -150,32 +153,34 @@
 		
 		        <RelativeLayout
 		            android:layout_width="match_parent"
-		            android:layout_height="36dp"
+		            android:layout_height="44dp"
 		            android:background="@color/application_gray" >
 		
 		            <TextView
 		                android:layout_width="match_parent"
-		                android:layout_height="match_parent"
+		                android:layout_height="wrap_content"
 		                android:layout_alignParentLeft="true"
-		                android:layout_alignParentTop="true"
+		                android:layout_alignParentTop="false"
+		                android:layout_centerVertical="true"
 		                android:gravity="center_horizontal|center_vertical"
 		                android:lines="1"
 		                android:text="顾客信息"
 		                android:textSize="17sp" />
+
 		        </RelativeLayout>
 		
 		        <RelativeLayout
 		            android:layout_width="match_parent"
-		            android:layout_height="36dp" >
+		            android:layout_height="44dp" >
 		
 		            <TextView
 		                android:id="@+id/cosumer_name"
-		                android:layout_width="72dp"
+		                android:layout_width="64dp"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentLeft="true"
 		                android:layout_centerVertical="true"
-		                android:layout_marginLeft="10dp"
-		                android:layout_marginRight="10dp"
+		                android:layout_marginLeft="8dp"
+		                android:layout_marginRight="3dp"
 		                android:text="顾客"
 		                android:textAppearance="?android:attr/textAppearanceSmall"
 			            android:textColor="@color/application_deep_gray_black" />
@@ -198,28 +203,19 @@
 		
 		        <RelativeLayout
 		            android:layout_width="match_parent"
-		            android:layout_height="36dp" >
+		            android:layout_height="44dp" >
 		
 		            <TextView
 		                android:id="@+id/cusumer_phone"
-		                android:layout_width="72dp"
+		                android:layout_width="64dp"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentLeft="true"
 		                android:layout_centerVertical="true"
-		                android:layout_marginLeft="10dp"
-		                android:layout_marginRight="10dp"
+		                android:layout_marginLeft="8dp"
+		                android:layout_marginRight="3dp"
 		                android:text="联系电话"
 		                android:textAppearance="?android:attr/textAppearanceSmall"
 			            android:textColor="@color/application_deep_gray_black" />
-		
-		            <TextView
-		                android:id="@+id/order_cosumer_phone"
-		                android:layout_width="wrap_content"
-		                android:layout_height="wrap_content"
-		                android:layout_centerVertical="true"
-		                android:layout_toRightOf="@+id/cusumer_phone"
-		                android:text=""
-		                android:textAppearance="?android:attr/textAppearanceSmall" />
 		
 		            <TextView
 		                android:layout_width="match_parent"
@@ -231,9 +227,9 @@
 		                android:id="@+id/btn_chat"
 		                android:layout_width="32dp"
 		                android:layout_height="32dp"
-		                android:layout_alignParentBottom="true"
 		                android:layout_alignParentRight="true"
-		                android:layout_marginLeft="10dp"
+		                android:layout_centerVertical="true"
+		                android:layout_marginLeft="5dp"
 		                android:layout_marginRight="10dp"
 		                android:src="@drawable/icon_comment_s" />
 		
@@ -241,23 +237,35 @@
 		                android:id="@+id/btn_call"
 		                android:layout_width="32dp"
 		                android:layout_height="32dp"
-		                android:layout_alignParentBottom="true"
+		                android:layout_centerVertical="true"
 		                android:layout_toLeftOf="@+id/btn_chat"
 		                android:src="@drawable/icon_comment_s" />
+
+		            <TextView
+		                android:id="@+id/order_cosumer_phone"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_centerVertical="true"
+		                android:layout_toLeftOf="@id/btn_call"
+		                android:layout_toRightOf="@+id/cusumer_phone"
+		                android:text=""
+		                android:textAppearance="?android:attr/textAppearanceSmall" />
+		
+		            
 		        </RelativeLayout>
 		
 		        <RelativeLayout
 		            android:layout_width="match_parent"
-		            android:layout_height="36dp" >
+		            android:layout_height="44dp" >
 		
 		            <TextView
 		                android:id="@+id/cosumer_address"
-		                android:layout_width="72dp"
+		                android:layout_width="64dp"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentLeft="true"
 		                android:layout_centerVertical="true"
-		                android:layout_marginLeft="10dp"
-		                android:layout_marginRight="10dp"
+		                android:layout_marginLeft="8dp"
+		                android:layout_marginRight="3dp"
 		                android:text="发货地址"
 		                android:textAppearance="?android:attr/textAppearanceSmall"
 			            android:textColor="@color/application_deep_gray_black" />
@@ -285,12 +293,12 @@
 		
 		            <TextView
 		                android:id="@+id/cosumer_content"
-		                android:layout_width="72dp"
+		                android:layout_width="64dp"
 		                android:layout_height="wrap_content"
 		                android:layout_alignParentLeft="true"
 		                android:layout_alignParentTop="true"
-		                android:layout_marginLeft="10dp"
-		                android:layout_marginRight="10dp"
+		                android:layout_marginLeft="8dp"
+		                android:layout_marginRight="3dp"
 		                android:layout_marginTop="10dp"
 		                android:text="顾客留言"
 		                android:textAppearance="?android:attr/textAppearanceSmall"
@@ -312,7 +320,7 @@
 		
 		        <LinearLayout
 		            android:layout_width="match_parent"
-		            android:layout_height="40dp"
+		            android:layout_height="44dp"
 		            android:background="#ffffff" >
 		
 		            <Button
@@ -322,6 +330,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="center_vertical"
 		                android:layout_weight="1"
+		                android:background="#ffffff"
 		                android:text="发货"
 		                android:textColor="#6e6e6e" />
 		
@@ -332,6 +341,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="center_vertical"
 		                android:layout_weight="1"
+		                android:background="#ffffff"
 		                android:text="退单"
 		                android:textColor="#6e6e6e" />
 		
@@ -342,6 +352,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="center_vertical"
 		                android:layout_weight="1"
+		                android:background="#ffffff"
 		                android:text="物流"
 		                android:textColor="#6e6e6e" />
 		

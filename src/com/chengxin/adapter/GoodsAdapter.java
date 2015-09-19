@@ -8,7 +8,6 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,7 +23,6 @@ public class GoodsAdapter extends BaseAdapter{
 	private Context mContext;
 	private final LayoutInflater mInflater;
 	private ImageLoader mImageLoader;
-
 
 	public GoodsAdapter(Context context,List<Goods> list) {
 		mInflater = (LayoutInflater)context.getSystemService(

@@ -640,6 +640,7 @@
     <string name="goods_shelf_manager">商品上架管理</string>
     <string name="shop_order_manager">商城订单管理</string>
     <string name="shop_order_handle">订单处理</string>
+    <string name="order_main_title">订单</string>
     <string name="shop_account_manager">商城结款管理</string>
     <string name="shop_manager">商城管理</string>
     <string name="business_paper">营业执照</string>
@@ -665,5 +666,15 @@
     <string name="logistics_info">物流信息</string>
     <string name="shop_settle_title">结款管理</string>
     <string name="apply_exhibition">申请参加展会</string>
+    <string name="demand_main_title">需求</string>
+    <string name="services_demand_add">发布需求</string>
+    <string name="order_detail_title">订单详细</string>
+    <string name="shopping_address">修改收货地址</string>
+    <string name="my_bill_title">我的账单</string>
+    <string name="bill_info_title">贷款还款提醒</string>
+    <string name="bill_bank_title">信用卡还款提醒</string>
+    <string name="financing_main_title">融资贷款</string>
+    <string name="financier_info_title">融资贷款信息管理</string>
+    <string name="financing_product_title">融资贷款产品管理</string>
     
 </resources>

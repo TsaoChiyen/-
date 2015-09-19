@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp" >
+
+        <LinearLayout
+            android:id="@+id/layout_label"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/lbl_name"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="还款名称"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_mechanism"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="还款机构"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_date"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="每期还款日期"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_money"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="还款金额"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_number"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="剩余期数"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="还款名称"
+                android:imeOptions="actionNext"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" >
+                
+                <requestFocus />
+            </EditText>
+                
+            <EditText
+                android:id="@+id/edt_mechanism"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="还款机构"
+                android:imeOptions="actionNext"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <EditText
+                android:id="@+id/edt_date"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="每期还款日期"
+                android:imeOptions="actionNext"
+                android:inputType="date"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <EditText
+                android:id="@+id/edt_money"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="还款金额"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+            <EditText
+                android:id="@+id/edt_number"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_circle_rond_n"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="剩余期数"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:padding="5dip"
+                android:textColor="@color/application_black"
+                android:textColorHint="@color/application_deep_gray_black"
+                android:textSize="@dimen/sixteen" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

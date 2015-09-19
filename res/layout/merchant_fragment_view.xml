@@ -7,94 +7,39 @@
     android:overScrollMode="never" >
 
     <RelativeLayout
+        android:id="@+id/shop_tool_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/application_gray" >
+
+        <TextView
+            android:id="@+id/btn_shop_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="所有地区"
+            android:textColor="@color/application_deep_gray_black"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_below="@id/shop_tool_bar_layout"
         android:visibility="visible" >
 
         <LinearLayout
             android:id="@+id/category_linear"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/type_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="-48dip"
             android:orientation="horizontal" >
 
             <include layout="@layout/image_pull_to_refresh_view" />
         </LinearLayout>
-
-        <View
-            android:id="@+id/top_splite"
-            android:layout_width="fill_parent"
-            android:layout_height="1dip"
-            android:layout_alignParentTop="true" />
-
-        <LinearLayout
-            android:id="@+id/type_layout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <LinearLayout
-                android:id="@+id/menu_layout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#fff3f3f3"
-                android:orientation="horizontal"
-                android:paddingBottom="5dip"
-                android:paddingTop="5dip" >
-            </LinearLayout>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="20dip"
-                android:background="#efefef" />
-        </LinearLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/menu_dialog_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:visibility="gone" >
-
-        <include layout="@layout/merchant_menu_dialog" />
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/buy_btn"
-        android:layout_width="80dip"
-        android:layout_height="80dip"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:orientation="horizontal"
-        android:padding="10dip" >
-
-        <ImageView
-            android:id="@+id/buy_background"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dip"
-            android:background="@drawable/buy_icon"
-            android:contentDescription="@string/desc"
-            android:scaleType="centerInside" />
-
-        <TextView
-            android:id="@+id/shpping_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:background="#ff0000"
-            android:gravity="center_horizontal|center_vertical"
-            android:minHeight="20dip"
-            android:minWidth="20dip"
-            android:padding="2dip"
-            android:text=""
-            android:textColor="@color/white"
-            android:textSize="@dimen/forteen" />
-    </RelativeLayout>
 
 </RelativeLayout>

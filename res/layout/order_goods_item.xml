@@ -5,18 +5,21 @@
 	android:orientation="vertical" >
     
     <RelativeLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content" >
+        android:layout_width="match_parent"
+        android:layout_height="44dp" >
+
 		<TextView
 		    android:id="@+id/text_name"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
+		    android:layout_alignParentLeft="true"
 		    android:layout_centerVertical="true"
-		    android:layout_marginLeft="10dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginBottom="10dp"
+		    android:layout_marginBottom="10dp"
+		    android:layout_marginLeft="8dp"
+		    android:layout_marginTop="3dp"
+		    android:layout_toLeftOf="@+id/text_price"
 		    android:lines="1"
-		    android:text=""
+		    android:text="sdgf"
 		    android:textAppearance="?android:attr/textAppearanceSmall"
 		    android:textColor="@color/application_deep_gray_black" />
 		
@@ -37,12 +40,12 @@
 		
 		<TextView
 		    android:id="@+id/text_count"
-		    android:layout_width="36dp"
+		    android:layout_width="40dp"
 		    android:layout_height="wrap_content"
 		    android:layout_centerVertical="true"
+		    android:layout_marginBottom="10dp"
+		    android:layout_marginTop="10dp"
 		    android:layout_toLeftOf="@id/text_sum"
-			android:layout_marginTop="10dp"
-			android:layout_marginBottom="10dp"
 		    android:gravity="right"
 		    android:lines="1"
 		    android:text=""
@@ -51,12 +54,12 @@
 		
 		<TextView
 		    android:id="@+id/text_price"
-		    android:layout_width="wrap_content"
+		    android:layout_width="48dp"
 		    android:layout_height="wrap_content"
 		    android:layout_centerVertical="true"
+		    android:layout_marginBottom="10dp"
+		    android:layout_marginTop="10dp"
 		    android:layout_toLeftOf="@id/text_count"
-			android:layout_marginTop="10dp"
-			android:layout_marginBottom="10dp"
 		    android:gravity="right"
 		    android:lines="1"
 		    android:text=""

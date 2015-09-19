@@ -8,11 +8,18 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.chengxin.Entity.AddGroup;
+import com.chengxin.Entity.Bill;
+import com.chengxin.Entity.BillList;
 import com.chengxin.Entity.ChatImg;
 import com.chengxin.Entity.CheckFriends;
 import com.chengxin.Entity.CommentGoodsState;
 import com.chengxin.Entity.CountryList;
+import com.chengxin.Entity.Demand;
+import com.chengxin.Entity.DemandList;
 import com.chengxin.Entity.Favorite;
+import com.chengxin.Entity.Financier;
+import com.chengxin.Entity.FinancingGoods;
+import com.chengxin.Entity.FinancingGoodsList;
 import com.chengxin.Entity.FriendsLoop;
 import com.chengxin.Entity.FriendsLoopItem;
 import com.chengxin.Entity.Goods;
@@ -22,6 +29,7 @@ import com.chengxin.Entity.GroupList;
 import com.chengxin.Entity.LoginResult;
 import com.chengxin.Entity.Meeting;
 import com.chengxin.Entity.MeetingItem;
+import com.chengxin.Entity.Merchant;
 import com.chengxin.Entity.MerchantEntity;
 import com.chengxin.Entity.MerchantMenu;
 import com.chengxin.Entity.MessageInfo;
@@ -32,6 +40,7 @@ import com.chengxin.Entity.OrderList;
 import com.chengxin.Entity.Room;
 import com.chengxin.Entity.RoomList;
 import com.chengxin.Entity.RoomUsrList;
+import com.chengxin.Entity.ShopAreaList;
 import com.chengxin.Entity.ShopGoodsList;
 import com.chengxin.Entity.ShopServiceList;
 import com.chengxin.Entity.UserList;
@@ -47,7 +56,7 @@ public class WeiYuanInfo  implements Serializable{
 	private static final long serialVersionUID = 1651654562644564L;
 
 	/**www.kobego.com 115.29.32.248*/
-	private static final String SERVER_STR = "http://121.40.214.35:8000/"; // "http://119.84.73.193/"; // 
+	private static final String SERVER_STR = "http://119.84.73.193/"; // "http://121.40.214.35:8000/"; //  
 	public static final String SERVER_PREFIX = SERVER_STR + "index.php";
 	public static final String CODE_URL =SERVER_STR;
 	public static final String HEAD_URL = SERVER_STR + "index.php";
@@ -2222,10 +2231,10 @@ public class WeiYuanInfo  implements Serializable{
 	 * @throws WeiYuanException
 	 */
 	public MerchantMenu getShopType() throws WeiYuanException{
-		WeiYuanParameters bundle = new WeiYuanParameters();
+//		WeiYuanParameters bundle = new WeiYuanParameters();
 		String url = SERVER_PREFIX  + "/shop/api/categroyList";
-		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
-		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,0);
+//		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+		String reString = request(url, null, Utility.HTTPMETHOD_POST,0);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null") /* && reString.startsWith("{")*/){
 			return new MerchantMenu(reString);
@@ -2366,9 +2375,83 @@ public class WeiYuanInfo  implements Serializable{
 		return null;
 	}
 
-	//---------2015-02-02 商户 2015-02-02-------------
+    /**
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	商家列表
+     *
+     *  @param categoryid   商品分类id
+     *  @param areaId       商品区域id
+     */
+    public MerchantEntity getShopList(int page, int categoryid, String city) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
 
-	//+++++++++2015-02-05商品列表2015-02-05 ++++++++++
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        if (categoryid > 0) bundle.add("categoryid",String.valueOf(categoryid));
+        if (page > 1) bundle.add("page", String.valueOf(page));
+        if (city != null && city.length() > 0) bundle.add("city", city);
+
+        String url = SERVER_PREFIX + "/shop/api/shopList";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
+            
+            if(reString != null && !reString.equals("") && !reString.equals("null")){
+                return new MerchantEntity(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+
+    /**
+     *	Copyright © 2014 sam Inc. All rights reserved.
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	商品列表
+     *
+     *  @param shopid       商户id
+     *  @param categoryid   商品分类id
+     *  @param areaid       商品地区id
+     *  @param sort         价格排序 1：升序，2：降序
+     *  @param page
+     *
+     */
+    public GoodsEntity getGoodsList(int page, int shopid, int categoryid, String city, int sort) throws WeiYuanException  {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+
+        if (page > 1)
+            bundle.add("page", String.valueOf(page));
+
+        if (shopid > 0)
+            bundle.add("shopid", String.valueOf(shopid));
+        
+        if (categoryid > 0)
+            bundle.add("categoryid", String.valueOf(categoryid));
+        
+        if (city != null && !city.isEmpty())
+            bundle.add("city", city);
+        
+        if (sort > 0)
+            bundle.add("sort", String.valueOf(sort));
+
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        
+        String url = SERVER_PREFIX + "/shop/api/goodsList";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            return new GoodsEntity(reString);
+        }
+        
+        return null;
+    }
+
+    //---------2015-02-05商品列表2015-02-05 -------------
+
 	/**
 	 * 商品列表 /shop/api/goodsList
 	 * @param page
@@ -2396,9 +2479,13 @@ public class WeiYuanInfo  implements Serializable{
 
 		return null;
 	}
-	//---------2015-02-05商品列表2015-02-05 -------------
+	
+    //---------2015-02-05商品列表2015-02-05 -------------
 
 	/***
+     *
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
 	 * 5.	商品详细(/shop/api/detail)
 	 * @param goods_id	true	String	商品id
 	 * @throws WeiYuanException 
@@ -2409,7 +2496,7 @@ public class WeiYuanInfo  implements Serializable{
 			return null;
 		}
 		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
-		bundle.add("goods_id", goods_id);
+		bundle.add("goodid", goods_id);
 		String url = SERVER_PREFIX + "/shop/api/detail";
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
@@ -2533,7 +2620,7 @@ public class WeiYuanInfo  implements Serializable{
 
 	/**
 	 * 9.	提交订单(/shop/api/submitOrder)
-	 * @param uid 			true	 登录用户id
+     * @param type 			true	String  支付方式
 	 * @param goods			true	String	商品格式：商品id1*count1,id2*count2
 	 * @param username		true	string	联系人
 	 * @param phone			true	string	电话
@@ -2544,6 +2631,7 @@ public class WeiYuanInfo  implements Serializable{
 	 */
 
 	public WeiYuanState submitOrder(
+				String type,
 				String goods,
 				String username,
 				String phone,
@@ -2555,13 +2643,16 @@ public class WeiYuanInfo  implements Serializable{
 
 		if(((goods == null || goods.equals(""))	|| goods.endsWith(","))
 				|| (username == null || username.equals(""))
-				|| (address == null || address.equals(""))
+                || (type == null || type.equals(""))
+                || (address == null || address.equals(""))
 				|| shopid == 0){
 			return null;
 		}
-		bundle.add("goods", goods);
+
+        bundle.add("goods", goods);
 		bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
-		bundle.add("username", username);
+        bundle.add("username", username);
+        bundle.add("type", type);
 		bundle.add("phone",phone);
 		bundle.add("address", address);
 		bundle.add("shopid", String.valueOf("shopid"));
@@ -3351,4 +3442,748 @@ public class WeiYuanInfo  implements Serializable{
         return null;
     }
 
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	添加需求
+     *	@param content  需求内容
+     *	@param lat      当前纬度
+     *	@param lng      当前经度
+     */
+    public Demand addDemand(String content, String lat, String lng) throws WeiYuanException {
+        if (content == null) return null;
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("content", content);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        if (lat != null && !lat.equals("")) {
+            bundle.add("lat", lat);
+        }
+
+        if (lng != null && !lng.equals("")) {
+            bundle.add("lng", lng);
+        }
+        
+        String url = SERVER_PREFIX + "/shop/api/addDemand";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("addDemand", reString);
+            
+            try {
+                return new Demand(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	需求列表
+     *	@param key      搜索关键字，匹配content字段
+     *	@param lat      当前纬度
+     *	@param lng      当前经度
+     */
+    public DemandList getDemand(int page, String key, String lat, String lng) throws WeiYuanException {
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        if (key != null && !key.equals("")) {
+            bundle.add("keywords", key);
+        }
+        
+        if (page > 1) {
+            bundle.add("page", String.valueOf(page).toString());
+        }
+
+        if (lat != null && !lat.equals("")) {
+            bundle.add("lat", lat);
+        }
+        
+        if (lng != null && !lng.equals("")) {
+            bundle.add("lng", lng);
+        }
+        
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/demandList";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if(reString != null && !reString.equals("") && !reString.equals("null")){
+                return new DemandList(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	编辑收货地址
+     *
+     *  @param  address:  收货地址
+     */
+    public WeiYuanState editShippingAddress(String orderId, String address) throws WeiYuanException {
+        if (address == null || orderId == null || orderId.equals(""))
+            return null;
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("address", address);
+        bundle.add("id", orderId);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/editAddress";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("editAddress", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	添加账单
+     *	@param type         账单类型: 1=>贷款，2=>信用卡
+     *	@param repayment    还款提醒日期
+     *
+     *  ========== 以下是信用卡类参数 ====
+     *	@param card         信用卡卡号
+     *	@param bank         贷款银行
+     *
+     *  ========== 以下是贷款类参数 ====
+     *	@param name         账单名称
+     *	@param price        还款金额
+     *	@param number       剩余期数
+     *	@param mechanism    还款机构
+     */
+    public Bill addBill(int type,
+                        long repayment,
+                        String name,
+                        double price,
+                        int number,
+                        String mechanism,
+                        String card,
+                        String bank
+                        ) throws WeiYuanException {
+        if (type < 1 || type > 2) {
+            return null;
+        }
+
+        WeiYuanParameters bundle = new WeiYuanParameters();
+
+        bundle.add("type", String.valueOf(type));
+        bundle.add("repayment", String.valueOf(repayment));
+        
+        if (type == 1) {
+            bundle.add("name", name);
+            bundle.add("price", String.valueOf(price));
+            bundle.add("number", String.valueOf(number));
+            bundle.add("mechanism", mechanism);
+        } else if (type == 2) {
+            bundle.add("card", card);
+            bundle.add("bank", bank);
+        }
+
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/addBill";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("addBill", reString);
+            
+            try {
+                return new Bill(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	编辑账单
+     *
+     *	@param billId       账单id
+     *	@param type         账单类型: 1=>贷款，2=>信用卡
+     *	@param repayment    还款提醒日期
+     *
+     *  ========== 以下是信用卡类参数 ====
+     *	@param card         信用卡卡号
+     *	@param bank         贷款银行
+     *
+     *  ========== 以下是贷款类参数 ====
+     *	@param name         账单名称
+     *	@param price        还款金额
+     *	@param number       剩余期数
+     *	@param mechanism    还款机构
+     */
+    public Bill editBill(int billId,
+                         int type,
+                         long repayment,
+                         String name,
+                         double price,
+                         int number,
+                         String mechanism,
+                         String card,
+                         String bank) throws WeiYuanException {
+        if (billId <= 0) {
+            return null;
+        }
+        
+        if (type < 1 || type > 2) {
+            return null;
+        }
+
+        WeiYuanParameters bundle = new WeiYuanParameters();
+
+        bundle.add("id", String.valueOf(billId));
+        bundle.add("type", String.valueOf(type));
+        bundle.add("repayment", String.valueOf(repayment));
+        
+        if (type == 1) {
+            bundle.add("name", name);
+            bundle.add("price", String.valueOf(price));
+            bundle.add("number", String.valueOf(number));
+            bundle.add("mechanism", mechanism);
+        } else if (type == 2) {
+            bundle.add("card", card);
+            bundle.add("bank", bank);
+        }
+        
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/editBill";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("editBill", reString);
+            
+            try {
+                return new Bill(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	删除账单
+     *
+     *	@param billId       账单id
+     */
+    public WeiYuanState deleteBill(int billId) throws WeiYuanException {
+        if (billId <= 0) {
+            return null;
+        }
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("id", String.valueOf(billId));
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/delBill";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("delBill", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	账单列表
+     */
+    public BillList getBillList(int page) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        if (page > 1) {
+            bundle.add("page", String.valueOf(page));
+        }
+
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/billList";
+
+        try {
+        	String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+        	if(reString != null && !reString.equals("") && !reString.equals("null")){
+            	return new BillList(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+
+	public Bill addBill(Bill bill) throws WeiYuanException {
+		return addBill(bill.type,
+				bill.repayment,
+				bill.name,
+				bill.price,
+				bill.number,
+				bill.mechanism,
+				bill.card,
+				bill.bank);
+	}
+
+	public Bill editBill(Bill bill) throws WeiYuanException  {
+		return editBill(bill.id,
+				bill.type,
+				bill.repayment,
+				bill.name,
+				bill.price,
+				bill.number,
+				bill.mechanism,
+				bill.card,
+				bill.bank);
+	}
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	入驻商户申请
+     *
+     *  @param  company:        公司名称
+     *  @param  workPaper:      工作证明图
+     *  @param  idcard:         身份证图
+     *  @param  certificate:    从业资格图
+     *  @param  city:           城市 ID
+     *  @param  lat:            经度
+     *  @param  lng:            纬度
+     *  @param  address:        办公地址
+     */
+    public Financier applyFinacier(String company,
+                                  String address,
+                                  String city,
+                                  double lat,
+                                  double lng,
+                                  String workPermit,
+                                  String idCard,
+                                  String certificate) throws WeiYuanException {
+        
+        
+        if (company == null || company.equals("") ||
+            address == null || address.equals("") ||
+            city == null || city.equals("")) {
+            return null;
+        }
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("company",company);
+        bundle.add("address", address);
+        bundle.add("city", city);
+        
+        if (lat != 0)             bundle.add("lat", String.valueOf(lat));
+        if (lng != 0)             bundle.add("lng", String.valueOf(lng));
+        
+        if((workPermit!=null && !workPermit.equals("")) ||
+           (certificate!=null && !certificate.equals("")) ||
+           (idCard!=null && !idCard.equals(""))){
+            List<MorePicture> listPic = new ArrayList<MorePicture>();
+            
+            if (workPermit != null && !workPermit.equals(""))
+                listPic.add(new MorePicture("workPaper",workPermit));;
+            
+            if (certificate != null && !certificate.equals(""))
+                listPic.add(new MorePicture("certificate",certificate));;
+            
+            if (idCard != null && !idCard.equals(""))
+                listPic.add(new MorePicture("idCard",idCard));;
+            
+            bundle.addPicture("pic", listPic);
+        }
+        
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/financ/api/apply";
+
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                return new Financier(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	入驻商户编辑
+     *
+     *  @param  id:             融资商户 ID
+     *  @param  company:        公司名称
+     *  @param  workPaper:      工作证明图
+     *  @param  idcard:         身份证图
+     *  @param  certificate:    从业资格图
+     *  @param  city:           城市 ID
+     *  @param  lat:            经度
+     *  @param  lng:            纬度
+     *  @param  address:        办公地址
+     */
+    public Financier editFinacier(int id,
+    							  String company,
+						          String address,
+						          String city,
+						          double lat,
+						          double lng,
+						          String workPermit,
+						          String idCard,
+						          String certificate) throws WeiYuanException {
+        if (id == 0) return null;
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+
+        bundle.add("shopid",String.valueOf(id));
+        
+        if (company != null && !company.equals("")) bundle.add("company",company);
+        if (address != null && !address.equals("")) bundle.add("address", address);
+        if (city != null && !city.equals("")) bundle.add("city", city);
+        
+        if (lat != 0)             bundle.add("lat", String.valueOf(lat));
+        if (lng != 0)             bundle.add("lng", String.valueOf(lng));
+        
+        if((workPermit!=null && !workPermit.equals("")) ||
+           (certificate!=null && !certificate.equals("")) ||
+           (idCard!=null && !idCard.equals(""))){
+            List<MorePicture> listPic = new ArrayList<MorePicture>();
+            
+            if (workPermit != null && !workPermit.equals(""))
+                listPic.add(new MorePicture("workPaper",workPermit));;
+            
+            if (certificate != null && !certificate.equals(""))
+                listPic.add(new MorePicture("certificate",certificate));;
+            
+            if (idCard != null && !idCard.equals(""))
+                listPic.add(new MorePicture("idcard",idCard));;
+            
+            bundle.addPicture("pic", listPic);
+        }
+        
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/financ/api/edit";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                return new Financier(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	添加商品
+     *
+     *  @param  name:       商品名称
+     *  @param  type:       商品类型
+     *  @param  features:   特征信息
+     *  @param  material:   所需材料
+     *  @param  bidding:    竞价排名价格
+     *  @param  adPrice:    广告位价格
+     */
+    public FinancingGoods addFinancingGoods(String name,
+                                            String type,
+                                            String features,
+                                            String material,
+                                            double bidding,
+                                            double adPrice) throws WeiYuanException {
+        if (name == null || name.equals("") ||
+            features == null || features.equals("") ||
+            material == null || material.equals("") ||
+            bidding == 0 || adPrice == 0) {
+            return null;
+        }
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("name",name);
+        bundle.add("features",features);
+        bundle.add("material",material);
+        bundle.add("bidding",String.valueOf(bidding));
+        bundle.add("adPrice",String.valueOf(adPrice));
+        
+        if (type != null && !type.equals("")) bundle.add("type",type);
+        
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/financ/api/addGoods";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                return new FinancingGoods(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	编辑商品
+     *
+     *  @param  id:         商品 ID
+     *  @param  name:       商品名称
+     *  @param  type:       商品类型
+     *  @param  features:   特征信息
+     *  @param  material:   所需材料
+     *  @param  bidding:    竞价排名价格
+     *  @param  adPrice:    广告位价格
+     */
+    public WeiYuanState editFinancingGoods(int id,
+                              String name,
+                              String type,
+                              String features,
+                              String material,
+                              double bidding,
+                              double adPrice) throws WeiYuanException {
+        if (id == 0) {
+            return null;
+        }
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("id",String.valueOf(id));
+        
+        if (name != null && !name.equals("")) bundle.add("name",name);
+        if (features != null && !features.equals("")) bundle.add("features",features);
+        if (material != null && !material.equals("")) bundle.add("material",material);
+        if (bidding > 0) bundle.add("bidding",String.valueOf(bidding));
+        if (adPrice > 0) bundle.add("adPrice",String.valueOf(adPrice));
+        if (type != null && !type.equals("")) bundle.add("type",type);
+        
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/financ/api/editGoods";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                return new WeiYuanState(new JSONObject(reString));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	商品列表
+     *
+     *  @param  city:   城市 ID
+     *  @param  lat:    GPS定位坐标:纬度
+     *  @param  lng:    GPS定位坐标:经度
+     */
+    public FinancingGoodsList getFinancingGoodsList(String city,
+                                                    double lat,
+                                                    double lng) throws WeiYuanException {
+
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        if (city != null && !city.equals("")) bundle.add("city",city);
+        if (lat != 0) bundle.add("lat",String.valueOf(lat));
+        if (lng != 0) bundle.add("lng",String.valueOf(lng));
+        
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/financ/api/goodList";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                return new FinancingGoodsList(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	商品列表
+     *
+     *  @param  shopid:   融资商ID
+     */
+    public FinancingGoodsList getFinancingGoodsList(int shopid) throws WeiYuanException {
+
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        if (shopid == 0) return null;
+        
+        bundle.add("shopid",String.valueOf(shopid));
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/financ/api/goodList";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                return new FinancingGoodsList(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	删除商品
+     *
+     *  @param  goodid:   商品ID
+     */
+    public WeiYuanState deleteFinancingGoods(int goodsid) throws WeiYuanException {
+
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        if (goodsid == 0) return null;
+        
+        bundle.add("goodid",String.valueOf(goodsid));
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/financ/api/deleteGood";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                return new WeiYuanState(new JSONObject(reString));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return null;
+    }
+
+    
+    /**
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	商区列表
+     *
+     */
+    public ShopAreaList getShopAreaList() throws WeiYuanException {
+        String url = SERVER_PREFIX + "/shop/api/areaList";
+        
+        try {
+            String reString = request(url, null, Utility.HTTPMETHOD_POST, 0);
+            
+            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                return new ShopAreaList(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return null;
+    }
+    
+    /**
+     *	Copyright © 2015 tcy@dreamisland. All rights reserved.
+     *
+     *	商品详细
+     *
+     *  @param shopid   商家 ID
+     *
+     */
+    public Merchant getShop(int shopid) throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        if (shopid == 0) return null;
+        
+        bundle.add("shopid",String.valueOf(shopid));
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/shopDetail";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                return new Merchant(reString);
+            }
+        } catch (WeiYuanException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return null;
+    }
 }

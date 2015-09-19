@@ -138,6 +138,10 @@ public class Login implements Serializable {
      */
  	public int hasShopPass;
 
+	public int isfinanc;
+
+	public Financier financier;
+
 	/*
 	 * new Login(String.valueOf(contactId),number, String.valueOf(photoId),name,index,"",0,
 	 */
@@ -374,6 +378,12 @@ public class Login implements Serializable {
 					shop = new Shop(json.getJSONObject("shop"));
 				}
 			}
+			if (!json.isNull("financ")) {
+				String shopString = json.getString("financ");
+				if ((shopString != null && !shopString.equals("")) && shopString.startsWith("{")) {
+					financier = new Financier(json.getJSONObject("financ"));
+				}
+			}
 			if (!json.isNull("lat")) {
 				lat = json.getString("lat");
 			}
@@ -389,6 +399,11 @@ public class Login implements Serializable {
 			if (!json.isNull("isshop")) {
 				isshop = json.getInt("isshop");
 			}
+
+			if (!json.isNull("isfinanc")) {
+				isfinanc = json.getInt("isfinanc");
+			}
+
 
 			if (!json.isNull("isexhi")) {
 				isexhi = json.getInt("isexhi");

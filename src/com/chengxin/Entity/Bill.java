@@ -1,7 +1,10 @@
 package com.chengxin.Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.chengxin.org.json.JSONArray;
 import com.chengxin.org.json.JSONException;
 import com.chengxin.org.json.JSONObject;
 
@@ -26,6 +29,11 @@ public class Bill implements Serializable{
     public Login user;          //< 还款人信息
     public WeiYuanState state;  //< 返回的状态对象
 
+	public String email;
+	public String emailpwd;
+	public String emaillogin;
+	public String emailsvr;
+
     public Bill(String reqString) {
         super();
         
@@ -40,6 +48,8 @@ public class Bill implements Serializable{
     }
     
     public Bill(JSONObject obj){
+        super();
+
         try {
             initCompent(obj);
         } catch (JSONException e) {
@@ -48,7 +58,13 @@ public class Bill implements Serializable{
     }
     
     
-    private void initCompent(JSONObject json) throws JSONException{
+    public Bill(int type) {
+        super();
+        this.type = type;
+        this.id = 0;
+	}
+
+	private void initCompent(JSONObject json) throws JSONException{
         if(json == null || json.equals("")){
             return;
         }
@@ -88,6 +104,25 @@ public class Bill implements Serializable{
         mechanism = json.getString("mechanism");
         repayment = json.getLong("repayment");
         
-        user = new Login(json.getJSONObject("user"));
+        if (!json.isNull("user")) {
+            user = new Login(json.getJSONObject("user"));
+        }
     }
+
+	public static List<Bill> constructList(JSONArray array) {
+		try {
+			List<Bill> billList = new ArrayList<Bill>();
+			int size = array.length();
+
+			for (int i = 0; i < size; i++) {
+				billList.add(new Bill(array.getJSONObject(i)));
+			}
+            
+			return billList;
+		} catch (JSONException jsone) {
+			jsone.printStackTrace();
+		}
+		
+		return null;
+	}
 }
