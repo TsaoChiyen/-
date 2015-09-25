@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.chengxin.R;
-import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;

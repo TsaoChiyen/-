@@ -4,31 +4,26 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.baidu.mapapi.search.MKPoiInfo;
-import com.baidu.platform.comapi.basestruct.GeoPoint;
-import com.chengxin.R;
-import com.chengxin.Entity.ChatDetailEntity;
-import com.chengxin.Entity.Login;
-import com.chengxin.Entity.MapInfo;
-import com.chengxin.Entity.Room;
-import com.chengxin.adapter.ChatPersonAdapter;
-import com.chengxin.global.WeiYuanCommon;
-import com.chengxin.widget.MyGridView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.chengxin.Entity.ChatDetailEntity;
+import com.chengxin.Entity.Login;
+import com.chengxin.adapter.ChatPersonAdapter;
+import com.chengxin.global.WeiYuanCommon;
+import com.chengxin.widget.MyGridView;
 
 /**
  * 可见范围

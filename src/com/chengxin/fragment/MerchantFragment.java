@@ -29,6 +29,7 @@ import com.chengxin.Entity.MerchantEntity;
 import com.chengxin.Entity.PopItem;
 import com.chengxin.Entity.ShopAreaList;
 import com.chengxin.adapter.MerchantAdapter;
+import com.chengxin.dialog.SearchShopDialog;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.WeiYuanCommon;
@@ -482,5 +483,10 @@ public class MerchantFragment extends BaseFragment implements OnChangeStateListe
 		default:
 			break;
 		}
+	}
+
+	public void startSearch() {
+		SearchShopDialog dialog = new SearchShopDialog(mContext, mNewsList);
+		dialog.show();
 	}
 }

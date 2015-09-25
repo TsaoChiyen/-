@@ -24,8 +24,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import android.util.Log;
-
 /**
  * IQ packet that serves for granting and revoking ownership privileges, granting 
  * and revoking administrative privileges and destroying a room. All these operations 

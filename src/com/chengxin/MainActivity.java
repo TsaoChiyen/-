@@ -1,24 +1,12 @@
 package com.chengxin;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.CookieStore;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.protocol.ClientContext;
-import org.apache.http.cookie.Cookie;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -28,7 +16,6 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -44,6 +31,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -54,9 +42,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.CookieManager;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
@@ -65,10 +50,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chengxin.R;
 import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.SessionTable;
-import com.chengxin.Entity.CookieEntity;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.PopItem;
 import com.chengxin.Entity.Version;
@@ -80,8 +63,6 @@ import com.chengxin.fragment.ChatFragment;
 //import com.chengxin.fragment.ContactsFragment;
 import com.chengxin.fragment.ExpectFragment;
 import com.chengxin.fragment.FinancialManagerFragment;
-//import com.chengxin.fragment.FoundFragment;
-import com.chengxin.fragment.MerchantFragment;
 //import com.chengxin.fragment.MyFragment;
 import com.chengxin.fragment.ServicesMainFragment;
 import com.chengxin.fragment.ShopCityFragment;
@@ -97,11 +78,12 @@ import com.chengxin.receiver.NotifySystemMessage;
 import com.chengxin.service.SnsService;
 import com.chengxin.widget.MainSearchDialog;
 import com.chengxin.widget.PagerSlidingTabStrip;
+import com.chengxin.widget.PagerSlidingTabStrip.IconTabProvider;
 import com.chengxin.widget.PopWindows;
+import com.chengxin.widget.PopWindows.PopWindowsInterface;
 import com.chengxin.widget.SelectAddPopupWindow;
 import com.chengxin.widget.SelectPicPopupWindow;
-import com.chengxin.widget.PagerSlidingTabStrip.IconTabProvider;
-import com.chengxin.widget.PopWindows.PopWindowsInterface;
+//import com.chengxin.fragment.FoundFragment;
 
 /**
  * 高仿微信的主界面
@@ -110,7 +92,7 @@ import com.chengxin.widget.PopWindows.PopWindowsInterface;
  * 
  * @author guolin
  */
-public class MainActivity extends FragmentActivity implements OnClickListener {
+public class MainActivity extends FragmentActivity implements OnClickListener, OnPageChangeListener {
 	/**
 	 * 定义全局变量
 	 */
@@ -136,9 +118,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 //	private FoundFragment foundFragment;		//< 发现界面的Fragment
 	private ServicesMainFragment servicesFragment;
 	private FinancialManagerFragment mFinanceMainFragment;
+	private ShopCityFragment mShopCityFragment;
 
 //	private ContactsFragment contactsFragment;	//< 通讯录界面的Fragment
-	private MerchantFragment mMerChatFragment; 	//< 商户
+//	private MerchantFragment mMerChatFragment; 	//< 商户
 //	private MyFragment mMyFragment;				//< 商户
 	private ExpectFragment mExpectFragment;
 
@@ -155,6 +138,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	private ViewPager mPager;
 	private Context mContext;
+	private int currPage;
 
 	/**
 	 * 导入控件
@@ -175,7 +159,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		dm = getResources().getDisplayMetrics();
 		mPager = (ViewPager) findViewById(R.id.pager);
 		tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-
+		tabs.setOnPageChangeListener(this);
+		
 		if (WeiYuanCommon.getLoginResult(mContext) == null) {
 			Intent intent = new Intent(mContext, LoginActivity.class);
 			startActivityForResult(intent, GlobalParam.LOGIN_REQUEST);
@@ -193,11 +178,56 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				mContext.sendBroadcast(new Intent(GlobalParam.ACTION_SHOW_NEW_FRIENDS_LOOP));
 			}
 		}
+	}
+
+	/**
+	 * 自定义titlebar
+	 */
+	public void setActionBarLayout() {
+		mTitleLayout = (RelativeLayout) findViewById(R.id.title_layout);
+		mTitleView = (TextView) findViewById(R.id.title);
+		mTitleView.setText(mContext.getResources().getString(R.string.ochat_app_name));
+
+		mSearchBtn = (ImageView) findViewById(R.id.search_btn);
+		mAddBtn = (ImageView) findViewById(R.id.add_btn);
+		mMoreBtn = (ImageView) findViewById(R.id.more_btn);
+
+		mSearchBtn.setVisibility(View.VISIBLE);
+		mAddBtn.setVisibility(View.VISIBLE);
+		mMoreBtn.setVisibility(View.VISIBLE);
+
+		mSearchBtn.setOnClickListener(this);
+		mAddBtn.setOnClickListener(this);
+		mMoreBtn.setOnClickListener(this);
+		
+		setUserMenu();
+	}
+	
+	private void setUserMenu() {
+		ImageLoader mImageLoader = new ImageLoader();
+
+		if (mLogIcon == null) {
+			mLogIcon = (ImageView) findViewById(R.id.left_icon);
+			mLogIcon.setOnClickListener(this);
+		}
+		
+		mLogIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.contact_default_header));
 
 		Login login = WeiYuanCommon.getLoginResult(mContext);
+		
+		if(login!=null ){
+			if(login.headsmall!=null && !login.headsmall.equals("")){
+				mImageLoader.getBitmap(mContext, mLogIcon, null, login.headsmall, 0, false, true, false);
+			}
+		}
+
+		mLogIcon.setVisibility(View.VISIBLE);
+		
 		boolean shopAdded = false;
 		boolean exhiAdded = false;
 		boolean publAdded = false;
+		
+		mPopList.clear();
 		
 		if (login!=null ) {
 			if (login.isshop == 1) {
@@ -227,7 +257,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 				switch (dataId) {
 				case 1:
-				{
 					if (login.isshop == 1) {
 						if (login.hasShopPass == 1) {
 							Intent intent = new Intent();
@@ -245,7 +274,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 						shoppingIntent.setClass(mContext, ApplyMerchantActivity.class);
 						startActivity(shoppingIntent);
 					}
-				}	break;
+				 	break;
 				
 				case 2:
 					Intent intent = new Intent();
@@ -266,69 +295,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				}
 			}
 		});
-
-	}
-
-	/**
-	 * 自定义titlebar
-	 */
-	public void setActionBarLayout( /* int layoutId */) {
-
-		/*
-		 * ActionBar actionBar = getActionBar( );
-		 * 
-		 * if( null != actionBar ){
-		 * 
-		 * actionBar.setDisplayShowHomeEnabled( false );
-		 * 
-		 * actionBar.setDisplayShowCustomEnabled(true);
-		 */
-
-		/*
-		 * LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		 * 
-		 * View v = inflator.inflate(layoutId, null);
-		 */
-
-		/*
-		 * ActionBar.LayoutParams layout = new ActionBar.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT); actionBar.setCustomView(v,layout);
-		 */
 		
-		ImageLoader mImageLoader = new ImageLoader();
-
-		mTitleLayout = (RelativeLayout) findViewById(R.id.title_layout);
-		
-		mLogIcon = (ImageView) findViewById(R.id.left_icon);
-		mLogIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.contact_default_header));
-
-		Login login = WeiYuanCommon.getLoginResult(mContext);
-		
-		if(login!=null ){
-			if(login.headsmall!=null && !login.headsmall.equals("")){
-				mImageLoader.getBitmap(mContext, mLogIcon, null, login.headsmall, 0, false, true, false);
-			}
-		}
-
-		mLogIcon.setVisibility(View.VISIBLE);
-
-		mTitleView = (TextView) findViewById(R.id.title);
-		mTitleView.setText(mContext.getResources().getString(R.string.ochat_app_name));
-
-		mSearchBtn = (ImageView) findViewById(R.id.search_btn);
-		mAddBtn = (ImageView) findViewById(R.id.add_btn);
-		mMoreBtn = (ImageView) findViewById(R.id.more_btn);
-
-		mSearchBtn.setVisibility(View.VISIBLE);
-		mAddBtn.setVisibility(View.VISIBLE);
-		mMoreBtn.setVisibility(View.VISIBLE);
-
-		mLogIcon.setOnClickListener(this);
-		mSearchBtn.setOnClickListener(this);
-		mAddBtn.setOnClickListener(this);
-		mMoreBtn.setOnClickListener(this);
-
-		/* } */
-
 	}
 
 	/**
@@ -364,9 +331,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mTimer.scheduleAtFixedRate(mServiceTask, 0, 5000);
 	}
 
-	/** 初始化webview获取cookie信息 */
-
-	private void createWebView() {
+	/**
+	 *  初始化webview获取cookie信息 
+	 */
+/*
+  	private void createWebView() {
 		final String url = WeiYuanCommon.getLoginWapUrl(mContext);
 		if (url != null && !url.equals("")) {
 			new Thread() {
@@ -404,7 +373,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				};
 			}.start();
 
-			/*
+			
 			 * WebView webView = new WebView(mContext); webView.getSettings().setDefaultTextEncodingName("UTF-8"); webView.getSettings().setJavaScriptEnabled(true);
 			 * 
 			 * webView.loadUrl("http://123.57.251.101/wap/index.php?ctl=login&email="+username+"&pwd="+password+"&post_type=json"); webView.setWebViewClient(new MyWebViewClient()); webView.setWebChromeClient(new WebChromeClient(){
@@ -413,10 +382,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			 * cookieManager = CookieManager.getInstance(); CookieStr = cookieManager.getCookie(COOKIE_URL);
 			 * 
 			 * return super.onJsAlert(view, url, message, result); } });
-			 */
+			 
 		}
 	}
-
+*/
  
 	/**
 	 * 检测用是否填写昵称，如果没有则跳转到完善资料页进行填写
@@ -660,7 +629,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		}
 
 		private final String[] titles = mContext.getResources().getStringArray(R.array.main_fragment_array);
-		private ShopCityFragment mShopCityFragment;
 
 		@Override
 		public CharSequence getPageTitle(int position) {
@@ -674,36 +642,45 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 		@Override
 		public Fragment getItem(int position) {
+			Fragment fragment = null;
+			
 			switch (position) {
 			case 0:
 				if (chatFragment == null) {
 					chatFragment = new ChatFragment();
 				}
-				return chatFragment;
+				fragment = chatFragment;
+				break;
 			case 1:
+				
 				if (servicesFragment == null) {
 					servicesFragment = new ServicesMainFragment();
 				}
-				return servicesFragment;
+				fragment = servicesFragment;
+				break;
 			case 2:
 				if (mFinanceMainFragment == null) {
 					mFinanceMainFragment = new FinancialManagerFragment();
 				}
-				return mFinanceMainFragment;
+				fragment = mFinanceMainFragment;
+				break;
 			case 3:
 				if (mShopCityFragment == null) {
 					mShopCityFragment = new ShopCityFragment();
-//					mMerChatFragment = new MerchantFragment();
 				}
-				return mShopCityFragment;
+				fragment = mShopCityFragment;
+				break;
 			case 4:
 				if (mExpectFragment == null) {
 					mExpectFragment = new ExpectFragment();
 				}
-				return mExpectFragment;
+				fragment = mExpectFragment;
+				break;
 			default:
-				return null;
+				break;
 			}
+			
+			return fragment;
 		}
 
 		@Override
@@ -726,7 +703,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 		@Override
 		public int getPageIconResId(int position) {
-			int[] rs = new int[] { R.drawable.ico_main_menu_msg0,//
+			int[] rs = new int[] {
+					R.drawable.ico_main_menu_msg0,//
 					R.drawable.ico_main_menu_app0,//
 					R.drawable.ico_main_menu_financ0,//
 					R.drawable.ico_main_menu_found0,//
@@ -738,7 +716,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 		@Override
 		public int getActivePageIconResId(int position) {
-			int[] rs = new int[] { R.drawable.ico_main_menu_msg1,//
+			int[] rs = new int[] {
+					R.drawable.ico_main_menu_msg1,//
 					R.drawable.ico_main_menu_app1,//
 					R.drawable.ico_main_menu_financ1,//
 					R.drawable.ico_main_menu_found1,//
@@ -949,6 +928,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 					tabs.setNewMsgTip(1, "Found");
 					mContext.sendBroadcast(new Intent(GlobalParam.ACTION_SHOW_NEW_FRIENDS_LOOP));
 				}
+				setUserMenu();
 			}
 			break;
 		case GlobalParam.SHOW_GUIDE_REQUEST:
@@ -1157,6 +1137,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	/**
 	 * 处理消息
 	 */
+	@SuppressLint("HandlerLeak")
 	private Handler mHandler = new Handler() {
 
 		@Override
@@ -1256,7 +1237,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mUpgradeNotifyDialog = builder.create();
 		mUpgradeNotifyDialog.show();
 		mUpgradeNotifyDialog.setContentView(serviceView);
-		FrameLayout.LayoutParams layout = new FrameLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+		FrameLayout.LayoutParams layout = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		layout.setMargins(FeatureFunction.dip2px(mContext, 10), 0, FeatureFunction.dip2px(mContext, 10), 0);
 		serviceView.setLayoutParams(layout);
 	}
@@ -1286,8 +1267,20 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			uploadImage(MainActivity.this, mTitleLayout);
 			break;
 		case R.id.search_btn:
-			MainSearchDialog dialog = new MainSearchDialog(mContext, 0);
-			dialog.show();
+			switch (currPage) {
+			case 0:
+				MainSearchDialog dialog = new MainSearchDialog(mContext, 0);
+				dialog.show();
+				break;
+			case 3:
+				if (mShopCityFragment != null) {
+					mShopCityFragment.startSearch();
+				}
+				
+				break;
+			default:
+				break;
+			}
 			break;
 		case R.id.add_btn:
 			uploadImage2(MainActivity.this, mTitleLayout);
@@ -1297,6 +1290,66 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 //
 //			uploadImage(MainActivity.this, mTitleLayout);
 			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void onPageScrollStateChanged(int state) {
+		switch (state) {
+		case 0:
+			
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void onPageScrolled(int position, float arg1, int arg2) {
+		switch (position) {
+		case 0:
+			
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void onPageSelected(int position) {
+		if (currPage == position) return;
+		
+		currPage = position;
+		
+		switch (currPage) {
+		case 0:
+			mSearchBtn.setVisibility(View.VISIBLE);
+			mAddBtn.setVisibility(View.VISIBLE);
+			break;
+		case 1:
+			mSearchBtn.setVisibility(View.GONE);
+			mAddBtn.setVisibility(View.GONE);
+			break;
+
+		case 2:
+			mSearchBtn.setVisibility(View.GONE);
+			mAddBtn.setVisibility(View.GONE);
+			break;
+
+		case 3:
+			mSearchBtn.setVisibility(View.VISIBLE);
+			mAddBtn.setVisibility(View.GONE);
+			break;
+
+		case 4:
+			mSearchBtn.setVisibility(View.GONE);
+			mAddBtn.setVisibility(View.GONE);
+			break;
+
 		default:
 			break;
 		}

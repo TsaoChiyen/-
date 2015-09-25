@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.chengxin.Entity.NotifiyType;
 import com.chengxin.Entity.NotifiyVo;
-import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.service.XmppManager;
 
 public class NotifySystemMessage implements NotifyMessage {
@@ -37,12 +36,10 @@ public class NotifySystemMessage implements NotifyMessage {
 	 * */
 	public static final String EXTRAS_VIP = "extra_vip";
 
-	private XmppManager xmppManager;
 	private SystemNotifiy systemNotifiy;
 
 	public NotifySystemMessage(XmppManager xmppManager) {
 		super();
-		this.xmppManager = xmppManager;
 		this.systemNotifiy = new SystemNotifiy(xmppManager.getSnsService());
 	}
 

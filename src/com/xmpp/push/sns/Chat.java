@@ -25,8 +25,6 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import android.util.Log;
-
 import com.xmpp.push.sns.packet.Message;
 
 /**

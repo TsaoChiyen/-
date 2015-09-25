@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.chengxin.org.json.JSONArray;
 import com.chengxin.org.json.JSONException;
-import com.chengxin.org.json.JSONObject;
 
 public class CountryList implements Serializable{
 
@@ -37,5 +36,26 @@ public class CountryList implements Serializable{
 			e.printStackTrace();
 		}
 		
+	}
+
+	public String[] getString() {
+		if (mCountryList != null && mCountryList.size() > 0) {
+			String strList[] = new String[mCountryList.size()];
+			
+			for (int i = 0; i < mCountryList.size(); i++) {
+				strList[i] = mCountryList.get(i).country;
+			}
+			
+			return strList;
+		}
+		
+		return null;
+	}
+
+	public int size() {
+		if (mCountryList != null)
+			return mCountryList.size();
+		
+		return 0;
 	}
 }

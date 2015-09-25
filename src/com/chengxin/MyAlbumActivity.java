@@ -1,7 +1,6 @@
 package com.chengxin;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +13,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,11 +26,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AbsListView.RecyclerListener;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -42,14 +38,12 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chengxin.R;
 import com.chengxin.Entity.FriendsLoop;
 import com.chengxin.Entity.FriendsLoopItem;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.LoginResult;
 import com.chengxin.Entity.MorePicture;
 import com.chengxin.Entity.PopItem;
-import com.chengxin.Entity.UploadImg;
 import com.chengxin.Entity.WeiYuanState;
 import com.chengxin.adapter.MyAlbumAdpater;
 import com.chengxin.dialog.MMAlert;
@@ -60,10 +54,10 @@ import com.chengxin.global.ImageLoader;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
 import com.chengxin.widget.MyPullToRefreshListView;
-import com.chengxin.widget.PopWindows;
-import com.chengxin.widget.RoundImageView;
 import com.chengxin.widget.MyPullToRefreshListView.OnChangeStateListener;
+import com.chengxin.widget.PopWindows;
 import com.chengxin.widget.PopWindows.PopWindowsInterface;
+import com.chengxin.widget.RoundImageView;
 
 /**
  * 我的相册
@@ -91,8 +85,8 @@ public class MyAlbumActivity extends BaseActivity implements OnClickListener, Re
 	private ListView mListView;
 
 
-	private ImageView mHeaderBg,mPicBtn;
-	private TextView mSysDataBtn,mUserNameText,mSignText;
+	private ImageView mHeaderBg;
+	private TextView mUserNameText,mSignText;
 	private RoundImageView mHeaderIcon;
 	private LinearLayout mFootView;
 	private DisplayMetrics mMetric;
@@ -106,7 +100,6 @@ public class MyAlbumActivity extends BaseActivity implements OnClickListener, Re
 
 	private List<MorePicture> mListpic = new ArrayList<MorePicture>(); 
 	private String mToUserID;
-	private int mType;
 	private Bitmap mBitmap;	
 
 	private Login mLogin;
@@ -362,22 +355,6 @@ public class MyAlbumActivity extends BaseActivity implements OnClickListener, Re
 
 		mListView.setOnScrollListener(new OnScrollListener() {
 
-			/**
-			 * Callback method to be invoked while the list view or grid view is being scrolled. If the
-			 * view is being scrolled, this method will be called before the next frame of the scroll is
-			 * rendered. In particular, it will be called before any calls to
-			 * {@link Adapter#getView(int, View, ViewGroup)}.
-			 *
-			 * @param view The view whose scroll state is being reported
-			 *
-			 * @param scrollState The current scroll state.
-			 *  One of {@link #SCROLL_STATE_IDLE},//已经停止 0
-			 * {@link #SCROLL_STATE_TOUCH_SCROLL} //正在滚动 1
-			 *  or {@link #SCROLL_STATE_FLING}. //开始滚动  2
-			 */
-			boolean isLastRow = false;
-			boolean isFirstRow = false;
-
 			@Override
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 
@@ -412,7 +389,6 @@ public class MyAlbumActivity extends BaseActivity implements OnClickListener, Re
 
 						Log.e("MyAlbumActivity_load_more","true");
 						getLoopData(GlobalParam.LIST_LOAD_MORE);
-						isLastRow = false;
 					}else{
 						Toast.makeText(mContext, "没有更多数据了", Toast.LENGTH_LONG).show();
 					}

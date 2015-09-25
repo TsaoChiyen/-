@@ -9,16 +9,13 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager.LayoutParams;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chengxin.R;
 import com.chengxin.Entity.GoodsComment;
-import com.chengxin.adapter.BlockListAdapter.ViewHolder;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.ImageLoader;
 

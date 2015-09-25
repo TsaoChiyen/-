@@ -20,14 +20,12 @@ public class SubScriptionNumAdapter  extends BaseAdapter{
     public List<Login> mData;
     public Context mContext;
     LayoutInflater inflater;
-    private Handler mHandler;
     private ImageLoader mImageLoader = new ImageLoader();
     
     public SubScriptionNumAdapter(Context context, List<Login> list,Handler handler) {
         inflater = LayoutInflater.from(context);
         mContext = context;
         this.mData = list;
-        this.mHandler = handler;
     }
     
     @Override

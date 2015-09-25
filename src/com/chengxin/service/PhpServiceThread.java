@@ -8,16 +8,12 @@ import com.chengxin.service.type.XmppTypeManager;
 
 public class PhpServiceThread implements Runnable{
 	private static final String TAG = "php_content_thread";
-	private XmppTypeManager manager;
-	private Login userInfoVo;
 	public static final long TIME = 300000;
 	
 	public boolean runState = true;
 	
 	public PhpServiceThread(XmppTypeManager manager, Login userInfoVo) {
 		super();
-		this.manager = manager;
-		this.userInfoVo = userInfoVo;
 	}
 
 	@Override

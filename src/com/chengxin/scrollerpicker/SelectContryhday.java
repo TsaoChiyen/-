@@ -33,7 +33,7 @@ public class SelectContryhday extends PopupWindow implements OnClickListener {
 	private String age;
 	private DateNumericAdapter monthAdapter,  yearAdapter;
 	private WheelView year, month;
-	private int mCurYear = 80, mCurMonth = 5;
+	private int mCurMonth = 5;
 	private String[] dateType;
 	public OnButtonClickListener ClickListener;
 	List <String> testData;
@@ -56,20 +56,17 @@ public class SelectContryhday extends PopupWindow implements OnClickListener {
 		btn_cancel = (Button) mMenuView.findViewById(R.id.cancel);
 		btn_submit.setOnClickListener(this);
 		btn_cancel.setOnClickListener(this);
-		Calendar calendar = Calendar.getInstance();
 		OnWheelChangedListener listener = new OnWheelChangedListener() {
 			public void onChanged(WheelView wheel, int oldValue, int newValue) {
 				updateDays(year, month);
 
 			}
 		};
-		int curYear = calendar.get(Calendar.YEAR);
 		if (age != null && age.contains("-")) {
 			String str[] = age.split("-");
-			mCurYear = 100 - (curYear - Integer.parseInt(str[0]));
 			mCurMonth = Integer.parseInt(str[1]) - 1;
-			;
 		}
+
 		dateType = mContext.getResources().getStringArray(R.array.date); 
 		monthAdapter = new DateNumericAdapter(context, 1, 12, 5);
 		monthAdapter.setTextType(dateType[1]);
@@ -94,7 +91,7 @@ public class SelectContryhday extends PopupWindow implements OnClickListener {
 		viewfipper.addView(mMenuView);
 		viewfipper.setFlipInterval(6000000);
 		this.setContentView(viewfipper);
-		this.setWidth(LayoutParams.FILL_PARENT);
+		this.setWidth(LayoutParams.MATCH_PARENT);
 		this.setHeight(LayoutParams.WRAP_CONTENT);
 		this.setFocusable(true);
 		ColorDrawable dw = new ColorDrawable(0x00000000);
@@ -116,7 +113,6 @@ public class SelectContryhday extends PopupWindow implements OnClickListener {
 		calendar.set(Calendar.YEAR,
 				calendar.get(Calendar.YEAR) + year.getCurrentItem());
 		calendar.set(Calendar.MONTH, month.getCurrentItem());
-		int years = calendar.get(Calendar.YEAR) - 100;
 		age = testData.get(year.getCurrentItem()) + "-" + (month.getCurrentItem() + 1) ;
 	}
 
@@ -124,24 +120,17 @@ public class SelectContryhday extends PopupWindow implements OnClickListener {
 	 * Adapter for numeric wheels. Highlights the current value.
 	 */
 	private class DateNumericAdapter extends NumericWheelAdapter {
-		// Index of current item
-		int currentItem;
-		// Index of item to be highlighted
-		int currentValue;
-
 		/**
 		 * Constructor
 		 */
 		public DateNumericAdapter(Context context, int minValue, int maxValue,
 				int current) {
 			super(context, minValue, maxValue);
-			this.currentValue = current;
 			setTextSize(24);
 		}
 		
 		public DateNumericAdapter(Context context, List<String> data, int current) {
 			super(context, data, null);
-			this.currentValue = current;
 			setTextSize(24);
 		}
 		
@@ -152,7 +141,6 @@ public class SelectContryhday extends PopupWindow implements OnClickListener {
 		}
 
 		public CharSequence getItemText(int index) {
-			currentItem = index;
 			return super.getItemText(index);
 		}
 

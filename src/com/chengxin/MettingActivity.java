@@ -24,7 +24,6 @@ import android.widget.TextView;
 import com.chengxin.R;
 import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.MessageTable;
-import com.chengxin.Entity.MainSearchEntity;
 import com.chengxin.Entity.Meeting;
 import com.chengxin.Entity.MeetingItem;
 import com.chengxin.Entity.PopItem;

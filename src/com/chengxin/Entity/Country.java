@@ -36,4 +36,26 @@ public class Country implements Serializable{
 			e.printStackTrace();
 		}
 	}
+
+	public String[] getChildrenString() {
+		if (childList != null && childList.size() > 0) {
+			String strList[] = new String[childList.size()];
+			
+			for (int i = 0; i < childList.size(); i++) {
+				strList[i] = childList.get(i).text;
+			}
+			
+			return strList;
+		}
+		
+		return null;
+	}
+	
+	public int children() {
+		if (childList != null)
+			return childList.size();
+		
+		return 0;
+	}
+
 }

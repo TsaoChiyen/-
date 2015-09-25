@@ -20,7 +20,7 @@
         android:background="@null"
         android:gravity="center"
         android:singleLine="false"
-        android:textColor="@color/gray_black"
+        android:textColor="@color/white"
         android:textSize="16dip" />
 
 </LinearLayout>

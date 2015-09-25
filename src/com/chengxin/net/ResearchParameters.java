@@ -16,14 +16,6 @@
  */
 package com.chengxin.net;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import com.chengxin.Entity.MorePicture;
-
-import android.os.Bundle;
-
 
 /**
  * A list queue for saving keys and values.

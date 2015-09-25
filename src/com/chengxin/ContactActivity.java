@@ -1,44 +1,31 @@
 package com.chengxin;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.regex.Pattern;
 
-import android.app.ActionBar;
 import android.app.Dialog;
-import android.content.AsyncQueryHandler;
 import android.content.BroadcastReceiver;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chengxin.R;
 import com.chengxin.Entity.CheckFriends;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.WeiYuanState;
@@ -60,9 +47,7 @@ public class ContactActivity extends BaseActivity implements OnClickListener, On
 	 */
 	public final static String REFRESH_SYSTEM_CONTACT_ACTION = "weiyuan_refresh_system_contact_action";
 	
-	private LinearLayout mFootView,mSearchHeader;
 	private ListView mListView;
-	private TextView mHintText;
 	private EditText mSearchContent;
 	private RelativeLayout mSearchLayout;
 	private Dialog  mPhoneDialog;

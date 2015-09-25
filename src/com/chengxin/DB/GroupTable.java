@@ -12,7 +12,6 @@ import android.util.Log;
 
 import com.chengxin.Entity.Group;
 import com.chengxin.Entity.Login;
-import com.chengxin.Entity.MainSearchEntity;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;
 

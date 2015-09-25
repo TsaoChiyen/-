@@ -1,9 +1,7 @@
 package com.chengxin.Entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-import com.chengxin.org.json.JSONArray;
 import com.chengxin.org.json.JSONException;
 import com.chengxin.org.json.JSONObject;
 

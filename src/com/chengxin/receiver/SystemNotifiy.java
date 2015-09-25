@@ -21,7 +21,6 @@ import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.MessageTable;
 import com.chengxin.DB.RoomTable;
 import com.chengxin.DB.SessionTable;
-import com.chengxin.DB.UserTable;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.NewFriendItem;
 import com.chengxin.Entity.NotifiyType;
@@ -36,7 +35,6 @@ import com.chengxin.global.GlobalParam;
 import com.chengxin.global.GlobleType;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;
-import com.chengxin.net.WeiYuanException;
 import com.chengxin.service.SnsService;
 
 public class SystemNotifiy extends AbstractNotifiy {
@@ -375,7 +373,6 @@ public class SystemNotifiy extends AbstractNotifiy {
 		boolean isExitsLastData = false;
 		for (int i = 0; i < mUserList.size(); i++) {
 			String currentUid = mUserList.get(i).uid;
-			String currentPhone = mUserList.get(i).phone;
 			if (lastNewFriendsList != null && lastNewFriendsList.size() > 0) {
 				isExitsLastData = true;
 				for (int j = 0; j < lastNewFriendsList.size(); j++) {

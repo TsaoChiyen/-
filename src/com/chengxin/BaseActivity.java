@@ -1,15 +1,6 @@
 package com.chengxin;
 
-import com.chengxin.R;
-import com.chengxin.global.GlobalParam;
-import com.chengxin.global.WeiYuanCommon;
-import com.chengxin.map.BMapApiApp;
-import com.chengxin.widget.CustomProgressDialog;
-
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.NotificationManager;
-import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.chengxin.global.GlobalParam;
+import com.chengxin.global.WeiYuanCommon;
+import com.chengxin.widget.CustomProgressDialog;
 
 /**
  * 所有页面的父类

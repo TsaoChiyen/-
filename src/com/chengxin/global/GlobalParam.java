@@ -1,8 +1,5 @@
 package com.chengxin.global;
 
-import android.view.View;
-
-import com.chengxin.R;
 
 public class GlobalParam {
 	

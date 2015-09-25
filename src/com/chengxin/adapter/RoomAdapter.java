@@ -6,7 +6,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +20,6 @@ import android.widget.TextView;
 import com.chengxin.ChatMainActivity;
 import com.chengxin.R;
 import com.chengxin.RoomDetailActivity;
-import com.chengxin.DB.DBHelper;
-import com.chengxin.DB.MessageTable;
-import com.chengxin.DB.UserTable;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.Room;
 import com.chengxin.global.FeatureFunction;

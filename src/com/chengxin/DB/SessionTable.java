@@ -8,9 +8,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
-import com.chengxin.Entity.MainSearchEntity;
 import com.chengxin.Entity.MessageInfo;
 import com.chengxin.Entity.Session;
 import com.chengxin.Entity.UnReadSessionInfo;

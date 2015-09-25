@@ -23,12 +23,9 @@ import com.chengxin.global.WeiYuanCommon;
  
 
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.webkit.CookieManager;
@@ -49,7 +46,6 @@ public class GameWebViewActivity extends BaseActivity{
 
 	private String mUrl;
 	private int mType ;
-	private String mTitle;
 	private Button mWebBack;
 
 
@@ -65,15 +61,15 @@ public class GameWebViewActivity extends BaseActivity{
 
 	private void initCompent(){
 		if(mType == GlobleType.FOUND_HOTQUEE){//发现-热门广场
-			mTitle = mContext.getResources().getString(R.string.found_hot_q);
+			mContext.getResources().getString(R.string.found_hot_q);
 		}else if(mType == GlobleType.FOUND_GAME){//发现-游戏
-			mTitle = mContext.getResources().getString(R.string.found_game);
+			mContext.getResources().getString(R.string.found_game);
 		}else if(mType == GlobleType.FOUND_FUN_EVENT){ //爱FUN活动
-			mTitle = "爱FUN活动";
+			
 		}else if(mType == GlobleType.FOUND_FUN_MALL){ //爱FUN商城
-			mTitle = "爱FUN商城";
+			
 		}else if(mType == GlobleType.FOUND_SEARCH){ //搜索
-			mTitle = "搜索";
+			
 		}
 
 		mWebBack = (Button)findViewById(R.id.web_back);

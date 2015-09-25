@@ -9,9 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.chengxin.R;
 import com.chengxin.Entity.Login;
-import com.chengxin.global.ImageLoader;
 
 /**
  * 邀请
@@ -24,7 +22,6 @@ public class InviteActivity extends BaseActivity implements OnClickListener{
 	private ImageView mIcon;
 	private TextView mUserName,mUserPhone;
 
-	private ImageLoader mImageLoader;
 	private Login mLogin;
 	
 	/*
@@ -38,7 +35,6 @@ public class InviteActivity extends BaseActivity implements OnClickListener{
 		setContentView(R.layout.invite_view);
 		mContext = this;
 		mLogin = (Login)getIntent().getSerializableExtra("entity");
-		mImageLoader = new ImageLoader();
 		initCompent();
 	}
 	

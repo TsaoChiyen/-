@@ -2,13 +2,9 @@ package com.chengxin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import com.chengxin.BaseActivity;
-import com.chengxin.R;
 
 /**
  * Created by Chony on 2015/6/30.

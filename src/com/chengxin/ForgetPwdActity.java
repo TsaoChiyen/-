@@ -2,8 +2,6 @@ package com.chengxin;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,18 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.RelativeLayout.LayoutParams;
 
-import com.chengxin.R;
-import com.chengxin.DB.DBHelper;
-import com.chengxin.DB.MessageTable;
-import com.chengxin.Entity.MessageInfo;
 import com.chengxin.Entity.WeiYuanState;
-import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;

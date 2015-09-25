@@ -94,10 +94,8 @@ public class AnimatedGifEncoder1 {
 		this.colorTab = nq.process();
 		int l = 0;
 		int i1 = this.colorTab.length;
-		Object localObject;
 		if (l >= i1) {
 			l = 0;
-			localObject = null;
 		}
 
 		for (int i = 0; i < colorTab.length; i += 3) {

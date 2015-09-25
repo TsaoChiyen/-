@@ -24,8 +24,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-import android.util.Log;
-
 /**
  * Represents extended presence information whose sole purpose is to signal the ability of 
  * the occupant to speak the MUC protocol when joining a room. If the room requires a password 

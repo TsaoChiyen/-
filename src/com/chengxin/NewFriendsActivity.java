@@ -30,7 +30,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chengxin.R;
-import com.chengxin.Entity.FavoriteItem;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.NewFriendItem;
 import com.chengxin.Entity.UserList;
@@ -49,9 +48,7 @@ import com.chengxin.net.WeiYuanException;
  *
  */
 public class NewFriendsActivity extends BaseActivity implements OnClickListener, OnItemClickListener{
-	private LinearLayout mFootView,mSearchHeader;
 	private ListView mListView;
-	private TextView mHintText;
 	private Dialog  mPhoneDialog;
 
 	private List<NewFriendItem> mUserList = new ArrayList<NewFriendItem>();

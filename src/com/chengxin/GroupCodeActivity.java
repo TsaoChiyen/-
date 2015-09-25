@@ -2,11 +2,8 @@ package com.chengxin;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,14 +15,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
 
-import com.chengxin.R;
-import com.chengxin.DB.DBHelper;
-import com.chengxin.DB.UserTable;
-import com.chengxin.Entity.Login;
 import com.chengxin.dialog.MMAlert;
 import com.chengxin.dialog.MMAlert.OnAlertSelectId;
 import com.chengxin.global.FeatureFunction;
@@ -40,7 +33,6 @@ import com.chengxin.global.ImageLoader;
 public class GroupCodeActivity extends BaseActivity {
 
 	private final static int SAVE_SUCCESS = 5126;
-	private TextView mTipTextView;
 	private LinearLayout mGroupHeadlerLayout,mCodeAllLayout;
 	private ImageView mCodeImageView;
 	private TextView mUserNameTextView;
@@ -93,7 +85,7 @@ public class GroupCodeActivity extends BaseActivity {
 		setTitleContent(R.drawable.back_btn,R.drawable.more_btn,R.string.group_code_card);
 		mLeftBtn.setOnClickListener(this);
 		mRightBtn.setOnClickListener(this);
-		mTipTextView = (TextView)findViewById(R.id.tip);
+
 		mCodeImageView = (ImageView)findViewById(R.id.code_icon);
 		mGroupHeadlerLayout = (LinearLayout)findViewById(R.id.group_header);
 		mCodeAllLayout = (LinearLayout)findViewById(R.id.code_all_layout);

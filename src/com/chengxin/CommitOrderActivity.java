@@ -58,6 +58,9 @@ public class CommitOrderActivity extends BaseActivity {
 		mTelPhoneEdit = (EditText)findViewById(R.id.contact_tel);
 		mAddrEdit = (EditText)findViewById(R.id.contact_addr);
 		mPayModeEdit = (EditText)findViewById(R.id.pay_mode);
+		mPayModeEdit.setFocusable(false);
+		mPayModeEdit.setFocusableInTouchMode(false);
+		mPayModeEdit.setOnClickListener(this);
 		mDescEdit = (EditText)findViewById(R.id.desc);
 		
 		mPayModeEdit.setOnClickListener(this);
@@ -168,8 +171,7 @@ public class CommitOrderActivity extends BaseActivity {
 			break;
 		case R.id.pay_mode:
 			final String item[] = mContext.getResources().getStringArray(R.array.pay_mode_item);
-			MMAlert.showAlert(mContext, "", mContext.getResources().
-					getStringArray(R.array.pay_mode_item), 
+			MMAlert.showAlert(mContext, "", item, 
 					null, new OnAlertSelectId() {
 
 				@Override

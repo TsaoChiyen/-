@@ -10,7 +10,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -27,7 +26,6 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.chengxin.R;
 import com.chengxin.global.FeatureFunction;
 
 /**
@@ -42,7 +40,6 @@ public class ClientUpgrade {
 	public final static String LOGIN_PICTURE_PATH = "/QiYue/download/";
 	private String apkFileName = null;
 	private String imageFileName = null;
-	private HashMap<String, String> themeMap;
 	URL mFileUrl;
 	
 	public boolean initVersionCheck(Context context){

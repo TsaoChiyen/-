@@ -51,7 +51,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 	private RelativeLayout mHeaderLayout, mAddrLayout, mSexLayout, mSignLayout, mNickNameLayout;
 
 	private TextView mSexTextView, mAddrTextView, mSiTextView, mNickNameTextView;
-	private TextView mHintText;
 	private ImageView mImageView;
 
 	private String mInputNickName, mInputAddr, mInputSign;
@@ -71,7 +70,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 	private Login mLogin;
 	private Bitmap mBitmap;
 	private String mImageFilePath;
-	private String mHeadUrl;
 	private ImageLoader mImageLoader;
 
 	/*
@@ -176,7 +174,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 		if (mLogin == null || mLogin.equals("")) {
 			return;
 		}
-		mHeadUrl = mLogin.headsmall;
 		if (mLogin.headsmall != null && !mLogin.headsmall.equals("")) {
 			mImageView.setTag(mLogin.headsmall);
 			mImageLoader.getBitmap(mContext, mImageView, null, mLogin.headsmall, 0, false, true, false);

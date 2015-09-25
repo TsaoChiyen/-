@@ -2,7 +2,6 @@ package com.chengxin.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,7 +14,6 @@ public class HomeListView extends ListView{
 
 	private boolean canScroll;
 	 
-    private GestureDetector mGestureDetector;
     View.OnTouchListener mGestureListener;
     private Context mContext;
     private float xDistance, yDistance, xLast, yLast;

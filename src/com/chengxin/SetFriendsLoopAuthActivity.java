@@ -4,12 +4,9 @@ import com.chengxin.R;
 import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.UserTable;
 import com.chengxin.Entity.Login;
-import com.chengxin.Entity.LoginResult;
 import com.chengxin.Entity.WeiYuanState;
-import com.chengxin.fragment.ContactsFragment;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.WeiYuanCommon;
-import com.chengxin.map.BMapApiApp;
 import com.chengxin.net.WeiYuanException;
 
 import android.content.Intent;
@@ -132,7 +129,6 @@ public class SetFriendsLoopAuthActivity extends BaseActivity implements OnChecke
 
 			case GlobalParam.MSG_LOAD_ERROR:
 				hideProgressDialog();
-				int excuteType = msg.arg1;
 				String prompt = (String) msg.obj;
 				if(prompt != null && !prompt.equals("")){
 					Toast.makeText(mContext, prompt, Toast.LENGTH_LONG).show();

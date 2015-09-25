@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
@@ -85,7 +84,7 @@ public class NewFriendAdapter extends BaseAdapter{
         
         final NewFriendItem user = mData.get(position);
         if(user != null){
-        	LayoutParams layoutparams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        	new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         	
         	if(user.colorBgtype == 1){//新的
         		convertView.setBackgroundResource(R.drawable.last_new_friend);

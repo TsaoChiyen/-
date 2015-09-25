@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.chengxin.R;
 import com.chengxin.Entity.CommentGoodsState;
-import com.chengxin.Entity.WeiYuanState;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;

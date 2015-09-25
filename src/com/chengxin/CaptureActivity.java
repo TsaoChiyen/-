@@ -163,7 +163,6 @@ public class CaptureActivity extends BaseActivity implements Callback {
 									Intent destroy = new Intent(ChatMainActivity.DESTORY_ACTION);
 									destroy.putExtra("type", 1);
 									sendBroadcast(destroy);
-									String roomId = result.groupId;
 									List<Login> roomUsrList = result.mUserList;
 
 									String groupHeadUrl="";

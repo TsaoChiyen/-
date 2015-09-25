@@ -21,11 +21,6 @@ public class TreeElementParser {
 
 	private static final String TAG = "TreeElementParser";
 	/**
-	 * TreeElement的属性个数,可根据实际情况进行改动
-	 */
-	private static final int TREE_ELEMENT_ATTRIBUTE_NUM = 7;
-
-	/**
 	 * 把节点字符串信息集合解析成节点集合 这里的解析可根据实际情况进行改动
 	 * @param <T>
 	 *

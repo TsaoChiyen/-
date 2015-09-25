@@ -48,7 +48,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.baidu.location.i;
 import com.chengxin.R;
 import com.chengxin.Entity.CommentUser;
 import com.chengxin.Entity.FriendsLoopItem;

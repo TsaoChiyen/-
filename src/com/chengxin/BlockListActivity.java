@@ -3,8 +3,6 @@ package com.chengxin;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,14 +17,12 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chengxin.R;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.UserList;
 import com.chengxin.Entity.WeiYuanState;

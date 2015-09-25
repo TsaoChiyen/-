@@ -1,18 +1,14 @@
 package com.chengxin;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.net.wifi.WifiConfiguration.Status;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -23,16 +19,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import android.widget.DatePicker.OnDateChangedListener;
 
-import com.chengxin.R;
-import com.chengxin.Entity.PopItem;
 import com.chengxin.Entity.WeiYuanState;
 import com.chengxin.dialog.MMAlert;
 import com.chengxin.dialog.MMAlert.OnAlertSelectId;
@@ -41,9 +35,6 @@ import com.chengxin.global.GlobalParam;
 import com.chengxin.global.GlobleType;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
-import com.chengxin.widget.DatePickerLisenerImpl;
-import com.chengxin.widget.PopWindows;
-import com.chengxin.widget.PopWindows.PopWindowsInterface;
 
 /**
  * 创建秘室

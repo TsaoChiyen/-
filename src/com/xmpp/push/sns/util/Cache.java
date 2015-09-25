@@ -163,8 +163,6 @@ public class Cache<K, V> implements Map<K, V> {
         // The object exists in cache, so increment cache hits. Also, increment
         // the object's read count.
         cacheHits++;
-        cacheObject.readCount++;
-
         return cacheObject.object;
     }
 
@@ -483,11 +481,6 @@ public class Cache<K, V> implements Map<K, V> {
          * object has to be deleted from the list.
          */
         public LinkedListNode ageListNode;
-
-        /**
-         * A count of the number of times the object has been read from cache.
-         */
-        public int readCount = 0;
 
         /**
          * Creates a new cache object wrapper.

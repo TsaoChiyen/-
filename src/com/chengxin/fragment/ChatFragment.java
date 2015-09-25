@@ -23,11 +23,11 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View.OnClickListener;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -51,7 +51,6 @@ import com.chengxin.DB.SessionTable;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.Session;
 import com.chengxin.Entity.UserList;
-import com.chengxin.Entity.WeiYuanState;
 import com.chengxin.adapter.ChatTabAdapter;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
@@ -688,7 +687,7 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 				new Thread(){
 					public void run() {
 						try {
-							WeiYuanState state = WeiYuanCommon.getWeiYuanInfo()
+							WeiYuanCommon.getWeiYuanInfo()
 									.updataGps(lat, lng);
 							mHandler.sendEmptyMessage(GlobalParam.HIDE_PROGRESS_DIALOG);
 						} catch (WeiYuanException e) {

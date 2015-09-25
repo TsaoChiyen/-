@@ -19,10 +19,6 @@ import com.chengxin.net.WeiYuanException;
  */
 public class UserProtocolActivity extends BaseActivity implements OnClickListener{
 
-	private boolean mIsAgree = true;
-	
-	private boolean mIsHideAgreeBtn; 
-	
 	WebView mWebView;
 	private String mUserProtocol;
 	
@@ -47,7 +43,6 @@ public class UserProtocolActivity extends BaseActivity implements OnClickListene
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_protocol);
-		mIsHideAgreeBtn = getIntent().getBooleanExtra("hide_btn",false);
 		mContext = this;
 		getProtocol();
 		initCompnet();

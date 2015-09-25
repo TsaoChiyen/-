@@ -1,8 +1,5 @@
 package com.chengxin.treeview;
 
-import com.chengxin.Entity.CountryList;
-
-
 public class TreeElement {
 	String headUrl;
 	String sign;

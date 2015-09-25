@@ -27,8 +27,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import android.util.Log;
-
 import com.xmpp.push.sns.filter.PacketFilter;
 import com.xmpp.push.sns.filter.PacketIDFilter;
 import com.xmpp.push.sns.filter.PacketTypeFilter;
@@ -56,11 +54,8 @@ public class ServiceDiscoveryManager {
 
     private static String identityName = "Smack";
     private static String identityType = "pc";
-    private static String entityNode = "http://www.igniterealtime.org/projects/smack/";
-    
     private static boolean cacheNonCaps=true;
 
-    private String currentCapsVersion = null;
     private boolean sendPresence = false;
     
     private Map<String,DiscoverInfo> nonCapsCache =

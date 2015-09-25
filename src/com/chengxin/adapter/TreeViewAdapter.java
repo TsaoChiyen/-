@@ -5,12 +5,9 @@ import java.util.List;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,8 +27,6 @@ import com.chengxin.global.ImageLoader;
 public class TreeViewAdapter extends BaseExpandableListAdapter{
 	public static final int ItemHeight=58;//每项的高度
 	public static final int PaddingLeft=40;//每项的高度
-	private int myPaddingLeft=10;//如果是由SuperTreeView调用，则作为子项需要往右移
-	
 	Context parentContext;
 	private ImageLoader mImageLoader = new ImageLoader();
 	private List<Group> mGroupList;

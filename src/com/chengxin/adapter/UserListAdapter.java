@@ -3,7 +3,6 @@ package com.chengxin.adapter;
 import java.util.HashMap;
 import java.util.List;
 
-import android.R.integer;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;

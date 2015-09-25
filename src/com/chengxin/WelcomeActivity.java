@@ -3,15 +3,12 @@ package com.chengxin;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 
-import com.chengxin.R;
 import com.chengxin.global.WeiYuanCommon;
 
 /**
@@ -35,7 +32,7 @@ public class WelcomeActivity extends Activity {
 		WeiYuanCommon.mScreenHeight = metrics.heightPixels;
 		new Thread() {
 			public void run() {
-				Cursor cursor = mContext.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, new String[] { ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME }, null,
+				mContext.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, new String[] { ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME }, null,
 						null, "sort_key COLLATE LOCALIZED asc");
 			};
 		}.start();

@@ -29,7 +29,6 @@ public class WeiboUrlSpan extends ClickableSpan {
 
 	private String mUrl;
     private Context parentContext;
-    private int mType ;
     private int mColor;
     private OnViewClick mOnclik;
 
@@ -43,7 +42,6 @@ public class WeiboUrlSpan extends ClickableSpan {
     public WeiboUrlSpan(int type, Context context,OnViewClick onclick) {
         parentContext = context;
         mOnclik = onclick;
-        mType = type;
         
     }
 

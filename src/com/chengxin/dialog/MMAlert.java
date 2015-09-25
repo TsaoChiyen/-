@@ -17,11 +17,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.webkit.WebView.HitTestResult;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -311,7 +309,6 @@ class AlertAdapter extends BaseAdapter
 	private List<String> items = new ArrayList<String>();
 	private int[] types;
 	private boolean isTitle = false;
-	private boolean isCancle = false;
 	private Context context;
 	private int changeLenth;
 
@@ -341,7 +338,6 @@ class AlertAdapter extends BaseAdapter
 		if (cancel != null && !cancel.equals("")) {
 			// this.isSpecial = true;
 			types[this.items.size()] = TYPE_CANCEL;
-			isCancle = true;
 			this.items.add(cancel);
 		}
 	}
@@ -379,7 +375,7 @@ class AlertAdapter extends BaseAdapter
 		final String textString = (String) getItem(position);
 		ViewHolder holder;
 		int type = types[position];
-		if (convertView == null || ((ViewHolder) convertView.getTag()).type != type) {
+		if (convertView == null || ((ViewHolder) convertView.getTag()).position != position) {
 			holder = new ViewHolder();
 			if (type == TYPE_CANCEL) {//
 				convertView = View.inflate(context, R.layout.alert_dialog_menu_list_layout_cancel, null);
@@ -404,7 +400,7 @@ class AlertAdapter extends BaseAdapter
 			} /*else if (type == TYPE_EXIT) {
 				convertView = View.inflate(context, R.layout.alert_dialog_menu_list_layout_special, null);
 			}*/
-			holder.type = type;
+			holder.position = position;
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -417,7 +413,7 @@ class AlertAdapter extends BaseAdapter
 	static class ViewHolder
 	{
 		TextView text;
-		int type;
+		int position;
 	}
 }
 

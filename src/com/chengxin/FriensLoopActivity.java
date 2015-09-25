@@ -62,11 +62,9 @@ import android.widget.Toast;
 
 import com.chengxin.R;
 import com.chengxin.Entity.CommentUser;
-import com.chengxin.Entity.FavoriteItem;
 import com.chengxin.Entity.FriendsLoop;
 import com.chengxin.Entity.FriendsLoopItem;
 import com.chengxin.Entity.Login;
-import com.chengxin.Entity.MessageInfo;
 import com.chengxin.Entity.MessageType;
 import com.chengxin.Entity.MorePicture;
 import com.chengxin.Entity.MovingContent;
@@ -763,7 +761,7 @@ public class FriensLoopActivity extends BaseActivity implements OnTouchListener,
 		case GlobalParam.REQUEST_GET_BITMAP:
 			/*try {*/
 			if(resultCode == RESULT_OK){
-				Bundle extras = data.getExtras();
+				data.getExtras();
 				//String path = data.getStringExtra("path");
 				if(mCropImgPath != null && !mCropImgPath.equals("")){
 					//if (extras != null) {

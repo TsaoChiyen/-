@@ -40,7 +40,7 @@ public class XmppManager {
 	/** 认证失败 */
 	public static final int XMPP_AUTH_ERR = 0xc;
 
-	private static final String HOST ="121.40.214.35";//"119.84.73.193";//"115.29.32.248";
+	private static final String HOST ="119.84.73.193";//"115.29.32.248";//"121.40.214.35";//
 	//private static final String HOST = "192.168.1.250";
 	private static final int PORT = 5222;
 	public static final String XMPP_RESOURCE_NAME ="iZ23rs70hzgZ"; //"ay130624211425z";

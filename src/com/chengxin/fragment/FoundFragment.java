@@ -1,7 +1,5 @@
 package com.chengxin.fragment;
 
-import java.io.IOException;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +7,6 @@ import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.transition.ChangeBounds;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,15 +17,12 @@ import android.widget.TextView;
 import com.chengxin.CaptureActivity;
 import com.chengxin.FriensLoopActivity;
 import com.chengxin.GameWebViewActivity;
-import com.chengxin.KeyNumberActivity;
 import com.chengxin.MettingActivity;
 import com.chengxin.NearyUserListActivity;
 import com.chengxin.R;
-import com.chengxin.ShakeActivity;
 import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.SessionTable;
 import com.chengxin.global.GlobalParam;
-import com.chengxin.global.GlobleType;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.sortlist.PinYin;
 
@@ -45,7 +38,7 @@ public class FoundFragment extends Fragment implements OnClickListener {
 	 */
 	private View mView;
 
-	private RelativeLayout mFriendsLoopLayout, mMeetingLayout, mNearyLayout, mShaoLayout, mYaoLayout;
+	private RelativeLayout mFriendsLoopLayout, mMeetingLayout, mNearyLayout, mShaoLayout;
 	private Context mParentContext;
 	private TextView mNewsFriendsLoopIcon, mNewMeetingIcon;
 
@@ -79,11 +72,11 @@ public class FoundFragment extends Fragment implements OnClickListener {
 		mNearyLayout = (RelativeLayout) mView.findViewById(R.id.server_content);
 		mShaoLayout = (RelativeLayout) mView.findViewById(R.id.shao_layout);
 
-		RelativeLayout mWeiGouWuLayout = (RelativeLayout) mView.findViewById(R.id.weigouwu_layout);
-		RelativeLayout mShanJiaLayout = (RelativeLayout) mView.findViewById(R.id.shanjia_layout);
-		RelativeLayout mYouHuiLayout = (RelativeLayout) mView.findViewById(R.id.youhui_layout);
-		RelativeLayout mTuanGouLayout = (RelativeLayout) mView.findViewById(R.id.tuanggou_layout);
-		RelativeLayout mHuoDongLayout = (RelativeLayout) mView.findViewById(R.id.huodong_layout);
+		mView.findViewById(R.id.weigouwu_layout);
+		mView.findViewById(R.id.shanjia_layout);
+		mView.findViewById(R.id.youhui_layout);
+		mView.findViewById(R.id.tuanggou_layout);
+		mView.findViewById(R.id.huodong_layout);
 		RelativeLayout mYouXiLayout = (RelativeLayout) mView.findViewById(R.id.youxi_layout);
 		RelativeLayout mYaoLayout = (RelativeLayout) mView.findViewById(R.id.yao_layout);
 		
@@ -143,7 +136,7 @@ public class FoundFragment extends Fragment implements OnClickListener {
 					if (mNewMeetingIcon != null) {
 						SQLiteDatabase db = DBHelper.getInstance(mParentContext).getReadableDatabase();
 						SessionTable table = new SessionTable(db);
-						int count = table.queryMeetingSessionCount();
+						table.queryMeetingSessionCount();
 						mNewMeetingIcon.setVisibility(View.VISIBLE);
 						/*
 						 * if(count!=0){ mNewMeetingIcon.setVisibility(View.VISIBLE); //mNewMeetingIcon.setText(count+""); }

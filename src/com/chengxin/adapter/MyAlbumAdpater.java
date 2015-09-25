@@ -10,11 +10,9 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -28,7 +26,6 @@ import android.widget.TextView;
 import com.chengxin.ChatMainActivity;
 import com.chengxin.FriendsLoopDetailActivity;
 import com.chengxin.R;
-import com.chengxin.SendMovingActivity;
 import com.chengxin.ShowMultiImageActivity;
 import com.chengxin.Entity.FriendsLoopItem;
 import com.chengxin.Entity.Picture;
@@ -59,7 +56,6 @@ public class MyAlbumAdpater extends BaseAdapter {
 		mInflater = (LayoutInflater)context.getSystemService(
 				Context.LAYOUT_INFLATER_SERVICE);
 		mContext = context;
-		int layoutWidth = metric.widthPixels;
 		int spliteWdith = FeatureFunction.dip2px(mContext, 100);
 		this.mItemWidth = spliteWdith /2;
 		this.mUserID = userID;

@@ -85,20 +85,20 @@ public class SystemContactGlobal {
 			if (mUserList!=null && mUserList.size()>0) {
 				mUserList.clear();
 			}
-			Pattern pattern = Pattern.compile("[0-9]*"); 
+			Pattern.compile("[0-9]*"); 
 			if (cursor != null && cursor.getCount() > 0) {
 				contactIdMap = new HashMap<Integer, Login>();
-				int i=0; cursor.getCount();
+				cursor.getCount();
 				int count = cursor.getCount();
 				mContactCount = count;
 				while (cursor.moveToNext()) {
 					String name = cursor.getString(1);
 					String number = cursor.getString(2);
-					String sortKey = cursor.getString(3);
+					cursor.getString(3);
 					int contactId = cursor.getInt(4);// 取得联系人ID
-					Long photoId = cursor.getLong(5);
-					String lookUpKey = cursor.getString(6);
-					String checkTime = cursor.getString(7);
+					cursor.getLong(5);
+					cursor.getString(6);
+					cursor.getString(7);
 					count --;
 					if (contactIdMap.containsKey(contactId)) {
 						/*Contact contact=contactIdMap.get(contactId);
@@ -132,7 +132,6 @@ public class SystemContactGlobal {
 						}
 						mUserList.add(contact);
 						contactIdMap.put(contactId, contact);
-						i++;
 					}
 				}
 			}

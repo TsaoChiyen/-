@@ -16,10 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chengxin.R;
 import com.chengxin.Entity.UserList;
 import com.chengxin.global.GlobalParam;
-import com.chengxin.global.GlobleType;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;
 import com.chengxin.net.WeiYuanException;

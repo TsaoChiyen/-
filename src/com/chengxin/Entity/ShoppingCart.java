@@ -1,7 +1,6 @@
 package com.chengxin.Entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 购物车数据

@@ -125,10 +125,7 @@ public class ResearchException extends Exception {
 	502 Bad Gateway: 微博接口API关闭或正在升�?.
 	503 Service Unavailable: 服务端资源不可用.*/
 	private int statusCode = -1;
-	private int msgId = -1;
-	
-	
-    public ResearchException(String msg) {
+	public ResearchException(String msg) {
         super(msg);
     }
 

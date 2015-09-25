@@ -20,7 +20,6 @@ package com.learnncode.mediachooser.async;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 
 import com.chengxin.map.BMapApiApp;

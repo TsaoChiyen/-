@@ -41,7 +41,6 @@ import com.chengxin.camera.CameraManager;
  * 
  */
 public final class ViewfinderView extends View {
-	private static final String TAG = "log";
 	/**
 	 * 刷新界面的时间
 	 */
@@ -96,11 +95,6 @@ public final class ViewfinderView extends View {
 	private int slideTop;
 	
 	/**
-	 * 中间滑动线的最底端位置
-	 */
-	private int slideBottom;
-	
-	/**
 	 * 将扫描的二维码拍下来，这里没有这个功能，暂时不考虑
 	 */
 	private Bitmap resultBitmap;
@@ -141,7 +135,6 @@ public final class ViewfinderView extends View {
 		if(!isFirst){
 			isFirst = true;
 			slideTop = frame.top;
-			slideBottom = frame.bottom;
 		}
 		
 		//获取屏幕的宽和高

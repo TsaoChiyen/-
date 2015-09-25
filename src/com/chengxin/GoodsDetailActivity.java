@@ -94,8 +94,6 @@ public class GoodsDetailActivity extends BaseActivity implements OnScrollListene
 	private WebView mWebView;
 
 	private RadioGroup mRadioGroup;
-	private RadioGroup mFlowGroup;
-
 	/**	 * 手机屏幕宽度	 */
 	private int screenWidth;
 

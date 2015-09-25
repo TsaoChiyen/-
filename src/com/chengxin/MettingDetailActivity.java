@@ -6,14 +6,11 @@ import com.chengxin.DB.MessageTable;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.MeetingItem;
 import com.chengxin.Entity.WeiYuanState;
-import com.chengxin.fragment.ContactsFragment;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.GlobleType;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
-import com.chengxin.widget.PopWindows;
-
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;

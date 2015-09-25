@@ -39,9 +39,6 @@ public class MerchantAdapter extends BaseAdapter {
 	private List<Merchant> mMerchantsList ;
 	private ImageLoader mImageLoader;
 	private int mItemWidth;
-	private static int mColorId = 0; //0-红 1-蓝色 2 -黄色
-
-
 	public MerchantAdapter (Context context,List<Merchant> list){
 		mContext = context;
 		mInflater = (LayoutInflater)context.getSystemService(
@@ -98,17 +95,14 @@ public class MerchantAdapter extends BaseAdapter {
 
 			switch (position%3) {
 			case 0:
-				mColorId = 0;
 				holder.mGoodsTypeIcon.setImageResource(R.drawable.red_right_arrow);
 				holder.mGoodsTypeName.setTextColor(Color.parseColor("#eb3266"));
 				break;
 			case 1:
-				mColorId = 1;
 				holder.mGoodsTypeIcon.setImageResource(R.drawable.blue_right_arrow);
 				holder.mGoodsTypeName.setTextColor(Color.parseColor("#40a6db"));
 				break;
 			case 2:
-				mColorId = 2;
 				holder.mGoodsTypeIcon.setImageResource(R.drawable.orange_right_arrow);
 				holder.mGoodsTypeName.setTextColor(Color.parseColor("#f29735"));
 				break;

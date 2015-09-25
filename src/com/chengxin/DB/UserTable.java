@@ -12,7 +12,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.chengxin.Entity.Group;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.MainSearchEntity;
-import com.chengxin.Entity.OrderMenuItem;
 import com.chengxin.Entity.Picture;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;
@@ -554,7 +553,7 @@ public class UserTable {
 				}
 
 				int indexUId = cursor.getColumnIndex(COLUMN_UID);
-				int indexSort = cursor.getColumnIndex(COLUMN_SORT);
+				cursor.getColumnIndex(COLUMN_SORT);
 				int indexHeadSmall = cursor.getColumnIndex(COLUMN_HEAD_SMALL);
 				int indexNickname = cursor.getColumnIndex(COLUMN_NICKNAME); 
 				int indexRemarkName = cursor.getColumnIndex(COLUMN_REMARK);

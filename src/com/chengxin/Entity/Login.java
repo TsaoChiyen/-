@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.baidu.platform.comapi.map.l;
-import com.chengxin.net.WeiYuanInfo;
 import com.chengxin.org.json.JSONArray;
 import com.chengxin.org.json.JSONException;
 import com.chengxin.org.json.JSONObject;

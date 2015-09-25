@@ -67,7 +67,7 @@ public class SelectAddPopupWindow extends PopupWindow {
 			}
 		});
 		
-		int h = context.getWindowManager().getDefaultDisplay().getHeight();
+		context.getWindowManager().getDefaultDisplay().getHeight();
 		int w = context.getWindowManager().getDefaultDisplay().getWidth();
 		//���ð�ť����
 		//����SelectPicPopupWindow��View
@@ -80,8 +80,7 @@ public class SelectAddPopupWindow extends PopupWindow {
 		this.setFocusable(true);
 		//����SelectPicPopupWindow�������嶯��Ч��
 		this.setAnimationStyle(R.style.mystyle);
-		//ʵ��һ��ColorDrawable��ɫΪ��͸��
-		ColorDrawable dw = new ColorDrawable(0000000000);
+		new ColorDrawable(0000000000);
 		//����SelectPicPopupWindow��������ı���
 		//this.setBackgroundDrawable(dw);
 		this.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.no_top_arrow_bg));

@@ -1,13 +1,11 @@
 package com.chengxin;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.PixelFormat;
@@ -18,7 +16,6 @@ import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -28,7 +25,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chengxin.R;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.WeiYuanCommon;
 
@@ -51,7 +47,6 @@ public class VideoActivity extends BaseActivity implements SurfaceHolder.Callbac
 	private String time="";
 	private String size="";
 	private String fileName;
-	private String name="";
 	private boolean checkValue; //false:录制 true-停止
 
 	/**

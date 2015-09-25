@@ -1,26 +1,15 @@
 package com.chengxin.fragment;
 
-import java.io.IOException;
-
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.transition.ChangeBounds;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,7 +17,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chengxin.ApplyMerchantActivity;
 import com.chengxin.CaptureActivity;
 import com.chengxin.EditProfileActivity;
 import com.chengxin.FeedBackActivity;
@@ -40,7 +28,6 @@ import com.chengxin.MyAlbumActivity;
 import com.chengxin.MyFavoriteActivity;
 import com.chengxin.NearyUserListActivity;
 import com.chengxin.R;
-import com.chengxin.SendGoodsActivity;
 import com.chengxin.SettingTab;
 import com.chengxin.ShakeActivity;
 import com.chengxin.DB.DBHelper;
@@ -59,20 +46,16 @@ import com.chengxin.sortlist.PinYin;
  */
 public class MyFragment extends Fragment implements OnClickListener {
 
-	// private Button btn_cancel;
-	private View mMenuView;
-	private LinearLayout my_profile, my_photo, my_collection, my_setting, my_feedback, mApplyMerchant, my_bank;
-	private TextView mApplyNameTexViwe;
-	private ImageView mApplyIcon;
+	private LinearLayout my_profile, my_photo, my_collection, my_setting, mApplyMerchant, my_bank;
 	private ImageLoader mImageLoader;
 
 	private void aaaa() {
-		Fragment aaFragment = this.getParentFragment();
-		FragmentManager fff = this.getChildFragmentManager();
-		FragmentActivity aa = this.getActivity();
+		this.getParentFragment();
+		this.getChildFragmentManager();
+		this.getActivity();
 		Context context = this.getActivity();
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		mMenuView = inflater.inflate(R.layout.bottomdialog, null);
+		inflater.inflate(R.layout.bottomdialog, null);
 
 		mImageLoader = new ImageLoader();
 
@@ -87,9 +70,9 @@ public class MyFragment extends Fragment implements OnClickListener {
 		ImageView iv = (ImageView) mView.findViewById(R.id.user_icon);
 		TextView userName = (TextView) mView.findViewById(R.id.user_name);
 		TextView userSign = (TextView) mView.findViewById(R.id.user_sign);
-		mApplyIcon = (ImageView) mView.findViewById(R.id.apply_icon);
-		mApplyNameTexViwe = (TextView) mView.findViewById(R.id.apply_text);
+
 		Login login = WeiYuanCommon.getLoginResult(context);
+
 		if (login != null) {
 			if (login.headsmall != null && !login.headsmall.equals("")) {
 				mImageLoader.getBitmap(context, iv, null, login.headsmall, 0, false, true, false);
@@ -268,7 +251,6 @@ public class MyFragment extends Fragment implements OnClickListener {
 	 */
 	private View mView;
 
-	private RelativeLayout mFriendsLoopLayout, mMeetingLayout, mNearyLayout, mShaoLayout;
 	private Context mParentContext;
 	private TextView mNewsFriendsLoopIcon, mNewMeetingIcon;
 
@@ -362,7 +344,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 					if (mNewMeetingIcon != null) {
 						SQLiteDatabase db = DBHelper.getInstance(mParentContext).getReadableDatabase();
 						SessionTable table = new SessionTable(db);
-						int count = table.queryMeetingSessionCount();
+						table.queryMeetingSessionCount();
 						mNewMeetingIcon.setVisibility(View.VISIBLE);
 						/*
 						 * if(count!=0){ mNewMeetingIcon.setVisibility(View.VISIBLE); //mNewMeetingIcon.setText(count+""); }

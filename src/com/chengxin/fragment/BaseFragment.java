@@ -13,11 +13,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chengxin.MainActivity;
 import com.chengxin.R;
 import com.chengxin.global.GlobalParam;
-import com.chengxin.global.GlobleType;
-import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.widget.CustomProgressDialog;
 
 /**

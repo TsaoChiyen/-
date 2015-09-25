@@ -10,7 +10,6 @@ import com.chengxin.DB.UserTable;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.Room;
 import com.chengxin.Entity.Session;
-import com.chengxin.Entity.WeiYuanState;
 import com.chengxin.fragment.ChatFragment;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
@@ -230,7 +229,6 @@ public class JoinRoomDetailActivity extends BaseActivity {
 					Intent destroy = new Intent(ChatMainActivity.DESTORY_ACTION);
 					destroy.putExtra("type", 1);
 					sendBroadcast(destroy);
-					String roomId = room.groupId;
 					List<Login> roomUsrList = room.mUserList;
 					RoomTable roomTab = new RoomTable(db);
 					roomTab.insert(room);

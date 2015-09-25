@@ -14,7 +14,6 @@ import com.chengxin.Entity.MessageInfo;
 import com.chengxin.Entity.MessageType;
 import com.chengxin.Entity.Session;
 import com.chengxin.Entity.SessionList;
-import com.chengxin.global.GlobleType;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.org.json.JSONObject;
 import com.chengxin.service.XmppManager;

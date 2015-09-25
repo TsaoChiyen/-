@@ -104,10 +104,8 @@ public class ChatTabAdapter extends BaseAdapter{
 
 		final Session session = mData.get(position);
 		final SQLiteDatabase dbDatabase = DBHelper.getInstance(mContext).getWritableDatabase();
-		UserTable userTable = new UserTable(dbDatabase);
-		final MessageTable messageTable = new MessageTable(dbDatabase);
-
-		final int index = position;
+		new UserTable(dbDatabase);
+		new MessageTable(dbDatabase);
 
 		if(session.isTop != 0){
 			holder.mParentLayout.setBackgroundResource(R.drawable.last_new_friend);

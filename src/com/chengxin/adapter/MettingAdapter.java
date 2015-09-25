@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chengxin.R;
-import com.chengxin.Entity.FriendsLoopItem;
-import com.chengxin.Entity.Login;
 import com.chengxin.Entity.MeetingItem;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.ImageLoader;
@@ -29,14 +27,12 @@ public class MettingAdapter  extends BaseAdapter{
     public List<MeetingItem> mData;
     public Context mContext;
     LayoutInflater inflater;
-    private Handler mHandler;
     private ImageLoader mImageLoader = new ImageLoader();
     
     public MettingAdapter(Context context, List<MeetingItem> list,Handler handler) {
         inflater = LayoutInflater.from(context);
         mContext = context;
         this.mData = list;
-        this.mHandler = handler;
     }
     
     @Override

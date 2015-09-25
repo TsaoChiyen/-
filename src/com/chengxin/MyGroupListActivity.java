@@ -22,9 +22,7 @@ import android.widget.Toast;
 import com.chengxin.R;
 import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.MessageTable;
-import com.chengxin.DB.RoomTable;
 import com.chengxin.DB.SessionTable;
-import com.chengxin.DB.UserTable;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.Room;
 import com.chengxin.Entity.RoomList;
@@ -42,7 +40,6 @@ public class MyGroupListActivity extends BaseActivity{
 	public final static String MY_ROOM_BE_DELETED_ACTION = "weiyuan_my_room_list_be_deleted_action";
 	public final static String REFRESH_ROOM_ACTION = "weiyuan_refresh_room_list_action";
 	public static final String DESTORY_MYGroupList_ACTION = "com.weiyuan.intent.action.DESTORY_MYGROUPLIST_ACTION";
-	private boolean mIsRegisterReceiver = false;
 	private ListView mListView;
 	private RelativeLayout mTitleLayout;
 	private RoomAdapter mAdapter;
@@ -51,7 +48,6 @@ public class MyGroupListActivity extends BaseActivity{
 	private DisplayMetrics mMetrics;
 	private int mWdith;
 	private List<Room> mRoomList = new ArrayList<Room>();
-	private int mDelIndex;
 	private int mIsHideSearcBtn = 0;
 
 

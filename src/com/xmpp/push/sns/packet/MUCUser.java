@@ -20,8 +20,6 @@
 
 package com.xmpp.push.sns.packet;
 
-import android.util.Log;
-
 
 /**
  * Represents extended presence information about roles, affiliations, full JIDs,

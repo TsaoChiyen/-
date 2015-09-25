@@ -22,7 +22,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:background="@color/application_blue"
-                android:text="承芯商品"
+                android:text="商品"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -34,7 +34,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:background="@color/application_gray_black"
-                android:text="承芯商店"
+                android:text="商家"
                 android:textSize="16sp" />
 
             <TextView
@@ -56,13 +56,13 @@
             android:layout_below="@id/tab_bar_layout" >
 
             <LinearLayout
-                android:id="@+id/goods_layout"
+                android:id="@+id/product_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
 
                 <fragment
-                    android:id="@+id/fragment1"
+                    android:id="@+id/goods_list_fragment"
                     android:name="com.chengxin.fragment.GoodsListFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -75,7 +75,7 @@
                 android:orientation="vertical" >
 
                 <fragment
-                    android:id="@+id/fragment2"
+                    android:id="@+id/shop_goods_fragment"
                     android:name="com.chengxin.fragment.MerchantFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -97,25 +97,27 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="10dip"
+                android:layout_marginRight="15dp"
                 android:background="@drawable/buy_icon"
                 android:contentDescription="@string/desc"
                 android:scaleType="centerInside" />
 
             <TextView
                 android:id="@+id/shpping_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentBottom="false"
                 android:layout_alignParentRight="true"
-                android:background="#ff0000"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/goods_count"
                 android:gravity="center_horizontal|center_vertical"
                 android:minHeight="20dip"
                 android:minWidth="20dip"
                 android:padding="2dip"
-                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/forteen" />
+
         </RelativeLayout>
     </RelativeLayout>
 

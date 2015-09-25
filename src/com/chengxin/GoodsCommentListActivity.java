@@ -23,7 +23,6 @@ import com.chengxin.R;
 import com.chengxin.Entity.GoodsComment;
 import com.chengxin.Entity.GoodsCommentEntity;
 import com.chengxin.adapter.GoodsCommentAdapter;
-import com.chengxin.adapter.MerchantAdapter;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.WeiYuanCommon;
@@ -41,7 +40,6 @@ public class GoodsCommentListActivity extends BaseActivity implements OnChangeSt
 	private MyPullToRefreshListView mContainer;
 	private TextView mRefreshViewLastUpdated;
 	private LinearLayout mFootView;
-	private LinearLayout mCategoryLinear;
 	private boolean mIsRefreshing = false;
 	private ListView mListView;
 
@@ -67,7 +65,6 @@ public class GoodsCommentListActivity extends BaseActivity implements OnChangeSt
 		setTitleContent(R.drawable.back_btn,0,R.string.goods_comment_list);
 		mLeftBtn.setOnClickListener(this);
 
-		mCategoryLinear = (LinearLayout)findViewById(R.id.category_linear);
 		mRefreshViewLastUpdated = (TextView) findViewById(R.id.pull_to_refresh_time);
 		mContainer = (MyPullToRefreshListView) findViewById(R.id.container);
 		mListView = mContainer.getList();

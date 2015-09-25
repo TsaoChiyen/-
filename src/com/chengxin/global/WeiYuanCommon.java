@@ -45,8 +45,6 @@ public class WeiYuanCommon {
 	public static final String CHINESE = "zh";
 	public static final String ENGLISH = "en";
 	private static WeiYuanInfo mWeiYuanInfo = new WeiYuanInfo();
-	private static String mSystemServerPrefix = "";
-	private static String mSystemName = "";
 	private static String mUid = "";
 	/** 保存网页cookie信息 */
 	public static final String WEB_COOKIE_SHARED = "web_cookie_shared";
@@ -147,7 +145,6 @@ public class WeiYuanCommon {
 	}
 
 	public static void setServer(String server) {
-		mSystemServerPrefix = server;
 	}
 
 	public static void saveNewFriendsResult(Context context, List<NewFriendItem> list, int count) {

@@ -41,7 +41,6 @@ public class MeetingSearchDialog extends Dialog implements OnItemClickListener, 
 	private Button mCancleBtn;
 	private MettingAdapter mAdapter;
 	private int mIsHide; //0-搜索会话表和用户表 1-搜索秘室表 2-搜索名称
-	private int mFromPage; //1-来自会话详情页面
 	private String mToId;
 	private int mChatTyp;
 
@@ -80,7 +79,6 @@ public class MeetingSearchDialog extends Dialog implements OnItemClickListener, 
 		mContext = context;
 		this.mIsHide = isHide;
 		this.mOnFinishClick = alertDo;
-		mFromPage = frompage;
 		mToId = toId;
 		mChatTyp = chatType;
 	}

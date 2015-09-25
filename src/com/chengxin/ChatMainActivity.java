@@ -237,7 +237,6 @@ public class ChatMainActivity extends BaseActivity implements OnItemLongClickLis
 	private static final int RESQUEST_CODE = 100;
 
 	private Dialog mPhoneDialog;
-	private int mIsOwner = 0;
 	private int mSendCard;
 	private MessageInfo mCardMsg, mForMsg;
 	private int mIsShowSearchDialog, mFromPage; // fromage: 1=来自会话详情的查找聊天记录
@@ -334,8 +333,6 @@ public class ChatMainActivity extends BaseActivity implements OnItemLongClickLis
 
 		mContentEdit = (EditText) findViewById(R.id.chat_box_edit_keyword);
 		mContentEdit.setOnClickListener(this);
-		// mContentEdit.setOnEditorActionListener(mEditActionLister);
-		// mContentEdit.setVisibility(View.GONE);
 
 		mToggleBtn = (ToggleButton) findViewById(R.id.chat_box_btn_info);
 		mToggleBtn.setOnClickListener(this);
@@ -834,7 +831,6 @@ public class ChatMainActivity extends BaseActivity implements OnItemLongClickLis
 
 			case SEND_SUCCESS:
 				MessageInfo messageInfo = (MessageInfo) msg.obj;
-				int isResend = msg.arg1;
 				updateNewMessage(messageInfo);
 				modifyMessageState(messageInfo);
 				if (msg.arg2 == 4) {
@@ -1174,8 +1170,8 @@ public class ChatMainActivity extends BaseActivity implements OnItemLongClickLis
 								} else {
 									Toast.makeText(mContext, "文件最大为10M,请选择其它文件", Toast.LENGTH_LONG).show();
 								}
-							} else {
-								Toast.makeText(mContext, "请检查文件是否存在", Toast.LENGTH_LONG).show();
+//							} else {
+//								Toast.makeText(mContext, "请检查文件是否存在", Toast.LENGTH_LONG).show();
 							}
 						} else if (FeatureFunction.isPic(extension)) {// 图片
 							sendFile(MessageType.PICTURE, filePath);
@@ -2288,7 +2284,7 @@ public class ChatMainActivity extends BaseActivity implements OnItemLongClickLis
 					width = (int) max;
 				}
 
-				RelativeLayout.LayoutParams timeParams = (RelativeLayout.LayoutParams) viewHolder.txtVoiceNum.getLayoutParams();
+				viewHolder.txtVoiceNum.getLayoutParams();
 				// timeParams.addRule(RelativeLayout.CENTER_VERTICAL);
 				RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(width, FeatureFunction.dip2px(mContext, 48));
 				if (type == 0) {
@@ -2810,21 +2806,6 @@ public class ChatMainActivity extends BaseActivity implements OnItemLongClickLis
 			// 获取到文本框的点击事件隐藏表情
 			hideEmojiGridView();
 		}
-	};
-
-	private EditText.OnEditorActionListener mEditActionLister = new EditText.OnEditorActionListener() {
-
-		@Override
-		public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-			if (actionId == EditorInfo.IME_ACTION_SEND && mContentEdit.getVisibility() == View.VISIBLE) {
-				hideSoftKeyboard();
-				sendText();
-
-				return true;
-			}
-			return false;
-		}
-
 	};
 
 	/** 聊天广播 */

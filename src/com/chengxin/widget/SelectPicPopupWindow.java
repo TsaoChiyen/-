@@ -37,7 +37,7 @@ public class SelectPicPopupWindow extends PopupWindow {
 		mMenuView = inflater.inflate(R.layout.bottomdialog, null);
 
 		mImageLoader = new ImageLoader();
-		int h = context.getWindowManager().getDefaultDisplay().getHeight();
+		context.getWindowManager().getDefaultDisplay().getHeight();
 		int w = context.getWindowManager().getDefaultDisplay().getWidth();
 		/*btn_cancel = (Button) mMenuView.findViewById(R.id.btn_cancel);
 		//ȡ��ť
@@ -135,8 +135,7 @@ public class SelectPicPopupWindow extends PopupWindow {
 		this.setFocusable(true);
 		//����SelectPicPopupWindow�������嶯��Ч��
 		this.setAnimationStyle(R.style.leftstyle);
-		//ʵ��һ��ColorDrawable��ɫΪ��͸��
-		ColorDrawable dw = new ColorDrawable(000000);
+		new ColorDrawable(000000);
 		//����SelectPicPopupWindow��������ı���
 		//this.setBackgroundDrawable(dw);
 		this.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.no_top_arrow_bg));

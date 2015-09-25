@@ -126,7 +126,6 @@ public class Utility {
 
 	private static final int SET_CONNECTION_TIMEOUT = 50000;
 	private static final int SET_SOCKET_TIMEOUT = 30000;
-	private static final int PER_SPEED = 16;
 	private static HttpClient mClient;
 
 	public static void setAuthorization(HttpHeaderFactory auth) {
@@ -519,12 +518,10 @@ public class Utility {
 
 			if (statusCode != 200) {
 				result = read(response);
-				String err = null;
-				int errCode = 0;
 				try {
 					JSONObject json = new JSONObject(result);
-					err = json.getString("error");
-					errCode = json.getInt("error_code");
+					json.getString("error");
+					json.getInt("error_code");
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -616,12 +613,10 @@ public class Utility {
 
 			if (statusCode != 200) {
 				result = read(response);
-				String err = null;
-				int errCode = 0;
 				try {
 					JSONObject json = new JSONObject(result);
-					err = json.getString("error");
-					errCode = json.getInt("error_code");
+					json.getString("error");
+					json.getInt("error_code");
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}

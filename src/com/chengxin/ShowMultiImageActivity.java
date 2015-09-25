@@ -46,7 +46,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chengxin.R;
-import com.chengxin.Entity.Card;
 import com.chengxin.Entity.FriendsLoopItem;
 import com.chengxin.Entity.MessageInfo;
 import com.chengxin.Entity.MessageType;

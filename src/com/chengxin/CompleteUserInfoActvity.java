@@ -1,7 +1,6 @@
 package com.chengxin;
 
 import java.io.File;
-import java.util.List;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,7 +13,6 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,14 +21,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chengxin.R;
-import com.chengxin.Entity.ChildCity;
-import com.chengxin.Entity.Country;
-import com.chengxin.Entity.CountryList;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.LoginResult;
-import com.chengxin.Entity.WeiYuanProjectItem;
-import com.chengxin.Entity.WeiYuanState;
 import com.chengxin.dialog.MMAlert;
 import com.chengxin.dialog.MMAlert.OnAlertSelectId;
 import com.chengxin.global.FeatureFunction;
@@ -38,10 +30,7 @@ import com.chengxin.global.GlobalParam;
 import com.chengxin.global.GlobleType;
 import com.chengxin.global.ImageLoader;
 import com.chengxin.global.WeiYuanCommon;
-import com.chengxin.map.BMapApiApp;
 import com.chengxin.net.WeiYuanException;
-import com.chengxin.scrollerpicker.SelectContryhday;
-import com.chengxin.scrollerpicker.SelectContryhday.OnButtonClickListener;
 
 /**
  * 完善用户资料
@@ -55,38 +44,21 @@ public class CompleteUserInfoActvity extends BaseActivity implements OnClickList
 	mSignLayout,mNickNameLayout;
 
 	private TextView mSexTextView,mAddrTextView,mSiTextView,
-		mHangYueTextView,mSubjectTextView,mNickNameTextView;
+		mNickNameTextView;
 	private ImageView mImageView;
 	
 	private String mInputNickName,mInputAddr,mInputSign;
 	private int mInputSex = 2;
 	
-	/**
-	 * // 省id
-	 */
-	private String mProvinceid;
 	private String mProvice;
 	
-	/**
-	 * //市id
-	 */
-	private String mCityid;
 	private String mCity;
-	/**
-	 * // 课程id
-	 */
-	private String  mCourseid;
-
 	private int mType;
 
 	private Login mLogin;
 	private Bitmap mBitmap;
 	private String mImageFilePath;
-	private SelectContryhday contry;
 	private ImageLoader mImageLoader;
-	private String mHeadUrl;
-	
-	
 	private Handler mHandler = new Handler(){
 
 		@Override
@@ -167,8 +139,6 @@ public class CompleteUserInfoActvity extends BaseActivity implements OnClickList
 		mSexTextView = (TextView)findViewById(R.id.sex_content);
 		mAddrTextView = (TextView)findViewById(R.id.addr_content);
 		mSiTextView = (TextView)findViewById(R.id.sign_content);
-		mHangYueTextView = (TextView)findViewById(R.id.hangyue_content);
-		mSubjectTextView = (TextView)findViewById(R.id.subject_content);
 		
 		mImageView = (ImageView)findViewById(R.id.new_header_icon);
 		//getMenuTitle();
@@ -181,7 +151,6 @@ public class CompleteUserInfoActvity extends BaseActivity implements OnClickList
 		if(mLogin == null || mLogin.equals("")){
 			return;
 		}
-		mHeadUrl = mLogin.headsmall;
 		if(mLogin.headsmall!=null && !mLogin.headsmall.equals("")){
 			mImageView.setTag(mLogin.headsmall);
 			mImageLoader.getBitmap(mContext, mImageView, null,mLogin.headsmall,0,false,true,false);
@@ -373,12 +342,10 @@ public class CompleteUserInfoActvity extends BaseActivity implements OnClickList
 			}
 			else if(mType == GlobleType.COMPLETE_ADDR){
 				mInputAddr = data.getStringExtra("addr");
-				//省id
-				mProvinceid = data.getStringExtra("shengid");
+				data.getStringExtra("shengid");
 				mProvice = data.getStringExtra("provice");
 				mCity = data.getStringExtra("city");
-				//市id 
-				mCityid = data.getStringExtra("shiid");
+				data.getStringExtra("shiid");
 				mAddrTextView.setText(mInputAddr+" ");
 			}else if(mType == GlobleType.COMPLETE_EMAIL){
 			

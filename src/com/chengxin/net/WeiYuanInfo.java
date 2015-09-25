@@ -1366,7 +1366,7 @@ public class WeiYuanInfo  implements Serializable{
 	 */
 	public CountryList getCityAndContryUser() throws WeiYuanException{
 		String reString = FeatureFunction.getAssestsFile("AreaCode");
-		Log.d("getCityAndContryUser", reString);
+//		Log.d("getCityAndContryUser", reString);
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
 			return new CountryList(reString);
 		}

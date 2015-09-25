@@ -61,7 +61,6 @@ import com.chengxin.widget.MyPullToRefreshListView.OnChangeStateListener;
 public class MyFavoriteActivity extends BaseActivity implements OnChangeStateListener, 
 OnItemClickListener, com.chengxin.widget.MyPullToRefreshScrollView.OnChangeStateListener {
 
-	private LinearLayout mSearchHeader;
 	private ListView mListView;
 	private MyPullToRefreshListView mContainer;
 	private TextView mRefreshViewLastUpdated;
@@ -98,9 +97,6 @@ OnItemClickListener, com.chengxin.widget.MyPullToRefreshScrollView.OnChangeState
 
 	private List<String> mPicList = new ArrayList<String>();
 	//--图片模式--
-
-	private int mIsRun;
-	private String mInputText;
 
 	private Favorite mWeibo;
 	private List<FavoriteItem> mWeiboList = new ArrayList<FavoriteItem>();

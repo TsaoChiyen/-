@@ -10,7 +10,6 @@ import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.MKGeneralListener;
 import com.baidu.mapapi.map.MKEvent;
 import com.chengxin.Entity.CountryList;
-import com.chengxin.Entity.WeiYuanProject;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
 

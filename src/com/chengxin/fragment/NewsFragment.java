@@ -14,37 +14,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chengxin.R;
-import com.chengxin.Entity.Login;
 import com.chengxin.Entity.Merchant;
 import com.chengxin.Entity.MerchantEntity;
 import com.chengxin.adapter.MerchantAdapter;
-import com.chengxin.adapter.NewViewPagerAdapter;
-import com.chengxin.adapter.ViewPagerAdapter;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.ImageLoader;
@@ -67,7 +58,6 @@ public class NewsFragment extends BaseFragment implements OnItemClickListener{
 	ImageView detail_loading;
 	public final static int MSG_UPDATE_LISTVIEW = 0x10000;
 
-	private int INIT_VIEWPAGER_INDEX = 500;
 	private HomePullToRefreshListView mContainer;
 	private HomeListView mListView;
 

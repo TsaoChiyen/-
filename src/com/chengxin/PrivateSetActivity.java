@@ -25,8 +25,7 @@ public class PrivateSetActivity extends BaseActivity implements OnCheckedChangeL
 	private int mType;
 
 	private RelativeLayout mAcceptMsgLayout,mVoiceLayout,mShakeLayout;
-	private RelativeLayout mValidFriendsLayout/*,mReplyAddFriendLayout*/,
-	mRecommendContactLayout;
+	private RelativeLayout mRecommendContactLayout;
 	private LinearLayout mFirstLayout;
 	private ImageView mShakeImag;
 
@@ -56,7 +55,6 @@ public class PrivateSetActivity extends BaseActivity implements OnCheckedChangeL
 		if(mType == GlobleType.PrivateSetActivity_Normal_TYPE){
 			titileTextView.setText( R.string.private_setting);
 			mFirstLayout.setVisibility(View.VISIBLE);
-			mValidFriendsLayout = (RelativeLayout)findViewById(R.id.recharge_layout);
 			mRecommendContactLayout = (RelativeLayout)findViewById(R.id.recommend_contact_layout);
 			mRecommendContactLayout.setVisibility(View.VISIBLE);
 

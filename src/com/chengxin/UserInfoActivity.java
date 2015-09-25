@@ -15,8 +15,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,8 +30,6 @@ import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.MessageTable;
 import com.chengxin.DB.SessionTable;
 import com.chengxin.DB.UserTable;
-import com.chengxin.Entity.ChildCity;
-import com.chengxin.Entity.Country;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.LoginResult;
 import com.chengxin.Entity.NewFriendItem;
@@ -48,7 +44,6 @@ import com.chengxin.global.ImageLoader;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;
 import com.chengxin.net.WeiYuanException;
-import com.chengxin.net.WeiYuanInfo;
 import com.chengxin.widget.PopWindows;
 import com.chengxin.widget.PopWindows.PopWindowsInterface;
 
@@ -79,7 +74,6 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 	private String mSearchUid;
 	private static final int REQUEST_CODE = 5412;
 	private static final int REMARK_REQUEST = 5143;
-	private int mNewImgWidth;
 	private DisplayMetrics mMetric;
 	private int mIsHide;
 	private String mSearchName,mAddr;
@@ -109,9 +103,6 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 		mPos= getIntent().getIntExtra("pos", -1);
 		mMetric = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(mMetric);
-		mNewImgWidth = 60;
-
-
 		initComponent();
 	}
 
@@ -1008,7 +999,6 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 		boolean isExitsLastData = false;
 		for (int i = 0; i < mUserList.size(); i++) {
 			String currentUid = mUserList.get(i).uid;
-			String currentPhone = mUserList.get(i).phone;
 			if(lastNewFriendsList!=null && lastNewFriendsList.size()>0){
 				isExitsLastData = true;
 				for (int j = 0; j < lastNewFriendsList.size(); j++) {

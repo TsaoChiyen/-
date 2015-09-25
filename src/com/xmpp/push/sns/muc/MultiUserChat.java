@@ -32,8 +32,6 @@ import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
-import android.util.Log;
-
 import com.xmpp.push.sns.Chat;
 import com.xmpp.push.sns.Connection;
 import com.xmpp.push.sns.ConnectionCreationListener;

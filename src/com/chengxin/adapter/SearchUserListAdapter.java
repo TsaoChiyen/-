@@ -1,6 +1,5 @@
 package com.chengxin.adapter;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,16 +14,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
 
-import com.chengxin.ChatMainActivity;
 import com.chengxin.R;
 import com.chengxin.RoomDetailActivity;
 import com.chengxin.UserInfoActivity;
 import com.chengxin.Entity.Login;
-import com.chengxin.Entity.Session;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.ImageLoader;
 import com.chengxin.global.WeiYuanCommon;

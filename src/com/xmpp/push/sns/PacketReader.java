@@ -31,8 +31,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.text.TextUtils;
-import android.util.Log;
-
 import com.xmpp.push.sns.Connection.ListenerWrapper;
 import com.xmpp.push.sns.packet.IQ;
 import com.xmpp.push.sns.packet.Message;

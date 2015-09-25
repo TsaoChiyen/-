@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.UUID;
-
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,7 +16,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
-import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -912,8 +909,6 @@ public class LocationActivity extends BaseActivity implements OnClickListener, O
 	 * 标注当前位置
 	 */
 	public class MyOverlay extends ItemizedOverlay<OverlayItem>{
-
-		private OverlayItem mCurrentItem;
 
 		public MyOverlay(Drawable defaultMarker, MapView mapView) {
 			super(defaultMarker, mapView);

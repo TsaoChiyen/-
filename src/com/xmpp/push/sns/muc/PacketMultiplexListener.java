@@ -20,8 +20,6 @@
 
 package com.xmpp.push.sns.muc;
 
-import android.util.Log;
-
 import com.xmpp.push.sns.PacketListener;
 import com.xmpp.push.sns.filter.MessageTypeFilter;
 import com.xmpp.push.sns.filter.PacketExtensionFilter;
@@ -80,8 +78,7 @@ class PacketMultiplexListener implements PacketListener {
     }
 
     public void processPacket(Packet p) {
-    	Message message = (Message)p;
-        if (PRESENCE_FILTER.accept(p)) {
+    	if (PRESENCE_FILTER.accept(p)) {
             presenceListener.processPacket(p);
         }
         else if (MESSAGE_FILTER.accept(p)) {

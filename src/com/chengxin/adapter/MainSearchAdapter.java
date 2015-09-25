@@ -6,9 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -154,7 +152,6 @@ public class MainSearchAdapter extends BaseAdapter implements SectionIndexer{
 			}
 
 
-			String showGrouName="";
 			List<String> headUrlList = new ArrayList<String>();
 
 			if(headUrlArray != null && headUrlArray.length!= 0){

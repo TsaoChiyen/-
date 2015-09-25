@@ -2,8 +2,6 @@ package com.chengxin.Entity;
 
 import java.io.Serializable;
 
-import android.util.Log;
-
 import com.chengxin.org.json.JSONException;
 import com.chengxin.org.json.JSONObject;
 

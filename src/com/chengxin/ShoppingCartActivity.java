@@ -20,7 +20,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,7 +27,6 @@ import android.widget.Toast;
 
 import com.chengxin.R;
 import com.chengxin.Entity.Goods;
-import com.chengxin.Entity.GoodsEntity;
 import com.chengxin.Entity.Merchant;
 import com.chengxin.Entity.MerchantEntity;
 import com.chengxin.Entity.ShoppingCart;

@@ -1,18 +1,14 @@
 package com.chengxin.adapter;
 
-import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -21,9 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chengxin.ChatMainActivity;
-import com.chengxin.LocationActivity;
 import com.chengxin.R;
-import com.chengxin.ShowImageActivity;
 import com.chengxin.Entity.FavoriteItem;
 import com.chengxin.Entity.MessageType;
 import com.chengxin.Entity.MovingContent;

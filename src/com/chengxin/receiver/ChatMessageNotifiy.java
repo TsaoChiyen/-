@@ -18,7 +18,6 @@ import com.chengxin.DB.SessionTable;
 import com.chengxin.DB.UserTable;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.MessageInfo;
-import com.chengxin.Entity.MessageType;
 import com.chengxin.Entity.Room;
 import com.chengxin.Entity.SNSMessage;
 import com.chengxin.Entity.UnReadSessionInfo;
@@ -48,28 +47,6 @@ public class ChatMessageNotifiy extends AbstractNotifiy{
 			return;
 		}
 		
-		String fuid = messageInfo.fromid;
-		
-		String msg = null;
-
-		switch (messageInfo.typefile) {
-		case MessageType.PICTURE:
-			msg = messageInfo.fromname + " <" + mContext.getString(R.string.get_picture) + " > ";
-			break;
-		case MessageType.TEXT:
-			msg = messageInfo.fromname + " : " +  messageInfo.getContent();
-			break;
-		case MessageType.VOICE:
-			msg = messageInfo.fromname + " <" + mContext.getString(R.string.get_voice) + " > ";
-			break;
-		case MessageType.MAP:
-			msg = messageInfo.fromname + " <" + mContext.getString(R.string.get_location) + " > ";
-			break;
-
-		default:
-			break;
-		}
-			
 		// Notification
 		Notification notification = new Notification(R.drawable.tab_bar_icon_comment_d, 
 				messageInfo.fromname + mContext.getResources().getString(R.string.send_one_msg),
@@ -95,12 +72,12 @@ public class ChatMessageNotifiy extends AbstractNotifiy{
 		// notification.flags |= Notification.FLAG_INSISTENT;
 		notification.flags |= Notification.FLAG_SHOW_LIGHTS;
 		notification.when = currentTime;
-		int acceptId =  messageInfo.getFromId().hashCode();
+		messageInfo.getFromId().hashCode();
 		Login user = new Login();
 		SQLiteDatabase dbDatabase = DBHelper.getInstance(mContext).getWritableDatabase();
 		int isGetMsg = 0;
 		if(messageInfo.typechat == 100){
-			acceptId = messageInfo.getFromId().hashCode();
+			messageInfo.getFromId().hashCode();
 			user.uid = messageInfo.getFromId();
 			user.nickname = messageInfo.fromname;
 			user.headsmall = messageInfo.fromurl;
@@ -110,7 +87,7 @@ public class ChatMessageNotifiy extends AbstractNotifiy{
 				isGetMsg = dbLogin.isGetMsg;
 			}
 		}else {
-			acceptId = messageInfo.getToId().hashCode();
+			messageInfo.getToId().hashCode();
 			user.uid = messageInfo.getToId();
 			user.nickname = messageInfo.toname;
 			user.headsmall = messageInfo.tourl;

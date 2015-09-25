@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.chengxin.R;
 import com.chengxin.Entity.Country;
-import com.chengxin.Entity.WeiYuanProjectItem;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.GlobleType;

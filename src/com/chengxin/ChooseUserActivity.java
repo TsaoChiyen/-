@@ -1,6 +1,5 @@
 package com.chengxin;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -32,10 +31,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chengxin.R;
 import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.GroupTable;
-import com.chengxin.DB.MessageTable;
 import com.chengxin.DB.RoomTable;
 import com.chengxin.DB.SessionTable;
 import com.chengxin.DB.UserTable;
@@ -53,7 +50,6 @@ import com.chengxin.adapter.ChooseUserListAdapter;
 import com.chengxin.fragment.ChatFragment;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
-import com.chengxin.global.GlobleType;
 import com.chengxin.global.ImageLoader;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;
@@ -354,7 +350,6 @@ public class ChooseUserActivity extends BaseActivity implements OnItemClickListe
 					return;
 				}
 				SQLiteDatabase db = DBHelper.getInstance(mContext).getWritableDatabase();
-				String roomId = room.groupId;
 				List<Login> roomUsrList = room.mUserList;
 				RoomTable roomTab = new RoomTable(db);
 				roomTab.insert(room);

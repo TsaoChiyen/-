@@ -1,7 +1,6 @@
 package com.chengxin.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +15,6 @@ import com.chengxin.DB.UserTable;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.MessageInfo;
 import com.chengxin.Entity.MessageType;
-import com.chengxin.global.WeiYuanCommon;
-import com.chengxin.map.BMapApiApp;
 import com.chengxin.receiver.MultiMessageListener;
 import com.chengxin.receiver.NotifyChatMessage;
 import com.chengxin.receiver.NotifyMessage;
@@ -30,7 +27,6 @@ import com.xmpp.push.sns.Form;
 import com.xmpp.push.sns.MessageListener;
 import com.xmpp.push.sns.SmackConfiguration;
 import com.xmpp.push.sns.XMPPException;
-import com.xmpp.push.sns.muc.Affiliate;
 import com.xmpp.push.sns.muc.DiscussionHistory;
 import com.xmpp.push.sns.muc.MultiUserChat;
 import com.xmpp.push.sns.packet.Message;

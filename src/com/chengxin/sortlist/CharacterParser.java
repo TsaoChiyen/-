@@ -8,8 +8,6 @@ package com.chengxin.sortlist;
 
 import java.io.UnsupportedEncodingException;
 
-import android.util.Log;
-
 /**
  * Java����ת��Ϊƴ��
  * 

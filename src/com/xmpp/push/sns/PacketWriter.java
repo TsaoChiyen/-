@@ -25,8 +25,6 @@ import java.io.Writer;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-import android.util.Log;
-
 import com.xmpp.push.sns.packet.Packet;
 
 /**

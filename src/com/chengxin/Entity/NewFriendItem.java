@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.map.BMapApiApp;
-import com.chengxin.net.WeiYuanInfo;
 import com.chengxin.org.json.JSONException;
 import com.chengxin.org.json.JSONObject;
 

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.chengxin.net.WeiYuanException;
 import com.chengxin.org.json.JSONArray;
 import com.chengxin.org.json.JSONException;
 import com.chengxin.org.json.JSONObject;

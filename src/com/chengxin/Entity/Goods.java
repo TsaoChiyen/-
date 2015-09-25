@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.w3c.dom.Comment;
-
 import com.chengxin.org.json.JSONArray;
 import com.chengxin.org.json.JSONException;
 import com.chengxin.org.json.JSONObject;

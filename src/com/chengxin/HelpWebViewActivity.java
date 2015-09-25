@@ -3,12 +3,9 @@ package com.chengxin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
-import android.widget.TextView;
-
 import com.chengxin.R;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.WeiYuanCommon;

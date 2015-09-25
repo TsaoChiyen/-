@@ -1,7 +1,5 @@
 package com.chengxin.receiver;
 
-import android.util.Log;
-
 import com.chengxin.service.XmppManager;
 import com.xmpp.push.sns.PacketListener;
 import com.xmpp.push.sns.packet.Message;

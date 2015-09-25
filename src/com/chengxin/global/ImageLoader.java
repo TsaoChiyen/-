@@ -52,7 +52,6 @@ import android.widget.Toast;
 
 import com.chengxin.MyAlbumActivity;
 import com.chengxin.Entity.CommentUser;
-import com.chengxin.global.ImageLoader.CanvasImageTask;
 import com.chengxin.net.WeiYuanInfo;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -200,9 +199,9 @@ public class ImageLoader {
 			ProgressBar progressBar, final String imageURL, int resID, boolean isCache ,boolean isHead,boolean isVideo) {
 
 		if (imageURL == null /*|| (!imageURL.startsWith(WeiYuanInfo.CODE_URL) && !imageURL.startsWith("http://api.map.baidu.com"))*/) {
-			if (imageURL != null) {
-				Log.e(TAG, "imageURL = " + imageURL);
-			}
+//			if (imageURL != null) {
+//				Log.e(TAG, "imageURL = " + imageURL);
+//			}
 			return null;
 		}
 		if (mImageBuffer.containsKey(imageURL)) {
@@ -283,9 +282,9 @@ public class ImageLoader {
 			ProgressBar progressBar, final String imageURL, int resID, boolean isCache ,boolean isHead) {
 		
 		if (imageURL == null/* || (!imageURL.startsWith(ResearchInfo.CODE_URL) && !imageURL.startsWith("http://api.map.baidu.com"))*/) {
-			if (imageURL != null) {
-	            Log.e(TAG, "imageURL = " + imageURL);
-            }
+//			if (imageURL != null) {
+//	            Log.e(TAG, "imageURL = " + imageURL);
+//            }
 			return null;
 		}
 		if (mImageBuffer.containsKey(imageURL)) {
@@ -470,7 +469,7 @@ public class ImageLoader {
 		HttpURLConnection conn = null;
 		InputStream is = null;
 
-		if(urlString == null || urlString.equals("")){
+		if(urlString == null || urlString.equals("") || urlString.equals("null")){
 			return bitmap;
 		}
 
@@ -665,7 +664,6 @@ public class ImageLoader {
 
 
 
-		private int mResId;
 		private boolean mIsHead;
 		private boolean mIsNeedWriteFile;
 		private ProgressBar mProgressBar;
@@ -688,7 +686,6 @@ public class ImageLoader {
 			url = str[0].toString();
 			gView = str[1];
 			mContext = (Context) str[2];
-			mResId = (Integer)str[3];
 			mIsHead=(Boolean)str[4];
 			mIsNeedWriteFile = (Boolean)str[5];
 			mProgressBar = (ProgressBar) str[6];
@@ -791,7 +788,7 @@ public class ImageLoader {
 				}
 
 			}else{
-				Log.e("ImageLoader_onPostExecute", "bitmap is null "+url);
+				Log.i("ImageLoader_onPostExecute", "bitmap is null "+url);
 			}
 		}
 	}

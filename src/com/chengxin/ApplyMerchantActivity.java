@@ -1,7 +1,7 @@
 package com.chengxin;
 
 import java.io.File;
-
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
@@ -27,11 +27,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.chengxin.R;
 import com.chengxin.Entity.MapInfo;
 import com.chengxin.Entity.WeiYuanState;
+import com.chengxin.dialog.CPAlert;
 import com.chengxin.dialog.MMAlert;
+import com.chengxin.dialog.CPAlert.OnAlertOkSelectId;
 import com.chengxin.dialog.MMAlert.OnAlertSelectId;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
@@ -96,6 +97,10 @@ public class ApplyMerchantActivity extends BaseActivity {
 		mDescEdit = (EditText)findViewById(R.id.desc);
 
 		mBankEdit = (EditText)findViewById(R.id.bank_name);
+		mBankEdit.setFocusable(false);
+		mBankEdit.setFocusableInTouchMode(false);
+		mBankEdit.setOnClickListener(this);
+		
 		mBankUserEdit = (EditText)findViewById(R.id.bank_user);
 		mBankAccountEdit = (EditText)findViewById(R.id.bank_account);
 		
@@ -235,7 +240,6 @@ public class ApplyMerchantActivity extends BaseActivity {
 		case R.id.commit_btn:
 			commit();
 			break;
-			
 		case R.id.btn_protocol:
 			Intent getProtocolIntent = new Intent();
 			getProtocolIntent.setClass(mContext, UserProtocolActivity.class);
@@ -248,6 +252,20 @@ public class ApplyMerchantActivity extends BaseActivity {
 		case R.id.btn_auth:
 			mCurrentImage = IMAGE_AUTH_SELECTED;
 			selectImg();
+			break;
+		case R.id.bank_name:
+			String list[] = mContext.getResources().getStringArray(R.array.bank_array);
+			CPAlert.showAlert(
+					mContext,
+					"选择开户银行",
+					list,
+					new OnAlertOkSelectId() {
+				
+				@Override
+				public void onOkClick(int whichButton, String unused, String bank) {
+					mBankEdit.setText(bank);
+				}
+			});
 			break;
 		default:
 			break;
@@ -413,6 +431,7 @@ public class ApplyMerchantActivity extends BaseActivity {
 	}
 
 
+	@SuppressLint("HandlerLeak")
 	private Handler mHandler = new Handler(){
 
 		@Override

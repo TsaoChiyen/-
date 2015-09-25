@@ -9,10 +9,8 @@ import java.util.List;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
@@ -35,12 +33,9 @@ import com.chengxin.R;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.MapInfo;
 import com.chengxin.Entity.MorePicture;
-import com.chengxin.Entity.OutBitmapEntity;
 import com.chengxin.Entity.UploadImg;
 import com.chengxin.Entity.WeiYuanState;
 import com.chengxin.adapter.UploadPicAdapter;
-import com.chengxin.dialog.MMAlert;
-import com.chengxin.dialog.MMAlert.OnAlertSelectId;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.WeiYuanCommon;
@@ -73,8 +68,6 @@ public class SendMovingActivity extends PhotoBaseActivity implements OnClickList
 	private ImageView mLocationIcon, mAreaIcon;
 	private TextView mLocationAddress;
 	private LinearLayout mLocationLayout, mAreaLayout;
-
-	private String mInputTitle;
 
 	private String mInputContetn;
 

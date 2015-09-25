@@ -42,8 +42,6 @@ public class ResearchCommon {
 	public static final String CHINESE = "zh";
 	public static final String ENGLISH = "en";
 	private static ResearchInfo mResearchInfo = new ResearchInfo();
-	private static String mSystemServerPrefix = "";
-	private static String mSystemName = "";
 	private static String mUid = "";
 
 	public static final String SERVER_SHARED = "server_shared";
@@ -133,7 +131,6 @@ public class ResearchCommon {
 	}
 
 	public static void setServer(String server){
-		mSystemServerPrefix = server;
 	}
 	public static void saveNewFriendsResult(Context context, List<NewFriendItem> list,int count){
 		int mode = Context.MODE_WORLD_WRITEABLE;

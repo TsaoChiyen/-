@@ -6,16 +6,14 @@ import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.os.AsyncTask;
 import android.provider.MediaStore.Video.Thumbnails;
-import android.support.v4.app.Fragment;
 import android.support.v4.util.LruCache;
 import android.widget.ImageView;
 
+import com.chengxin.R;
 import com.learnncode.mediachooser.adapter.BucketGridAdapter;
 import com.learnncode.mediachooser.adapter.GridViewAdapter;
 import com.learnncode.mediachooser.fragment.BucketVideoFragment;
 import com.learnncode.mediachooser.fragment.VideoFragment;
-import com.chengxin.R;
-import com.chengxin.MainActivity.MyPagerAdapter;
 
 
 
@@ -23,12 +21,9 @@ public class GalleryCache {
 	private LruCache<String, Bitmap> mBitmapCache;
 	private ArrayList<String> mCurrentTasks;
 	private int mMaxWidth;
-	private int mMaxHeight;
-
+	
 	public GalleryCache(int size, int maxWidth, int maxHeight) {
 		mMaxWidth = maxWidth;
-		mMaxHeight = maxHeight;
-
 		mBitmapCache = new LruCache<String, Bitmap>(size) {
 			@Override
 			protected int sizeOf(String key, Bitmap b) {

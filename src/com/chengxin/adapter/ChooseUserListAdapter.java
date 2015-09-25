@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.baidu.platform.comapi.map.n;
 import com.chengxin.R;
 import com.chengxin.Entity.Login;
 import com.chengxin.global.ImageLoader;
