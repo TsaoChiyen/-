@@ -174,7 +174,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, O
 			intent.putExtra("found_type", 1);
 			mContext.sendBroadcast(intent);
 			if (WeiYuanCommon.getFriendsLoopTip(mContext) != 0) {
-				tabs.setNewMsgTip(1, "Found");
+//				tabs.setNewMsgTip(1, "Found");
 				mContext.sendBroadcast(new Intent(GlobalParam.ACTION_SHOW_NEW_FRIENDS_LOOP));
 			}
 		}
@@ -526,13 +526,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener, O
 				if (type == 1) {
 					meetingPromptUpdate();
 				} else if (type == 2) {// 有新的秘室通知
-					tabs.setNewMsgTip(1, "Found");
+//					tabs.setNewMsgTip(1, "Found");
 					mContext.sendBroadcast(new Intent(GlobalParam.ACTION_SHOW_NEW_MEETING));
 				} else {// 朋友圈有新的动态
 					int tipCount = WeiYuanCommon.getFriendsLoopTip(mContext);
 					tipCount = tipCount + 1;
 					WeiYuanCommon.saveFriendsLoopTip(mContext, tipCount);
-					tabs.setNewMsgTip(1, "Found");
+//					tabs.setNewMsgTip(1, "Found");
 					/*
 					 * Intent fondIntent = new Intent(GlobalParam.ACTION_SHOW_NEW_FRIENDS_LOOP); fondIntent.putExtra("count",tipCount);
 					 */
@@ -550,7 +550,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, O
 				}
 			} else if (action.equals(GlobalParam.ACTION_SHOW_CONTACT_NEW_TIP)) {// 显示有新的联系人
 				WeiYuanCommon.saveContactTip(mContext, 1);
-				tabs.setNewMsgTip(1, "Contacts");
+//				tabs.setNewMsgTip(1, "Contacts");
 			} else if (action.equals(GlobalParam.ACTION_HIDE_CONTACT_NEW_TIP)) {// 隐藏有新的联系人小红点
 				WeiYuanCommon.saveContactTip(mContext, 0);
 				tabs.hideMsgTip("Contacts");
@@ -579,7 +579,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, O
 		SessionTable table = new SessionTable(db);
 		int count = table.queryMeetingSessionCount();
 
-		tabs.setNewMsgTip(count, "Found");
+//		tabs.setNewMsgTip(count, "Found");
 		if (count != 0) {
 			new Handler().postDelayed(new Runnable() {
 
@@ -925,7 +925,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, O
 				sintent.putExtra("found_type", 1);
 				mContext.sendBroadcast(sintent);
 				if (WeiYuanCommon.getFriendsLoopTip(mContext) != 0) {
-					tabs.setNewMsgTip(1, "Found");
+//					tabs.setNewMsgTip(1, "Found");
 					mContext.sendBroadcast(new Intent(GlobalParam.ACTION_SHOW_NEW_FRIENDS_LOOP));
 				}
 				setUserMenu();
@@ -949,7 +949,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener, O
 				sintent.putExtra("found_type", 1);
 				mContext.sendBroadcast(sintent);
 				if (WeiYuanCommon.getFriendsLoopTip(mContext) != 0) {
-					tabs.setNewMsgTip(1, "Found");
+//					tabs.setNewMsgTip(1, "Found");
 					mContext.sendBroadcast(new Intent(GlobalParam.ACTION_SHOW_NEW_FRIENDS_LOOP));
 				}
 			}

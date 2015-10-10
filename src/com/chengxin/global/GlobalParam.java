@@ -235,6 +235,8 @@ public class GlobalParam {
 	public final static int MSG_REMOVE_LISTVIEW_FOOTVIW = 0x00053;
 	
 	public final static int MSG_MODIFY_SHOPPING_ADDRESS = 0x00054;
+
+	public static final int MSG_LOADINGFIRST_DATA = 0x00060;
 	
 
 }

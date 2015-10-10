@@ -78,6 +78,7 @@ public class MerchantAdapter extends BaseAdapter {
 
 
 			holder.mGoodsTypeName = (TextView) convertView.findViewById(R.id.goods_tye_name);
+			holder.mDistance = (TextView) convertView.findViewById(R.id.text_distance);
 			holder.mGoodsTypeIcon = (ImageView) convertView.findViewById(R.id.goods_type_icon);
 			holder.mGoodsDesLayout = (LinearLayout) convertView.findViewById(R.id.goods_layout);
 			holder.mTypeLayout = (RelativeLayout)convertView.findViewById(R.id.type_layout);
@@ -88,6 +89,19 @@ public class MerchantAdapter extends BaseAdapter {
 
 		final Merchant goods = mMerchantsList.get(position);
 		holder.mGoodsTypeName.setText(goods.name);
+		
+		if (goods.distance > 0) {
+			if (goods.distance > 100000) {
+				holder.mDistance.setText(String.format("距离 %d 公里", goods.distance / 1000));
+			} else if (goods.distance > 1000) {
+				holder.mDistance.setText(String.format("距离 %.2f 公里", (float)goods.distance / 1000));
+			} else {
+				holder.mDistance.setText(String.format("距离 %d 米", goods.distance));
+			}
+			holder.mDistance.setVisibility(View.VISIBLE);
+		} else {
+			holder.mDistance.setVisibility(View.GONE);
+		}
 
 		if(goods.logo != null && !goods.logo.equals("")){
 			mImageLoader.getBitmap(mContext, holder.mGoodsTypeIcon,null, goods.logo, 0, false, false, false);
@@ -177,6 +191,7 @@ public class MerchantAdapter extends BaseAdapter {
 	final static class ViewHolder {  
 		ImageView mGoodsTypeIcon;
 		TextView mGoodsTypeName; 
+		TextView mDistance; 
 		LinearLayout mGoodsDesLayout;
 		RelativeLayout mTypeLayout;
 
@@ -184,7 +199,7 @@ public class MerchantAdapter extends BaseAdapter {
 		@Override
 		public int hashCode() {
 			return this.mGoodsTypeIcon.hashCode() + mGoodsTypeName.hashCode()
-					+ mGoodsDesLayout.hashCode()+ mTypeLayout.hashCode();
+					+ mGoodsDesLayout.hashCode()+ mTypeLayout.hashCode() + this.mDistance.hashCode();
 		}
 	} 
 

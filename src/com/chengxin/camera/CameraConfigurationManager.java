@@ -56,8 +56,7 @@ final class CameraConfigurationManager {
     Log.d(TAG, "Default preview format: " + previewFormat + '/' + previewFormatString);
     WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
     Display display = manager.getDefaultDisplay();
-    display.getSize(screenResolution);
-//    screenResolution = new Point(display.getWidth(), display.getHeight());
+    screenResolution = new Point(display.getWidth(), display.getHeight());
     Log.d(TAG, "Screen resolution: " + screenResolution);
     cameraResolution = getCameraResolution(parameters, screenResolution);
     Log.d(TAG, "Camera resolution: " + screenResolution);

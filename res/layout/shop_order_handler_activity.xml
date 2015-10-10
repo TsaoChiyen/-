@@ -231,7 +231,8 @@
 		                android:layout_centerVertical="true"
 		                android:layout_marginLeft="5dp"
 		                android:layout_marginRight="10dp"
-		                android:src="@drawable/icon_comment_s" />
+		                android:background="@color/transparent"
+		                android:src="@drawable/icon_chat_m" />
 		
 		            <ImageButton
 		                android:id="@+id/btn_call"
@@ -239,7 +240,8 @@
 		                android:layout_height="32dp"
 		                android:layout_centerVertical="true"
 		                android:layout_toLeftOf="@+id/btn_chat"
-		                android:src="@drawable/icon_comment_s" />
+		                android:background="@color/transparent"
+		                android:src="@drawable/icon_call_m" />
 
 		            <TextView
 		                android:id="@+id/order_cosumer_phone"

@@ -2710,8 +2710,6 @@ public class ChatMainActivity extends BaseActivity implements OnItemLongClickLis
 		ProgressBar wiatProgressBar;
 		RelativeLayout mRootLayout, mDisplayLayout;
 		private RelativeLayout.LayoutParams mParams;
-		private RelativeLayout.LayoutParams mVoiceTimeParams;
-
 		// gif 图片
 		GifImageView gifView;
 		ImageView videoIcon;
@@ -2743,7 +2741,6 @@ public class ChatMainActivity extends BaseActivity implements OnItemLongClickLis
 			holder.imgSendState = (ImageView) view.findViewById(R.id.chat_talk_msg_sendsate);
 			holder.wiatProgressBar = (ProgressBar) view.findViewById(R.id.chat_talk_msg_progressBar);
 			holder.txtVoiceNum = (TextView) view.findViewById(R.id.chat_talk_voice_num);
-			holder.mVoiceTimeParams = (RelativeLayout.LayoutParams) holder.txtVoiceNum.getLayoutParams();
 			holder.imgVoiceReadState = (ImageView) view.findViewById(R.id.unread_voice_icon);
 
 			// +++通讯录名片++//

@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dip"
-            android:layout_toLeftOf="@+id/right_icon"
+            android:layout_toLeftOf="@+id/text_distance"
             android:layout_toRightOf="@+id/goods_type_icon"
             android:duplicateParentState="true"
             android:maxWidth="250dip"
@@ -38,15 +38,17 @@
             android:textColor="#eb3266"
             android:textSize="@dimen/sixteen" />
 
-        <ImageView
-            android:id="@+id/right_icon"
-            android:layout_width="15dip"
-            android:layout_height="15dip"
+        <TextView
+            android:id="@+id/text_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:contentDescription="@string/desc"
-            android:duplicateParentState="true"
-            android:src="@drawable/selector_member_more" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/application_gray_black"
+            android:textSize="12sp" />
+
     </RelativeLayout>
 
     <LinearLayout

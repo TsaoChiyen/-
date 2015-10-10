@@ -74,12 +74,13 @@ public class ShoppingCartActivity extends BaseActivity{
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			if(intent == null || 
-					(intent.getAction() == null || intent.getAction().equals(""))){
+			if (intent == null
+					|| (intent.getAction() == null || intent.getAction()
+							.equals(""))) {
 				return;
 			}
 			String action = intent.getAction();
-			if(action.equals(GlobalParam.ACTION_DESTROY_SHOPPING_CART_PAGE)){
+			if (action.equals(GlobalParam.ACTION_DESTROY_SHOPPING_CART_PAGE)) {
 				ShoppingCartActivity.this.finish();
 			}
 		}

@@ -145,7 +145,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/goods_info_splite"
                 android:orientation="horizontal"
-                android:padding="5dip" >
+                android:padding="5dip"
+                android:visibility="gone" >
 
                 <TextView
                     android:id="@+id/bady_tv"
@@ -186,7 +187,9 @@
                 android:id="@+id/comment_layout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:visibility="gone" >
+
             </LinearLayout>
 
             <TextView

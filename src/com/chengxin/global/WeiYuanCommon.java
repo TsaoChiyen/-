@@ -162,7 +162,6 @@ public class WeiYuanCommon {
 			oos.writeObject(list);
 			oos.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 将Product对象放到OutputStream中
@@ -263,7 +262,6 @@ public class WeiYuanCommon {
 			oos.writeObject(login);
 			oos.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 将Product对象放到OutputStream中
@@ -453,7 +451,6 @@ public class WeiYuanCommon {
 			oos.writeObject(movingList);
 			oos.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 将Product对象放到OutputStream中
@@ -716,7 +713,6 @@ public class WeiYuanCommon {
 			oos.writeObject(urlString);
 			oos.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 将Product对象放到OutputStream中
@@ -806,7 +802,6 @@ public class WeiYuanCommon {
 			oos.writeObject(newsList);
 			oos.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 将Product对象放到OutputStream中
@@ -858,7 +853,6 @@ public class WeiYuanCommon {
 			oos.writeObject(list);
 			oos.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 将Product对象放到OutputStream中
@@ -1001,7 +995,6 @@ public class WeiYuanCommon {
 			oos.writeObject(cookie);
 			oos.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 将Product对象放到OutputStream中

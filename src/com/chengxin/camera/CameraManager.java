@@ -221,6 +221,11 @@ public final class CameraManager {
       if (camera == null) {
         return null;
       }
+      
+      if (screenResolution == null) {
+    	  return null;
+      }
+      
       int width = screenResolution.x * 3 / 4;
       if (width < MIN_FRAME_WIDTH) {
         width = MIN_FRAME_WIDTH;

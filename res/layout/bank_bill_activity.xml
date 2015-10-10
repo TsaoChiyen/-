@@ -155,7 +155,7 @@
                 android:background="@drawable/circle_circle_rond_n"
                 android:ems="10"
                 android:gravity="center_vertical"
-                android:hint="选择还款日期(格式：1970-05-23)"
+                android:hint="选择还款日期"
                 android:imeOptions="actionNext"
                 android:inputType="date"
                 android:padding="5dip"

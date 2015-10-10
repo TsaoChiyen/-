@@ -184,8 +184,12 @@ public class MerchantFragment extends BaseFragment implements OnChangeStateListe
 						page = 1;
 					}
 					boolean isExitData = false;
-					mMerchant = WeiYuanCommon.getWeiYuanInfo()
-							.getShopList(page, 0, city);
+					mMerchant = WeiYuanCommon.getWeiYuanInfo().getShopList(
+							page,
+							0,
+							WeiYuanCommon.getCurrentLat(mContext),
+							WeiYuanCommon.getCurrentLng(mContext),
+							city);
 					List<Merchant> tempList = new ArrayList<Merchant>();
 
 					if (mMerchant.mMerchantList != null

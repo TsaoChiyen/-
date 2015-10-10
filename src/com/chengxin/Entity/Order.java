@@ -106,13 +106,60 @@ public class Order implements Serializable{
 
     public List <Goods> goods;
     public Merchant shop;
+    public UniPayResult uniPayResult;
 
+    public WeiYuanState state;
+    
     public int 		totalCount;
     public float	totalPrice;
 
-	public Order(){}
-	
-	public Order(JSONObject json) {
+	public Order() {
+		super();
+	}
+
+	public Order(String reqString) {
+		super();
+		try {
+			if(reqString == null || reqString.equals("")){
+				return;
+			}
+			initCompent(new JSONObject(reqString));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Order(JSONObject obj){
+		try {
+			initCompent(obj);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}	
+
+	private void initCompent(JSONObject json) throws JSONException{
+		if(json == null || json.equals("")){
+			return;
+		}// data - id
+		if(!json.isNull("data")){
+			String dataString = json.getString("data");
+			if(dataString != null && !dataString.equals("")
+					&& dataString.startsWith("{")){
+				init(json.getJSONObject("data"));
+			}
+		}else{
+			init(json);
+		}
+		if(!json.isNull("state")){
+			String stateString = json.getString("state");
+			if(stateString != null && !stateString.equals("")
+					&& stateString.startsWith("{")){
+				state = new WeiYuanState(json.getJSONObject("state"));
+			}
+		}
+	}
+
+	public void init(JSONObject json) {
 		try {
 			id = json.getString("id");
 
@@ -153,7 +200,23 @@ public class Order implements Serializable{
                     shop = new Merchant(object);
                 }
             }
+
+            if(!json.isNull("pay")){
+                JSONObject object = json.getJSONObject("pay");
+                
+                if(object != null){
+                    uniPayResult = new UniPayResult(object);
+                }
+            }
             
+            if(!json.isNull("state")){
+                JSONObject object = json.getJSONObject("state");
+                
+                if(object != null){
+                    state = new WeiYuanState(object);
+                }
+            }
+
             caculateSum();
             
 		} catch ( NumberFormatException e) {
