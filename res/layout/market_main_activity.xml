@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout" />
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/tab_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/application_my_album_select" >
+
+            <Button
+                android:id="@+id/btn_goods"
+                style="@style/actionbar_def_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/application_blue"
+                android:text="商品"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_shop"
+                style="@style/actionbar_def_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/application_gray_black"
+                android:text="商家"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btn_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="G"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tab_bar_layout" >
+
+            <LinearLayout
+                android:id="@+id/product_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <fragment
+                    android:id="@+id/goods_list_fragment"
+                    android:name="com.chengxin.fragment.GoodsListFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shop_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <fragment
+                    android:id="@+id/shop_goods_fragment"
+                    android:name="com.chengxin.fragment.MerchantFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/buy_btn"
+            android:layout_width="80dip"
+            android:layout_height="80dip"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:padding="10dip" >
+
+            <ImageView
+                android:id="@+id/buy_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/buy_icon"
+                android:contentDescription="@string/desc"
+                android:scaleType="centerInside" />
+
+            <TextView
+                android:id="@+id/shpping_number"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/goods_count"
+                android:gravity="center_horizontal|center_vertical"
+                android:minHeight="20dip"
+                android:minWidth="20dip"
+                android:padding="2dip"
+                android:textColor="@color/white"
+                android:textSize="@dimen/forteen" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

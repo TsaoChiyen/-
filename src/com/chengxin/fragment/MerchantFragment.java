@@ -86,6 +86,7 @@ public class MerchantFragment extends BaseFragment implements OnChangeStateListe
 	// 购物车
 	// private RelativeLayout mBuyBtn;
 	// private TextView mGoodsCountTextView;
+	private int mShopType = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -185,6 +186,7 @@ public class MerchantFragment extends BaseFragment implements OnChangeStateListe
 					}
 					boolean isExitData = false;
 					mMerchant = WeiYuanCommon.getWeiYuanInfo().getShopList(
+							mShopType,
 							page,
 							0,
 							WeiYuanCommon.getCurrentLat(mContext),
@@ -442,7 +444,7 @@ public class MerchantFragment extends BaseFragment implements OnChangeStateListe
 		new Thread(){
 			public void run() {
 				try {
-					ShopAreaList temp = WeiYuanCommon.getWeiYuanInfo().getShopAreaList();
+					ShopAreaList temp = WeiYuanCommon.getWeiYuanInfo().getShopAreaList(mShopType);
 					WeiYuanCommon.sendMsg(mHandler, MSG_AREA_LIST, temp);
 				} catch (WeiYuanException e) {
 					e.printStackTrace();
@@ -492,5 +494,11 @@ public class MerchantFragment extends BaseFragment implements OnChangeStateListe
 	public void startSearch() {
 		SearchShopDialog dialog = new SearchShopDialog(mContext, mNewsList);
 		dialog.show();
+	}
+
+	public void setShopType(int shopType) {
+		mShopType  = shopType;
+		getShopArea();
+		getNewsList(GlobalParam.LIST_LOAD_FIRST, mCity);
 	}
 }

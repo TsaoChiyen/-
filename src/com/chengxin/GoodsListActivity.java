@@ -53,6 +53,7 @@ OnItemClickListener {
 	private int mShopid;
 	private String mShopAddr,mShopPhone,mShopName;
 	private Login mUser;
+	protected int mShopType = 0;
 
 
 	@Override
@@ -137,7 +138,10 @@ OnItemClickListener {
 						page = 1;
 					}
 					boolean isExitData = false;
-					mGoodsEntity =	WeiYuanCommon.getWeiYuanInfo().getGoodsList(page,mShopid);
+					mGoodsEntity =	WeiYuanCommon.getWeiYuanInfo().getGoodsList(
+							mShopType ,
+							page,
+							mShopid);
 					List<Goods> tempList = new ArrayList<Goods>();
 					if(mGoodsEntity.goodsList != null && mGoodsEntity.goodsList.size()>0){
 						isExitData = true;

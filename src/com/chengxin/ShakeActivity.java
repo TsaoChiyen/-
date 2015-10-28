@@ -187,6 +187,7 @@ public class ShakeActivity extends BaseActivity {
 
                 ResearchCommon.setCurrentLat(Lat);
                 ResearchCommon.setCurrentLng(Lng);
+                
 
                 SharedPreferences preferences = mContext.getSharedPreferences(ResearchCommon.LOCATION_SHARED, 0);
                 SharedPreferences.Editor editor = preferences.edit();

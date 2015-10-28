@@ -27,6 +27,7 @@ import com.chengxin.Entity.GoodsCommentEntity;
 import com.chengxin.Entity.GoodsEntity;
 import com.chengxin.Entity.GroupList;
 import com.chengxin.Entity.LoginResult;
+import com.chengxin.Entity.MarketsCategory;
 import com.chengxin.Entity.Meeting;
 import com.chengxin.Entity.MeetingItem;
 import com.chengxin.Entity.Merchant;
@@ -44,6 +45,7 @@ import com.chengxin.Entity.RoomUsrList;
 import com.chengxin.Entity.ShopAreaList;
 import com.chengxin.Entity.ShopGoodsList;
 import com.chengxin.Entity.ShopServiceList;
+import com.chengxin.Entity.UniPayResult;
 import com.chengxin.Entity.UserList;
 import com.chengxin.Entity.VersionInfo;
 import com.chengxin.Entity.WeiYuanState;
@@ -2234,17 +2236,40 @@ public class WeiYuanInfo  implements Serializable{
 	public MerchantMenu getShopType() throws WeiYuanException{
 //		WeiYuanParameters bundle = new WeiYuanParameters();
 		String url = SERVER_PREFIX  + "/shop/api/categroyList";
-//		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
-		String reString = request(url, null, Utility.HTTPMETHOD_POST,0);
 
-		if(reString != null && !reString.equals("") && !reString.equals("null") /* && reString.startsWith("{")*/){
-			return new MerchantMenu(reString);
+//		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+		
+		if (url != null) {
+			String reString = request(url, null, Utility.HTTPMETHOD_POST,0);
+
+			if(reString != null && !reString.equals("") && !reString.equals("null") /* && reString.startsWith("{")*/){
+				return new MerchantMenu(reString);
+			}
 		}
 		
 		return null;
 	}
 
+	/***
+	 * 商户类别(/shop/api/categroyList)
+	 * @throws WeiYuanException
+	 */
+	public MarketsCategory getMarketsCategory() throws WeiYuanException{
+//		WeiYuanParameters bundle = new WeiYuanParameters();
+		String url = SERVER_PREFIX  + "/basket/api/categroyList";
 
+//		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+		
+		if (url != null) {
+			String reString = request(url, null, Utility.HTTPMETHOD_POST,0);
+
+			if(reString != null && !reString.equals("") && !reString.equals("null") /* && reString.startsWith("{")*/){
+				return new MarketsCategory(reString);
+			}
+		}
+		
+		return null;
+	}
 
 	/**
      *	Copyright © 2015 tcy@dreamisland. All rights reserved.
@@ -2356,7 +2381,10 @@ public class WeiYuanInfo  implements Serializable{
 	 * @return
 	 * @throws WeiYuanException
 	 */
-	public MerchantEntity getMerchantkList(int page,int categoryid) throws WeiYuanException{
+	public MerchantEntity getMerchantkList(
+			int shopType,
+			int page,
+			int categoryid) throws WeiYuanException{
 		WeiYuanParameters bundle = new WeiYuanParameters();
 		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
 		bundle.add("categoryid",String.valueOf(categoryid));
@@ -2364,13 +2392,22 @@ public class WeiYuanInfo  implements Serializable{
 		bundle.add("lat",String.valueOf( WeiYuanCommon.getCurrentLat(BMapApiApp.getInstance())));
 		bundle.add("lng",String.valueOf( WeiYuanCommon.getCurrentLng(BMapApiApp.getInstance())));
 		/*	bundle.add("pageSize", String.valueOf(Common.LOAD_SIZE));*/
-		String url = SERVER_PREFIX + "/shop/api/shopList";
-		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
+		String url = null;
+		
+		if (shopType == 0) {
+			url = SERVER_PREFIX + "/shop/api/shopList";
+		} else {
+			url = SERVER_PREFIX + "/basket/api/shopList";
+		}
 
-		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			//Log.d("reString", reString);
+		if (url != null) {
+			String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
-			return new MerchantEntity(reString);
+			if(reString != null && !reString.equals("") && !reString.equals("null")){
+				//Log.d("reString", reString);
+
+				return new MerchantEntity(reString);
+			}
 		}
 
 		return null;
@@ -2385,6 +2422,7 @@ public class WeiYuanInfo  implements Serializable{
      *  @param areaId       商品区域id
      */
     public MerchantEntity getShopList(
+    		int shopType,
     		int page,
     		int categoryid,
     		Double lat,
@@ -2399,16 +2437,24 @@ public class WeiYuanInfo  implements Serializable{
         if (page > 1) bundle.add("page", String.valueOf(page));
         if (city != null && city.length() > 0) bundle.add("city", city);
 
-        String url = SERVER_PREFIX + "/shop/api/shopList";
+        String url = null;
         
-        try {
-            String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
-            
-            if(reString != null && !reString.equals("") && !reString.equals("null")){
-                return new MerchantEntity(reString);
+        if (shopType == 0) {
+            url = SERVER_PREFIX + "/shop/api/shopList";
+        } else {
+            url = SERVER_PREFIX + "/basket/api/shopList";
+        }
+        
+        if (url != null) {
+            try {
+                String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
+                
+                if(reString != null && !reString.equals("") && !reString.equals("null")){
+                    return new MerchantEntity(reString);
+                }
+            } catch (WeiYuanException e) {
+                e.printStackTrace();
             }
-        } catch (WeiYuanException e) {
-            e.printStackTrace();
         }
         
         return null;
@@ -2427,7 +2473,13 @@ public class WeiYuanInfo  implements Serializable{
      *  @param page
      *
      */
-    public GoodsEntity getGoodsList(int page, int shopid, int categoryid, String city, int sort) throws WeiYuanException  {
+    public GoodsEntity getGoodsList(
+    		int shopType,
+    		int page,
+    		int shopid,
+    		int categoryid,
+    		String city,
+    		int sort) throws WeiYuanException  {
         WeiYuanParameters bundle = new WeiYuanParameters();
 
         if (page > 1)
@@ -2447,12 +2499,20 @@ public class WeiYuanInfo  implements Serializable{
 
         bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
         
+        String url = null;
         
-        String url = SERVER_PREFIX + "/shop/api/goodsList";
-        String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
-        
-        if(reString != null && !reString.equals("") && !reString.equals("null")){
-            return new GoodsEntity(reString);
+        if (shopType == 0) {
+            url = SERVER_PREFIX + "/shop/api/goodsList";
+        } else {
+            url = SERVER_PREFIX + "/basket/api/goodsList";
+        }
+
+        if (url != null) {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
+            
+            if(reString != null && !reString.equals("") && !reString.equals("null")){
+                return new GoodsEntity(reString);
+            }
         }
         
         return null;
@@ -2466,7 +2526,10 @@ public class WeiYuanInfo  implements Serializable{
 	 * @return
 	 * @throws WeiYuanException
 	 */
-	public GoodsEntity getGoodsList(int page,int shopid) throws WeiYuanException{
+	public GoodsEntity getGoodsList(
+			int shopType,
+			int page,
+			int shopid) throws WeiYuanException{
 		WeiYuanParameters bundle = new WeiYuanParameters();
 		bundle.add("appkey",APPKEY);
 		if(shopid == 0){
@@ -2476,13 +2539,22 @@ public class WeiYuanInfo  implements Serializable{
 		bundle.add("shopid", String.valueOf(shopid));
 		bundle.add("page", String.valueOf(page));
 		/*bundle.add("pageSize", String.valueOf(Common.LOAD_SIZE));*/
-		String url = SERVER_PREFIX + "/shop/api/goodsList";
-		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
+		
+		String url = null;
+		
+		if (shopType == 0)
+			url = SERVER_PREFIX + "/shop/api/goodsList";
+		else
+			url = SERVER_PREFIX + "/basket/api/goodsList";
+			
+		if (url != null) {
+			String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
-		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			//Log.d("reString", reString);
+			if(reString != null && !reString.equals("") && !reString.equals("null")){
+				//Log.d("reString", reString);
 
-			return new GoodsEntity(reString);
+				return new GoodsEntity(reString);
+			}
 		}
 
 		return null;
@@ -2498,20 +2570,32 @@ public class WeiYuanInfo  implements Serializable{
 	 * @param goods_id	true	String	商品id
 	 * @throws WeiYuanException 
 	 */
-	public Goods getGoodsDetail(String goods_id) throws WeiYuanException{
+	public Goods getGoodsDetail(
+			int shopType,
+			String goods_id) throws WeiYuanException{
 		WeiYuanParameters bundle = new WeiYuanParameters();
 		if(goods_id == null || goods_id.equals("")){
 			return null;
 		}
 		bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
 		bundle.add("goodid", goods_id);
-		String url = SERVER_PREFIX + "/shop/api/detail";
-		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
-
-		if(reString != null && !reString.equals("") && !reString.equals("null")){
-			Log.d("getGoodsDetail", reString);
-			return new Goods(reString);
+		String url = null; 
+		
+		if (shopType == 0) {
+			url = SERVER_PREFIX + "/shop/api/detail";
+		} else {
+			url = SERVER_PREFIX + "/basket/api/detail";
 		}
+
+		if (url != null) {
+			String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
+
+			if(reString != null && !reString.equals("") && !reString.equals("null")){
+				Log.d("getGoodsDetail", reString);
+				return new Goods(reString);
+			}
+		}
+
 		return null;
 	}
 
@@ -2640,6 +2724,7 @@ public class WeiYuanInfo  implements Serializable{
 	 */
 
 	public Order submitOrder(
+			int shopType,
 			int type,
 			String goods,
 			String username,
@@ -2670,13 +2755,60 @@ public class WeiYuanInfo  implements Serializable{
 		
         bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
 
-		String url = SERVER_PREFIX + "/shop/api/submitOrder";
+		String url = null;
+		
+		if (shopType == 0) {
+			url = SERVER_PREFIX + "/shop/api/submitOrder";
+		} else {
+			url = SERVER_PREFIX + "/basket/api/submitOrder";
+		}
+
 		String reString = request(url, bundle, Utility.HTTPMETHOD_POST,1);
 
 		if(reString != null && !reString.equals("") && !reString.equals("null")){
 			Log.d("submitOrder", reString);
 			try {
 				return new Order(new JSONObject(reString));
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;	
+	}
+	
+	/**
+	 * 订单付款(/shop/api/orderPay)
+     * @param id 			true	String  订单id
+	 * @return 
+	 * @throws WeiYuanException 
+	 */
+
+	public UniPayResult payOrder(
+			int shopType,
+			String orderId) throws WeiYuanException {
+		WeiYuanParameters bundle = new WeiYuanParameters();
+		
+		if (orderId == null || orderId.equals("") || orderId.equals("0")) {
+			return null;
+		}
+		
+        bundle.add("id", orderId);
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+
+		String url = null;
+		
+        if (shopType == 0) {
+            url = SERVER_PREFIX + "/shop/api/orderPay";
+        } else {
+            url = SERVER_PREFIX + "/basket/api/orderPay";
+        }
+
+		String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+
+		if(reString != null && !reString.equals("") && !reString.equals("null")){
+			Log.d("submitOrder", reString);
+			try {
+				return new UniPayResult(new JSONObject(reString));
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -3211,7 +3343,11 @@ public class WeiYuanInfo  implements Serializable{
      *  @param status           订单状态
      *  @param type             用户角色 1： 商家，2： 买家
      */
-    public OrderList getOrderList(int page, int status, int type) throws WeiYuanException {
+    public OrderList getOrderList(
+    		int shopType,
+    		int page,
+    		int status,
+    		int type) throws WeiYuanException {
         
         if (type == 1 || type == 2) {
             WeiYuanParameters bundle = new WeiYuanParameters();
@@ -3222,7 +3358,13 @@ public class WeiYuanInfo  implements Serializable{
             if (status > 0) bundle.add("status", String.valueOf(status));
             bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
             
-            String url = SERVER_PREFIX + "/shop/Api/orderList";
+            String url = null;
+            
+            if (shopType == 0) {
+                url = SERVER_PREFIX + "/shop/Api/orderList";
+            } else {
+                url = SERVER_PREFIX + "/basket/Api/orderList";
+            }
             
             try {
                 String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
@@ -3253,14 +3395,24 @@ public class WeiYuanInfo  implements Serializable{
      *                   8:结款中
      *                   9:已结款
      */
-    public WeiYuanState updateOrder(String orderId, String status) throws WeiYuanException {
+    public WeiYuanState updateOrder(
+    		int shopType,
+    		String orderId,
+    		String status) throws WeiYuanException {
         WeiYuanParameters bundle = new WeiYuanParameters();
         
         bundle.add("id", orderId);
         bundle.add("status", status);
         bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
         
-        String url = SERVER_PREFIX + "/shop/api/orderStatus";
+        String url = null;
+        
+        if (shopType == 0) {
+            url = SERVER_PREFIX + "/shop/api/orderStatus";
+        } else {
+            url = SERVER_PREFIX + "/basket/api/orderStatus";
+        }
+
         String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
         
         if(reString != null && !reString.equals("") && !reString.equals("null")){
@@ -3285,7 +3437,10 @@ public class WeiYuanInfo  implements Serializable{
      *  @param reason    退单理由
      *  @note status     5:已退单
      */
-    public WeiYuanState retreatOrder(String orderId, String reason) throws WeiYuanException {
+    public WeiYuanState retreatOrder(
+    		int shopType,
+    		String orderId,
+    		String reason) throws WeiYuanException {
         WeiYuanParameters bundle = new WeiYuanParameters();
         
         bundle.add("id", orderId);
@@ -3293,7 +3448,14 @@ public class WeiYuanInfo  implements Serializable{
         bundle.add("content", reason);
         bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
         
-        String url = SERVER_PREFIX + "/shop/api/orderStatus";
+        String url = null;
+        
+        if (shopType == 0) {
+            url = SERVER_PREFIX + "/shop/api/orderStatus";
+        } else {
+            url = SERVER_PREFIX + "/basket/api/orderStatus";
+        }
+
         String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
         
         if(reString != null && !reString.equals("") && !reString.equals("null")){
@@ -3320,7 +3482,11 @@ public class WeiYuanInfo  implements Serializable{
      *  @note status        2:已发货
      *
      */
-    public WeiYuanState deliveryOrder(String orderId, String logistics, String waybill) throws WeiYuanException {
+    public WeiYuanState deliveryOrder(
+    		int shopType,
+    		String orderId,
+    		String logistics,
+    		String waybill) throws WeiYuanException {
         WeiYuanParameters bundle = new WeiYuanParameters();
         
         bundle.add("id", orderId);
@@ -3330,7 +3496,14 @@ public class WeiYuanInfo  implements Serializable{
         bundle.add("lognumber", waybill);
         bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
         
-        String url = SERVER_PREFIX + "/shop/api/orderStatus";
+        String url = null;
+        
+        if (shopType == 0) {
+            url = SERVER_PREFIX + "/shop/api/orderStatus";
+        } else {
+            url = SERVER_PREFIX + "/basket/api/orderStatus";
+        }
+        
         String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
         
         if(reString != null && !reString.equals("") && !reString.equals("null")){
@@ -3355,7 +3528,9 @@ public class WeiYuanInfo  implements Serializable{
      *  @note status        6:已收货
      *
      */
-    public WeiYuanState recieveGoodsByOrderId(String orderId) throws WeiYuanException {
+    public WeiYuanState recieveGoodsByOrderId(
+    		int shopType,
+    		String orderId) throws WeiYuanException {
         WeiYuanParameters bundle = new WeiYuanParameters();
         
         bundle.add("id", orderId);
@@ -3363,7 +3538,14 @@ public class WeiYuanInfo  implements Serializable{
         bundle.add("status", "6");
         bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
         
-        String url = SERVER_PREFIX + "/shop/api/orderStatus";
+        String url = null;
+
+        if (shopType == 0) {
+            url = SERVER_PREFIX + "/shop/api/orderStatus";
+        } else {
+            url = SERVER_PREFIX + "/basket/api/orderStatus";
+        }
+
         String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
         
         if(reString != null && !reString.equals("") && !reString.equals("null")){
@@ -4193,18 +4375,26 @@ public class WeiYuanInfo  implements Serializable{
      *	商区列表
      *
      */
-    public ShopAreaList getShopAreaList() throws WeiYuanException {
-        String url = SERVER_PREFIX + "/shop/api/areaList";
+    public ShopAreaList getShopAreaList(int shopType) throws WeiYuanException {
+        String url = null;
         
-        try {
-            String reString = request(url, null, Utility.HTTPMETHOD_POST, 0);
-            
-            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
-                return new ShopAreaList(reString);
+        if (shopType == 0) {
+            url = SERVER_PREFIX + "/shop/api/areaList";
+        } else {
+            url = SERVER_PREFIX + "/basket/api/areaList";
+        }
+        
+        if (url != null) {
+            try {
+                String reString = request(url, null, Utility.HTTPMETHOD_POST, 0);
+                
+                if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                    return new ShopAreaList(reString);
+                }
+            } catch (WeiYuanException e) {
+                e.printStackTrace();
+                return null;
             }
-        } catch (WeiYuanException e) {
-            e.printStackTrace();
-            return null;
         }
         
         return null;
@@ -4218,7 +4408,9 @@ public class WeiYuanInfo  implements Serializable{
      *  @param shopid   商家 ID
      *
      */
-    public Merchant getShop(int shopid) throws WeiYuanException {
+    public Merchant getShop(
+    		int shopType,
+    		int shopid) throws WeiYuanException {
         WeiYuanParameters bundle = new WeiYuanParameters();
         
         if (shopid == 0) return null;
@@ -4226,17 +4418,24 @@ public class WeiYuanInfo  implements Serializable{
         bundle.add("shopid",String.valueOf(shopid));
         bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
         
-        String url = SERVER_PREFIX + "/shop/Api/shopDetail";
+        String url = null;
         
-        try {
-            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
-            
-            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
-                return new Merchant(reString);
+        if (shopType == 0)
+            url = SERVER_PREFIX + "/shop/Api/shopDetail";
+        else 
+            url = SERVER_PREFIX + "/basket/Api/shopDetail";
+        	
+        if (url != null) {
+            try {
+                String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+                
+                if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                    return new Merchant(reString);
+                }
+            } catch (WeiYuanException e) {
+                e.printStackTrace();
+                return null;
             }
-        } catch (WeiYuanException e) {
-            e.printStackTrace();
-            return null;
         }
         
         return null;

@@ -63,6 +63,7 @@ public class NewsFragment extends BaseFragment implements OnItemClickListener{
 
 
 	private ImageLoader mImageLoader = new ImageLoader();
+	protected int mShopType = 0;
 
 	public int mPageIndex = 0;
 
@@ -168,7 +169,7 @@ public class NewsFragment extends BaseFragment implements OnItemClickListener{
 			public void run() {
 				try {
 					int page = 1;
-					mMerchant =	WeiYuanCommon.getWeiYuanInfo().getMerchantkList(page, 0);
+					mMerchant =	WeiYuanCommon.getWeiYuanInfo().getMerchantkList(mShopType , page, 0);
 					if(mMerchant.mMerchantList != null && mMerchant.mMerchantList.size()>0){
 						List<Merchant> tempList = new ArrayList<Merchant>();
 						tempList.addAll(mMerchant.mMerchantList);

@@ -54,7 +54,8 @@ public class MerchantMenu implements Serializable {
 						
 						if((dataString != null && !dataString.equals("")) && dataString.startsWith("[")) {
 							JSONArray array = obj.getJSONArray("data");
-							
+							menuList.clear();
+
 							if(array != null && array.length() >0){
 								for (int i = 0; i < array.length(); i++) {
 									menuList.add(new MerchantMenu(array.getJSONObject(i)));

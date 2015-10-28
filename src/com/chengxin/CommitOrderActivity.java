@@ -48,6 +48,7 @@ public class CommitOrderActivity extends BaseActivity {
 	private Merchant mMerchant;
 	private EditText mPayModeEdit;
 	private int mType;
+	private int mShopType = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -187,8 +188,14 @@ public class CommitOrderActivity extends BaseActivity {
 					}
 
 					Order order = WeiYuanCommon.getWeiYuanInfo().submitOrder(
-							mType, goods, mInputContactName, mInputTelPhone,
-							mInputAddr, mInputDesc, mMerchant.id);
+							mShopType,
+							mType,
+							goods,
+							mInputContactName,
+							mInputTelPhone,
+							mInputAddr,
+							mInputDesc,
+							mMerchant.id);
 					mBaseHandler.sendEmptyMessage(BASE_HIDE_PROGRESS_DIALOG);
 					WeiYuanCommon.sendMsg(mHandler,
 							GlobalParam.MSG_CHECK_STATE, order);

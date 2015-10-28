@@ -33,6 +33,7 @@ public class GoodsTypeActivity extends BaseActivity{
 	private List<MerchantMenu> mMenuList = new ArrayList<MerchantMenu>();
 	
 	private ImageLoader mImageLoader;
+	protected int mShopType = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

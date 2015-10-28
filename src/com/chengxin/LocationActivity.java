@@ -843,14 +843,18 @@ public class LocationActivity extends BaseActivity implements OnClickListener, O
 
 				double Lat = location.getLatitude();
 				double Lng = location.getLongitude();
-
+				String city = location.getCity();
+				
 				WeiYuanCommon.setCurrentLat(Lat);
 				WeiYuanCommon.setCurrentLng(Lng);
+				WeiYuanCommon.setCurrentCity(city);
 
 				SharedPreferences preferences = mContext.getSharedPreferences(WeiYuanCommon.LOCATION_SHARED, 0);
 				Editor editor = preferences.edit();
 				editor.putString(WeiYuanCommon.LAT, String.valueOf(Lat));
 				editor.putString(WeiYuanCommon.LNG, String.valueOf(Lng));
+				editor.putString(WeiYuanCommon.CITY, city);
+
 				editor.commit();
 
 				mLng = Lng;

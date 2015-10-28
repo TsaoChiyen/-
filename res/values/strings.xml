@@ -667,6 +667,7 @@
     <string name="shop_settle_title">结款管理</string>
     <string name="apply_exhibition">申请参加展会</string>
     <string name="demand_main_title">需求</string>
+    <string name="market_main_title">菜篮子</string>
     <string name="services_demand_add">发布需求</string>
     <string name="order_detail_title">订单详细</string>
     <string name="shopping_address">修改收货地址</string>

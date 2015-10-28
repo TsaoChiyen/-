@@ -152,6 +152,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 
 	private Login mUser;
 	private String mShopAddr, mShopPhone, mShopName;
+	private int mShopType = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -166,6 +167,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 		mShopAddr = getIntent().getStringExtra("addr");
 		mShopPhone = getIntent().getStringExtra("tel_phone");
 		mShopName = getIntent().getStringExtra("shop_name");
+		mShopType  = getIntent().getIntExtra("shop_type", 0);
 		mImageLoader = new ImageLoader();
 		IntentFilter fileter = new IntentFilter();
 		fileter.addAction(GlobalParam.ACTION_DESTROY_GOODS_DETAIL_PAGE);
@@ -445,7 +447,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 							BASE_SHOW_PROGRESS_DIALOG, mContext.getResources()
 									.getString(R.string.get_dataing));
 					Goods goods = WeiYuanCommon.getWeiYuanInfo()
-							.getGoodsDetail(mGoods.id);
+							.getGoodsDetail(mShopType, mGoods.id);
 					mBaseHandler.sendEmptyMessage(BASE_HIDE_PROGRESS_DIALOG);
 					WeiYuanCommon.sendMsg(mHandler,
 							GlobalParam.MSG_SHOW_LOAD_DATA, goods);

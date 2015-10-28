@@ -90,10 +90,12 @@ public class WeiYuanCommon {
 
 	private static double mCurrentLat = 0;// 30.739198684692383;// -1;
 	private static double mCurrentLng = 0;// 103.97882080078125;// -1;
+	private static String mCurrentCity = null;
 
 	public static final String LOCATION_SHARED = "location_shared";
 	public static final String LAT = "lat";
 	public static final String LNG = "lng";
+	public static final String CITY = "city";;
 
 	public static int mScreenWidth;
 	public static int mScreenHeight;
@@ -1004,4 +1006,24 @@ public class WeiYuanCommon {
 		editor.commit();
 	}
 
+	public static void setCurrentCity(String city) {
+		mCurrentCity = city;		
+	}
+
+	public static String getCurrentCity(Context context) {
+		String city = null;
+		if (mCurrentCity != null && mCurrentCity.length() > 0) {
+			city = mCurrentCity;
+		} else {
+			int mode = Context.MODE_WORLD_WRITEABLE;
+			if (Build.VERSION.SDK_INT >= 11) {
+				mode = Context.MODE_MULTI_PROCESS;
+			}
+			SharedPreferences preferences = context.getSharedPreferences(LOCATION_SHARED, mode);
+			city = preferences.getString(CITY, "重庆市");
+			mCurrentCity = city;
+		}
+
+		return city;
+	}
 }

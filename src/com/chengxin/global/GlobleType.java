@@ -102,6 +102,8 @@ public class GlobleType {
 	/**发现 - 搜索*/
 	public final static int FOUND_SEARCH =  4;
 	
+	public final static int ORDER_PAY_RESULT_CODE = 10;
+	
 	
 	
 }

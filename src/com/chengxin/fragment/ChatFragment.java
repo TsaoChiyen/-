@@ -668,9 +668,11 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 
 				double Lat = location.getLatitude();
 				double Lng = location.getLongitude();
+				String city = location.getCity();
 
 				WeiYuanCommon.setCurrentLat(Lat);
 				WeiYuanCommon.setCurrentLng(Lng);
+				WeiYuanCommon.setCurrentCity(city);
 
 				SharedPreferences preferences = BMapApiApp.getInstance().getSharedPreferences(WeiYuanCommon.LOCATION_SHARED, 0);
 				Editor editor = preferences.edit();
@@ -678,6 +680,7 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 				final String lng = String.valueOf(Lng);
 				editor.putString(WeiYuanCommon.LAT, lat);
 				editor.putString(WeiYuanCommon.LNG,lng);
+				editor.putString(WeiYuanCommon.CITY,city);
 				editor.commit();
 				SharedPreferences sharePreferences = mParentContext.getSharedPreferences("UPDAT_LOCATION_LAST_TIME", 0);
 				Editor loacationEditor = sharePreferences.edit();
