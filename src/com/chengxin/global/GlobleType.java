@@ -103,6 +103,9 @@ public class GlobleType {
 	public final static int FOUND_SEARCH =  4;
 	
 	public final static int ORDER_PAY_RESULT_CODE = 10;
+
+	public static final int SHOPPING_MANAGER = 0;
+	public static final int BASKET_MANAGER = 1;
 	
 	
 	

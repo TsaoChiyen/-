@@ -143,6 +143,10 @@ public class SetFriendsLoopAuthActivity extends BaseActivity implements OnChecke
 					Toast.makeText(mContext, R.string.load_error,Toast.LENGTH_LONG).show();
 					return;
 				}
+				
+				if (state.errorMsg != null && state.errorMsg.length() > 0)
+					Toast.makeText(mContext, state.errorMsg,Toast.LENGTH_LONG).show();
+				
 				if(state.code == 0){
 					if(mLogin.fauth2 == 0){
 						mLogin.fauth2 = 1;
@@ -155,8 +159,6 @@ public class SetFriendsLoopAuthActivity extends BaseActivity implements OnChecke
 					Intent intent = new Intent();
 					intent.putExtra("entity", mLogin);
 					setResult(2,intent);
-				}else{
-					Toast.makeText(mContext, state.errorMsg,Toast.LENGTH_LONG).show();
 				}
 				break;
 			case GlobalParam.MSG_CHECK_FRIENDS_LOOP_AUTH://登陆用户不看其他用户的朋友圈

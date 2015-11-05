@@ -31,6 +31,7 @@ import com.chengxin.Entity.Merchant;
 import com.chengxin.Entity.MerchantEntity;
 import com.chengxin.Entity.ShoppingCart;
 import com.chengxin.global.GlobalParam;
+import com.chengxin.global.GlobleType;
 import com.chengxin.global.ImageLoader;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
@@ -57,12 +58,16 @@ public class ShoppingCartActivity extends BaseActivity{
 	/*编辑or完成*/
 	public boolean mIsModify;
 
+	private int mShopType;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mContext = this;
 		setContentView(R.layout.shopping_cart_view);
+		
+		mShopType  = getIntent().getIntExtra("type", GlobleType.SHOPPING_MANAGER);
+
 		mImageLoader = new ImageLoader();
 		IntentFilter fileter = new IntentFilter();
 		fileter.addAction(GlobalParam.ACTION_DESTROY_SHOPPING_CART_PAGE);
@@ -140,7 +145,9 @@ public class ShoppingCartActivity extends BaseActivity{
 				try {
 					WeiYuanCommon.sendMsg(mBaseHandler,BASE_SHOW_PROGRESS_DIALOG,
 							mContext.getResources().getString(R.string.get_dataing));
-					MerchantEntity mMerchant =	WeiYuanCommon.getWeiYuanInfo().getShoppingCartList(mGoodsId);
+					MerchantEntity mMerchant =	WeiYuanCommon.getWeiYuanInfo().getShoppingCartList(
+							mShopType,
+							mGoodsId);
 					if(mMerchant.mMerchantList != null && mMerchant.mMerchantList.size()>0){
 						List<Merchant> tempList = new ArrayList<Merchant>();
 						tempList.addAll(mMerchant.mMerchantList);

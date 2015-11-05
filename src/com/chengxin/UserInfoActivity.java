@@ -458,6 +458,10 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 					Toast.makeText(mContext, R.string.focus_user_failed,Toast.LENGTH_LONG).show();
 					return;
 				}
+
+				if (state.errorMsg != null && state.errorMsg.length() > 0)
+					Toast.makeText(mContext, state.errorMsg,Toast.LENGTH_LONG).show();
+
 				if(state.code == 0){
 					SQLiteDatabase db = DBHelper.getInstance(mContext).getWritableDatabase();
 					UserTable table = new UserTable(db);
@@ -465,8 +469,6 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 					if(mLogin!=null){
 						showProfile();
 					}
-				}else{
-					Toast.makeText(mContext, state.errorMsg,Toast.LENGTH_LONG).show();
 				}
 				break;
 			case GlobalParam.MSG_SHOW_LOAD_DATA:

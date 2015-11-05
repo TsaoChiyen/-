@@ -75,7 +75,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 
 		if (login != null) {
 			if (login.headsmall != null && !login.headsmall.equals("")) {
-				mImageLoader.getBitmap(context, iv, null, login.headsmall, 0, false, true, false);
+				mImageLoader.getBitmap(context, iv, null, login.headsmall, 0, false, false, false);
 			}
 			if (WeiYuanCommon.getLoginResult(context).isshop == 1) {// 商家-发布商品
 				//mApplyIcon.setImageResource(R.drawable.send_goods_icon);

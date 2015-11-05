@@ -108,7 +108,7 @@ public class UploadPicAdapter extends BaseAdapter{
         if(position < mData.size()){
         	if (mData.get(position).mType == 2){
         		holder.mHeaderView.setDrawingCacheEnabled(true);
-        		mImageLoader.getBitmap(mContext, holder.mHeaderView, null, mData.get(position).mPicPath, 0, false, true,false);
+        		mImageLoader.getBitmap(mContext, holder.mHeaderView, null, mData.get(position).mPicPath, 0, false, false,false);
 //        		
 //        		mData.get(position).mPicPath = FeatureFunction.saveTempBitmap(bitmap, "goods_icon"+String.valueOf(position)+".jpg");
 //        		mData.get(position).mType = 0;

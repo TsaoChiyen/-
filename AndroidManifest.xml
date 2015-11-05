@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chengxin"
     android:versionCode="1"
-    android:versionName="V1.0.2" >
+    android:versionName="V1.0.4" >
 
     <!--
          <uses-sdk
@@ -12,7 +12,7 @@
     -->
 
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <application
@@ -1486,6 +1486,77 @@
         </activity>
         <activity
             android:name="com.chengxin.market.MarketMainActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.services.merchant.MerchantActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified"
+            android:theme="@style/SampleTheme.Light" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.services.merchant.MerchantInfoActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.services.merchant.MerchantProductActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.services.merchant.MerchantTypeActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.services.merchant.MerchantGoodsActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.services.merchant.MerchantGoodsManagerActivity"
+            android:configChanges="locale|orientation"
+            android:label="@string/ochat_app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateUnspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chengxin.services.merchant.PictureViewActivity"
             android:configChanges="locale|orientation"
             android:label="@string/ochat_app_name"
             android:screenOrientation="portrait"

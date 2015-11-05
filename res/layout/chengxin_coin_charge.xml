@@ -45,6 +45,9 @@
             android:layout_weight="1"
             android:background="@drawable/circle_circle_rond_n"
             android:ems="10"
+            android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="center_vertical"
             android:hint="0"
             android:imeOptions="actionNext"
@@ -53,6 +56,7 @@
             android:textColor="@color/application_black"
             android:textColorHint="@color/application_deep_gray_black"
             android:textSize="@dimen/sixteen" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -66,7 +70,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="32dp"
-            android:text="充值提示: 目前苡币价格"
+            android:text="充值提示: 目前芯币价格"
             android:textColor="@color/application_deep_gray_black"
             android:textSize="14sp" />
     </RelativeLayout>

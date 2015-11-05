@@ -4,6 +4,7 @@ import com.chengxin.R;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.WeiYuanState;
 import com.chengxin.global.GlobalParam;
+import com.chengxin.global.GlobleType;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
 
@@ -25,6 +26,7 @@ public class ModifyPwdActivity extends BaseActivity{
 	
 	public static final int LOGIN_PWD = 0x101;
 	public static final int SHOPPING_PWD = 0x102;
+	public static final int BASKET_PWD = 0x103;
 	public static final int PWD_MODIFY = 0;
 	public static final int PWD_SETTING= 1;
 	public static final int PWD_VERIFY = 3;
@@ -36,7 +38,7 @@ public class ModifyPwdActivity extends BaseActivity{
 	private int mtype = PWD_MODIFY; // 0:修改 else：设置
 	private int mPwdType = 0;
 	private int mpos;
-
+	
 	/*
 	 * 处理消息
 	 */
@@ -60,7 +62,17 @@ public class ModifyPwdActivity extends BaseActivity{
 								WeiYuanCommon.sendMsg(mBaseHandler, BASE_SHOW_PROGRESS_DIALOG, 
 										mContext.getResources().getString(R.string.send_request));
 								WeiYuanState state = null;
-								state = WeiYuanCommon.getWeiYuanInfo().setShopPassword(mInputNewPwd);
+								
+								if (mPwdType == BASKET_PWD) {
+									state = WeiYuanCommon.getWeiYuanInfo().setShopPassword(
+											1,
+											mInputNewPwd);
+								} else {
+									state = WeiYuanCommon.getWeiYuanInfo().setShopPassword(
+											0,
+											mInputNewPwd);
+								}
+								
 								mBaseHandler.sendEmptyMessage(BASE_HIDE_PROGRESS_DIALOG);
 								WeiYuanCommon.sendMsg(mHandler, GlobalParam.MSG_CHECK_STATE,state);
 							} catch (WeiYuanException e) {
@@ -98,6 +110,8 @@ public class ModifyPwdActivity extends BaseActivity{
 								login.password = mInputNewPwd;
 							} else if (mPwdType == SHOPPING_PWD) {
 								login.hasShopPass = 1;
+							} else if (mPwdType == BASKET_PWD) {
+								login.hasBasketPass = 1;
 							}
 
 							WeiYuanCommon.saveLoginResult(mContext, login);
@@ -141,6 +155,7 @@ public class ModifyPwdActivity extends BaseActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.modify_pwd_view);
+
 		mContext = this;
 		initComponent();
 	}
@@ -203,15 +218,33 @@ public class ModifyPwdActivity extends BaseActivity{
 						state = WeiYuanCommon.getWeiYuanInfo().editPasswd(mInputOldPwd, mInputNewPwd);
 					} else if (mPwdType == SHOPPING_PWD) {
 						if (mtype == PWD_SETTING) {
-							state = WeiYuanCommon.getWeiYuanInfo().setShopPassword(mInputNewPwd);
+							state = WeiYuanCommon.getWeiYuanInfo().setShopPassword(
+									0,
+									mInputNewPwd);
 						} else {
-							state = WeiYuanCommon.getWeiYuanInfo().verifyShopPassword(mInputOldPwd);
+							state = WeiYuanCommon.getWeiYuanInfo().verifyShopPassword(0, mInputOldPwd);
+						}
+					} else if (mPwdType == BASKET_PWD) {
+						if (mtype == PWD_SETTING) {
+							state = WeiYuanCommon.getWeiYuanInfo().setShopPassword(
+									1,
+									mInputNewPwd);
+						} else {
+							state = WeiYuanCommon.getWeiYuanInfo().verifyShopPassword(1, mInputOldPwd);
 						}
 					}
 					
 					mBaseHandler.sendEmptyMessage(BASE_HIDE_PROGRESS_DIALOG);
 					
 					if (mPwdType == SHOPPING_PWD) {
+						if (mtype == PWD_MODIFY) {
+							WeiYuanCommon.sendMsg(mHandler, CHECK_OLD_PASSWORD, state);
+						} else if (mtype == PWD_VERIFY) {
+							WeiYuanCommon.sendMsg(mHandler, GlobalParam.MSG_CHECK_STATE, state);
+						} else {
+							WeiYuanCommon.sendMsg(mHandler, GlobalParam.MSG_CHECK_STATE,state);
+						}
+					} else if (mPwdType == BASKET_PWD) {
 						if (mtype == PWD_MODIFY) {
 							WeiYuanCommon.sendMsg(mHandler, CHECK_OLD_PASSWORD, state);
 						} else if (mtype == PWD_VERIFY) {

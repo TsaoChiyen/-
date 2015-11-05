@@ -15,8 +15,7 @@ public class Picture implements Serializable{
 	public String key;
 	public String originUrl;
 	public String smallUrl;
-
-	
+	public boolean newPic = false;
 	
 	public Picture(String small, String origin) {
 		super();
@@ -50,6 +49,7 @@ public class Picture implements Serializable{
 		Log.e("picture",json);
 		return json;
 	}
+	
 	@Override
 	public String toString() {
 		return "Picture [smallUrl=" + smallUrl + ", originUrl=" + originUrl + "]";

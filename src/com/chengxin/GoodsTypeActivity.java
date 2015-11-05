@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.chengxin.R;
 import com.chengxin.Entity.MerchantMenu;
 import com.chengxin.global.GlobalParam;
+import com.chengxin.global.GlobleType;
 import com.chengxin.global.ImageLoader;
 import com.chengxin.global.WeiYuanCommon;
 import com.chengxin.net.WeiYuanException;
@@ -40,6 +41,7 @@ public class GoodsTypeActivity extends BaseActivity{
 		super.onCreate(savedInstanceState);
 		mContext = this;
 		setContentView(R.layout.goods_type_view);
+		mShopType  = getIntent().getIntExtra("type", GlobleType.SHOPPING_MANAGER);
 		mImageLoader = new ImageLoader();
 		initCompent();
 		getGoodsType();
@@ -69,7 +71,7 @@ public class GoodsTypeActivity extends BaseActivity{
 				try {
 					WeiYuanCommon.sendMsg(mBaseHandler, BASE_SHOW_PROGRESS_DIALOG,
 							mContext.getResources().getString(R.string.get_dataing));
-					MerchantMenu merchantMenu =	WeiYuanCommon.getWeiYuanInfo().getShopType();
+					MerchantMenu merchantMenu =	WeiYuanCommon.getWeiYuanInfo().getShopType(mShopType);
 					WeiYuanCommon.sendMsg(mHandler, GlobalParam.MSG_SHOW_MERCHANT_MENU_TYPE, merchantMenu);
 					mBaseHandler.sendEmptyMessage(BASE_HIDE_PROGRESS_DIALOG);
 				} catch (WeiYuanException e) {

@@ -26,7 +26,6 @@ public class BMapApiApp extends Application {
     public BMapManager mBMapManager = null;
     private static  CountryList mCountryList = null;
    
-
 //    public static final String strKey = "3XhqQTaUQyV4F2V4CFzxhZ88"; //调试版
 //    public static final String strKey = "sElbGskDq0zPsCe7SYqHMGL4"; //发布版
     public static final String strKey = "WPxKwIBvbEYuw77gwphrRVhV"; //发布版

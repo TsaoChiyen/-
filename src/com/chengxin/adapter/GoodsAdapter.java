@@ -66,7 +66,7 @@ public class GoodsAdapter extends BaseAdapter{
 		}
 		Goods item = goodsList.get(position);
 		if(item.logo != null && !item.logo.equals("")){
-			mImageLoader.getBitmap(mContext, holder.goodsIcon,null,item.logo,0,false,true,false);
+			mImageLoader.getBitmap(mContext, holder.goodsIcon,null,item.logo,0,false,false,false);
 			holder.goodsIcon.setTag(item.logo);
 		}else{
 			holder.goodsIcon.setImageResource(R.drawable.goods_noraml);

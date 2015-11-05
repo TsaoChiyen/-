@@ -777,7 +777,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 							BASE_SHOW_PROGRESS_DIALOG, mContext.getResources()
 									.getString(R.string.commit_dataing));
 					WeiYuanState state = WeiYuanCommon.getWeiYuanInfo()
-							.cancleOrCollection(mGoods.id, action);
+							.cancleOrCollection(mShopType, mGoods.id, action);
 					mBaseHandler.sendEmptyMessage(BASE_HIDE_PROGRESS_DIALOG);
 					WeiYuanCommon.sendMsg(mHandler,
 							GlobalParam.MSG_CHECK_FAVORITE_STATUS, state);

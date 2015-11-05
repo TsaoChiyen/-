@@ -116,6 +116,7 @@ public class Login implements Serializable {
 	public int isshop;
 	public Shop shop;
 	public Merchant shopInfo;
+	public Merchant basketInfo;
 
 	/** 展会 1-已参加 0-未参加 */
 	public int isexhi;
@@ -135,10 +136,17 @@ public class Login implements Serializable {
      * 有独立的商城密码 0-无 1-有
      */
  	public int hasShopPass;
+ 	public int hasBasketPass;
 
 	public int isfinanc;
+	public int isMerchant;
 
 	public Financier financier;
+	
+	public List< MerchantInfo > merchantList;
+
+	public int isbasket;
+	
 
 	/*
 	 * new Login(String.valueOf(contactId),number, String.valueOf(photoId),name,index,"",0,
@@ -382,6 +390,14 @@ public class Login implements Serializable {
 					financier = new Financier(json.getJSONObject("financ"));
 				}
 			}
+
+			if (!json.isNull("merchant")) {
+				String shopString = json.getString("merchant");
+				if ((shopString != null && !shopString.equals("")) && shopString.startsWith("[")) {
+					merchantList = MerchantInfo.constructList(json.getJSONArray("merchant"));
+				}
+			}
+
 			if (!json.isNull("lat")) {
 				lat = json.getString("lat");
 			}
@@ -402,6 +418,13 @@ public class Login implements Serializable {
 				isfinanc = json.getInt("isfinanc");
 			}
 
+			if (!json.isNull("isMerchant")) {
+				isMerchant = json.getInt("isMerchant");
+			}
+
+			if (!json.isNull("isbasket")) {
+				isbasket = json.getInt("isbasket");
+			}
 
 			if (!json.isNull("isexhi")) {
 				isexhi = json.getInt("isexhi");
@@ -411,12 +434,34 @@ public class Login implements Serializable {
 				haspublic = json.getInt("haspublic");
 			}
 
-			if (!json.isNull("shop")) {
-				shopInfo = new Merchant(json.getString("shop"));
-			}
-
 			if (!json.isNull("hasShopPass")) {
 				hasShopPass = json.getInt("hasShopPass");
+			}
+
+			if (!json.isNull("shop")) {
+				shopInfo = new Merchant(json.getString("shop"));
+
+				if (shopInfo != null && 
+						shopInfo.password != null && 
+						!shopInfo.password.equals("") &&
+						!shopInfo.password.equals("null")) {
+					hasShopPass = 1;
+				}
+			}
+
+			if (!json.isNull("hasBasketPass")) {
+				hasBasketPass = json.getInt("hasBasketPass");
+			}
+
+			if (!json.isNull("basket")) {
+				basketInfo = new Merchant(json.getString("basket"));
+				
+				if (basketInfo != null && 
+						basketInfo.password != null && 
+						!basketInfo.password.equals("") &&
+						!basketInfo.password.equals("null")) {
+					hasBasketPass = 1;
+				}
 			}
 
 			if (!json.isNull("usertype")) {
@@ -432,5 +477,17 @@ public class Login implements Serializable {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public MerchantInfo getMerchantByType(int merchantType) {
+		if (merchantList != null && merchantList.size() > 0) {
+			for (MerchantInfo merchant : merchantList) {
+				if (merchant.type == merchantType) {
+					return merchant;
+				}
+			}
+			
+		}
+		return null;
 	}
 }

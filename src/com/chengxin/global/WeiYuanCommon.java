@@ -25,6 +25,7 @@ import android.os.Message;
 import android.util.Base64;
 import android.util.Log;
 
+import com.chengxin.Entity.AdDomain;
 import com.chengxin.Entity.CookieEntity;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.Merchant;
@@ -1025,5 +1026,31 @@ public class WeiYuanCommon {
 		}
 
 		return city;
+	}
+	
+	public static String join(String join, String[] strAry) {
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < strAry.length; i++) {
+			if (i == (strAry.length - 1)) {
+				sb.append(strAry[i]);
+			} else {
+				sb.append(strAry[i]).append(join);
+			}
+		}
+
+		return new String(sb);
+	}
+
+	public static List<AdDomain> getAdLocalList() {
+		List<AdDomain> list = new ArrayList<AdDomain>();
+		
+		for (int i = 0; i < 2; i++) {
+			AdDomain adItem = new AdDomain();
+			adItem.isUrl = false;
+			adItem.imgUrl = String.format("adv_pic%d", i + 1);
+			list.add(adItem);
+		}
+		
+		return list;
 	}
 }

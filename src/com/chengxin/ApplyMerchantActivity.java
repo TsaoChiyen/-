@@ -76,17 +76,24 @@ public class ApplyMerchantActivity extends BaseActivity {
 
 	private ImageView currImageView = null;
 	private Bitmap currBitmap = null;
+	private int mShopType = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mContext = this;
 		setContentView(R.layout.apply_merchant_view);
+		mShopType  = getIntent().getIntExtra("type", GlobleType.SHOPPING_MANAGER);
 		initComponent();
 	}
 
 	private void initComponent(){
-		setTitleContent(R.drawable.back_btn,0,R.string.apply_merchant);
+		if (mShopType == GlobleType.BASKET_MANAGER) {
+			setTitleContent(R.drawable.back_btn,0,"申请菜篮子服务");
+		} else {
+			setTitleContent(R.drawable.back_btn,0,R.string.apply_merchant);
+		}
+
 		mLeftBtn.setOnClickListener(this);
 
 		mMerchantNameEdit = (EditText)findViewById(R.id.merchant_name);
@@ -192,8 +199,9 @@ public class ApplyMerchantActivity extends BaseActivity {
 					WeiYuanCommon.sendMsg(mBaseHandler, BASE_SHOW_PROGRESS_DIALOG, 
 							mContext.getResources().getString(R.string.commit_dataing));
 					
-					WeiYuanState state = WeiYuanCommon.getWeiYuanInfo().applyMerchant
-                        (mInputMerchatnName,
+					WeiYuanState state = WeiYuanCommon.getWeiYuanInfo().applyMerchant(
+							mShopType,
+							mInputMerchatnName,
                          mMapInfo.getAddr(),
                          mInputContactName,
                          mInputContactTel,

@@ -38,6 +38,7 @@ import com.chengxin.dialog.MMAlert;
 import com.chengxin.dialog.MMAlert.OnAlertSelectId;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
+import com.chengxin.global.GlobleType;
 import com.chengxin.global.ImageLoader;
 import com.chengxin.global.ScreenUtils;
 import com.chengxin.global.WeiYuanCommon;
@@ -54,6 +55,8 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 	private static final int SCAN_FOR_BARCODE = 21;
 	private TextView mGoodsTypeTextView;
 	private final int REQUEST_GOODS_MENT = 11;
+	
+	private int mShopType = 0;
 
 	private EditText mGoodsNameEdit,mGoodsPriceEdit,mGoodsContentEdit,
 	mGoodsParamterEdit;
@@ -93,6 +96,9 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 		super.onCreate(savedInstanceState);
 		mContext = this;
 		setContentView(R.layout.send_goods_view);
+		
+		mShopType = getIntent().getIntExtra("type", GlobleType.SHOPPING_MANAGER);
+
 		mWidth = ScreenUtils.getScreenWidth(mContext); 
 		intComponent();
 	}
@@ -112,7 +118,6 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 			}
 		}
 	}
-
 
 	private void intComponent(){
 		setTitleContent(R.drawable.back_btn,R.drawable.ok,R.string.send_goods);
@@ -250,6 +255,7 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 							
 							if (mGoods != null) {
 								status =WeiYuanCommon.getWeiYuanInfo().editGoods(
+										mShopType,
 										Integer.valueOf(mGoods.id),
 										mGoodsTypeId, 
 										mInputGoodsName,
@@ -260,6 +266,7 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 										mInputGoodsBarcode);
 							} else {
 								status =WeiYuanCommon.getWeiYuanInfo().addGoods(
+										mShopType,
 										mGoodsTypeId, 
 										mInputGoodsName,
 										mInputGoodsPrice,
@@ -352,6 +359,7 @@ public class SendGoodsActivity extends BaseActivity implements OnItemClickListen
 		case R.id.goods_type:
 			Intent intent = new Intent();
 			intent.setClass(mContext, GoodsTypeActivity.class);
+			intent.putExtra("type", mShopType);
 			startActivityForResult(intent, REQUEST_GOODS_MENT);
 			break;
 		case R.id.goods_logo:
