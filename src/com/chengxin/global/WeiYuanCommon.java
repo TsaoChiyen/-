@@ -1043,14 +1043,14 @@ public class WeiYuanCommon {
 
 	public static List<AdDomain> getAdLocalList() {
 		List<AdDomain> list = new ArrayList<AdDomain>();
-		
+
 		for (int i = 0; i < 2; i++) {
 			AdDomain adItem = new AdDomain();
 			adItem.isUrl = false;
 			adItem.imgUrl = String.format("adv_pic%d", i + 1);
 			list.add(adItem);
 		}
-		
+
 		return list;
 	}
 }

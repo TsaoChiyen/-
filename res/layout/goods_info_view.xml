@@ -32,7 +32,8 @@
                 <com.chengxin.widget.ViewPager
                     android:id="@+id/detail_viewpager"
                     android:layout_width="fill_parent"
-                    android:layout_height="150dip" />
+                    android:layout_height="150dip"
+                    android:background="@color/application_black" />
 
                 <RelativeLayout
                     android:layout_width="fill_parent"

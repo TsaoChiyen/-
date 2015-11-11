@@ -7,6 +7,7 @@ import java.util.List;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.chengxin.Entity.AdDomainList;
 import com.chengxin.Entity.AddGroup;
 import com.chengxin.Entity.Bill;
 import com.chengxin.Entity.BillList;
@@ -4934,6 +4935,27 @@ public class WeiYuanInfo  implements Serializable{
                 return new WeiYuanState(new JSONObject(reString));
             }
         } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return null;
+	}
+
+	public AdDomainList advertList() throws WeiYuanException {
+        WeiYuanParameters bundle = new WeiYuanParameters();
+        
+        bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/user/api/advertList";
+        
+        try {
+            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+            
+            if (reString != null && !reString.equals("") && !reString.equals("null") ) {
+                return new AdDomainList(reString);
+            }
+        } catch (WeiYuanException e) {
             e.printStackTrace();
             return null;
         }

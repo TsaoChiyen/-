@@ -52,6 +52,8 @@ import android.widget.Toast;
 
 import com.chengxin.DB.DBHelper;
 import com.chengxin.DB.SessionTable;
+//import com.chengxin.Entity.AdDomain;
+//import com.chengxin.Entity.AdDomainList;
 import com.chengxin.Entity.Login;
 import com.chengxin.Entity.PopItem;
 import com.chengxin.Entity.Version;
@@ -178,6 +180,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener, O
 				mContext.sendBroadcast(new Intent(GlobalParam.ACTION_SHOW_NEW_FRIENDS_LOOP));
 			}
 		}
+		
+//		getAdList();
 	}
 
 	/**
@@ -1355,4 +1359,29 @@ public class MainActivity extends FragmentActivity implements OnClickListener, O
 		}
 	}
 
+//	private void getAdList() {
+//		if (AdDomain.hasData()) {
+//			return;
+//		}
+//		
+//		if(!WeiYuanCommon.getNetWorkState()){
+//			return;
+//		}
+//
+//		new Thread(){
+//			public void run() {
+//				try {
+//					AdDomainList temp =	WeiYuanCommon.getWeiYuanInfo().advertList();
+//					
+//					if (temp != null) {
+//						return;
+//					}
+//				} catch (WeiYuanException e) {
+//					e.printStackTrace();
+//				}catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			};
+//		}.start();
+//	}
 }

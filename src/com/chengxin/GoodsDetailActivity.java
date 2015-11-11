@@ -42,6 +42,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
+import android.widget.ImageView.ScaleType;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -56,6 +57,7 @@ import com.chengxin.Entity.ShoppingCart;
 import com.chengxin.Entity.WeiYuanState;
 import com.chengxin.adapter.ViewPagerAdapter;
 import com.chengxin.exception.SPException;
+import com.chengxin.fragment.AdViewFragment;
 import com.chengxin.global.FeatureFunction;
 import com.chengxin.global.GlobalParam;
 import com.chengxin.global.GlobleType;
@@ -283,7 +285,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 		mViewPager = (ViewPager) findViewById(R.id.detail_viewpager);
 
 		int width = ScreenUtils.getScreenWidth(mContext);
-		int height = width * 158 / 196;
+		int height = (int)(0.75 * width);
 
 		mViewPager.setLayoutParams(new RelativeLayout.LayoutParams(width,
 				height));
@@ -888,6 +890,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 					ImageView imageView = (ImageView) mDetailList.get(position)
 							.findViewById(R.id.imageviewer_multitouchimageview);
 					imageView.setImageBitmap(bitmap);
+					imageView.setScaleType(ScaleType.FIT_CENTER);
 					imageView.setVisibility(View.VISIBLE);
 					if (position == 0 || position == mStartSize) {
 						mBaseHandler

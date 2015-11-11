@@ -1549,7 +1549,7 @@ int id area_layout 0x7f0803b6
 int id arrow 0x7f0801cb
 int id arrow_icon 0x7f08026f
 int id at_user_btn 0x7f080479
-int id author_layout 0x7f080041
+int id author_layout 0x7f080040
 int id auto_focus 0x7f080002
 int id backArrowImageViewFromMediaChooserHeaderView 0x7f08046c
 int id backbtn 0x7f0801be
@@ -2546,7 +2546,7 @@ int id tuijian_headerlayout 0x7f080364
 int id tuijian_layout 0x7f080363
 int id tuijian_tip 0x7f080365
 int id tv3 0x7f080310
-int id tv_date 0x7f080040
+int id tv_date 0x7f080041
 int id tv_index 0x7f0801d6
 int id tv_list_item 0x7f0802a5
 int id tv_loadtext 0x7f0801a9

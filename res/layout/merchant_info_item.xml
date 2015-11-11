@@ -20,6 +20,17 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/merchant_2" />
 
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/logo"
+            android:layout_below="@id/logo"
+            android:layout_marginBottom="2dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/application_deep_gray_black"
+            android:textSize="11sp" />
+
         <LinearLayout
             android:id="@+id/layout_button"
             android:layout_width="72dp"
@@ -30,21 +41,13 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/distance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="2dp"
-                android:textColor="@color/application_deep_gray_black"
-                android:textSize="11sp" />
-
-            <TextView
                 android:id="@+id/phone_call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
                 android:text="电话咨询"
                 android:textColor="@color/application_deep_gray_black"
                 android:textSize="13sp" />
@@ -56,7 +59,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:layout_marginTop="4dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
                 android:text="在线预约"
                 android:textColor="@color/application_deep_gray_black"
                 android:textSize="13sp" />
