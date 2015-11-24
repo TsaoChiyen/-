@@ -320,7 +320,7 @@ public class NewsFragment extends BaseFragment implements OnItemClickListener{
 */
 
 		if (mAdapter == null) {
-			mAdapter = new MerchantAdapter(mContext, mNewsList);
+			mAdapter = new MerchantAdapter(mContext, mNewsList, mShopType);
 			if (mListView.getFooterViewsCount() == 0){	 			
 				mFootView = (LinearLayout) LayoutInflater.from(activity)
 						.inflate(R.layout.hometab_listview_footer, null);
@@ -368,7 +368,7 @@ public class NewsFragment extends BaseFragment implements OnItemClickListener{
 		 */
 
 		if (mAdapter == null) {
-			mAdapter = new MerchantAdapter(mContext, mNewsList);
+			mAdapter = new MerchantAdapter(mContext, mNewsList, mShopType);
 
 			if (mListView.getFooterViewsCount() == 0){	 			
 				mFootView = (LinearLayout) LayoutInflater.from(activity)

@@ -66,7 +66,7 @@ public class MapInfo implements Serializable{
 		return json;
 	}
 
-	public String getCtiy() {
+	public String getCity() {
 		return city;
 	}
 

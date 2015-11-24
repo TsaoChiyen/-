@@ -66,6 +66,7 @@ OnItemClickListener {
 		mShopAddr = getIntent().getStringExtra("addr");
 		mShopPhone = getIntent().getStringExtra("tel_phone");
 		mShopName = getIntent().getStringExtra("shop_name");
+		mShopType = getIntent().getIntExtra("shop_type", 0);
 		intCompent();
 	}
 
@@ -228,6 +229,7 @@ OnItemClickListener {
 			intent.putExtra("addr", mShopAddr);
 			intent.putExtra("tel_phone",mShopPhone);
 			intent.putExtra("shop_name",mShopName);
+			intent.putExtra("shop_type",mShopType);
 			intent.putExtra("user", mUser);
 			startActivity(intent);
 		}else{

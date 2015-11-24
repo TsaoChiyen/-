@@ -39,12 +39,15 @@ public class MerchantAdapter extends BaseAdapter {
 	private List<Merchant> mMerchantsList ;
 	private ImageLoader mImageLoader;
 	private int mItemWidth;
-	public MerchantAdapter (Context context,List<Merchant> list){
+	private int mShopType = 0;
+
+	public MerchantAdapter (Context context,List<Merchant> list, int shopType){
 		mContext = context;
 		mInflater = (LayoutInflater)context.getSystemService(
 				Context.LAYOUT_INFLATER_SERVICE);
 		mMerchantsList = list;
 		mImageLoader = new ImageLoader();
+		mShopType = shopType;
 		mItemWidth = (ScreenUtils.getScreenWidth(mContext)-FeatureFunction.dip2px(mContext, 40))/3;
 	}
 
@@ -158,6 +161,7 @@ public class MerchantAdapter extends BaseAdapter {
 						detailIntent.putExtra("addr", goods.address);
 						detailIntent.putExtra("tel_phone",goods.phone);
 						detailIntent.putExtra("shop_name",goods.name);
+						detailIntent.putExtra("shop_type",mShopType);
 						detailIntent.putExtra("user", goods.user);
 						mContext.startActivity(detailIntent);
 					}
@@ -170,6 +174,7 @@ public class MerchantAdapter extends BaseAdapter {
 		}
 		holder.mTypeLayout.setOnClickListener(new OnClickListener() {
 
+
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
@@ -178,6 +183,7 @@ public class MerchantAdapter extends BaseAdapter {
 				intent.putExtra("addr", goods.address);
 				intent.putExtra("tel_phone",goods.phone);
 				intent.putExtra("shop_name",goods.name);
+				intent.putExtra("shop_type",mShopType );
 				intent.putExtra("user", goods.user);
 				mContext.startActivity(intent);
 			}

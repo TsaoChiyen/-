@@ -745,6 +745,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 			goodsListIntent.putExtra("addr", mShopAddr);
 			goodsListIntent.putExtra("tel_phone", mShopPhone);
 			goodsListIntent.putExtra("shop_name", mShopName);
+			goodsListIntent.putExtra("shop_type", mShopType);
 			goodsListIntent.putExtra("user", mUser);
 			startActivity(goodsListIntent);
 			break;

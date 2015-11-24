@@ -277,7 +277,7 @@ public class MerchantFragment extends BaseFragment implements OnChangeStateListe
 				}
 			}
 
-			mAdapter = new MerchantAdapter(mContext, mNewsList);
+			mAdapter = new MerchantAdapter(mContext, mNewsList, mShopType);
 			mListView.setAdapter(mAdapter);
 		}
 
@@ -317,7 +317,7 @@ public class MerchantFragment extends BaseFragment implements OnChangeStateListe
 			case GlobalParam.HIDE_SCROLLREFRESH:
 				mIsRefreshing = false;
 				mContainer.onRefreshComplete();
-				mAdapter = new MerchantAdapter(mContext, mNewsList);
+				mAdapter = new MerchantAdapter(mContext, mNewsList, mShopType);
 				mListView.setAdapter(mAdapter);
 
 				break;
@@ -492,7 +492,7 @@ public class MerchantFragment extends BaseFragment implements OnChangeStateListe
 	}
 
 	public void startSearch() {
-		SearchShopDialog dialog = new SearchShopDialog(mContext, mNewsList);
+		SearchShopDialog dialog = new SearchShopDialog(mContext, mNewsList, mShopType);
 		dialog.show();
 	}
 

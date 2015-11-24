@@ -208,7 +208,7 @@ public class ApplyMerchantActivity extends BaseActivity {
                          mInputContactAddr,
                          mMapInfo.getLat(),
                          mMapInfo.getLng(),
-                         mMapInfo.getCtiy(),
+                         mMapInfo.getCity(),
                          null,
                          mBusiImageFilePath,
                          mAuthImageFilePath,

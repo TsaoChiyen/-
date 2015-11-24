@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<include layout="@layout/title_layout" />
+
+	<RelativeLayout
+		android:id="@+id/add_new"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" >
+
+		<LinearLayout
+		    android:id="@+id/layout_sumary"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_centerVertical="true"
+		    android:orientation="vertical" >
+
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:paddingBottom="2dp"
+			    android:paddingTop="5dp" >
+
+				<TextView
+				    android:id="@+id/textView1"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="5dp"
+				    android:layout_marginRight="2dp"
+				    android:text="账单汇总:" />
+
+				<TextView
+				    android:id="@+id/text_total"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="2dp"
+				    android:layout_marginRight="5dp"
+				    android:text="" />
+
+			</LinearLayout>
+
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:paddingBottom="5dp"
+			    android:paddingTop="2dp" >
+
+				<TextView
+				    android:id="@+id/textView3"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="5dp"
+				    android:layout_marginRight="2dp"
+				    android:text="临期账单:" />
+
+				<TextView
+				    android:id="@+id/text_expire"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="2dp"
+				    android:layout_marginRight="2dp"
+				    android:text="1"
+				    android:textColor="#f0ff0000" />
+
+				<TextView
+				    android:id="@+id/textView2"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="2dp"
+				    android:layout_marginRight="5dp"
+				    android:text="份" />
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<LinearLayout
+		    android:id="@+id/button_layout"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:layout_centerVertical="true"
+		    android:layout_margin="10dp"
+		    android:gravity="center"
+		    android:orientation="horizontal" >
+
+			<ImageView
+			    android:id="@+id/image_addnew"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:src="@drawable/ic_add" />
+
+			<TextView
+			    android:id="@+id/text_addnew"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="新增提醒"
+			    android:textSize="17sp" />
+
+		</LinearLayout>
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="1dp"
+		    android:layout_below="@id/layout_sumary"
+		    android:layout_centerHorizontal="true"
+		    android:background="@color/application_gray_black" >
+
+		</LinearLayout>
+
+	</RelativeLayout>
+
+	<ListView
+	    android:id="@+id/list"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:focusable="true"
+	    android:scrollbars="none" >
+
+	</ListView>
+
+</LinearLayout>

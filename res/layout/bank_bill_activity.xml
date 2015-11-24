@@ -19,18 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:orientation="vertical"
-            android:visibility="gone" >
-
-            <TextView
-                android:id="@+id/lbl_name"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="right|center_vertical"
-                android:text="信用卡号"
-                android:textColor="@color/application_deep_gray_black"
-                android:textSize="16sp"
-                android:visibility="visible" />
+            android:visibility="visible" >
 
             <TextView
                 android:id="@+id/lbl_mechanism"
@@ -39,6 +28,17 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="right|center_vertical"
                 android:text="还款银行"
+                android:textColor="@color/application_deep_gray_black"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lbl_name"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right|center_vertical"
+                android:text="信用卡号"
                 android:textColor="@color/application_deep_gray_black"
                 android:textSize="16sp"
                 android:visibility="visible" />
@@ -87,7 +87,7 @@
                 android:text="邮箱登录方式"
                 android:textColor="@color/application_deep_gray_black"
                 android:textSize="16sp"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/lbl_number"
@@ -99,7 +99,7 @@
                 android:text="邮箱服务器"
                 android:textColor="@color/application_deep_gray_black"
                 android:textSize="16sp"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -108,26 +108,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
-            <EditText
-                android:id="@+id/edt_card"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/circle_circle_rond_n"
-                android:ems="10"
-                android:gravity="center_vertical"
-                android:hint="信用卡4位尾号"
-                android:imeOptions="actionNext"
-                android:inputType="number"
-                android:padding="5dip"
-                android:textColor="@color/application_black"
-                android:textColorHint="@color/application_deep_gray_black"
-                android:textSize="@dimen/sixteen" >
-
-                <requestFocus />
-            </EditText>
 
             <EditText
                 android:id="@+id/edt_name"
@@ -147,7 +127,7 @@
                 android:textSize="@dimen/sixteen" />
 
             <EditText
-                android:id="@+id/edt_date"
+                android:id="@+id/edt_card"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
@@ -155,13 +135,58 @@
                 android:background="@drawable/circle_circle_rond_n"
                 android:ems="10"
                 android:gravity="center_vertical"
-                android:hint="选择还款日期"
+                android:hint="信用卡4位尾号"
                 android:imeOptions="actionNext"
-                android:inputType="date"
+                android:inputType="number"
                 android:padding="5dip"
                 android:textColor="@color/application_black"
                 android:textColorHint="@color/application_deep_gray_black"
                 android:textSize="@dimen/sixteen" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="每月"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edt_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle_circle_rond_n"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:hint="选择还款日期"
+                    android:imeOptions="actionNext"
+                    android:inputType="date"
+                    android:padding="5dip"
+                    android:textColor="@color/application_black"
+                    android:textColorHint="@color/application_deep_gray_black"
+                    android:textSize="@dimen/sixteen" />
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="日"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/edt_email"
@@ -212,7 +237,8 @@
                 android:padding="5dip"
                 android:textColor="@color/application_black"
                 android:textColorHint="@color/application_deep_gray_black"
-                android:textSize="@dimen/sixteen" />
+                android:textSize="@dimen/sixteen"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/edt_server"
@@ -229,7 +255,8 @@
                 android:padding="5dip"
                 android:textColor="@color/application_black"
                 android:textColorHint="@color/application_deep_gray_black"
-                android:textSize="@dimen/sixteen" />
+                android:textSize="@dimen/sixteen"
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -258,14 +285,45 @@
             android:id="@+id/btn_protocol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="false"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/chk_agree"
+            android:layout_toRightOf="@+id/chk_agree"
             android:clickable="true"
-            android:text="邮件抓取授权协议"
+            android:text="邮件服务协议"
             android:textColor="#0000ff"
             android:textSize="14sp" />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/enable_auto_get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" >
+
+        <CheckBox
+            android:id="@+id/check_enabled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:button="@drawable/protocl_checkbox"
+            android:checked="true"
+            android:paddingLeft="5dp"
+            android:text="开启"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/btn_enabled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="false"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/check_enabled"
+            android:clickable="true"
+            android:text="智能获取账单"
+            android:textColor="#0000ff"
+            android:textSize="14sp" />
     </RelativeLayout>
 
 </LinearLayout>

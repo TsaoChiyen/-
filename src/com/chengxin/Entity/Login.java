@@ -146,6 +146,8 @@ public class Login implements Serializable {
 	public List< MerchantInfo > merchantList;
 
 	public int isbasket;
+
+	public Financier basket;
 	
 
 	/*
@@ -390,6 +392,12 @@ public class Login implements Serializable {
 					financier = new Financier(json.getJSONObject("financ"));
 				}
 			}
+			if (!json.isNull("basket")) {
+				String shopString = json.getString("basket");
+				if ((shopString != null && !shopString.equals("")) && shopString.startsWith("{")) {
+					basket = new Financier(json.getJSONObject("basket"));
+				}
+			}
 
 			if (!json.isNull("merchant")) {
 				String shopString = json.getString("merchant");
@@ -489,5 +497,13 @@ public class Login implements Serializable {
 			
 		}
 		return null;
+	}
+
+	public List<MerchantInfo> getMerchantList() {
+		if (merchantList == null) {
+			merchantList = new ArrayList<MerchantInfo>();
+		}
+		
+		return merchantList;
 	}
 }

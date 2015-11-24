@@ -920,7 +920,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener, O
 				 * 连接到xmpp、初始化页面
 				 */
 				loginXMPP();
-				mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+				
+				if (mPager.getAdapter() == null) {
+					mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+				}
 				tabs.setViewPager(mPager);
 				setTabsValue();
 				sendBroadcast(new Intent(GlobalParam.SWITCH_TAB));

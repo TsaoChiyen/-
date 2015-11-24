@@ -3354,7 +3354,7 @@ public class WeiYuanInfo  implements Serializable{
      *                  这里的 data 应该是ShlefGoods数组
      *
      */
-    public WeiYuanState shelfGoods(int shopType, int status, List <Goods> list) throws WeiYuanException {
+    public Goods shelfGoods(int shopType, int status, List <Goods> list) throws WeiYuanException {
         if (list == null || list.size() == 0) {
             return null;
         }
@@ -3392,16 +3392,16 @@ public class WeiYuanInfo  implements Serializable{
             	url = SERVER_PREFIX + "/basket/api/goodStatus";
             }
             
+            try {
             String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
             
             if(reString != null && !reString.equals("") && !reString.equals("null")){
                 Log.d("goodStatus", reString);
                 
-                try {
-                    return new WeiYuanState(new JSONObject(reString));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                    return new Goods(reString);
+            }
+            } catch (WeiYuanException e) {
+                e.printStackTrace();
             }
         }
         
@@ -3419,7 +3419,7 @@ public class WeiYuanInfo  implements Serializable{
      *      data:     数据格式:1,200,50 <=>商品 ID,价格,库存
      *                  这里的 data 应该是ShlefGoods数组
      */
-    public WeiYuanState editShelfGoods(
+    public Goods editShelfGoods(
     		int shoptype,
     		String goodsId,
     		String price,
@@ -3442,16 +3442,15 @@ public class WeiYuanInfo  implements Serializable{
             	url = SERVER_PREFIX + "/basket/api/goodStatus";
             }
             
-            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
-            
-            if(reString != null && !reString.equals("") && !reString.equals("null")){
-                Log.d("goodStatus", reString);
-                
-                try {
-                    return new WeiYuanState(new JSONObject(reString));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            try {
+	            String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+	            
+	            if(reString != null && !reString.equals("") && !reString.equals("null")){
+	                Log.d("goodStatus", reString);
+                    return new Goods(reString);
+	            }
+            } catch (WeiYuanException e) {
+                e.printStackTrace();
             }
         }
         
@@ -3937,46 +3936,13 @@ public class WeiYuanInfo  implements Serializable{
      *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
      *
      *	添加账单
-     *	@param type         账单类型: 1=>贷款，2=>信用卡
-     *	@param repayment    还款提醒日期
-     *
-     *  ========== 以下是信用卡类参数 ====
-     *	@param card         信用卡卡号
-     *	@param bank         贷款银行
-     *
-     *  ========== 以下是贷款类参数 ====
-     *	@param name         账单名称
-     *	@param price        还款金额
-     *	@param number       剩余期数
-     *	@param mechanism    还款机构
      */
-    public Bill addBill(int type,
-                        long repayment,
-                        String name,
-                        double price,
-                        int number,
-                        String mechanism,
-                        String card,
-                        String bank
-                        ) throws WeiYuanException {
-        if (type < 1 || type > 2) {
+	public Bill addBill(Bill bill) throws WeiYuanException {
+        if (bill.type < 1 || bill.type > 2) {
             return null;
         }
 
-        WeiYuanParameters bundle = new WeiYuanParameters();
-
-        bundle.add("type", String.valueOf(type));
-        bundle.add("repayment", String.valueOf(repayment));
-        
-        if (type == 1) {
-            bundle.add("name", name);
-            bundle.add("price", String.valueOf(price));
-            bundle.add("number", String.valueOf(number));
-            bundle.add("mechanism", mechanism);
-        } else if (type == 2) {
-            bundle.add("card", card);
-            bundle.add("bank", bank);
-        }
+        WeiYuanParameters bundle = bill.getParameters();
 
         bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
         
@@ -3994,59 +3960,23 @@ public class WeiYuanInfo  implements Serializable{
         }
         
         return null;
-    }
-    
+	}
+
     /**
      *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
      *
      *	编辑账单
-     *
-     *	@param billId       账单id
-     *	@param type         账单类型: 1=>贷款，2=>信用卡
-     *	@param repayment    还款提醒日期
-     *
-     *  ========== 以下是信用卡类参数 ====
-     *	@param card         信用卡卡号
-     *	@param bank         贷款银行
-     *
-     *  ========== 以下是贷款类参数 ====
-     *	@param name         账单名称
-     *	@param price        还款金额
-     *	@param number       剩余期数
-     *	@param mechanism    还款机构
      */
-    public Bill editBill(int billId,
-                         int type,
-                         long repayment,
-                         String name,
-                         double price,
-                         int number,
-                         String mechanism,
-                         String card,
-                         String bank) throws WeiYuanException {
-        if (billId <= 0) {
+	public Bill editBill(Bill bill) throws WeiYuanException  {
+        if (bill.id <= 0) {
             return null;
         }
         
-        if (type < 1 || type > 2) {
+        if (bill.type < 1 || bill.type > 2) {
             return null;
         }
 
-        WeiYuanParameters bundle = new WeiYuanParameters();
-
-        bundle.add("id", String.valueOf(billId));
-        bundle.add("type", String.valueOf(type));
-        bundle.add("repayment", String.valueOf(repayment));
-        
-        if (type == 1) {
-            bundle.add("name", name);
-            bundle.add("price", String.valueOf(price));
-            bundle.add("number", String.valueOf(number));
-            bundle.add("mechanism", mechanism);
-        } else if (type == 2) {
-            bundle.add("card", card);
-            bundle.add("bank", bank);
-        }
+        WeiYuanParameters bundle = bill.getParameters();
         
         bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
         
@@ -4064,9 +3994,39 @@ public class WeiYuanInfo  implements Serializable{
         }
         
         return null;
-    }
-    
-    /**
+	}
+
+	public WeiYuanState clearBill(int billId, boolean withAll) throws WeiYuanException {
+        if (billId <= 0) {
+            return null;
+        }
+        
+        WeiYuanParameters bundle = new WeiYuanParameters();
+
+        bundle.add("id", String.valueOf(billId));
+        
+        if (withAll)
+            bundle.add("repayAll", "true");
+        	
+        bundle.add("uid",WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
+        
+        String url = SERVER_PREFIX + "/shop/Api/repayBill";
+        String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
+        
+        if(reString != null && !reString.equals("") && !reString.equals("null")){
+            Log.d("repayBill", reString);
+            
+            try {
+                return new WeiYuanState(new JSONObject(reString));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return null;
+	}
+
+	/**
      *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
      *
      *	删除账单
@@ -4128,29 +4088,6 @@ public class WeiYuanInfo  implements Serializable{
         return null;
     }
 
-	public Bill addBill(Bill bill) throws WeiYuanException {
-		return addBill(bill.type,
-				bill.repayment,
-				bill.name,
-				bill.price,
-				bill.number,
-				bill.mechanism,
-				bill.card,
-				bill.bank);
-	}
-
-	public Bill editBill(Bill bill) throws WeiYuanException  {
-		return editBill(bill.id,
-				bill.type,
-				bill.repayment,
-				bill.name,
-				bill.price,
-				bill.number,
-				bill.mechanism,
-				bill.card,
-				bill.bank);
-	}
-    
     /**
      *	@Copyright © 2015 tcy@dreamisland. All rights reserved.
      *
@@ -4309,25 +4246,12 @@ public class WeiYuanInfo  implements Serializable{
      *  @param  bidding:    竞价排名价格
      *  @param  adPrice:    广告位价格
      */
-    public FinancingGoods addFinancingGoods(String name,
-                                            String type,
-                                            String features,
-                                            String material,
-                                            double bidding,
-                                            double adPrice) throws WeiYuanException {
-        if (name == null || name.equals("")) {
+    public FinancingGoods addFinancingGoods(FinancingGoods product) throws WeiYuanException {
+        if (product.name == null || product.name.equals("")) {
             return null;
         }
         
-        WeiYuanParameters bundle = new WeiYuanParameters();
-        
-        bundle.add("name",name);
-        if (features != null && !features.equals("")) bundle.add("features",features);
-        if (material != null && !material.equals("")) bundle.add("material",material);
-        if (type != null && !type.equals("")) bundle.add("type",type);
-        if (bidding > 0) bundle.add("bidding",String.valueOf(bidding));
-        if (adPrice > 0) bundle.add("adPrice",String.valueOf(adPrice));
-        
+        WeiYuanParameters bundle = product.getParameters();
         bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
         
         String url = SERVER_PREFIX + "/financ/api/addGoods";
@@ -4359,28 +4283,12 @@ public class WeiYuanInfo  implements Serializable{
      *  @param  bidding:    竞价排名价格
      *  @param  adPrice:    广告位价格
      */
-    public WeiYuanState editFinancingGoods(int id,
-                              String name,
-                              String type,
-                              String features,
-                              String material,
-                              double bidding,
-                              double adPrice) throws WeiYuanException {
-        if (id == 0) {
+    public FinancingGoods editFinancingGoods(FinancingGoods product) throws WeiYuanException {
+        if (product.id == 0) {
             return null;
         }
         
-        WeiYuanParameters bundle = new WeiYuanParameters();
-        
-        bundle.add("id",String.valueOf(id));
-        
-        if (name != null && !name.equals("")) bundle.add("name",name);
-        if (features != null && !features.equals("")) bundle.add("features",features);
-        if (material != null && !material.equals("")) bundle.add("material",material);
-        if (bidding > 0) bundle.add("bidding",String.valueOf(bidding));
-        if (adPrice > 0) bundle.add("adPrice",String.valueOf(adPrice));
-        if (type != null && !type.equals("")) bundle.add("type",type);
-        
+        WeiYuanParameters bundle = product.getParameters();
         bundle.add("uid", WeiYuanCommon.getUserId(BMapApiApp.getInstance()));
         
         String url = SERVER_PREFIX + "/financ/api/editGoods";
@@ -4389,7 +4297,7 @@ public class WeiYuanInfo  implements Serializable{
             String reString = request(url, bundle, Utility.HTTPMETHOD_POST, 1);
             
             if (reString != null && !reString.equals("") && !reString.equals("null") ) {
-                return new WeiYuanState(new JSONObject(reString));
+                return new FinancingGoods(new JSONObject(reString));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -4410,6 +4318,7 @@ public class WeiYuanInfo  implements Serializable{
      */
     public FinancingGoodsList getFinancingGoodsList(
     		int page, 
+    		String type,
     		String city,
     		double lat,
     		double lng) throws WeiYuanException {
@@ -4417,6 +4326,7 @@ public class WeiYuanInfo  implements Serializable{
         WeiYuanParameters bundle = new WeiYuanParameters();
         
         if (page > 1) bundle.add("page", String.valueOf(page));
+        if (type != null && !type.equals("")) bundle.add("type",type);
         if (city != null && !city.equals("")) bundle.add("city",city);
         if (lat != 0) bundle.add("lat",String.valueOf(lat));
         if (lng != 0) bundle.add("lng",String.valueOf(lng));
@@ -4643,7 +4553,8 @@ public class WeiYuanInfo  implements Serializable{
             List<MorePicture> listPic = new ArrayList<MorePicture>();
 
             for (Picture pic : merchant.attachment) {
-                listPic.add(new MorePicture(pic.key, pic.originUrl));;
+            	if (pic.originUrl != null)
+            		listPic.add(new MorePicture(pic.key, pic.originUrl));;
 			}
             
             if (listPic.size() > 0) {

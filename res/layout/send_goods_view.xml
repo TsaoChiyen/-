@@ -89,7 +89,7 @@
                 android:background="@drawable/cirle_edit_bg"
                 android:gravity="center_vertical"
                 android:hint="商品价格"
-                android:inputType="numberSigned"
+                android:inputType="numberDecimal"
                 android:padding="5dip"
                 android:textColor="@color/application_black"
                 android:textColorHint="@color/application_deep_gray_black"

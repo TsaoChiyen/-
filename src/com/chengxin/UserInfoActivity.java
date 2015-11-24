@@ -607,6 +607,7 @@ public class UserInfoActivity extends BaseActivity  implements OnClickListener{
 			shopList.putExtra("addr", mLogin.shopInfo.address);
 			shopList.putExtra("tel_phone",mLogin.shopInfo.phone);
 			shopList.putExtra("shop_name",mLogin.shopInfo.name);
+			shopList.putExtra("shop_type",0);
 			startActivity(shopList);
 			break;
 		default:

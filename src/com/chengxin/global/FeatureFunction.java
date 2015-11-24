@@ -436,6 +436,12 @@ public class FeatureFunction {
 	    	format = new SimpleDateFormat("M月dd日 HH:mm");
 	    } else if (timetype == 4){
 	    	format = new SimpleDateFormat("yyyy年M月d日");
+	    } else if (timetype == 5){
+	    	format = new SimpleDateFormat("yyyy/MM/dd");
+	    } else if (timetype == 100){
+	    	format = new SimpleDateFormat("每月d日");
+	    } else if (timetype == 101){
+	    	format = new SimpleDateFormat("M月 yyyy");
 	    }
 
 		return format.format(date);
