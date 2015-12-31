@@ -897,19 +897,20 @@ public class WeiYuanCommon {
 	}
 
 	/** 获取商品数量 */
-	public static int getGoodsCount() {
+	public static int getGoodsCount(int shopType) {
 		int count = 0;
 		List<ShoppingCart> mCartList = WeiYuanCommon.getShoppingCartData(BMapApiApp.getInstance());
 		try {
 			if (mCartList != null && mCartList.size() > 0) {// 加载购物车数据
 				for (int i = 0; i < mCartList.size(); i++) {
-					String[] goodsCount = mCartList.get(i).goodsCounts.split(",");
-					for (int j = 0; j < goodsCount.length; j++) {
-						if (goodsCount[j] != null && !goodsCount[j].equals("")) {
-							count = count + Integer.parseInt(goodsCount[j]);
+					if (mCartList.get(i).shopType == shopType) {
+						String[] goodsCount = mCartList.get(i).goodsCounts.split(",");
+						for (int j = 0; j < goodsCount.length; j++) {
+							if (goodsCount[j] != null && !goodsCount[j].equals("")) {
+								count = count + Integer.parseInt(goodsCount[j]);
+							}
 						}
 					}
-
 				}
 			}
 		} catch (NumberFormatException e) {

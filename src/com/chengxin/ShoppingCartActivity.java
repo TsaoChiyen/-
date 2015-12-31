@@ -58,7 +58,7 @@ public class ShoppingCartActivity extends BaseActivity{
 	/*编辑or完成*/
 	public boolean mIsModify;
 
-	private int mShopType;
+	private int mShopType = GlobleType.SHOPPING_MANAGER;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class ShoppingCartActivity extends BaseActivity{
 		mContext = this;
 		setContentView(R.layout.shopping_cart_view);
 		
-		mShopType  = getIntent().getIntExtra("type", GlobleType.SHOPPING_MANAGER);
+		mShopType  = getIntent().getIntExtra("shop_type", GlobleType.SHOPPING_MANAGER);
 
 		mImageLoader = new ImageLoader();
 		IntentFilter fileter = new IntentFilter();
@@ -92,7 +92,7 @@ public class ShoppingCartActivity extends BaseActivity{
 	};
 
 	private void initCompent(){
-		String title = mContext.getResources().getString(R.string.shopping_cart)+"("+WeiYuanCommon.getGoodsCount()+")";
+		String title = mContext.getResources().getString(R.string.shopping_cart)+"("+WeiYuanCommon.getGoodsCount(mShopType)+")";
 		setTitleContent(R.drawable.back_btn, R.drawable.modify_cart_btn,title);
 		mLeftBtn.setOnClickListener(this);
 		mRightBtn.setOnClickListener(this);
@@ -105,16 +105,19 @@ public class ShoppingCartActivity extends BaseActivity{
 			//shop/api/cartGoodsList
 			StringBuilder buffer = new StringBuilder("{");		
 			for (int i = 0; i < mCartList.size(); i++) {
-				if(i != mCartList.size() - 1){
+				if (mCartList.get(i).shopType == mShopType) {
+					if (buffer.length() > 6) {
+						buffer = buffer.append(",");
+					}
+					
 					buffer = buffer.append("\"").append(mCartList.get(i).shopId)
 							.append("\"").append(":").append("\"").append(mCartList.get(i).goodsIds)
-							.append("\"").append(",");
-				}else{
-					buffer = buffer.append("\"").append(mCartList.get(i).shopId)
-							.append("\"").append(":").append("\"").append(mCartList.get(i).goodsIds)
-							.append("\"").append("}");
+							.append("\"");
 				}
 			}
+			
+			buffer = buffer.append("}");
+
 			mGoodsId = buffer.toString();
 			Log.e("goods_id",buffer.toString());
 			if((mGoodsId != null && !mGoodsId.equals(""))
@@ -128,7 +131,7 @@ public class ShoppingCartActivity extends BaseActivity{
 
 	/**设置购物车标题*/
 	private void getTitleText(){
-		String title = mContext.getResources().getString(R.string.shopping_cart)+"("+WeiYuanCommon.getGoodsCount()+")";
+		String title = mContext.getResources().getString(R.string.shopping_cart)+"("+WeiYuanCommon.getGoodsCount(mShopType)+")";
 		titileTextView.setText(title);
 	}
 
@@ -553,6 +556,7 @@ public class ShoppingCartActivity extends BaseActivity{
 			Intent commitIntent = new Intent();
 			commitIntent.setClass(mContext, CommitOrderActivity.class);
 			commitIntent.putExtra("entity",mOrderMerchantList);
+			commitIntent.putExtra("shop_type", mShopType);
 			startActivity(commitIntent);
 			break;
 

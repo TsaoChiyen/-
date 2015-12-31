@@ -26,20 +26,21 @@ public class ShoppingCart implements Serializable{
 	/**商品数量*/
 	public String goodsCounts;
 
+	/**商家类型*/
+	public int shopType = 0;
+
 	public ShoppingCart(String uid, int shopId, String goodsIds,
-			String goodsCounts) {
+			String goodsCounts, int shopType) {
 		super();
 		this.uid = uid;
 		this.shopId = shopId;
 		this.goodsIds = goodsIds;
 		this.goodsCounts = goodsCounts;
+		this.shopType = shopType;
 	}
 
 	public ShoppingCart() {
 		super();
 	}
-	
-	
-	
 	 
 }

@@ -67,7 +67,7 @@ public class WeiYuanInfo  implements Serializable{
 	private static final long serialVersionUID = 1651654562644564L;
 
 	/**www.kobego.com 115.29.32.248*/
-	private static final String SERVER_STR = "http://119.84.73.193/"; // "http://121.40.214.35:8000/"; //  
+	private static final String SERVER_STR = "http://121.40.214.35:82/"; //"http://119.84.73.193/"; //   
 	public static final String SERVER_PREFIX = SERVER_STR + "index.php";
 	public static final String CODE_URL =SERVER_STR;
 	public static final String HEAD_URL = SERVER_STR + "index.php";

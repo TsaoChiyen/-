@@ -209,14 +209,14 @@ public class GoodsDetailActivity extends BaseActivity implements
 				GoodsDetailActivity.this.finish();
 			} else if (action
 					.equals(GlobalParam.ACTION_REFRESH_MERCHANT_GOODS_COUNT)) {
-				goodsCountTextView.setText(WeiYuanCommon.getGoodsCount() + "");
+				goodsCountTextView.setText(WeiYuanCommon.getGoodsCount(mShopType) + "");
 			}
 		}
 	};
 
 	private void initCompent() {
 		setRightTextTitleContent(R.drawable.back_btn, 0, R.string.goods_info,
-				WeiYuanCommon.getGoodsCount());
+				WeiYuanCommon.getGoodsCount(mShopType));
 		mShoopingCartBtn.setOnClickListener(this);
 		mLeftBtn.setOnClickListener(this);
 		myScrollView = (MyScrollView) findViewById(R.id.my_scrollview);
@@ -599,6 +599,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 		case R.id.shooping_count:// 添加到购物车
 			Intent cartIntent = new Intent();
 			cartIntent.setClass(mContext, ShoppingCartActivity.class);
+			cartIntent.putExtra("shop_type", mShopType);
 			startActivity(cartIntent);
 			break;
 		case R.id.buy_btn: // 购物车数量加1
@@ -611,7 +612,7 @@ public class GoodsDetailActivity extends BaseActivity implements
 			int index = -1;
 			if (shoppingList != null && shoppingList.size() > 0) {
 				for (int i = 0; i < shoppingList.size(); i++) {
-					if (mGoods.shopid == shoppingList.get(i).shopId) {
+					if (mGoods.shopid == shoppingList.get(i).shopId && mShopType == shoppingList.get(i).shopType) {
 						shoppingCart = shoppingList.get(i);
 						index = i;
 						break;
@@ -704,11 +705,11 @@ public class GoodsDetailActivity extends BaseActivity implements
 			if (!isAdd) {// 2.商铺不存在 ----重新添加一个包含商品数量和商品id的商铺
 				shoppingCart = new ShoppingCart(
 						WeiYuanCommon.getUserId(mContext), mGoods.shopid,
-						mGoods.id, 1 + "");
+						mGoods.id, 1 + "", mShopType);
 				shoppingList.add(shoppingCart);
 				WeiYuanCommon.saveShoppingCartData(mContext, shoppingList);
 			}
-			goodsCountTextView.setText(WeiYuanCommon.getGoodsCount() + "");
+			goodsCountTextView.setText(WeiYuanCommon.getGoodsCount(mShopType) + "");
 			// 刷新商户界面中的商品数量
 			sendBroadcast(new Intent(
 					GlobalParam.ACTION_REFRESH_MERCHANT_GOODS_COUNT));

@@ -56,6 +56,7 @@ public class CommitOrderActivity extends BaseActivity {
 		mContext = this;
 		setContentView(R.layout.commit_order_view);
 		mMerchant = (Merchant) getIntent().getSerializableExtra("entity");
+		mShopType = getIntent().getIntExtra("shop_type", 0);
 		initCompent();
 		IntentFilter fileter = new IntentFilter();
 		fileter.addAction(GlobalParam.ACTION_DESTROY_GOODS_DETAIL_PAGE);
@@ -263,6 +264,11 @@ public class CommitOrderActivity extends BaseActivity {
 					return;
 				}
 
+				if (state.errorMsg.length() > 0) {
+					Toast.makeText(mContext, state.errorMsg,
+							Toast.LENGTH_LONG).show();
+				}
+				
 				if (state.code == 0) {
 					UniPayResult payResult = order.uniPayResult;
 
